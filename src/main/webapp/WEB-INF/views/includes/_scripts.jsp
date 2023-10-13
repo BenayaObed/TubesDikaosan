@@ -9,8 +9,3 @@
     <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
-    <script>
-        // get current URL path and assign 'active' class
-        var pathname = window.location.pathname;
-        $('.header__menu li a[href="' + pathname + '"]').parent().addClass('active');
-    </script>
