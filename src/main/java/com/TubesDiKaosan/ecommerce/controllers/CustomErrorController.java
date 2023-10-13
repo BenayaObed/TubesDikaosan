@@ -12,6 +12,15 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping("/error")
     @ResponseBody
     String error(HttpServletRequest request) {
-        return "<h1>Error occurred</h1>";
+        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+        if (statusCode == 404) {
+            return "404";
+        } else if (statusCode == 403) {
+            return "403";
+        } else if (statusCode == 500) {
+            return "500";
+        } else {
+            return "error";
+        }
     }
 }

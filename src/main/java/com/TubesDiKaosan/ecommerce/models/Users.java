@@ -58,6 +58,17 @@ public class Users {
     this.last_name = last_name;
   }
 
+  public String getFullName() {
+    return this.first_name + " " + this.last_name;
+  }
+
+  public void setFullName(String fullName) {
+    String[] parts = fullName.split(" ");
+    this.first_name = parts[0];
+    this.last_name = parts[1];
+  }
+
+
   public String getEmail() {
     return email;
   }
