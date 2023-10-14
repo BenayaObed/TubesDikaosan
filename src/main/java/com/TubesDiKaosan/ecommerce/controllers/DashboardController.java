@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.services.CategoryService;
 
 @SpringBootApplication
@@ -32,15 +30,6 @@ public class DashboardController {
         model.addAttribute("title", "Products");
         return "pages/dashboard/product";
     }
-    
-    @RequestMapping("/categories")
-    public String categoriesPage(Model model) {
-        model.addAttribute("title", "Categories");
-        List<Category> category = categoryService.getAll();
-        model.addAttribute("categories", category);
-        return "pages/dashboard/category";
-    }
-
     @RequestMapping("/chats")
     public String messagesPage(Model model) {
         model.addAttribute("title", "Messages");

@@ -4,9 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.TubesDiKaosan.ecommerce.models.Category;
+import com.TubesDiKaosan.ecommerce.payloads.requests.CategoryRequest;
+import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
 @Service
 public interface CategoryService{
-    public List<Category> getAll();
+    public Response getAll();
+    public Response getById(int id);
+
+    public Response addCategory(CategoryRequest request);
+    public Response updateById(int id, CategoryRequest request);
+    public Response deleteById(Integer id);
 }

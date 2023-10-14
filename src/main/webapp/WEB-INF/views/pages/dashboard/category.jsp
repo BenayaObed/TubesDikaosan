@@ -68,8 +68,8 @@
                       <td>0</td>
                       <td> ${category.visible == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'}</td>
                       <td>
-                        <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                        <a href="${category.category_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/category/delete/${category.category_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
                       </td>
                     </tr>
                   </c:forEach>
