@@ -25,9 +25,6 @@
         <div class="price">$0.00</div>
     </div>
     <div id="mobile-menu-wrap"></div>
-    <div class="offcanvas__text">
-        <p>Free shipping, 30-day return or refund guarantee.</p>
-    </div>
 </div>
 <!-- Offcanvas Menu End -->
 
@@ -36,21 +33,9 @@
     <div class="header__top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-7">
-                    <div class="header__top__left">
-                        <p>Free shipping, 30-day return or refund guarantee.</p>
-                    </div>
+                <div class="col-lg-6 col-md-7">     
                 </div>
                 <div class="col-lg-6 col-md-5">
-                    <div class="header__top__right">
-                        <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">FAQs</a>
-                        </div>
-                        <div class="header__top__hover">
-                            <span>Rp <i class="arrow_carrot-down"></i></span>
-                            <ul>
-                                <li>USD</li>
                             </ul>
                         </div>
                     </div>
@@ -71,7 +56,6 @@
                         <!-- Check current route and add active class -->
                         <li class="${pageContext.request.contextPath == '/' ? 'active' : ''}"><a href="${pageContext.request.contextPath}/home">Home</a></li>
                         <li class="${pageContext.request.contextPath == '/shop' ? 'active' : ''}"><a href="${pageContext.request.contextPath}/shop">Shop</a></li>
-                        <li class="${pageContext.request.contextPath == '/blog' ? 'active' : ''}"><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
                         <li class="${pageContext.request.contextPath == '/contact' ? 'active' : ''}"><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -79,7 +63,6 @@
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
                     <a href="#"><img src="img/icon/cart.png" alt=""> <span>2</span></a>
                 </div>
             </div>

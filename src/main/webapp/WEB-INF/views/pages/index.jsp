@@ -24,11 +24,8 @@ pageEncoding="UTF-8"%>
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h6>Summer Collection</h6>
-                                <h2>Fall - Winter Collections 2030</h2>
-                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <h2>Elevate Your Style With Trendy Clothes From Our Store</h2>
+                                <a href="#" class="primary-btn">Order Now</a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -75,7 +72,7 @@ pageEncoding="UTF-8"%>
                             <img src="img/banner/banner-1.jpg" alt="">
                         </div>
                         <div class="banner__item__text">
-                            <h2>Clothing Collections 2030</h2>
+                            <h2>Clothing</h2>
                             <a href="#">Shop now</a>
                         </div>
                     </div>
@@ -97,7 +94,7 @@ pageEncoding="UTF-8"%>
                             <img src="img/banner/banner-3.jpg" alt="">
                         </div>
                         <div class="banner__item__text">
-                            <h2>Shoes Spring 2030</h2>
+                            <h2>Shoes</h2>
                             <a href="#">Shop now</a>
                         </div>
                     </div>
