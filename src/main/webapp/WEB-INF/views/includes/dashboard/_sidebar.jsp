@@ -13,7 +13,7 @@
         <img src="${pageContext.request.contextPath}/dashboard/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Admin</a>
+        <a href="#" class="d-block">${username}</a>
       </div>
     </div>
 
@@ -52,14 +52,14 @@
           <ul class="nav nav-treeview">
             <!-- Products -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="${pageContext.request.contextPath}/dashboard/products" class="nav-link">
                 <i class="nav-icon fas fa-box"></i>
                 <p> Products </p>
               </a>
             </li>
             <!-- Categories -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="${pageContext.request.contextPath}/dashboard/categories" class="nav-link">
                 <i class="nav-icon fas fa-list"></i>
                 <p> Categories </p>
               </a>

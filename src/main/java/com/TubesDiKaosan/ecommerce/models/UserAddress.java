@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 @Table(name = "user_address")
 public class UserAddress {
     @Id
-    private int id;
+    private Integer id;
     
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -22,10 +22,10 @@ public class UserAddress {
     @Column(length = 32) private String province;
     @Column(length = 5)  private String postal_code;
     @Column(length = 16) private String phone_number;
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Users getUser() {

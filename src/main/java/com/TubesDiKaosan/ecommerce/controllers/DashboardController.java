@@ -1,18 +1,49 @@
 package com.TubesDiKaosan.ecommerce.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.TubesDiKaosan.ecommerce.models.Category;
+import com.TubesDiKaosan.ecommerce.services.CategoryService;
 
 @SpringBootApplication
 @Controller
 @RequestMapping("/dashboard")
 public class DashboardController {
-    // fix routing /doashboard and /dashboard/
+    @Autowired
+    private CategoryService categoryService;
+
+    // settup model attribute username for all pages
     @RequestMapping({"", "/"})
     public String homePage(Model model) {
+        // Create model attribute for title = dashbaord and name = admin name
         model.addAttribute("title", "Dashboard");
+        model.addAttribute("username", "Admin");
         return "pages/dashboard/index";
+    }
+    @RequestMapping("/products")
+    public String shopPage(Model model){
+        model.addAttribute("title", "Products");
+        return "pages/dashboard/product";
+    }
+    
+    @RequestMapping("/categories")
+    public String categoriesPage(Model model) {
+        model.addAttribute("title", "Categories");
+        List<Category> category = categoryService.getAll();
+        model.addAttribute("categories", category);
+        return "pages/dashboard/category";
+    }
+
+    @RequestMapping("/chats")
+    public String messagesPage(Model model) {
+        model.addAttribute("title", "Messages");
+        return "pages/dashboard/chat";
     }
 }
