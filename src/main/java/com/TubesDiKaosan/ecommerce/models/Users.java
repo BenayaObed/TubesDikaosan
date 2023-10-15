@@ -39,9 +39,11 @@ public class Users {
   private Roles role_id;
 
   @CreationTimestamp
+  @Column(name = "createdAt")
   private LocalDateTime createdAt;
 
   @UpdateTimestamp
+  @Column(name = "updatedAt")
   private LocalDateTime updatedAt;
 
   public Users() {

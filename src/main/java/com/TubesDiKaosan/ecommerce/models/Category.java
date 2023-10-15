@@ -16,18 +16,21 @@ import jakarta.persistence.Table;
 @Table(name = "categories")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer category_id;
 
-    @Column(length = 100)
+    @Column(name = "category_name", length = 100)
     private String category_name;
 
+    @Column(name = "visible")
     private Integer visible;
 
     @CreationTimestamp
+    @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
+    @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
     public Category() {

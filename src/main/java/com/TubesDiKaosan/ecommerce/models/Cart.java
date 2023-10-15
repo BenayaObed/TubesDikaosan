@@ -1,10 +1,12 @@
 package com.TubesDiKaosan.ecommerce.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,18 +17,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "images")
-public class Images {
+@Table(name = "cart")
+public class Cart {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @JoinColumn(name = "image_id")
-    private int image_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer cart_id;
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-    private Product product_image;
+    private Product product_id;
 
-    
+    @Column(name = "quantity")
+    private Integer quantity;
+
     @CreationTimestamp
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
@@ -35,27 +38,40 @@ public class Images {
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    public Images(int image_id, Product product_image, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.image_id = image_id;
-        this.product_image = product_image;
+    public Cart(Integer cart_id, Product product_id, Integer quantity, LocalDateTime createdAt,
+            LocalDateTime updatedAt) {
+        this.cart_id = cart_id;
+        this.product_id = product_id;
+        this.quantity = quantity;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public int getImage_id() {
-        return image_id;
+    public Cart() {
     }
 
-    public void setImage_id(int image_id) {
-        this.image_id = image_id;
+    public Integer getCart_id() {
+        return cart_id;
     }
 
-    public Product getProduct_image() {
-        return product_image;
+    public void setCart_id(Integer cart_id) {
+        this.cart_id = cart_id;
     }
 
-    public void setProduct_image(Product product_image) {
-        this.product_image = product_image;
+    public Product getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(Product product_id) {
+        this.product_id = product_id;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -74,5 +90,4 @@ public class Images {
         this.updatedAt = updatedAt;
     }
 
-    
 }

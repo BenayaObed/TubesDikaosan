@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,27 +18,35 @@ import jakarta.persistence.Table;
 @Table(name = "user_address")
 public class UserAddress {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
-    
-    @Column(columnDefinition = "TEXT") private String address;
-    @Column(length = 64) private String city;
-    @Column(length = 32) private String province;
-    @Column(length = 5)  private String postal_code;
-    @Column(length = 16) private String phone_number;
 
-     @CreationTimestamp
+    @Column(columnDefinition = "TEXT")
+    private String address;
+    @Column(length = 64)
+    private String city;
+    @Column(length = 32)
+    private String province;
+    @Column(length = 5)
+    private String postal_code;
+    @Column(length = 16)
+    private String phone_number;
+
+    @CreationTimestamp
+    @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
+    @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
     public UserAddress() {
     }
-    
+
     public UserAddress(Integer id, Users user, String address, String city, String province, String postal_code,
             String phone_number, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;

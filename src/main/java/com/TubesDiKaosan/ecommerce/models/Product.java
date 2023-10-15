@@ -20,9 +20,9 @@ import jakarta.persistence.Table;
 @Table(name = "Product")
 public class Product {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int product_id;
-  @Column(length = 100)
+  @Column(name = "name_product", length = 100)
   private String name_product;
 
   @ManyToOne
@@ -37,16 +37,24 @@ public class Product {
   private List<Images> images;
 
   private int price;
-  private int stock;
+
+  // Stock
+  @OneToMany(mappedBy = "product")
+  private List<Stock> stock;
 
   @CreationTimestamp
+  @Column(name = "createdAt")
   private LocalDateTime createdAt;
 
   @UpdateTimestamp
+  @Column(name = "updatedAt")
   private LocalDateTime updatedAt;
 
+  public Product() {
+  }
+
   public Product(int product_id, String name_product, Category category, String description, List<Images> images,
-      int price, int stock, LocalDateTime createdAt, LocalDateTime updatedAt) {
+      int price, List<Stock> stock, LocalDateTime createdAt, LocalDateTime updatedAt) {
     this.product_id = product_id;
     this.name_product = name_product;
     this.category = category;
@@ -106,11 +114,11 @@ public class Product {
     this.price = price;
   }
 
-  public int getStock() {
+  public List<Stock> getStock() {
     return stock;
   }
 
-  public void setStock(int stock) {
+  public void setStock(List<Stock> stock) {
     this.stock = stock;
   }
 
@@ -129,4 +137,5 @@ public class Product {
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
+
 }
