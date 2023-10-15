@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,11 +38,16 @@ public class CategoryController{
     // View add Category page
     @RequestMapping("/categories/add")
     public String addCategoryPage(Model model) {
-        model.addAttribute("title", "New Category");
-        return "redirect:/dashboard/categories";
+        try {
+            model.addAttribute("title", "Create category");
+            return "pages/dashboard/category_add";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "redirect:/dashboard/categories";
+        }
     }
-    @PostMapping("/categories/submit")
-    public String addCategory_save(CategoryRequest request, Model model) {
+    @PostMapping("/categories/add/submit")
+    public String addCategory_save(@ModelAttribute("/categories/add/submit") CategoryRequest request, Model model) {
         try {
             categoryService.addCategory(request);
             return "redirect:/dashboard/categories";
@@ -55,12 +59,12 @@ public class CategoryController{
     }
 
     // View edit Category page
-    @RequestMapping("/categories/edit/{id}")
-    public String editCategoryPage(Model model, Integer id) {
+    @RequestMapping("/categories/edit/{uuid}")
+    public String editCategoryPage(Model model, @PathVariable("uuid") Integer id) {
         try {
-            model.addAttribute("title", "Edit Category");
+            model.addAttribute("title", "Update category");
             Category data = (Category) categoryService.getById(id).getData();
-            model.addAttribute("category", data);
+            model.addAttribute("data", data);
             return "pages/dashboard/category_edit";
         } catch (Exception e) {
             model.addAttribute("status", categoryService.getById(id).getStatus());
@@ -68,8 +72,9 @@ public class CategoryController{
             return "redirect:/dashboard/categories";
         }
     }
-    @PostMapping("/categories/update/{id}")
-    public String editCategory_save(@ModelAttribute("category") CategoryRequest request, Integer id, Model model) {
+    
+    @PostMapping("/categories/update/{uuid}")
+    public String editCategory_save(@ModelAttribute("category") CategoryRequest request, @PathVariable("uuid") Integer id, Model model) {
         try {
             categoryService.updateById(id, request);
             return "redirect:/dashboard/categories";
