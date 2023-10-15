@@ -53,10 +53,10 @@ public class Product {
   public Product() {
   }
 
-  public Product(int product_id, String name_product, Category category, String description, List<Images> images,
+  public Product(int product_id, String product_name, Category category, String description, List<Images> images,
       int price, List<Stock> stock, LocalDateTime createdAt, LocalDateTime updatedAt) {
     this.product_id = product_id;
-    this.name_product = name_product;
+    this.product_name = product_name;
     this.category = category;
     this.description = description;
     this.images = images;
@@ -74,8 +74,8 @@ public class Product {
     return product_id;
   }
 
-  public String getName_product() {
-    return name_product;
+  public String getProduct_name() {
+    return product_name;
   }
 
   public Category getCategory() {
@@ -94,7 +94,10 @@ public class Product {
     return price;
   }
 
-<<<<<<< Updated upstream
+  <<<<<<<
+
+  Updated upstream
+
   public void setPrice(int price) {
     this.price = price;
   }
@@ -107,12 +110,16 @@ public class Product {
     this.stock = stock;
   }
 
-=======
+  =======
+
   public int getStock() {
     return stock;
   }
 
->>>>>>> Stashed changes
+  >>>>>>>
+
+  Stashed changes
+
   public LocalDateTime getCreatedAt() {
     return createdAt;
   }
@@ -125,8 +132,8 @@ public class Product {
     this.product_id = product_id;
   }
 
-  public void setName_product(String name_product) {
-    this.name_product = name_product;
+  public void setProduct_name(String product_name) {
+    this.product_name = product_name;
   }
 
   public void setCategory(Category category) {
@@ -157,8 +164,9 @@ public class Product {
     this.updatedAt = updatedAt;
   }
 
-<<<<<<< Updated upstream
-}
-=======
-}
->>>>>>> Stashed changes
+  <<<<<<<
+
+  Updated upstream}=======
+}>>>>>>>
+Stashed
+changes
