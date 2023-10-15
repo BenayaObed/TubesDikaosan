@@ -1,6 +1,7 @@
 package com.TubesDiKaosan.ecommerce.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,7 +33,8 @@ public class Product {
   @Column(columnDefinition = "TEXT")
   private String description;
   @Column(length = 255)
-  private String image;
+  @OneToMany(mappedBy = "product_image")
+  private List<Images> images;
 
   private int price;
   private int stock;
@@ -42,20 +45,17 @@ public class Product {
   @UpdateTimestamp
   private LocalDateTime updatedAt;
 
-  public Product(int product_id, String name_product, Category category, String description, String image, int price,
-    int stock, LocalDateTime createdAt, LocalDateTime updatedAt) {
+  public Product(int product_id, String name_product, Category category, String description, List<Images> images,
+      int price, int stock, LocalDateTime createdAt, LocalDateTime updatedAt) {
     this.product_id = product_id;
     this.name_product = name_product;
     this.category = category;
     this.description = description;
-    this.image = image;
+    this.images = images;
     this.price = price;
     this.stock = stock;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
-  }
-
-  public Product() {
   }
 
   public int getProduct_id() {
@@ -90,12 +90,12 @@ public class Product {
     this.description = description;
   }
 
-  public String getImage() {
-    return image;
+  public List<Images> getImages() {
+    return images;
   }
 
-  public void setImage(String image) {
-    this.image = image;
+  public void setImages(List<Images> images) {
+    this.images = images;
   }
 
   public int getPrice() {

@@ -1,5 +1,9 @@
 package com.TubesDiKaosan.ecommerce.models;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.CascadeType;
@@ -29,10 +33,31 @@ public class Users {
 
   @Column(name = "password", length = 255)
   private String password;
-  
+
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "role_id")
   private Roles role_id;
+
+  @CreationTimestamp
+  private LocalDateTime createdAt;
+
+  @UpdateTimestamp
+  private LocalDateTime updatedAt;
+
+  public Users() {
+  }
+  
+  public Users(String user_id, String first_name, String last_name, String email, String password, Roles role_id,
+      LocalDateTime createdAt, LocalDateTime updatedAt) {
+    this.user_id = user_id;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.password = password;
+    this.role_id = role_id;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+  }
 
   public String getUser_id() {
     return user_id;
@@ -58,17 +83,6 @@ public class Users {
     this.last_name = last_name;
   }
 
-  public String getFullName() {
-    return this.first_name + " " + this.last_name;
-  }
-
-  public void setFullName(String fullName) {
-    String[] parts = fullName.split(" ");
-    this.first_name = parts[0];
-    this.last_name = parts[1];
-  }
-
-
   public String getEmail() {
     return email;
   }
@@ -92,4 +106,21 @@ public class Users {
   public void setRole_id(Roles role_id) {
     this.role_id = role_id;
   }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 }

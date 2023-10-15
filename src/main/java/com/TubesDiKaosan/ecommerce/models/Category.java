@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "categories")
 public class Category {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer category_id;
 
     @Column(length = 100)
@@ -30,10 +30,14 @@ public class Category {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Category() {}
-    public Category(Integer category_id, String category_name, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Category() {
+    }
+
+    public Category(Integer category_id, String category_name, Integer visible, LocalDateTime createdAt,
+            LocalDateTime updatedAt) {
         this.category_id = category_id;
         this.category_name = category_name;
+        this.visible = visible;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -54,14 +58,14 @@ public class Category {
         this.category_name = category_name;
     }
 
+    public Integer getVisible() {
+        return visible;
+    }
+
     public void setVisible(Integer visible) {
         this.visible = visible;
     }
 
-    public Integer getVisible() {
-        return visible;
-    }
-    
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
