@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 @Table(name = "images")
 public class Images {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "image_id")
     private int image_id;
 
