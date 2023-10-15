@@ -66,50 +66,35 @@ public class Product {
     this.updatedAt = updatedAt;
   }
 
-  public int getProduct_id() {
-    return product_id;
+  public Product() {
+
   }
 
-  public void setProduct_id(int product_id) {
-    this.product_id = product_id;
+  public int getProduct_id() {
+    return product_id;
   }
 
   public String getName_product() {
     return name_product;
   }
 
-  public void setName_product(String name_product) {
-    this.name_product = name_product;
-  }
-
   public Category getCategory() {
     return category;
-  }
-
-  public void setCategory(Category category) {
-    this.category = category;
   }
 
   public String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
   public List<Images> getImages() {
     return images;
-  }
-
-  public void setImages(List<Images> images) {
-    this.images = images;
   }
 
   public int getPrice() {
     return price;
   }
 
+<<<<<<< Updated upstream
   public void setPrice(int price) {
     this.price = price;
   }
@@ -122,20 +107,58 @@ public class Product {
     this.stock = stock;
   }
 
-  public LocalDateTime getCreatedAt() {
-    return createdAt;
+=======
+  public int getStock() {
+    return stock;
   }
 
-  public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
+>>>>>>> Stashed changes
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
   }
 
   public LocalDateTime getUpdatedAt() {
     return updatedAt;
   }
 
+  public void setProduct_id(int product_id) {
+    this.product_id = product_id;
+  }
+
+  public void setName_product(String name_product) {
+    this.name_product = name_product;
+  }
+
+  public void setCategory(Category category) {
+    this.category = category;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setImages(List<Images> images) {
+    this.images = images;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
+  }
+
+  public void setStock(int stock) {
+    this.stock = stock;
+  }
+
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
