@@ -1,36 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:700,600,400|Judson:400,700|Inter:400");
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", Helvetica;
+  
+}
+/* Navbar */
+.navbar{
+  font-family: "Nunito Sans", Helvetica!important;
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+.nav-button-right{
+  display: inline-flex;
+  justify-content: space-between;
 }
 
-.nav-item{
-    margin-left: 1rem;
+.nav-button-right a{
+  color: black!important;
 }
 
-.header-boardcast{
-    padding: 1rem 0;;    
+.heading{
+  background-color: black;
+  color: white;
 }
 
-.header-boardcast-login{
-    padding: 1rem 0;
+.navbar-nav a{
+  font-size: 16px;
+  color: #767F43;
+  margin-right: 1rem;
+  font-weight: 600;
 }
 
-.item-auth{
-    text-decoration: none;
-    color: #fff;
+.cart a{
+  color : #767F43!important;
 }
 
-.active{
-    border-bottom: 2px solid #fff!important;
-    color: #fff!important;
+.sign-in .fa-user{
+  color: black;
 }
-.header-dark, .header-dark .navbar-nav .nav-link, .header-dark .navbar-brand{
-    background-color: #212529;
-    color: #fff;
+
+.sign-in a{
+  text-decoration: none;
+  color: #767F43;
 }
+
+.content{
+  height: 50rem;
+}
+
+/* Home page */
+.box{
+  background-color: #767F43;
+  height: 400px;
+  width: 100%;
+  margin-top: 200px;
+  display: flex;
+}
+
+.box img{
+  z-index: 999999;
+  position: absolute;
+  margin-left: 200px;
+  margin-bottom: 3000px;
+  max-width: 50%;
+  max-height: 50%;
+}
+
+
+/* End Homepage */
+
+/* Shop */
