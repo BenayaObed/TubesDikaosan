@@ -52,8 +52,35 @@
 }
 
 /* Home page */
+.iklan img{
+  height: 880px;
+  weight: 850px;
+}
+
+.iklan_1 img{
+  height: 379px;
+  weight: 388px;
+  margin-left: 1000px;
+  margin-top: 100px;
+}
+
+.iklan_2 img{
+  height: 379px;
+  weight: 388px;
+  margin-left: 500px;
+  margin-top: 37px;
+}
+
+.iklan_3 img{
+  height: 379px;
+  weight: 388px;
+  margin-left: 1000px;
+  margin-top: 100px;
+ 
+}
+
 .box{
-  background-color: #767F43;
+  /* background-color: #D9DBD4; */
   height: 400px;
   width: 100%;
   margin-top: 200px;
@@ -63,10 +90,17 @@
 .box img{
   z-index: 999999;
   position: absolute;
-  margin-left: 200px;
+  margin-left:auto;
   margin-bottom: 3000px;
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 1921px;
+  max-height: 614PX;
+  margin-top: 2690px;
+}
+
+.insta img{
+  height: 522px;
+  weight: 1178px;
+  margin-top: 3512px;
 }
 
 /* footer */
@@ -75,8 +109,11 @@
   color: white;
   height: 390px;
   widht: 1920px;
-  margin-bottom: 7000px;
+  margin-top: 500px;
+  margin-bottom: 4190px;
 }
+
+
 
 /* Carousel */
 /* .carousel-wrapper{
