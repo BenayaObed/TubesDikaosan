@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
@@ -14,7 +14,9 @@
     <section class="header">
         <div class="heading">
             <div class="container-fluid">
-                <p class="iklan mx-5 mt-2 mb-2">...</p>
+                <p class="iklan mx-5 mt-2 mb-2">
+                  &nbsp;
+                </p>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -47,65 +49,99 @@
               </div>
             </div>
           </nav>
-          
     </section>
-
-    <!-- Hero Section Begin -->
-      
-    <!-- Hero Section End
-
-    <!-- <section class="carousel">
-      <div class="carousel-wrapper">
-        <span id="item-1"></span>
-        <span id="item-2"></span>
-        <div class="carousel-item-1">
-          <img src="./picture/Home/2.png" class="arrow-prev arrow"></a>
-          <img src="./picture/Home/4.png" class="arrow-next arrow"></a>
-        </div>
-        <div class="carousel-item-2">
-          <img src="./picture/Home/8.png" class="arrow-prev arrow"></a>
-          <a class="arrow-prev arrow"></a>
-        </div>
-      </div>
-    </section> -->
-    <!-- Slideshow container -->
-    
-    
-    <secion class="content">
-        <div class="iklan">
-          <img src="./picture/Home/Group-57.jpg" alt="" srcset="">
-        </div>
-        <div class="iklan_1">
-          <img src="./picture/Home/Produk/C1.jpg" alt="" srcset="">
-        </div>
-        <div class="iklan_2">
-          <img src="./picture/Home/Produk/C2.jpg" alt="" srcset="">
-        </div>
-        <div class="iklan_3">
-          <img src="./picture/Home/Produk/C3.jpg" alt="" srcset="">
-        </div>
-        <div class="box">
-            <img src="./picture/Home/Group 13.jpg" alt="" srcset="">
-        </div>
-        <div class="insta">
-          <img src="./picture/Home/Group 14.jpg" alt="" srcset="">
-        </div>
-    </secion>
-
-    
-    
     <!-- navbar -->
 
+    <!-- Content -->
+    <secion class="content">
+        <!-- div heading iklan -->
+        <div class="iklan">
+          <div class="row ">
+            <!-- atur background background position -->
+            <img src="./picture/Home/Group-57.jpg" alt="" srcset=""> 
+
+            <!-- kolom untuk text -->
+            <div class="col-md-6 text-hero offset-md-5 my-5">
+              <h1>Elevate Your Style With Trendy <br> 
+                Clothes From Our Store</h1>
+              <a href="" class="btn btn-shop">Shop Now</a>
+            </div>
+          </div>
+        </div>
+        <!-- div end heading iklan -->
+    
+        <!-- box product -->
+        <div class="box">
+          <div class="row box_1">
+            <div class="col-sm-12 offset-md-6">
+              <img src="./picture/Home/Produk/C1.jpg" style="max-width: 100%;height: auto;">
+              <div class="box_text1 offset-md-3">
+                <h1 class="box_text">Clothing</h1>
+                <a class="btn btn-box" href="#">Shop Now</a>
+              </div> 
+            </div>
+          </div>
+          <div class="row box_2">
+            <div class="col-sm-12 offset-md-2">
+              <img src="./picture/Home/Produk/C2.jpg" style="max-width: 100%;height: auto;">
+              <div class="box-text">
+                <h1 class="box_text">Accessories</h1>
+                <a class="btn btn-box" href="#">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="row box_3">
+            <div class="col-sm-12 offset-md-6">
+              <img src="./picture/Home/Produk/C3.jpg" style="max-width: 100%;height: auto;">
+              <h1 class="box_text">Shoes</h1>
+              <a class="btn btn-box" href="#">Shop Now</a>
+            </div>
+          </div>
+          </div>
+        </div>
+        <!-- end box product -->
+        
+        <!-- banner -->
+        <div class="banner">
+            <div class="row banner_1">
+              <div class="col-sm-12 banner_2">
+                <img src="./picture/Home/Group 13.jpg" alt="" srcset="">
+                <div class="col-sm-6 text-banner offset-md-6 my-5">
+                  <h1 class="banner_text">High Quality Bag</h1>
+                  <a class="btn btn-banner" href="#">Shop Now</a>
+                </div>
+              </div>
+            </div>
+        </div> 
+        <!-- end banner -->
+        <!-- <div class="insta">
+          <a1 class="insta_pic" style="text-align:center">Our Media Social</a1>
+          <img src="./picture/Home/Group 14.jpg" alt="" srcset="">
+        </div>
+        <!-- Content -->
+      </secion>
+    
     <!-- footer -->
-    <section class="footer">
-      <div class="footer_template">
-        <div class="container-fluid">
-          <p style="text-align: center">Dikaosan</p>
-          <p style="text-align: center">Our Store specializes in the fasihon industry, offering a</p>
-          <p style="text-align: center">wide range of trendy and stylish clothing and accessories.</p> 
-          <hr size="10px" width="50%">
-          
-    </section>
+      <div class="footer_element">
+        <div class="container footer-cont">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <h1>DIKAOSAN</h1>
+              <p>Our store specializes in the fashion industry, offering a wide range of trendy and stylish clothing and accessories.</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="footer-nav">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Shop</a>
+                <a class="nav-link" href="#">Contact</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <!-- footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>

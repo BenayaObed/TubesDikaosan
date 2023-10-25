@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:700,600,400|Judson:400,700|Inter:400");
+*{
+    font-family: "Nunito Sans", Helvetica;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+}
+
+body{
+    /* font-family: "Nunito Sans", Helvetica; */
+    min-height: 2000px;
+}
+
+/* Navbar */
+/* .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 7%;
+    background-color:white;
+    border-bottom: 1px solid #101010;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.navbar .navbar-logo{
+    font-size: 1rem;
+    font-weight: 700;
+    color: black;
+}
+
+.navbar .navbar-nav a{
+    color: black;
+    display: inline-block;
+    font-size: 1.1rem;
+    margin: 0 1rem;
+} */
+
+/* Navbar */
+.navbar{
+    font-family: "Judson", Helvetica!important;
+    
+  }
+  
+  .nav-button-right{
+    display: inline-flex;
+    justify-content: space-between;
+    padding: -3rem 7%;
+    
+  }
+  
+  .nav-button-right a{
+    color: black!important;
+    
+  }
+  
+  .heading{
+    background-color: black;
+    color: white;
+    overflow-x: hidden;    
+  }
+  
+  .navbar-nav a{
+    font-size: 16px;
+    color: #767F43;
+    margin-right: 1rem;
+    font-weight: 600;
+    position: relative;
+    padding: 1 3rem;
+  }
+  
+  .cart a{
+    color : #767F43!important;
+  }
+  
+  .sign-in .fa-user{
+    color: black;
+  }
+  
+  .sign-in a{
+    text-decoration: none;
+    color: #767F43;
+  }
+  
+  
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: 10rem;
+    background-image: url('../picture/Home/Group-57.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero .content{
+    padding: 1.4rem 7%;
+    max-width: 200rem;
+    
+}
+
+.hero .content h{
+    font-size: 3em;
+    /* margin-left: 20em;
+    margin-bottom: 3em;     */
+}
+

@@ -16,6 +16,7 @@
 .nav-button-right{
   display: inline-flex;
   justify-content: space-between;
+  padding: -3rem 7%;
 }
 
 .nav-button-right a{
@@ -51,67 +52,206 @@
   height: 50rem;
 }
 
+.content h1{
+  overflow-y: hidden;
+}
+
+
+
 /* Home page */
-.iklan img{
-  height: 880px;
-  weight: 850px;
-}
-
-.iklan_1 img{
-  height: 379px;
-  weight: 388px;
-  margin-left: 1000px;
-  margin-top: 100px;
-}
-
-.iklan_2 img{
-  height: 379px;
-  weight: 388px;
-  margin-left: 500px;
-  margin-top: 37px;
-}
-
-.iklan_3 img{
-  height: 379px;
-  weight: 388px;
-  margin-left: 1000px;
-  margin-top: 100px;
- 
-}
-
-.box{
-  /* background-color: #D9DBD4; */
-  height: 400px;
+/* .iklan img{
   width: 100%;
-  margin-top: 200px;
-  display: flex;
-}
+  height: 880px;
+  object-fit: cover;
+  object-position: bottom;
+  background-position: center;
+} */
 
-.box img{
-  z-index: 999999;
+
+/* @media screen and (max-width:2000px) {
+  .iklan, .iklan a1, .iklan a2, .iklan button{
+    width: 110%;
+  }
+} */
+
+
+
+.iklan .btn-shop{
+  text-align: center;
+  background: #000;
+  color: #fff;
+}
+.iklan .text-hero{
   position: absolute;
-  margin-left:auto;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 2690px;
+  text-align: center;
+  font-weight: 600;
+}
+.text-hero h1{
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+.iklan .text-hero{
+  top: 35%;
 }
 
+
+/* .h1{
+  overflow-y: hidden;
+} */
+
+/* box */
+.box{
+  display:absolute;
+  padding: 7%;
+  z-index: 9;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.box_2{
+  margin-top: -14rem;
+
+}
+
+.box_3{
+  margin-top: -14rem;
+}
+
+.box button{
+  /* color:white;
+  background-color: black;
+  text-align: center;
+  font-family: "Nunito Sans", Helvetica;
+  letter-spacing: 1em;
+  position: absolute;
+  margin-top: 1505px;
+  padding: 17px;
+  margin-left: 1343px; */
+}
+
+
+.insta a1{
+  position: absolute;
+  font-family: "Nunito Sans", Helvetica;
+  left: 680px;
+  font-size: 48px;
+  font-weight: bolder;
+  margin-top: 1430px;
+}
+
+/* banner */
+.banner{
+  
+}
+.banner img{
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: auto;  
+  object-fit: cover;
+  background-position: center;
+}
+
+.banner a{
+  text-align: center;
+  background: #000;
+  color: #fff;
+}
+
+.banner .text-banner{
+  text-align: center;
+  font-weight: 700;
+}
+
+.text-banner h1{
+  z-index: 1;
+  overflow-y: hidden;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 13rem;
+  color:#000;
+  
+}
+
+
+
+/* insta */
 .insta img{
   height: 522px;
   weight: 1178px;
-  margin-top: 3512px;
+  margin-top: 1550px;
+  margin-left:250px;
 }
 
+
+
+
 /* footer */
+.footer_element{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-top: 150px;
+  background-color: #000;
+  color:#fff;
+}
+
 .footer{
+  position: relative;
   background-color: black;
   color: white;
-  height: 390px;
-  widht: 1920px;
-  margin-top: 500px;
-  margin-bottom: 4190px;
+  height: 350px;
+  margin-top: 210px;
 }
+
+.footer-cont{
+  padding-left: 30rem ;
+  padding-right: 30rem ;
+  margin-bottom: 10rem;
+}
+
+.footer_element h1{
+  overflow-y: hidden;
+}
+
+.footer_element p{
+  margin-bottom: 0!important;
+}
+
+.footer span{
+  font-size: 1rem;
+}
+
+.footer_element p{
+  font-size: 15px;
+}
+/* 
+.footer_element h1{
+  font-size: 40px;
+} */
+
+.footer_element a{
+  overflow-y: hidden;
+  text-align: center;
+  font-size: 15px;
+  color:#B7B7B7;
+  margin-right: 4rem;
+  font-weight: 600;
+}
+
+.footer-nav{
+  text-align: center;
+}
+.footer-nav a{
+  display: inline-block;
+  margin: 0 10px;
+}
+.footer_button{
+  /* position: absolute; */ 
+  margin-top: -34px;
+  margin-right: 2rem;
+}
+
 
 
 
@@ -144,6 +284,106 @@
 } */
 
 
+/* .iklan a1{
+  position:absolute;
+  padding: 3rem 7%;
+  left:1000px;
+  top:350px;
+  color: black;
+  margin-right: 7rem;
+  font-weight: bold;
+}
+
+.iklan a2{
+  position: absolute;
+  left:1080px;
+  top:420px;
+  /* font-size: 45px; */
+  /* color: black;
+  margin-right: 7rem;
+  font-weight: bold;
+} */ 
+
+/* .iklan_1 img{
+  width: 20%;
+  height: 379px;
+  object-fit: cover;
+  object-position: bottom;
+  height: 379px;
+  weight: 388px;
+  margin-left: 860px;
+  margin-top: 50px;
+} */
+
+/* .iklan_1 a1{
+  position: absolute;
+  font-family: "Nunito Sans", Helvetica;
+  font-size: 36px;
+  font-weight: bolder;
+  padding-left: 15px;
+  margin-top: 170px;
+}
+
+.iklan_1 a2{
+  position: absolute;
+  font-family: "Nunito Sans", Helvetica;
+  letter-spacing: 5px;
+  font-size: 13px;
+  padding-left: 20px;
+  margin-top: 220px;
+}
+
+.iklan_2 a1{
+  position: absolute;
+  font-family: "Nunito Sans", Helvetica;
+  font-size: 36px;
+  font-weight: bolder;
+  padding-left: 250px;
+  margin-top: -60px;
+}
+
+.iklan_2 a2{
+  position: absolute;
+  font-family: "Nunito Sans", Helvetica;
+  letter-spacing: 5px;
+  font-size: 13px;
+  padding-left: 345px;
+  margin-top: -10px;
+}
+
+.iklan_3 a1{
+  position: absolute;
+  font-family: "Nunito Sans", Helvetica;
+  font-size: 36px;
+  font-weight: bolder;
+  padding-left: 1264px;
+  margin-top: 140px;
+}
+
+.iklan_3 a2{
+  position: absolute;
+  font-family: "Nunito Sans", Helvetica;
+  letter-spacing: 5px;
+  font-size: 13px;
+  padding-left: 1267px;
+  margin-top: 191px;
+}
+
+.iklan_2 img{
+  position: absolute;
+  height: 379px;
+  weight: 388px;
+  margin-left: 468px;
+  margin-top: -189px;
+}
+
+.iklan_3 img{
+  position: absolute;
+  height: 379px;
+  weight: 388px;
+  margin-left: 860px;
+  margin-top: 6px;
+} */
 
 /* End Homepage */
 
