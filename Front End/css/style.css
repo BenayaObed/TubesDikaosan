@@ -184,8 +184,33 @@
   margin-left:250px;
 }
 
+/* checkout styles */
+.head{
+  background-color: #D9DBD4; 
+  height: 140px;
+  weight: 1178px;
+  width: 1920px;
+}
+.head-brand{
+  font-weight: bold;
+  position: absolute;
+  margin-left: 150px;
+  margin-bottom: 3000px;
+  max-width: 1921px;
+  max-height: 614PX;
+  margin-top: 30px;
+  font-size: 24px;
+}
 
-
+.neck-brand{
+  position: absolute;
+  margin-left: 150px;
+  margin-bottom: 3000px;
+  max-width: 1921px;
+  max-height: 614PX;
+  margin-top: 68px;
+  font-size: 15px;
+}
 
 /* footer */
 .footer_element{
@@ -200,51 +225,10 @@
   position: relative;
   background-color: black;
   color: white;
-  height: 350px;
-  margin-top: 210px;
-}
-
-.footer-cont{
-  padding-left: 30rem ;
-  padding-right: 30rem ;
-  margin-bottom: 10rem;
-}
-
-.footer_element h1{
-  overflow-y: hidden;
-}
-
-.footer_element p{
-  margin-bottom: 0!important;
-}
-
-.footer span{
-  font-size: 1rem;
-}
-
-.footer_element p{
-  font-size: 15px;
-}
-/* 
-.footer_element h1{
-  font-size: 40px;
-} */
-
-.footer_element a{
-  overflow-y: hidden;
-  text-align: center;
-  font-size: 15px;
-  color:#B7B7B7;
-  margin-right: 4rem;
-  font-weight: 600;
-}
-
-.footer-nav{
-  text-align: center;
-}
-.footer-nav a{
-  display: inline-block;
-  margin: 0 10px;
+  height: 390px;
+  widht: 1920px;
+  margin-top: 500px;
+  margin-bottom: 4190px;
 }
 .footer_button{
   /* position: absolute; */ 
