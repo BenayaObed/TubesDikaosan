@@ -214,27 +214,59 @@
 
 /* footer */
 .footer_element{
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  margin-top: 150px;
   background-color: #000;
-  color:#fff;
+  color: #D9DBD4;
+  margin-top: 25rem;
 }
 
-.footer{
-  position: relative;
-  background-color: black;
-  color: white;
-  height: 390px;
-  widht: 1920px;
-  margin-top: 500px;
-  margin-bottom: 4190px;
+.footer-cont{
+  padding-left: 30rem ;
+  padding-right: 30rem ;
+  margin-bottom: 10rem;
+}
+
+.footer_element h1{
+  overflow-y: hidden;
+}
+
+.footer_element p{
+  margin-bottom: 0!important;
+}
+
+.footer span{
+  font-size: 1rem;
+}
+
+.footer_element p{
+  font-size: 15px;
+}
+/* 
+.footer_element h1{
+  font-size: 40px;
+} */
+
+.footer_element a{
+  overflow-y: hidden;
+  text-align: center;
+  font-size: 15px;
+  color:#B7B7B7;
+  margin-right: 4rem;
+  font-weight: 600;
+}
+
+.footer-nav{
+  text-align: center;
+}
+.footer-nav a{
+  display: inline-block;
+  margin: 0 10px;
 }
 .footer_button{
   /* position: absolute; */ 
   margin-top: -34px;
   margin-right: 2rem;
 }
+
 
 
 
