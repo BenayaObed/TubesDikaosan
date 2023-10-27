@@ -59,14 +59,18 @@
   color: #767F43;
 }
 
-
-
-/* content */
-.content{
-  height: 50rem;
+.activity_nav a{
+  display: inline-block;
+  margin-left: 3rem;
 }
 
-.content h1{
+/* homepage-content */
+.homepage_content{
+  height: auto;
+  overflow-y: hidden;
+}
+
+.homepage_content h1{
   overflow-y: hidden;
 }
 
@@ -99,10 +103,6 @@
   align-items: center;
 }
 
-
-
-
-
 /* box */
 .box{
   display:absolute;
@@ -120,7 +120,6 @@
 .box_3{
   margin-top: -14rem;
 }
-
 
 
 /* banner */
@@ -166,7 +165,6 @@
 }
 
 
-
 /* insta */
 .insta{
   position: absolute;
@@ -190,8 +188,38 @@
   /* margin-top: -25rem; */
 }
 
+/* shop-content */
+.activity_page{
+  background-color: #D9DBD4;
+  width: 1920px;
+  height: 140px;
+  justify-content: center;
+}
 
-/* footer */
+.activity_page h1{
+  font-size: 24px;
+  color: #111;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.8px;
+}
+
+.activity_nav{
+  text-align: center;
+}
+
+.activity_nav a{
+  display: inline-block;
+  margin: 0 25px;
+  padding: 2rem;
+  padding-right: 2;
+}
+
+.shop_content button{
+  margin-top: -34px;
+  margin-right: 2rem;
+}
+
 /* footer */
 .footer_element{
   background-color: #000;
@@ -202,8 +230,8 @@
 }
 
 .footer-cont{
-  padding-left: 25rem ;
-  padding-right: 25rem ;
+  padding-left: 25rem;
+  padding-right: 25rem;
   margin-bottom: 10rem;
   margin-top: 6rem;  
 }
