@@ -64,7 +64,7 @@
   margin-left: 3rem;
 }
 
-/* homepage-content */
+/* Homepage-Content Start */
 .homepage_content{
   height: auto;
   overflow-y: hidden;
@@ -106,19 +106,27 @@
 /* box */
 .box{
   display:absolute;
-  padding: 7%;
+  padding: 3%;
   z-index: 9;
   width: 100%;
   overflow-y: hidden;
 }
+.box_text1{
+  /* padding: px; */
+}
+
+.box_1 .box-text{
+  margin-top: -2rem;
+}
 
 .box_2{
   margin-top: -14rem;
-
+  margin-right: -75rem;
 }
 
 .box_3{
-  margin-top: -14rem;
+  position: relative;
+  margin-top: -20rem;
 }
 
 
@@ -166,59 +174,115 @@
 
 
 /* insta */
-.insta{
+.medsos{
   position: absolute;
   width: 1170px;
   height: 674px;
-  margin-top: 25rem;
+  margin-top: 30rem;
+  padding: 4%;
+  overflow-y: hidden;
+  margin-top: 20rem;
 }
 
-.insta img{
+.medsos img{
+  z-index: -1;
   width: 750px;
   height: 522px;
+  padding: 3%;
 }
 
-.insta h1{
+/* .medsos .text_medsos{
+  margin-top: -30rem;
+} */
+
+.medsos h1{
   position: absolute;
+  z-index: 1;
   color: #111;
   text-align: center;
   font-family: Nunito Sans;
   font-size: 48px;
   font-weight: 700;
-  /* margin-top: -25rem; */
+  margin-top: -40rem;
+  margin-left: 20px;
 }
 
-/* shop-content */
+.medsos .medsos-info{
+  z-index: 2;
+  /* position: absolute;s */
+  padding: 1 7%;
+  margin-top: 3rem;
+}
+
+.insta{
+  color: #111;
+}
+
+
+/* Homepage-Content End */
+
+/* Shop-Content Start */
+/* heading-shop_content*/
 .activity_page{
   background-color: #D9DBD4;
-  width: 1920px;
-  height: 140px;
+  height: 100px;
   justify-content: center;
+  overflow-y: hidden;
 }
 
-.activity_page h1{
-  font-size: 24px;
+.activity-nav{
+  padding: 1%;
+  padding-left: 8rem;
+  margin-top: 7px;
+  text-align: left;
+}
+
+.activity-nav h1{
   color: #111;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  line-height: 28.8px;
+  line-height: px;
+  overflow-y: hidden;
 }
 
-.activity_nav{
-  text-align: center;
+.activity-nav span{
+  color: #B7B7B7;
 }
 
-.activity_nav a{
+.activity-nav a{
+  color: #111;
   display: inline-block;
-  margin: 0 25px;
-  padding: 2rem;
-  padding-right: 2;
+  margin: 1 25px;
+  padding: 0.2rem;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
 }
 
-.shop_content button{
-  margin-top: -34px;
-  margin-right: 2rem;
+/* search button */
+.search_cont{
+  padding: 20px;
+  margin-top: -20px;
 }
+.search_button{
+  position: absolute;
+  padding: 7%;
+  margin-top: -6rem;
+  margin-left: 14px;
+}
+
+/* filters */
+.filter-con{
+  position: static;
+}
+
+.filter .dropdown{
+  position: static;
+}
+
+
+/* Shop-Content End */
+
 
 /* footer */
 .footer_element{
@@ -277,6 +341,33 @@
 }
 
 
+
+@media (min-width: 544px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+  } /*1rem = 16px*/
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  .navbar-brand {
+    font-size: 2rem;
+  } /*1rem = 16px*/
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .navbar-brand {
+    font-size: 2.5rem;
+  } /*1rem = 16px*/
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .navbar-brand {
+    font-size: 3rem;
+  } /*1rem = 16px*/
+}
 
 
 * checkout styles */
