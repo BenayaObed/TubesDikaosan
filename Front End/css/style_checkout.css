@@ -184,157 +184,33 @@
   margin-left:250px;
 }
 
-/* checkout styles */
-.head{
-  background-color: #D9DBD4; 
-  height: 140px;
-  weight: 1178px;
-  width: 1920px;
-}
-.head-checkout{
-  font-weight: bold;
-  position: absolute;
-  margin-left: 150px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 30px;
-  font-size: 24px;
-}
+<<<<<<< HEAD
 
-.neck a1, .neck a{
-  position: absolute;
-  margin-left: 160px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
 
-.neck a2, .neck a{
-  position: absolute;
-  margin-left: 205px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-
-.neck a3, .neck a{
-  position: absolute;
-  margin-left: 220px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-
-.neck a4, .neck a{
-  position: absolute;
-  margin-left: 260px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-.neck a5, .neck a{
-  position: absolute;
-  margin-left: 275px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-.neck a6, .neck a{
-  position: absolute;
-  margin-left: 370px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-.neck a6, .neck a{
-  position: absolute;
-  margin-left: 370px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-.neck a7, .neck a{
-  position: absolute;
-  margin-left: 385px;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-  color: #767F43
-  
-}
-.title a1,.title a{
-  font-weight: bold;
-  position: absolute;
-  margin-left: 10rem;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-
-.title a2,.title a{
-  font-weight: bold;
-  position: absolute;
-  margin-left: 35rem;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-.garis hr{
-  margin-left: 10rem;
-  margin-top: 120px;
-}
-
-.title a3,.title a{
-  font-weight: bold;
-  position: absolute;
-  margin-left: 45rem;
-  margin-bottom: 3000px;
-  max-width: 1921px;
-  max-height: 614PX;
-  margin-top: 60px;
-  font-size: 15px;
-}
-.photo-produk-1 img{
-  height: 94px;
-  weight: auto;
-  margin-left: 10rem;
-  margin-top: 1rem;
-
-}
-.photo-produk-1 p{
-  height: 94px;
-  weight: auto;
-  margin-left: 10rem;
-  margin-top: 1rem;
-}
 
 
 /* footer */
 .footer_element{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-top: 150px;
   background-color: #000;
-  color: #D9DBD4;
-  margin-top: 25rem;
+  color:#fff;
+}
+
+.footer{
+  position: relative;
+  background-color: black;
+  color: white;
+<<<<<<< HEAD
+  height: 350px;
+  margin-top: 210px;
+=======
+  height: 140px;
+  widht: 1920px;
+  margin-top: 500px;
+  margin-bottom: 4190px;
+>>>>>>> c6cde88171a97b13187b62f5321a52790a9d6cfc
 }
 
 .footer-cont{
@@ -388,9 +264,8 @@
 
 
 
-
 /* Carousel */
-.carousel-wrapper{
+/* .carousel-wrapper{
   height: 400px;
   position: relative;
   width: 800px;
