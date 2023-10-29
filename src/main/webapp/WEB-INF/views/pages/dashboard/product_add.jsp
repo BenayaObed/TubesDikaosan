@@ -52,8 +52,8 @@
                     <input type="text" class="form-control form-control-border" id="category_name" name="category_name" placeholder="Enter category">
                   </div>
                   
-                  <div class="form-group">
-                    <label for="exampleSelectBorder">Status visible</label>
+                  <div class="form-group w-100">
+                    <label for="exampleSelectBorder">Status visibles</label>
                     <select class="custom-select form-control-border" id="visible" name="visible">
                       <option value="1">Yes</option>
                       <option value="0">No</option>
