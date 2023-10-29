@@ -266,19 +266,63 @@
 }
 .search_button{
   position: absolute;
-  padding: 7%;
-  margin-top: -6rem;
-  margin-left: 14px;
+  margin-top: 2rem;
+  margin-left: 9rem;
+
 }
 
 /* filters */
 .filter-con{
   position: static;
+  height: 3rem;
+  padding-right: 34rem;
+  margin-left: 4.4rem;
+  margin-top: 6rem;
+  margin-bottom: 5rem;
 }
 
-.filter .dropdown{
+.filter .dropdown_categories{
   position: static;
 }
+
+/* product */
+.product{
+  padding: 1%;
+  border: solid;
+}
+
+.product .text_product{
+
+}
+
+.product a{
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  overflow-y:hidden ;
+  line-height: 18px;
+}
+
+.product br{
+  font-family: "Nunito Sans Bold", Helvetica;
+  color: #0D0D0D;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.6px;
+}
+
+.product .text_product svg{
+  margin-left: 43%;
+}
+
+.product .align-items-end{
+  margin-top: -1rem;
+}
+
+/* .product img{
+  width: 262px;
+  height: 260px;
+} */
 
 
 /* Shop-Content End */
