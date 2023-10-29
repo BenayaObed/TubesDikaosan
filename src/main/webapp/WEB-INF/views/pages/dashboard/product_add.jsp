@@ -53,7 +53,7 @@
                   </div>
                   
                   <div class="form-group">
-                    <label for="exampleSelectBorder">Status visiblez</label>
+                    <label for="exampleSelectBorder">Status visible</label>
                     <select class="custom-select form-control-border" id="visible" name="visible">
                       <option value="1">Yes</option>
                       <option value="0">No</option>
