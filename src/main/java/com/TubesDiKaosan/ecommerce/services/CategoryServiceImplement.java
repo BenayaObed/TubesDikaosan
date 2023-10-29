@@ -2,6 +2,7 @@ package com.TubesDiKaosan.ecommerce.services;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,10 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.CategoryRepository;
 
 @Service
-public class CategoryServiceImplement implements CategoryService{
+public class CategoryServiceImplement implements CategoryService {
     @Autowired(required = true)
     private CategoryRepository categoryRepository;
+
     @Override
     public Response getAll() {
         try {

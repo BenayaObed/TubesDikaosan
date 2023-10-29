@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.payloads.requests.CategoryRequest;
+import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.services.CategoryService;
 
 @SpringBootApplication
@@ -32,6 +34,17 @@ public class CategoryController{
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "redirect:/dashboard";
+        }
+    }
+
+    @RequestMapping("/api/categories")
+    public ResponseEntity<?> categoriesAPI(Model model) {
+        try {
+            Response response = categoryService.getAll();
+            return ResponseEntity.status(200).body(response);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 
