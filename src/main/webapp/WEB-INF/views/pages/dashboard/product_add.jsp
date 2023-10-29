@@ -55,8 +55,8 @@
                   <div class="form-group w-100">
                     <label for="exampleSelectBorder">Status visibles</label>
                     <select class="custom-select form-control-border" id="visible" name="visible">
-                      <option value="1">Yes</option>
-                      <option value="0">No</option>
+                      <option value="1">Visible</option> <!-- yes -->
+                      <option value="0">Non Visible</option> <!-- no -->
                     </select>
                   </div>
                   <button type="submit" class="btn btn-primary" name="submit">Submit</button>
