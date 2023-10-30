@@ -266,39 +266,114 @@
 }
 .search_button{
   position: absolute;
-  padding: 7%;
-  margin-top: -6rem;
-  margin-left: 14px;
+  margin-top: 2rem;
+  margin-left: 9rem;
+
 }
+
 
 /* filters */
-.filter-con{
-  position: static;
+.filter{
+  position: absolute;
+  padding: 8rem;
+  margin-top: -25px;
+  margin-left: 1rem;
 }
 
-.filter .dropdown{
-  position: static;
+/* product */
+.product{
+  margin-top: 2rem;
+  margin-right: 7rem;
+  padding: 1%;
 }
+
+.product-img,
+.product-desc {
+  transition: all 250ms;
+}
+
+.product-cart {
+  transition: all 250ms;
+}
+
+.product-img:hover,
+.product-desc:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 250ms;
+}
+
+.product-cart:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 250ms;
+}
+
+.product a{
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  overflow-y:hidden ;
+  line-height: 18px;
+}
+
+.product br{
+  font-family: "Nunito Sans Bold", Helvetica;
+  color: #0D0D0D;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.6px;
+}
+
+.product .text_product svg{
+  margin-left: 43%;
+}
+
+.product .align-items-end{
+  margin-top: -1rem;
+}
+
+/* .product img{
+  width: 262px;
+  height: 260px;
+} */
 
 
 /* Shop-Content End */
+
+
+/* Description-Content Start */
+/* Description-Content End */
+
+
+/* Contact-Content Start */
+.contact{
+  width: 70%;
+}
+
+.about_us{
+  background-color: #D7D7D7;
+}
+/* Contact-Content End */
 
 
 /* footer */
 .footer_element{
   background-color: #000;
   color: #D9DBD4;
-  margin-top: 80rem;
-  height: 390.22px;
+  margin-top: 60rem;
+  /* height: 390.22px; */
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   overflow: hidden;
 }
 
-.footer-cont{
+/* .footer-cont{
   padding-left: 25rem;
   padding-right: 25rem;
   margin-bottom: 10rem;
   margin-top: 6rem;  
-}
+} */
 
 .footer_element h1{
   font-family: "Judson", Helvetica!important;

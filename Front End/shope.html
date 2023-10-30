@@ -58,7 +58,10 @@
                   <div class="activity-nav offset-mx-1">
                     <h1>Shop</h1>
                     <a class="nav-link" href="#" style="word-spacing: 1rem;">Home 
-                      <i class="bi bi-chevron-right"></i>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>  
+                      <!-- <i class="bi bi-chevron-right"></i> -->
                       <span>Shop</span>
                     </a>
                   </div>
@@ -73,32 +76,311 @@
     <!-- Content Section Start -->
     <section class="shop_content">
         <!-- Search Start -->
-        <div class="search_button">
+        <div class="search_button off">
           <div class="container search_cont"></div>
           <input class="form-control search" type="text" name="search" id="search" placeholder="Search...">
         </div>
         <!-- Search Finish -->
 
         <!-- Filters Start -->
-        <div class="filter">
-          <div class="container filter-con">
-            <div class="dropdown offset-md-1 mx-">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                CATEGORIES
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Men (20)</a></li>
-                <li><a class="dropdown-item" href="#">Women (20)</a></li>
-                <li><a class="dropdown-item" href="#">Bags (20)</a></li>
-                <li><a class="dropdown-item" href="#">Clothing (20)</a></li>
-                <li><a class="dropdown-item" href="#">Shoes (20)</a></li>
-                <li><a class="dropdown-item" href="#">Accessories (20)</a></li>
-                <li><a class="dropdown-item" href="#">Kids (20)</a></li>
-              </ul>
+        <div class="accordion filter w-25" id="accordionExample">
+          <div class="accordion-item ">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">CATEGORIES</button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul class="p-0 m-0">
+                  <li><a href="#">Men (20)</a></li>
+                  <li><a href="#">Women (20)</a></li>
+                  <li><a href="#">Bags (20)</a></li>
+                  <li><a href="#">Clothing (20)</a></li>
+                  <li><a href="#">Shoes (20)</a></li>
+                  <li><a href="#">Accessories (20)</a></li>
+                  <li><a href="#">Kids (20)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">FILTER PRICE</button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul class="p-0">
+                  <li><a href="#">Rp0 - Rp50.000</a></li>
+                  <li><a href="#">Rp50.000 - Rp100.000</a></li>
+                  <li><a href="#">Rp100.000 - Rp200.000</a></li>
+                  <li><a href="#">Rp200.000 - Rp300.000</a></li>
+                  <li><a href="#">Rp300.000 - Rp400.000</a></li>
+                  <li><a href="#">Rp450.000+</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">TAGS</button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul class="p-0">
+                  <li><a href="#">Category 1</a></li>
+                  <li><a href="#">Category 1</a></li>
+                  <li><a href="#">Category 1</a></li>
+                  <li><a href="#">Category 1</a></li>
+                  <li><a href="#">Category 1</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
         <!-- Filters End -->
+
+        <!-- Product Start -->
+        <div class="container product">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G1.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Man Kimono Set</p>
+                  <p class="mb-0 p-0">Rp 249.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G2.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Reebok M1 Shoes</p>
+                  <p class="mb-0 p-0">Rp 699.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G3.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Burnion Denim Jacket</p>
+                  <p class="mb-0 p-0">Rp 349.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G4.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Black Glasses</p>
+                  <p class="mb-0 p-0">Rp 149.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G5.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">School Bag</p>
+                  <p class="mb-0 p-0">Rp 119.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G6.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Woman Long Pants</p>
+                  <p class="mb-0 p-0">Rp 299.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G7.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Cute Cat T-Shirt Set</p>
+                  <p class="mb-0 p-0">Rp 119.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G8.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Comfortable Jacket</p>
+                  <p class="mb-0 p-0">Rp 499.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G9.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Nike Vision Set Woman</p>
+                  <p class="mb-0 p-0">Rp 799.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G10.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Purlinama Hat</p>
+                  <p class="mb-0 p-0">Rp 39.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G11.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Man Short Pants</p>
+                  <p class="mb-0 p-0">Rp 59.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G12.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Loafers Man Shoes</p>
+                  <p class="mb-0 p-0">Rp 1.499.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+
+        <!-- <div class="container product">
+          <div class="row row-cols-4">
+            <div class="col-3">
+              <img src="./picture/Home/Produk/G1.jpg" style="width: 262px; height: 260px;">
+              <div class="row align-items-end ">
+                <div class="col text_product">
+                  <a>Man Kimono Set
+                    <br> 
+                    Rp 249.999
+                  </a>
+                </div>
+                <div class="col cart">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag offset-md-7 my-4" viewBox="0 0 16 16" >
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <img src="./picture/Home/Produk/G2.jpg" style="width: 262px; height: 260px;">
+              <div class="row align-items-end ">
+                <div class="col text_product">
+                  <a>Reebok M1 Shoes 
+                    <br> 
+                    Rp 699.999
+                  </a>
+                </div>
+                <div class="col cart">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag offset-md-7 my-4" viewBox="0 0 16 16" >
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <img src="./picture/Home/Produk/G3.jpg" style="width: 262px; height: 260px;">
+              <div class="row align-items-end ">
+                <div class="col text_product">
+                  <a>Burnion Denim Jacket 
+                    <br> 
+                    Rp 349.999
+                  </a>
+                </div>
+                <div class="col cart">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag offset-md-7 my-4" viewBox="0 0 16 16" >
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <img src="./picture/Home/Produk/G4.jpg" style="width: 262px; height: 260px;">
+            </div>
+            <div class="col-3 offset-">
+              <img src="./picture/Home/Produk/G5.jpg" style="width: 262px; height: 260px;">
+            </div>
+          </div>
+        </div> -->
+        <!-- Product Finish -->
 
     </section>
     <!-- Content Section End -->
@@ -109,16 +391,17 @@
     <!-- Footer Section Start -->
     <section class="footer">
       <div class="footer_element">
-        <div class="container footer-cont">
+        <div class="container d-flex flex-column align-items-center footer-cont">
           <div class="row">
             <div class="col-sm-12 text-center">
               <h1>Dikaosan</h1>
-              <p>Our store specializes in the fashion industry, offering a <br>
-                wide range of trendy and stylish clothing and accessories.</p>
+              <p>
+                Our store specializes in the fashion industry, offering a <br />
+                wide range of trendy and stylish clothing and accessories.
+              </p>
             </div>
           </div>
-          <hr>
-          <div class="row">
+          <div class="row border-top pt-4 mt-4">
             <div class="col-sm-12">
               <div class="footer-nav">
                 <a class="nav-link" href="#">My Contact</a>

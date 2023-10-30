@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,15 +33,17 @@ public class Product {
   // TEXT
   @Column(columnDefinition = "TEXT")
   private String description;
-  @Column(length = 255)
-  @OneToMany(mappedBy = "product_image")
+
+  @OneToMany(mappedBy = "image_id", cascade = CascadeType.ALL)
   private List<Images> images;
 
   private int price;
 
   // Stock
-  @OneToMany(mappedBy = "product")
+  @OneToMany(mappedBy = "stock_id", cascade = CascadeType.ALL)
   private List<Stock> stock;
+
+  @Column(name = "visible") private Integer visible;
 
   @CreationTimestamp
   @Column(name = "createdAt")
@@ -50,8 +53,11 @@ public class Product {
   @Column(name = "updatedAt")
   private LocalDateTime updatedAt;
 
+  public Product() {
+  }
+
   public Product(int product_id, String name_product, Category category, String description, List<Images> images,
-      int price, List<Stock> stock, LocalDateTime createdAt, LocalDateTime updatedAt) {
+      int price, List<Stock> stock, Integer visible, LocalDateTime createdAt, LocalDateTime updatedAt) {
     this.product_id = product_id;
     this.name_product = name_product;
     this.category = category;
@@ -59,6 +65,7 @@ public class Product {
     this.images = images;
     this.price = price;
     this.stock = stock;
+    this.visible = visible;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
@@ -117,6 +124,14 @@ public class Product {
 
   public void setStock(List<Stock> stock) {
     this.stock = stock;
+  }
+
+  public Integer getVisible() {
+    return visible;
+  }
+
+  public void setVisible(Integer visible) {
+    this.visible = visible;
   }
 
   public LocalDateTime getCreatedAt() {
