@@ -26,6 +26,8 @@ public class Images {
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
     private Product product_image;
 
+    @Column(name = "image", length = 255)
+    private String image;
     
     @CreationTimestamp
     @Column(name = "createdAt")
@@ -35,6 +37,7 @@ public class Images {
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
+    public Images(){}
     public Images(int image_id, Product product_image, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.image_id = image_id;
         this.product_image = product_image;

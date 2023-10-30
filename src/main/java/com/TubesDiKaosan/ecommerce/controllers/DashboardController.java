@@ -25,11 +25,7 @@ public class DashboardController {
         model.addAttribute("username", "Admin");
         return "pages/dashboard/index";
     }
-    @RequestMapping("/products")
-    public String shopPage(Model model){
-        model.addAttribute("title", "Products");
-        return "pages/dashboard/product";
-    }
+    
     @RequestMapping("/chats")
     public String messagesPage(Model model) {
         model.addAttribute("title", "Messages");

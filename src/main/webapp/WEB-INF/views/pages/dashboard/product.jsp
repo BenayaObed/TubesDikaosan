@@ -1,115 +1,115 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%@ include file = "../../includes/dashboard/_styles.jsp" %>
-  </head>
-  <body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-      <!-- Navbar -->
-      <%@ include file = "../../includes/dashboard/_navbar.jsp" %>
-      <!-- /.navbar -->
+<head>
+  <%@ include file = "../../includes/dashboard/_styles.jsp" %>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
 
-      <!-- Main Sidebar Container -->
-      <%@ include file = "../../includes/dashboard/_sidebar.jsp" %>
+  <!-- Navbar -->
+  <%@ include file = "../../includes/dashboard/_navbar.jsp" %>
+  <!-- /.navbar -->
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">Products Page</h1>
-              </div>
-              <!-- /.col -->
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item">
-                    <a href="${pageContext.request.contextPath}/dashboard/"
-                      >Home</a
-                    >
-                  </li>
-                  <li class="breadcrumb-item active">Products Page</li>
-                </ol>
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
+  <!-- Main Sidebar Container -->
+  <%@ include file = "../../includes/dashboard/_sidebar.jsp" %>
 
-        <!-- Main content -->
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="row">
-                      <div class="col-6">
-                        <h3 class="card-title">Products</h3>
-                      </div>
-                      <div class="col-6">
-                        <a href="#" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Product</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped text-center">
-                      <thead>
-                      <tr>
-                        <th>Product</th>
-                        <th>Category</th>
-                        <th>Visibility</th>
-                        <th>Photo</th>
-                        <th>Action</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>Product 1</td>
-                        <td>10</td>
-                        <td> <span class="badge badge-success">Visible</span></td>
-                        <td> <img src="https://dummyimage.com/50x50/000/fff" alt="Product 1" class="img-fluid"></td>
-                        <td>
-                          <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                        </td>
-                      </tbody>
-                      <tfoot>
-                      <tr>
-                        <th>Product</th>
-                        <th>Category</th>
-                        <th>Visibility</th>
-                        <th>Photo</th>
-                        <th>Action</th>
-                      </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-      </div>
-      <!-- /.content-wrapper -->
-
-      <!-- Main Footer -->
-      <%@ include file = "../../includes/dashboard/_footer.jsp" %>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">${title} Page</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/dashboard/">Dashboard</a></li>
+              <li class="breadcrumb-item active">${title} Page</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-    <!-- ./wrapper -->
+    <!-- /.content-header -->
 
-    <!-- REQUIRED SCRIPTS -->
-    <%@ include file = "../../includes/dashboard/_scripts.jsp" %>
-  </body>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-6">
+                    <h3 class="card-title">${title}</h3>
+                  </div>
+                  <div class="col-6">
+                    <a href="${pageContext.request.contextPath}/dashboard/products/add" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add product</a>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped text-center">
+                  <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Visibility</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach items="${products}" var="product">
+                    <tr>
+                      <td>${product.name_product}</td>
+                      <!-- items = category var category -->
+                      <td>${product.category.category_name}</td>
+                      <td> ${product.visible == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'}</td>
+                      <td>
+                          <img src="" alt="${product.name_product}" width="50" height="50">
+                      </td>
+                      <td>
+                        <a href="${pageContext.request.contextPath}/dashboard/products/edit/${product.product_id}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/products/delete/${product.product_id}" class="btn btn-danger btn-sm">Delete</a>
+                      </td>
+                    </tr>
+                  </c:forEach>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Visibility</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <%@ include file = "../../includes/dashboard/_footer.jsp" %>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<%@ include file = "../../includes/dashboard/_scripts.jsp" %>
+</body>
 </html>
