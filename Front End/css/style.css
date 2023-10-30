@@ -348,11 +348,16 @@
 
 /* Contact-Content Start */
 .contact{
-  width: 70%;
+  width: 70% ;
 }
 
 .about_us{
   background-color: #D7D7D7;
+}
+
+.wa_contact img{
+  width: 44px;
+  height: 46px;
 }
 /* Contact-Content End */
 
