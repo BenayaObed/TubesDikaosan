@@ -355,10 +355,27 @@
   background-color: #D7D7D7;
 }
 
+.contact h1{
+  overflow-y: hidden;
+
+}
+
+.contact_text h1{
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+}
+
+.contact h1{
+  font-size: 20px;
+}
+
 .wa_contact img{
   width: 44px;
   height: 46px;
 }
+
+
 /* Contact-Content End */
 
 
