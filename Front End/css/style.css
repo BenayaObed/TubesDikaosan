@@ -342,6 +342,21 @@
 /* Shop-Content End */
 
 
+/* Description-Content Start */
+/* Description-Content End */
+
+
+/* Contact-Content Start */
+.contact{
+  width: 70%;
+}
+
+.about_us{
+  background-color: #D7D7D7;
+}
+/* Contact-Content End */
+
+
 /* footer */
 .footer_element{
   background-color: #000;
