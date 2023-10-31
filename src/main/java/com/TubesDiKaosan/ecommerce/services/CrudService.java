@@ -11,6 +11,6 @@ public interface CrudService<T> {
     public Response getAll()throws SQLException;
     public Response getById(int id) throws SQLException;
     public Response deleteById(Integer id) throws SQLException;
-    public Response updateById(int id, T request) throws SQLException;
+    public Response updateById(Integer id, T request) throws SQLException;
     public Response add(T request) throws SQLException;
 }

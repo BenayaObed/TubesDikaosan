@@ -2,11 +2,11 @@ package com.TubesDiKaosan.ecommerce.payloads.requests;
 
 public class ImagesProductRequest {
     private ProductRequest product_image;
-    private String image_url;
+    private String image;
 
-    public ImagesProductRequest(ProductRequest product_image, String image_url) {
+    public ImagesProductRequest(ProductRequest product_image, String image) {
         this.product_image = product_image;
-        this.image_url = image_url;
+        this.image = image;
     }
 
     public ProductRequest getProduct_image() {
@@ -17,11 +17,11 @@ public class ImagesProductRequest {
         this.product_image = product_image;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getImage() {
+        return image;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url= image_url;
+    public void setImage(String image) {
+        this.image= image;
     }
 }

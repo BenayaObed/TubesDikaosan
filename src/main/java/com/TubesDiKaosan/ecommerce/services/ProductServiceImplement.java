@@ -17,12 +17,13 @@ import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Images;
 import com.TubesDiKaosan.ecommerce.models.Product;
 import com.TubesDiKaosan.ecommerce.models.Stock;
-import com.TubesDiKaosan.ecommerce.payloads.requests.CategoryRequest;
+import com.TubesDiKaosan.ecommerce.payloads.requests.ImagesProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ProductRequest;
+import com.TubesDiKaosan.ecommerce.payloads.requests.StockProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
 @Service
-public class ProductServiceImplement implements ProductService {
+public class ProductServiceImplement implements CrudService<ProductRequest> {
     @Autowired(required = true)
     private DataSource dataSource;
 
@@ -147,32 +148,46 @@ public class ProductServiceImplement implements ProductService {
     }
 
     @Override
-    public Response getByCategory(CategoryRequest request) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getByCategory'");
-    }
-
-    @Override
-    public Response getBySearch(ProductRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getBySearch'");
-    }
-
-    @Override
-    public Response addProduct(ProductRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addProduct'");
-    }
-
-    @Override
-    public Response updateById(int id, ProductRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateById'");
-    }
-
-    @Override
-    public Response deleteById(Integer id) {
+    public Response deleteById(Integer id) throws SQLException {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
     }
+
+    @Override
+    public Response updateById(Integer id, ProductRequest request) throws SQLException {
+        Connection connection = dataSource.getConnection();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate("UPDATE products SET name_product = '" + request.getName_product() + "', category_id = "
+                + request.getCategory_id() + ", description = '" + request.getDescription() + "', price = "
+                + request.getPrice() + ", visible = " + request.getVisible() + " WHERE product_id = " + id);
+        return new Response(HttpStatus.OK.value(), "success", getById(id));
+    }
+
+    @Override
+    public Response add(ProductRequest request) throws SQLException {
+        Connection connection = dataSource.getConnection();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate("INSERT INTO products (name_product, category_id, description, price, visible) VALUES ('"
+                + request.getName_product() + "', " + request.getCategory_id() + ", '" + request.getDescription()
+                + "', " + request.getPrice() + ", " + request.getVisible() + ")");
+
+        ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() AS product_id");
+        resultSet.next();
+        int productId = resultSet.getInt("product_id");
+        
+        for (ImagesProductRequest image : request.getImages()) {
+            statement.executeUpdate("INSERT INTO images (product_id, image) VALUES (" + productId + ", '"
+                    + image.getImage() + "')");
+        }
+
+        for (StockProductRequest stock : request.getStock()) {
+            statement.executeUpdate("INSERT INTO stock (product_id, size, quantity) VALUES (" + productId + ", '"
+                    + stock.getSize() + "', " + stock.getStock() + ")");
+        }
+
+        connection.close();
+        return new Response(HttpStatus.OK.value(), "success", getById(productId));
+    }
+
+    
 }

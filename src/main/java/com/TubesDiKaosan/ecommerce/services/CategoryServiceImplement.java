@@ -42,7 +42,7 @@ public class CategoryServiceImplement implements CrudService<CategoryRequest> {
     }
 
     @Override
-    public Response updateById(int id, CategoryRequest request) {
+    public Response updateById(Integer id, CategoryRequest request) {
         try {
             Category category = categoryRepository.findById(id).get();
             category.setCategory_name(request.getCategory_name());
