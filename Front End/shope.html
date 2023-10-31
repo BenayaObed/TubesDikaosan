@@ -57,8 +57,10 @@
                 <div class="col-sm-12">
                   <div class="activity-nav offset-mx-1">
                     <h1>Shop</h1>
-                    <a class="nav-link" href="#" style="word-spacing: 1rem;">Home 
-                      <i class="bi bi-chevron-right"></i>
+                    <a class="nav-link" href="#" style="word-spacing: 2px;">Home 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>  
                       <span>Shop</span>
                     </a>
                   </div>
@@ -73,14 +75,78 @@
     <!-- Content Section Start -->
     <section class="shop_content">
         <!-- Search Start -->
-        <div class="search_button off">
+        <!-- <div class="search_button off">
           <div class="container search_cont"></div>
           <input class="form-control search" type="text" name="search" id="search" placeholder="Search...">
-        </div>
+        </div> -->
         <!-- Search Finish -->
 
         <!-- Filters Start -->
-        <div class="accordion filter w-25" id="accordionExample">
+        <div class="left_nav">
+          <div class="row search m=0">
+            <div class="col-sm-12 border border-danger search_button mt-5 p-2">
+              <input class="form-control search" type="text" width="20%" name="search" id="search" placeholder="Search...">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 d-flex flex-column border border-danger filter_col">
+              <div class="accordion filter w-25" id="accordionExample">
+                <div class="accordion-item ">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">CATEGORIES</button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="p-0 m-0">
+                        <li><a href="#">Men (20)</a></li>
+                        <li><a href="#">Women (20)</a></li>
+                        <li><a href="#">Bags (20)</a></li>
+                        <li><a href="#">Clothing (20)</a></li>
+                        <li><a href="#">Shoes (20)</a></li>
+                        <li><a href="#">Accessories (20)</a></li>
+                        <li><a href="#">Kids (20)</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">FILTER PRICE</button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="p-0">
+                        <li><a href="#">Rp0 - Rp50.000</a></li>
+                        <li><a href="#">Rp50.000 - Rp100.000</a></li>
+                        <li><a href="#">Rp100.000 - Rp200.000</a></li>
+                        <li><a href="#">Rp200.000 - Rp300.000</a></li>
+                        <li><a href="#">Rp300.000 - Rp400.000</a></li>
+                        <li><a href="#">Rp450.000+</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">TAGS</button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="p-0">
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 1</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>    
+
+        <!-- <div class="accordion filter w-25" id="accordionExample">
           <div class="accordion-item ">
             <h2 class="accordion-header">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">CATEGORIES</button>
@@ -131,7 +197,7 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- Filters End -->
 
@@ -387,7 +453,7 @@
 
     <!-- Footer Section Start -->
     <section class="footer">
-      <div class="footer_element">
+      <div class="footer_element_shop">
         <div class="container d-flex flex-column align-items-center footer-cont">
           <div class="row">
             <div class="col-sm-12 text-center">

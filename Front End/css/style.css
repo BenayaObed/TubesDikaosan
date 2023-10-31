@@ -260,16 +260,18 @@
 }
 
 /* search button */
-.search_cont{
-  padding: 20px;
-  margin-top: -20px;
+.search{
+  margin-right: 87%; 
 }
-.search_button{
-  position: absolute;
-  margin-top: 2rem;
-  margin-left: 9rem;
 
+.filter_col{
+  position: absolute;
+  margin-right: 87%;
+  height: 35rem;
+  overflow-y: hidden;
 }
+
+
 
 
 /* filters */
@@ -342,23 +344,92 @@
 /* Shop-Content End */
 
 
+/* Description-Content Start */
+/* Description-Content End */
+
+
+/* Contact-Content Start */
+.contact{
+  width: 75% ;
+}
+
+.contact .about_us{
+  background-color: #D9DBD4;
+}
+
+
+.contact .title_about{
+font-size: 24px;
+font-weight: 700;
+line-height: 28.8px;
+}
+
+/* .title .contact_border{
+  border-color:#0D0D0D ;
+} */
+
+.contact .product-desc{
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+.contact h1{
+  overflow-y: hidden;
+}
+
+.contact_text h1{
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+}
+
+.info_contact h1{
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43.2px;
+}
+
+.wa_contact img{
+  width: 44px;
+  height: 46px;
+}
+
+
+/* Contact-Content End */
+
+
 /* footer */
+.footer{
+  overflow-y: hidden!important;
+}
 .footer_element{
   background-color: #000;
   color: #D9DBD4;
   margin-top: 60rem;
-  /* height: 390.22px; */
   padding-top: 6rem;
   padding-bottom: 6rem;
   overflow: hidden;
 }
 
-/* .footer-cont{
-  padding-left: 25rem;
-  padding-right: 25rem;
-  margin-bottom: 10rem;
-  margin-top: 6rem;  
-} */
+.footer_element_contact{
+  background-color: #000;
+  color: #D9DBD4;
+  margin-top: 4rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  overflow: hidden;
+}
+
+.footer_element_shop{
+  background-color: #000;
+  color: #D9DBD4;
+  margin-top: 4rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  overflow: hidden;
+}
+
 
 .footer_element h1{
   font-family: "Judson", Helvetica!important;
