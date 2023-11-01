@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    /* Custom CSS for styling the buttons */
+    .number-input {
+      display: flex;
+      justify-content: space-between;
+      width: 150px;
+      margin: 0 auto;
+    }
+
+    .number-input button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 18px;
+    }
+
+    .number-input input {
+      text-align: center;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      width: 60px;
+    }
+  </style>
 </head>
 <body>
-    <marquee><h1>Testing hai</h1></marquee>
+  <div class="container">
+    <div class="number-input">
+      <button id="minus" class="btn btn-danger">-</button>
+      <input type="text" id="number" value="0">
+      <button id="plus" class="btn btn-success">+</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to handle the plus and minus functionality
+    document.getElementById("plus").addEventListener("click", function() {
+      var numberInput = document.getElementById("number");
+      numberInput.value = parseInt(numberInput.value) + 1;
+    });
+
+    document.getElementById("minus").addEventListener("click", function() {
+      var numberInput = document.getElementById("number");
+      if (parseInt(numberInput.value) > 0) {
+        numberInput.value = parseInt(numberInput.value) - 1;
+      }
+    });
+  </script>
+
+  <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

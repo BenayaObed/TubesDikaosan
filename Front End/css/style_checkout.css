@@ -642,3 +642,36 @@
 .fontSize{
   font-size: small;
 }
+
+.number-input {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.number-input button {
+  width: 20px;
+  height: 20px;
+  font-size: small;
+  display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100%;
+}
+
+.number-input input {
+  text-align: center;
+  font-size: small;
+  width: 20px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  height: 100%;
+}
+.number-size{
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  height: 100%;
+
+}
