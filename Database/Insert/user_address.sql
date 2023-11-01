@@ -1,0 +1,3 @@
+INSERT INTO `user_address` (`id`, `address`, `city`, `created_at`, `phone_number`, `postal_code`, `province`, `updated_at`, `user_id`) VALUES (1, 'Bandung', 'Bandung', NULL, '0812345678', '2048', 'Jawabarat', NULL, '2');
+INSERT INTO `user_address` (`id`, `address`, `city`, `created_at`, `phone_number`, `postal_code`, `province`, `updated_at`, `user_id`) VALUES (2, 'Bandung', 'Bandung', NULL, '0887654321', '2049', 'Jawabarat', NULL, '3');
+INSERT INTO `user_address` (`id`, `address`, `city`, `created_at`, `phone_number`, `postal_code`, `province`, `updated_at`, `user_id`) VALUES (3, 'Yogyakarta', 'Yogyakarta', NULL, '0812345666', '3090', 'Jawa Tengah', NULL, '4');
