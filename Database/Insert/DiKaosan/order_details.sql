@@ -1,1 +1,0 @@
-INSERT INTO `order_details` (`details_order_id`, `created_at`, `notes`, `updated_at`, `payment_id`, `user_id`) VALUES (1, '2023-11-01 20:35:07.000000', 'Tolong packnya menggunakan JNU', NULL, 1, '2');
