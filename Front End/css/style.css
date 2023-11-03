@@ -115,6 +115,14 @@
   justify-content: right;
 }
 
+.box .accessories_content h1{
+  margin-left: 10px;
+}
+
+.box .accessories_content a{
+  margin-left: 90px;
+}
+
 .box h1{
   color: #111;
   font-size: 36px;
