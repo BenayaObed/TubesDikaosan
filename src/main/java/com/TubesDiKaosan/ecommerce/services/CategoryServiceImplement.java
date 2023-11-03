@@ -13,7 +13,7 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.CategoryRepository;
 
 @Service
-public class CategoryServiceImplement implements CategoryService {
+public class CategoryServiceImplement implements CrudService<CategoryRequest> {
     @Autowired(required = true)
     private CategoryRepository categoryRepository;
 
@@ -29,7 +29,7 @@ public class CategoryServiceImplement implements CategoryService {
     }
 
     @Override
-    public Response addCategory(CategoryRequest request) {
+    public Response add(CategoryRequest request) {
         try {
             Category category = new Category();
             category.setCategory_name(request.getCategory_name());
@@ -42,7 +42,7 @@ public class CategoryServiceImplement implements CategoryService {
     }
 
     @Override
-    public Response updateById(int id, CategoryRequest request) {
+    public Response updateById(Integer id, CategoryRequest request) {
         try {
             Category category = categoryRepository.findById(id).get();
             category.setCategory_name(request.getCategory_name());

@@ -1,11 +1,11 @@
 package com.TubesDiKaosan.ecommerce.payloads.requests;
 
-public class StockRequest {
+public class StockProductRequest {
     private Integer product_id;
     private Integer stock;
     private String size;
 
-    public StockRequest(Integer product_id, Integer stock, String size) {
+    public StockProductRequest(Integer product_id, Integer stock, String size) {
         this.product_id = product_id;
         this.stock = stock;
         this.size = size;

@@ -7,9 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.TubesDiKaosan.ecommerce.services.ProductService;
+import com.TubesDiKaosan.ecommerce.services.ProductServiceImplement;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.models.Product;
 
@@ -18,7 +19,7 @@ import com.TubesDiKaosan.ecommerce.models.Product;
 @RequestMapping("/dashboard")
 public class ProductController {
     @Autowired
-    private ProductService productService;
+    private ProductServiceImplement productService;
 
     @RequestMapping("/products")
     public String productsPage(Model model) {
@@ -34,14 +35,51 @@ public class ProductController {
         }
     }
 
-    @RequestMapping("/api/products")
-    public ResponseEntity<?> productsAPI(Model model) {
+    @RequestMapping("/products/add")
+    public String addProductPage(Model model) {
         try {
-            Response response = productService.getAll();
-            return ResponseEntity.status(200).body(response);
+            model.addAttribute("title", "Add Product");
+            return "pages/dashboard/product_add";
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return null;
+            return "redirect:/dashboard";
+        }
+    }
+
+    @RequestMapping("/products/edit")
+    public String editProductPage(Model model) {
+        try {
+            model.addAttribute("title", "Edit Product");
+            return "pages/dashboard/product_edit";
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "redirect:/dashboard";
+        }
+    }
+
+    @RequestMapping("/products/delete/{uuid}")
+    public String deleteProductPage(Model model, @PathVariable("uuid") Integer id) {
+        try {
+            productService.deleteById(id);
+            return "pages/dashboard/product";
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "redirect:/dashboard";
+        }
+    }
+
+    @RequestMapping("/products/visible")
+    public String visibleProductPage(Model model) {
+        try {
+            model.addAttribute("title", "Visible Product");
+            return "pages/dashboard/product_visible";
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "redirect:/dashboard";
         }
     }
 }

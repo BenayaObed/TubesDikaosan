@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+// order item
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -23,14 +24,14 @@ public class Order {
     @Column(name = "order_id")
     private Integer order_id;
 
-    // Relation Cart
-    @OneToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "cart_id")
-    private Cart cart_id;
+    // Relation Order Detail
+    @ManyToOne
+    @JoinColumn(name = "order_details_id")
+    private Order_details details_order_id;
 
     // Relation Product
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    @JoinColumn(name = "product_id")
     private Product product_id;
 
     @Column(name = "status_order")
@@ -47,10 +48,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Integer order_id, Cart cart_id, Product product_id, Integer status_order, LocalDateTime createdAt,
-            LocalDateTime updatedAt) {
+    public Order(Integer order_id, Order_details details_order_id, Product product_id, Integer status_order,
+            LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.order_id = order_id;
-        this.cart_id = cart_id;
+        this.details_order_id = details_order_id;
         this.product_id = product_id;
         this.status_order = status_order;
         this.createdAt = createdAt;
@@ -65,12 +66,12 @@ public class Order {
         this.order_id = order_id;
     }
 
-    public Cart getCart_id() {
-        return cart_id;
+    public Order_details getDetails_order_id() {
+        return details_order_id;
     }
 
-    public void setCart_id(Cart cart_id) {
-        this.cart_id = cart_id;
+    public void setDetails_order_id(Order_details details_order_id) {
+        this.details_order_id = details_order_id;
     }
 
     public Product getProduct_id() {
