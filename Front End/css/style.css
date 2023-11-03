@@ -157,6 +157,52 @@
   position:absolute;
   z-index: 2;
   text-align: left;
+  margin-top: 10rem;
+}
+
+.banner .text_banner h1{
+  overflow-y: hidden;
+}
+
+/* media for tablet */
+@media screen and (max-width: 1024px) {
+  .banner .text_banner{
+    position:absolute;
+    z-index: 2;
+    text-align: left;
+    font-size: 20px;
+    margin-top: 5rem!important;
+  }
+
+  .banner .text_banner h1{
+    overflow-y: hidden;
+    font-size: 20px;
+  }
+
+  .banner .text_banner a{
+    font-size: 10px;
+    padding: 10px 20px 10px 20px;
+}
+
+/* media for mobile */
+@media screen and (max-width: 768px) {
+
+  /* ovelay banner_1 img */
+  .banner .text_banner{
+    position:absolute;
+    z-index: 2;
+    text-align: center;
+    margin-top: 2.5rem!important;
+  }
+
+  .banner .text_banner h1{
+    overflow-y: hidden;
+    font-size: 20px;
+  }
+
+  .banner .text_banner a{
+    font-size: 10px;
+    padding: 10px 20px 10px 20px;
 }
 
 /* .banner{
