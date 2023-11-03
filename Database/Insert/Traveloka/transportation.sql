@@ -1,0 +1,3 @@
+INSERT INTO `transportation` (`TransportationID`, `Type`, `Price`, `DepartureDate`, `ArrivalDate`, `DepartureCity`, `ArrivalCity`, `Carrier`) VALUES (1, 'Flight', 211.00, '2023-10-01', '2023-10-03', 'Jakarta', 'Miami', 'DKT Airlines');
+INSERT INTO `transportation` (`TransportationID`, `Type`, `Price`, `DepartureDate`, `ArrivalDate`, `DepartureCity`, `ArrivalCity`, `Carrier`) VALUES (2, 'Train', 20.00, '2022-06-16', '2022-06-16', 'Bandungs', 'Semarang', 'UFO Train');
+INSERT INTO `transportation` (`TransportationID`, `Type`, `Price`, `DepartureDate`, `ArrivalDate`, `DepartureCity`, `ArrivalCity`, `Carrier`) VALUES (3, 'Bus', 10.00, '2023-10-22', '2023-10-24', 'Surabaya', 'Cimahi', 'City Buss');
