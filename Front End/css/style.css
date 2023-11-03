@@ -106,33 +106,52 @@
 
 /* box */
 .box{
-  display:absolute;
   padding: 3%;
-  z-index: 9;
-  width: 100%;
   overflow-y: hidden;
 }
-.box_text1{
-  /* padding: px; */
-}
 
-.box_1 .box-text{
-  margin-top: -2rem;
-}
-
-.box_2{
-  margin-top: -14rem;
-  margin-right: -75rem;
-}
-
-.box_3{
+.box .accessories_content{
   position: relative;
-  margin-top: -20rem;
+  justify-content: right;
 }
 
+.box h1{
+  color: #111;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 46px;
+}
+
+.box a{
+  color: #111;
+  font-family: "Nunito Sans", Helvetica;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 19.5px;
+  letter-spacing: 4px;
+}
+
+
+/* homepage_shope */
+.product_shop .homepage_shop{
+  justify-content: center;
+}
 
 /* banner */
-.banner{
+.banner img{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  object-fit: cover;
+}
+
+.banner .text_banner{
+  position:absolute;
+  z-index: 2;
+  text-align: left;
+}
+
+/* .banner{
   
 }
 .banner img{
@@ -171,55 +190,30 @@
   color:#000;
   font-weight: 700;
   line-height: 58px;
-}
+} */
 
 
 /* insta */
-.medsos{
-  position: absolute;
-  width: 1170px;
-  height: 674px;
-  margin-top: 30rem;
-  padding: 4%;
-  overflow-y: hidden;
-  margin-top: 20rem;
-}
-
-.medsos img{
-  z-index: -1;
-  width: 750px;
-  height: 522px;
-  padding: 3%;
-}
-
-/* .medsos .text_medsos{
-  margin-top: -30rem;
-} */
-
-.medsos h1{
-  position: absolute;
-  z-index: 1;
+.medsos .medsos_tittle h1{
   color: #111;
-  text-align: center;
-  font-family: Nunito Sans;
   font-size: 48px;
   font-weight: 700;
-  margin-top: -40rem;
-  margin-left: 20px;
+  line-height: 58px;
 }
 
-.medsos .medsos-info{
-  z-index: 2;
-  /* position: absolute;s */
-  padding: 1 7%;
-  margin-top: 3rem;
-}
-
-.insta{
+.medsos .text_medsos h1{
   color: #111;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43.2px;
 }
 
-
+.medsos .text_medsos a{
+  color: #111;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
 /* Homepage-Content End */
 
 /* Shop-Content Start */
@@ -305,7 +299,8 @@
   padding: 1%;
 }
 
-.product_header h1{
+.product_header a{
+  color: #111;
   font-size: 24px;
   font-weight: 700;
   line-height: 36px;
@@ -635,6 +630,13 @@ line-height: 28.8px;
   line-height: 43.2px;
 }
 
+.info_contact a{
+  color: #111;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
 .wa_contact img{
   width: 44px;
   height: 46px;
@@ -649,28 +651,10 @@ line-height: 28.8px;
 .footer_element{
   background-color: #000;
   color: #D9DBD4;
-  margin-top: 60rem;
+  margin-top: 5rem;
   padding-top: 6rem;
   padding-bottom: 6rem;
   overflow: hidden;
-}
-
-.footer_element_contact{
-  background-color: #000;
-  color: #D9DBD4;
-  margin-top: 4rem;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  overflow: hidden;
-}
-
-.footer_element_shop{
-  background-color: #000;
-  color: #D9DBD4;
-  margin-top: 4rem;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  overflow-y: hidden;
 }
 
 .text_footer{
