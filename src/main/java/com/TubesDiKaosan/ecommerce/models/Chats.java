@@ -1,12 +1,10 @@
 package com.TubesDiKaosan.ecommerce.models;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,24 +15,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "cart")
-public class Cart {
+@Table(name = "chats")
+public class Chats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cart_id;
+    private Integer chat_id;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-    private Product product_id;
+    @JoinColumn(name = "user_id")
+    private Users user;
 
-    @Column(name = "quantity")
-    private Integer quantity;
+    private Integer user_sender_id;
+    private String message;
 
-    // User Relation
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private Users user_id;
-    
     @CreationTimestamp
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
@@ -42,41 +35,47 @@ public class Cart {
     @UpdateTimestamp
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
-
-    public Cart(Integer cart_id, Product product_id, Integer quantity, LocalDateTime createdAt,
+    public Chats(){}
+    public Chats(Integer chat_id, Users user, Integer user_sender_id, String message, LocalDateTime createdAt,
             LocalDateTime updatedAt) {
-        this.cart_id = cart_id;
-        this.product_id = product_id;
-        this.quantity = quantity;
+        this.chat_id = chat_id;
+        this.user = user;
+        this.user_sender_id = user_sender_id;
+        this.message = message;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Cart() {
+    public Integer getChat_id() {
+        return chat_id;
     }
 
-    public Integer getCart_id() {
-        return cart_id;
+    public void setChat_id(Integer chat_id) {
+        this.chat_id = chat_id;
     }
 
-    public void setCart_id(Integer cart_id) {
-        this.cart_id = cart_id;
+    public Users getUser() {
+        return user;
     }
 
-    public Product getProduct_id() {
-        return product_id;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
-    public void setProduct_id(Product product_id) {
-        this.product_id = product_id;
+    public Integer getUser_sender_id() {
+        return user_sender_id;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public void setUser_sender_id(Integer user_sender_id) {
+        this.user_sender_id = user_sender_id;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -94,5 +93,6 @@ public class Cart {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 
 }

@@ -105,7 +105,7 @@
     }
     counter++;
     if (counter == 2) {
-      $('#submit').before('<label for="exampleInputBorder" class="mt-2 mb-4">Quantity Product</label>');
+      $('#submit').before('<label for="exampleInputBorder" class="mt-2 mb-4" id="qty-product">Quantity Product</label>');
     }
     // add new before button Add Image
     var newRow = $('<div class="form-group row" id="row' + counter + '"><div class="col-6"><label for="exampleInputBorder"><button type="button" class="btn btn-danger btn-sm remove-row" data-rowid="' + counter + '"><i class="fas fa-trash-alt"></i></button>&nbsp;Stock</label><input type="number" class="form-control form-control-border" id="stock' + counter + '" name="stock' + counter + '" placeholder="Enter stock"></div><div class="col-6"><label for="exampleInputBorder">Price</label><input type="number" class="form-control form-control-border" id="price' + counter + '" name="price' + counter + '" placeholder="Enter price"></div></div>');
@@ -116,6 +116,9 @@
     var rowId = $(this).data('rowid');
     $('#row' + rowId).remove();
     counter--;
+    if (counter < 2) {
+      $('#qty-product').remove();
+    }
   });
 
   $('#submit').click(function() {
@@ -126,6 +129,7 @@
         return false;
       }
     });
+
     if (!isValid) {
       alert('Stock value cannot be negative.');
       return false;
@@ -164,12 +168,23 @@
       }
       counter++;
       if (counter == 2) {
-        $('#submit').before('<label for="exampleInputBorder" class="mt-2 mb-4">Image</label>');
+        $('#submit').before('<label for="exampleInputBorder" id="label-image" class="mt-2 mb-4">Image</label>');
       }
       var newRow = $('<div class="form-group row" id="row' + counter + '"><div class="col-6"><label for="exampleInputBorder"><button type="button" class="btn btn-danger btn-sm remove-row" data-rowid="' + counter + '"><i class="fas fa-trash-alt"></i></button>&nbsp;Image</label><input type="file" class="form-control form-control-border" id="image' + counter + '" name="image' + counter + '" placeholder="Enter image"></div><div class="col-6"><label for="exampleInputBorder">Priview</label><div class="priview-image text-center" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"><img src="" width="100" height="100" /></div></div></div>');
       $('#submit').before(newRow);
     });
     
+    // remove row
+    $(document).on('click', '.remove-row', function() {
+      var rowId = $(this).data('rowid');
+      $('#row' + rowId).remove();
+      counter--;
+      if (counter < 2) {
+        $('#label-image').remove();
+      }
+      console.log(counter);
+    });
+
     // Preview image
     $(document).on('change', 'input[type="file"]', function() {
       var reader = new FileReader();

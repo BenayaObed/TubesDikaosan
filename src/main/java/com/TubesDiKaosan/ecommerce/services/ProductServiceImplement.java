@@ -149,8 +149,13 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
 
     @Override
     public Response deleteById(Integer id) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        Connection connection = dataSource.getConnection();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate("DELETE FROM images WHERE product_id = " + id);
+        statement.executeUpdate("DELETE FROM stock WHERE product_id = " + id);
+        statement.executeUpdate("DELETE FROM product WHERE product_id = " + id);
+        connection.close();
+        return new Response(HttpStatus.OK.value(), "success", null);
     }
 
     @Override
