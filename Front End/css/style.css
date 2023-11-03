@@ -21,6 +21,7 @@
 
 .navbar a1{
   font-size: 32px;
+  cursor: pointer;
 }
 
 .nav-button-right{
@@ -282,7 +283,22 @@
   margin-left: 1rem;
 }
 
+.filter .btn-tags{
+  background-color: #F1F5F8;
+}
+
+.fiter .btn-tags a{
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 19.5px;
+  margin-left: 20px;
+}
+
+
 /* product */
+.shop_content{
+}
+
 .product_cont{
   position: relative;
   left: 30rem;
@@ -348,7 +364,6 @@
   height: 260px;
 } */
 
-
 /* Shop-Content End */
 
 
@@ -372,6 +387,7 @@
 
 .description .product_img img{
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .description .bi-bag{
@@ -403,6 +419,7 @@
 
 .color .bi-circle-fill{
   margin-right: 7px;
+  cursor: pointer;
 }
 
 .size_product{
@@ -432,6 +449,7 @@
   width: 179px;
   height: 65px;
   margin-top: 45px;
+  cursor: pointer;
 }
 
 .message img{
@@ -453,6 +471,126 @@
 }
 
 /* Description-Content End */
+
+/* Payment-Content Start */
+.payment {
+  position: relative;
+  right: 40px;
+}
+
+.payment .payment_info{
+  position: relative;
+}
+
+.payment .info_order{
+  position: relative;
+  background-color: #D9DBD4;
+  height: 313px;
+}
+
+.payment .info_order h1{
+  color: #111;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.8px;
+  overflow: hidden;
+} 
+
+.payment .info_order h2{
+  color: #111;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+} 
+
+.payment .info_order a{
+  color:#111;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1px;
+}
+
+.payment .info_order a2{
+  color:#E53637;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.payment .title_text_payment,
+.payment .title_text_bank,
+.payment .title_text_instruction{
+  background: #D9DBD4;
+}
+
+.payment .title_text_payment h1{
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.8px;
+  overflow: hidden;
+}
+
+.payment .title_text_payment a{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28.8px;
+  overflow: hidden;
+}
+
+
+.payment .title_text_payment a1{
+  color: #E53637;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28.8px;
+  overflow: hidden;
+}
+
+.payment .title_text_bank a1{
+  color: #E53637;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28.8px;
+}
+
+.payment .title_text_bank a2{
+  color: #5C9F6B;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28.8px;
+}
+
+.payment .tittle_text_bank a{
+  margin-bottom: 5rem;
+}
+
+.payment .title_text_bank img{
+  width: 60px;
+  height:45px;
+  margin-left: 24px;
+}
+
+.payment .btn-payment-ok{
+  background:#000;
+  color: #FFFFFF;
+  border-radius:0%;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.payment .title_text_instruction h1{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28.8px;
+}
+
+/* .payment .title_text_instruction br{
+  font-size: 16px;
+  font-weight: 700;
+} */
+/* Payment-Content End */
 
 
 /* Contact-Content Start */

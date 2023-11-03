@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- Navbar Section Start -->
+    <section class="header">
+    <div class="heading">
+        <div class="container-fluid">
+            <p class="iklan mx-5 mt-2 mb-2">
+                &nbsp;
+            </p>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid mx-5">
+            <a1 class="navbar-brand" href="#">DIKAOSAN</a1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mx-auto">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Shop</a>
+                <a class="nav-link" href="#">Contact</a>
+            </div>
+            <span class="nav-button-right">
+                <span class="input-search">
+                    <input class="form-control search" type="text" name="search" id="search" placeholder="Search">
+                </span>
+                <span class="Cart mx-3 mt-2 m3">
+                    <div class="cart">
+                        <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                    </div>
+                </span>
+                <span class="Sign">
+                    <div class="sign-in mt-1">
+                        <a href="#">Sign in</a> 
+                    </div>
+                </span>
+            </span>
+            </div>
+        </div>
+        </nav>
+
+        <!-- Activity Information Start-->
+        <div class="activity_page">
+        <div class="container activity-cont offset mx-1">
+            <div class="row">
+            <div class="col-sm-12">
+                <div class="activity-nav offset-mx-1">
+                <h1>Payment</h1>
+                <a class="nav-link" href="#" style="word-spacing: 2px;">Home 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>  
+                    Shop
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg> 
+                    Shoping Cart
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg> 
+                    Checkout
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg> 
+                    <span>Payment</span>
+                </a>
+                
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <!-- Activity Information End-->
+    </section>
+    <!-- Navbar Section End -->
+
+    <!-- Payment Section Start -->
+    <section class="payment">
+        <div class="container payment border border-primary">
+            <div class="row my-5  border border-danger">
+                <div class="col-sm-3 order_info border border-danger ">
+                    <div class="row info_order">
+                        <div class="col-sm-12 ">
+                            <h1 class="my-4 mx-2">YOUR ORDER</h1>
+                        </div>
+    
+                        <div class="d-flex mx-2 border border-danger">
+                            <div class="col-6 ">
+                                <h2>Product</h2>
+                            </div>
+                            <div class="col-6">
+                                <h2>Total</h2>
+                            </div>
+                        </div>
+    
+                        <div class="d-flex mx-2">
+                            <div class="col-8 border border-primary">
+                                <a>1. Man Kimono Set</a>
+                            </div>
+                            <div class="col-4">
+                                <a>Rp 249.999</a>
+                            </div>
+                        </div>
+    
+                        <div class="d-flex mx-2">
+                            <div class="col-8">
+                                <a>2. Reebok M1 Shoes</a>
+                            </div>
+                            <div class="col-4">
+                                <a>Rp 699.999</a>
+                            </div>
+                        </div>
+    
+                        <div class="d-flex mx-2">
+                            <div class="col-8">
+                                <a>3. Black Glasses</a>
+                            </div>
+                            <div class="col-4">
+                                <a>Rp 149.999</a>
+                            </div>
+                        </div>
+    
+                        <div class="d-flex mx-2">
+                            <div class="col-8">
+                                <a>4. School Bag</a>
+                            </div>
+                            <div class="col-4">
+                                <a>Rp 119.999</a>
+                            </div>
+                        </div>
+    
+                        <div class="d-flex mx-2">
+                            <div class="col-8">
+                                <h2>Total</h2>
+                            </div>
+                            <div class="col-4">
+                                <a2>Rp 1.219.996</a2>
+                            </div>
+                        </div>  
+                    </div>
+                    
+                </div>
+
+                <div class="col-sm-7 payment_info border mx-5">
+                    <div class="col-sm-12 total_payment">
+                        <div class="title_text_payment justify-content-center align-items-center">
+                            <h1 class="mx-4 my-2">PAYMENT</h1>
+                            <div class="row border-bottom mx-4">
+                                <div class="col-9 total_payment p-0">
+                                    <a>Total Payment</a>
+                                </div>
+                                <div class="col-3 border border-danger p-0">
+                                    <a1>Rp 1.219.996</a1>
+                                </div>
+                            </div>
+                            <div class="row mx-4">
+                                <div class="col-7 p-0">
+                                    <a>No. Rek/Virtual Account</a>
+                                </div>
+                                <div class="col-5 border border-danger p-0">
+                                    <a1>23 Hour 59 Minute 59 Second</a1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-1">
+                        <div class="title_text_bank">
+                            <img src="./picture/Home/38.png"> 
+                            <a>Bank Central Asia</a>
+                            <div class="row mx-4">
+                                <div class="text_norek">
+                                    <a>No. Rek/Virtual Account</a>
+                                </div>
+                            </div>
+                            <div class="row mx-4">
+                                <div class="col-10">
+                                    <a1>126 0812 7432 6424</a1>
+                                </div>
+                                <div class="col-2  border border-danger">
+                                    <a2>Copy</a2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 total_payment my-1">
+                        <div class="title_text_instruction justify-content-center align-items-center">
+                            <h1 class="border-bottom mx-4">mBanking Transfer Instruction</h1>
+                            <div class="row">
+                                <div class="d-flex text_1 mx-3">
+                                    <div class="d-flex justify-content-center align-items-center border border-danger mx-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312V4.002Z"/>
+                                        </svg>
+                                        <p  class="m-0 mx-2">Select m-Transfer > BCA Virtual Account.</p>
+                                    </div>
+                                </div>
+    
+                                <div class="d-flex text_2 mx-3">
+                                    <div class="d-flex justify-content-center align-items-center border border-danger mx-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+                                        </svg>
+                                        <p class="m-0 mx-2">Enter the Virtual Account number, then select Send.</p>
+                                    </div>
+                                </div>
+    
+                                <div class="d-flex text_3 mx-3">
+                                    <div class="d-flex border border-danger mx-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-3-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z"/>
+                                        </svg>
+                                        <p class="m-0 mx-2">Check the information displayed on the screen. Make sure the merchant is Dikaosan, the Billing Total is correct and your Username is correct. If correct, select Yes.</p>
+
+                                    </div>                                    
+                                </div>
+    
+                                <div class="d-flex text_4 mx-3">
+                                    <div class="d-flex justify-content-center align-items-center border border-danger mx-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-4-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176c-.218.352-.438.703-.657 1.055ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218Z"/>
+                                        </svg>
+                                        <p class="m-0 mx-2">Enter your m-BCA PIN and select OK.</p>
+                                    </div> 
+                                </div>
+    
+                                <div class="d-flex text_5 mx-3">
+                                    <div class="d-flex border border-danger mx-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-5-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"/>
+                                        </svg>
+                                        <p class="m-0 mx-2">If the notification “Transaction Failed. The amount exceeds the daily limit”, please repeat the transaction using KlikBCA (iBanking) or ATM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 total_payment my-1">
+                        <div class="title_text justify-content-center align-items-center">
+                            <div class="payment_btn">
+                                <a class="btn btn-payment-ok d-flex justify-content-center align-items-center">OK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+    <!-- Payment Section End -->
+
+
+<!-- Footer Section Start -->
+<section class="footer">
+    <div class="footer_element">
+        <div class="container d-flex flex-column align-items-center footer-cont">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+            <h1>Dikaosan</h1>
+            <p>
+                Our store specializes in the fashion industry, offering a <br />
+                wide range of trendy and stylish clothing and accessories.
+            </p>
+            </div>
+        </div>
+        <div class="row border-top pt-4 mt-4">
+            <div class="col-sm-12">
+            <div class="footer-nav">
+                <a class="nav-link" href="#">My Contact</a>
+                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="#">Payment Methods</a>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+    <!-- Footer Section End-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
