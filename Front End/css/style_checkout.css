@@ -675,3 +675,26 @@
   height: 100%;
 
 }
+
+.btn-add-cart{
+  background:#000;
+  color: #FFFFFF;
+  width: 160px;
+  height: 45px;
+  border-radius:0%;
+}
+
+.activity-foot{
+  padding: 1%;
+  padding-left: 8rem;
+  text-align: left;
+}
+.button_continue_shoping{
+  padding: 1%;
+  padding-left: 1rem;
+  text-align: left;
+}
+.button_update_cart{
+  padding: 1%;
+  left: 9rem;
+}
