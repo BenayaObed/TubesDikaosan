@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.TubesDiKaosan.ecommerce.models.Roles;
 
-
-public interface RoleService{
+public interface RoleService {
     public List<Roles> getAll();
+
 }

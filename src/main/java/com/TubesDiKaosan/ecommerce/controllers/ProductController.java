@@ -40,8 +40,9 @@ public class ProductController {
         }
     }
 
+    // API get all
     @RequestMapping("/api/products")
-    public ResponseEntity<?> productsApi() {
+    public ResponseEntity<?> productsApiAll() {
         try {
             Response data = productService.getAll();
             return ResponseEntity.ok(data);
@@ -51,6 +52,19 @@ public class ProductController {
         }
     }
 
+    // API get by id
+    @RequestMapping("/api/products/{uuid}")
+    public ResponseEntity<?> productApiFind(@PathVariable("uuid") Integer id) {
+        try {
+            Response data = productService.getById(id);
+            return ResponseEntity.ok(data);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
+    }
+
+    // API add product
     @RequestMapping("/products/add")
     public String addProductPage(Model model) {
         try {
@@ -66,6 +80,7 @@ public class ProductController {
         }
     }
 
+    // API edit product
     @RequestMapping("/products/edit")
     public String editProductPage(Model model) {
         try {

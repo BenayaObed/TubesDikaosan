@@ -106,14 +106,17 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
         }
         connection.close();
         
-        return new Response(HttpStatus.OK.value(), "success", products);
+        if (products.size() == 0)
+            return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
+        else
+            return new Response(HttpStatus.OK.value(), "success", products);
     }
 
     @Override
     public Response getById(int id) throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM products WHERE product_id = " + id);
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM  product JOIN categories ON product.category_id = categories.category_id LEFT JOIN images ON product.product_id = images.product_id LEFT JOIN stock ON product.product_id = stock.product_id WHERE product.product_id = " + id);
          ArrayList<Product> products = new ArrayList<>();
         while (resultSet.next()) {
             int productId = resultSet.getInt("product_id");
@@ -159,7 +162,10 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
         }
         connection.close();
         
-        return new Response(HttpStatus.OK.value(), "success", products);
+        if (products.size() == 0)
+            return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
+        else
+            return new Response(HttpStatus.OK.value(), "success", products);
     }
 
     @Override
@@ -177,7 +183,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
     public Response updateById(Integer id, ProductRequest request) throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
-        statement.executeUpdate("UPDATE products SET name_product = '" + request.getName_product() + "', category_id = "
+        statement.executeUpdate("UPDATE product SET name_product = '" + request.getName_product() + "', category_id = "
                 + request.getCategory_id() + ", description = '" + request.getDescription() + "', price = "
                 + request.getPrice() + ", visible = " + request.getVisible() + " WHERE product_id = " + id);
         return new Response(HttpStatus.OK.value(), "success", getById(id));
@@ -187,7 +193,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
     public Response add(ProductRequest request) throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
-        statement.executeUpdate("INSERT INTO products (name_product, category_id, description, price, visible) VALUES ('"
+        statement.executeUpdate("INSERT INTO product (name_product, category_id, description, price, visible) VALUES ('"
                 + request.getName_product() + "', " + request.getCategory_id() + ", '" + request.getDescription()
                 + "', " + request.getPrice() + ", " + request.getVisible() + ")");
 
