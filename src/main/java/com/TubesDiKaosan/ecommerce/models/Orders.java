@@ -15,12 +15,12 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "order_details")
-public class Order_details {
+@Table(name = "orders")
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "details_order_id")
-    private Integer details_order_id;
+    @Column(name = "order_id")
+    private Integer order_id;
 
     @Column(name = "notes", length = 128)
     private String notes;
@@ -41,10 +41,10 @@ public class Order_details {
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    public Order_details(){}
-    public Order_details(Integer details_order_id, String notes, Users user_id, Payment payment_id,
+    public Orders(){}
+    public Orders(Integer order_id, String notes, Users user_id, Payment payment_id,
             LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.details_order_id = details_order_id;
+        this.order_id = order_id;
         this.notes = notes;
         this.user_id = user_id;
         this.payment_id = payment_id;
@@ -52,12 +52,12 @@ public class Order_details {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getDetails_order_id() {
-        return details_order_id;
+    public Integer getorder_id() {
+        return order_id;
     }
 
-    public void setDetails_order_id(Integer details_order_id) {
-        this.details_order_id = details_order_id;
+    public void setorder_id(Integer order_id) {
+        this.order_id = order_id;
     }
 
     public String getNotes() {

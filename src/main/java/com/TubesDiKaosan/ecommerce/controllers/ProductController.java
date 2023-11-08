@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +18,6 @@ import com.TubesDiKaosan.ecommerce.services.CategoryServiceImplement;
 import com.TubesDiKaosan.ecommerce.services.ProductServiceImplement;
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Product;
-import com.TubesDiKaosan.ecommerce.payloads.requests.CategoryRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
@@ -52,7 +50,7 @@ public class ProductController {
     public ResponseEntity<?> productsApiAll() {
         try {
             Response data = productService.getAll();
-            return ResponseEntity.ok(data);
+            return ResponseEntity.status(data.getStatus()).body(data);
 
         } catch (Exception e) {
             return ResponseEntity.status(500).body(e.getMessage());
@@ -64,7 +62,7 @@ public class ProductController {
     public ResponseEntity<?> productApiFind(@PathVariable("uuid") Integer id) {
         try {
             Response data = productService.getById(id);
-            return ResponseEntity.ok(data);
+            return ResponseEntity.status(data.getStatus()).body(data);
 
         } catch (Exception e) {
             return ResponseEntity.status(500).body(e.getMessage());
@@ -92,7 +90,7 @@ public class ProductController {
         try {
             System.out.println(request.getImages());
             Response data = productService.add(request);
-            return ResponseEntity.ok(data);
+            return ResponseEntity.status(data.getStatus()).body(data);
 
         } catch (Exception e) {
             return ResponseEntity.status(500).body(e.getMessage());
@@ -117,7 +115,7 @@ public class ProductController {
     public ResponseEntity<?> productApiUpdate(@PathVariable("uuid") Integer id, @RequestBody ProductRequest request) {
         try {
             Response data = productService.updateById(id, request);
-            return ResponseEntity.ok(data);
+            return ResponseEntity.status(data.getStatus()).body(data);
 
         } catch (Exception e) {
             return ResponseEntity.status(500).body(e.getMessage());
@@ -155,23 +153,12 @@ public class ProductController {
     @RequestParam(required = false, defaultValue = "0") Double price,
     @RequestParam(required = false, defaultValue = "") String color,
     @RequestParam(required = false, defaultValue = "") String size) throws Exception{
-
-        // sout all param
-       
-
-        // remove " from param
         product = product.replace("\"", "");
         category = category.replace("\"", "");
         color = color.replace("\"", "");
         size = size.replace("\"", "");
 
-        System.out.println(product);
-        System.out.println(category);
-        System.out.println(price);
-        System.out.println(color);
-        System.out.println(size);
-
-        List<Product> data = (List<Product>) productService.search(product, category, price, color, size).getData();
-        return ResponseEntity.ok(data);
+        Response data = productService.search(product, category, price, color, size);
+        return ResponseEntity.status(data.getStatus()).body(data);
     }
 }

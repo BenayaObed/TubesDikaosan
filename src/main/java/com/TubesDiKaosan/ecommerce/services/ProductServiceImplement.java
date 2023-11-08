@@ -212,7 +212,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
         Statement statement = connection.createStatement();
         statement.executeUpdate("UPDATE product SET name_product = '" + request.getName_product() + "', category_id = "
                 + request.getCategory_id() + ", description = '" + request.getDescription() + "', price = "
-                + request.getPrice() + ", visible = " + request.getVisible() + " WHERE product_id = " + id);
+                + request.getPrice() + ", visible = " + request.getVisible() + ", updated_at = NOW() WHERE product_id = " + id);
 
         // query select for get ID images and stock
         ResultSet resultSet = statement.executeQuery("SELECT * FROM images WHERE product_id = " + id);
@@ -230,10 +230,10 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
         // query update stock and image by id
         for (ImagesProductRequest image : request.getImages()) {
             if (image.getImage_id() == 0) {
-                statement.executeUpdate("INSERT INTO images (product_id, image) VALUES (" + id + ", '"
-                        + image.getImage() + "')");
+                statement.executeUpdate("INSERT INTO images (product_id, image,created_at, updated_at) VALUES (" + id
+                        + ", '" + image.getImage() + "', NOW(), NOW())");
             } else {
-                statement.executeUpdate("UPDATE images SET image = '" + image.getImage() + "' WHERE image_id = "
+                statement.executeUpdate("UPDATE images SET image = '" + image.getImage() + "', updated_at = NOW() WHERE image_id = "
                         + image.getImage_id() + " AND product_id = " + id);
                 imagesId.remove((Integer) image.getImage_id());
             }
@@ -241,14 +241,15 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
 
         for (StockProductRequest stock : request.getStock()) {
             if (stock.getStock_id() == 0) {
-                statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color) VALUES (" + id + ", '"
-                        + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor() + "')");
+                statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color,created_at,updated_at) VALUES (" + id
+                        + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor()
+                        + "', NOW(), NOW())");
             } else {
                 statement.executeUpdate("UPDATE stock SET size = '" + stock.getSize() + "', quantity = "
-                        + stock.getQuantity() + ", color = '" + stock.getColor() + "' WHERE stock_id = "
-                        + stock.getStock_id() + " AND product_id = " + id);
+                        + stock.getQuantity() + ", color = '" + stock.getColor() + "' , updated_at = NOW() WHERE stock_id = " + stock.getStock_id() + " AND product_id = " + id);
                 stockId.remove((Integer) stock.getStock_id());
             }
+            
         }
 
         connection.close();
@@ -360,6 +361,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
         }
         connection.close();
 
+        System.out.println(products.size() == 0);
         if (products.size() == 0)
             return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
         else
