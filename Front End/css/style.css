@@ -145,6 +145,10 @@
   justify-content: center;
 }
 
+.product_shop .header_shop{
+  text-decoration: none!important;
+}
+
 /* banner */
 .banner img{
   position: relative;
@@ -164,87 +168,40 @@
   overflow-y: hidden;
 }
 
-/* media for tablet */
-@media screen and (max-width: 1024px) {
-  .banner .text_banner{
-    position:absolute;
-    z-index: 2;
-    text-align: left;
-    font-size: 20px;
-    margin-top: 5rem!important;
-  }
-
-  .banner .text_banner h1{
-    overflow-y: hidden;
-    font-size: 20px;
-  }
-
-  .banner .text_banner a{
-    font-size: 10px;
-    padding: 10px 20px 10px 20px;
+.banner .text_banner{
+  position:absolute;
+  z-index: 2;
+  text-align: left;
+  font-size: 20px;
+  margin-top: 5rem!important;
 }
 
-/* media for mobile */
-@media screen and (max-width: 768px) {
-
-  /* ovelay banner_1 img */
-  .banner .text_banner{
-    position:absolute;
-    z-index: 2;
-    text-align: center;
-    margin-top: 2.5rem!important;
-  }
-
-  .banner .text_banner h1{
-    overflow-y: hidden;
-    font-size: 20px;
-  }
-
-  .banner .text_banner a{
-    font-size: 10px;
-    padding: 10px 20px 10px 20px;
-}
-
-/* .banner{
-  
-}
-.banner img{
-  z-index: -1;
-  position: absolute;
-  width: 100%;
-  height: auto;  
-  object-fit: cover;
-  background-position: center;
-}
-
-.banner a{
-  text-align: center;
-  background: #000;
-  color: #fff;
-  font-size: 11px;
-  line-height: 19.5px;
-  letter-spacing: 4px;
-  padding: 17px 53.13px 16.5px 53px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.banner .text-banner{
-  text-align: center;
-  font-weight: 700;
-}
-
-.text-banner h1{
-  z-index: 1;
+.banner .text_banner h1{
   overflow-y: hidden;
-  font-size: 48px;
-  margin-bottom: 1rem;
-  margin-top: 13rem;
-  color:#000;
-  font-weight: 700;
-  line-height: 58px;
-} */
+  font-size: 20px;
+}
+
+.banner .text_banner a{
+  font-size: 10px;
+  padding: 10px 20px 10px 20px;
+}
+
+.banner .text_banner{
+  position:absolute;
+  z-index: 2;
+  text-align: center;
+  margin-top: 2.5rem!important;
+}
+
+.banner .text_banner h1{
+  overflow-y: hidden;
+  font-size: 20px;
+}
+
+.banner .text_banner a{
+  font-size: 10px;
+  padding: 10px 20px 10px 20px;
+}
 
 
 /* insta */
@@ -267,6 +224,10 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 27px;
+}
+
+.medsos .text_medsos{
+  text-decoration: none;
 }
 /* Homepage-Content End */
 
@@ -313,33 +274,18 @@
   margin-right: 87%; 
 }
 
-.filter_col{
-  position: absolute;
-  margin-right: 87%;
-  height: 35rem;
-  overflow-y: hidden;
+/* filter */
+
+.accordion a{
+  color: #B7B7B7;
+  text-decoration: none;
+
 }
 
-
-
-
-/* filters */
-.filter{
-  position: absolute;
-  padding: 8rem;
-  margin-top: -25px;
-  margin-left: 1rem;
-}
-
-.filter .btn-tags{
-  background-color: #F1F5F8;
-}
-
-.fiter .btn-tags a{
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 19.5px;
-  margin-left: 20px;
+.filter  .button-tags a{
+  color: #404040;
+  background-color: #F1F5F8 ;
+  border-radius: 0%;
 }
 
 
@@ -349,8 +295,6 @@
 
 .product_cont{
   position: relative;
-  left: 30rem;
-  padding: 1%;
 }
 
 .product_header a{
@@ -408,11 +352,9 @@
   margin-top: -1rem;
 }
 
-/* .product img{
-  width: 262px;
-  height: 260px;
-} */
-
+.header_shop{
+  text-decoration: none;
+}
 /* Shop-Content End */
 
 
@@ -594,6 +536,8 @@
   font-weight: 700;
   line-height: 28.8px;
   overflow: hidden;
+  position: relative;
+  text-align: end;
 }
 
 .payment .title_text_bank a1{
