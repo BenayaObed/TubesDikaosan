@@ -13,7 +13,7 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.CategoryRepository;
 
 @Service
-public class CategoryServiceImplement implements CrudService<CategoryRequest> {
+public class CategoryServiceImplement implements CrudService<CategoryRequest,Integer> {
     @Autowired(required = true)
     private CategoryRepository categoryRepository;
 

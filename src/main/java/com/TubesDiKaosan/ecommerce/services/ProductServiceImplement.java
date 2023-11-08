@@ -23,7 +23,7 @@ import com.TubesDiKaosan.ecommerce.payloads.requests.StockProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
 @Service
-public class ProductServiceImplement implements CrudService<ProductRequest> {
+public class ProductServiceImplement implements CrudService<ProductRequest,Integer> {
     @Autowired(required = true)
     private DataSource dataSource;
 
@@ -90,7 +90,8 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
             if (imageId != 0 && findImageById(product.getImages(), imageId) == null) {
                 Images image = new Images();
                 image.setImage_id(imageId);
-                image.setProduct_image(product);
+                image.setProduct(product);
+                image.setImage(resultSet.getString("image"));
                 product.getImages().add(image);
             }
 
@@ -101,6 +102,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
                 stock.setProduct(product);
                 stock.setSize(resultSet.getString("size"));
                 stock.setQuantity(resultSet.getInt("quantity"));
+                stock.setColor(resultSet.getString("color"));
                 product.getStock().add(stock);
             }
         }
@@ -146,7 +148,8 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
             if (imageId != 0 && findImageById(product.getImages(), imageId) == null) {
                 Images image = new Images();
                 image.setImage_id(imageId);
-                image.setProduct_image(product);
+                image.setProduct(product);
+                image.setImage(resultSet.getString("image"));
                 product.getImages().add(image);
             }
 
@@ -157,6 +160,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
                 stock.setProduct(product);
                 stock.setSize(resultSet.getString("size"));
                 stock.setQuantity(resultSet.getInt("quantity"));
+                stock.setColor(resultSet.getString("color"));
                 product.getStock().add(stock);
             }
         }
@@ -176,7 +180,12 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
         statement.executeUpdate("DELETE FROM stock WHERE product_id = " + id);
         statement.executeUpdate("DELETE FROM product WHERE product_id = " + id);
         connection.close();
-        return new Response(HttpStatus.OK.value(), "success", null);
+        
+        // check response
+        if (getById(id).getData() == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
+        else
+            return new Response(HttpStatus.OK.value(), "success", getById(id).getData());
     }
 
     @Override
@@ -186,7 +195,49 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
         statement.executeUpdate("UPDATE product SET name_product = '" + request.getName_product() + "', category_id = "
                 + request.getCategory_id() + ", description = '" + request.getDescription() + "', price = "
                 + request.getPrice() + ", visible = " + request.getVisible() + " WHERE product_id = " + id);
-        return new Response(HttpStatus.OK.value(), "success", getById(id));
+        
+        // query select for get ID images and stock
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM images WHERE product_id = " + id);
+        ArrayList<Integer> imagesId = new ArrayList<>();
+        while (resultSet.next()) {
+            imagesId.add(resultSet.getInt("image_id"));
+        }
+
+        resultSet = statement.executeQuery("SELECT * FROM stock WHERE product_id = " + id);
+        ArrayList<Integer> stockId = new ArrayList<>();
+        while (resultSet.next()) {
+            stockId.add(resultSet.getInt("stock_id"));
+        }
+
+        // query update stock and image by id
+        for (ImagesProductRequest image : request.getImages()) {
+            if (image.getImage_id() == 0) {
+                statement.executeUpdate("INSERT INTO images (product_id, image) VALUES (" + id + ", '"
+                        + image.getImage() + "')");
+            } else {
+                statement.executeUpdate("UPDATE images SET image = '" + image.getImage() + "' WHERE image_id = "
+                        + image.getImage_id() + " AND product_id = " + id);
+                imagesId.remove((Integer) image.getImage_id());
+            }
+        }
+
+        for (StockProductRequest stock : request.getStock()) {
+            if (stock.getStock_id() == 0) {
+                statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color) VALUES (" + id + ", '"
+                        + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor() + "')");
+            } else {
+                statement.executeUpdate("UPDATE stock SET size = '" + stock.getSize() + "', quantity = "
+                        + stock.getQuantity() + ", color = '" + stock.getColor() + "' WHERE stock_id = "
+                        + stock.getStock_id() + " AND product_id = " + id);
+                stockId.remove((Integer) stock.getStock_id());
+            }
+        }
+        
+        connection.close();
+        if (getById(id).getData() == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
+        else
+            return new Response(HttpStatus.OK.value(), "success", getById(id).getData());
     }
 
     @Override
@@ -207,8 +258,8 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
         }
 
         for (StockProductRequest stock : request.getStock()) {
-            statement.executeUpdate("INSERT INTO stock (product_id, size, quantity) VALUES (" + productId + ", '"
-                    + stock.getSize() + "', " + stock.getStock() + ")");
+            statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color) VALUES (" + productId
+                    + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor() + "')");
         }
 
         connection.close();

@@ -7,13 +7,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.TubesDiKaosan.ecommerce.services.CategoryServiceImplement;
 import com.TubesDiKaosan.ecommerce.services.ProductServiceImplement;
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Product;
+import com.TubesDiKaosan.ecommerce.payloads.requests.CategoryRequest;
+import com.TubesDiKaosan.ecommerce.payloads.requests.ProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
 @SpringBootApplication
@@ -64,7 +69,6 @@ public class ProductController {
         }
     }
 
-    // API add product
     @RequestMapping("/products/add")
     public String addProductPage(Model model) {
         try {
@@ -77,6 +81,19 @@ public class ProductController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "redirect:/dashboard";
+        }
+    }
+
+    // API add product
+    @PostMapping("/api/products/add/submit")
+    public ResponseEntity<?> productApiSubmit(@RequestBody ProductRequest request) {
+        try {
+            System.out.println(request.getImages());
+            Response data = productService.add(request);
+            return ResponseEntity.ok(data);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
         }
     }
 
@@ -93,6 +110,18 @@ public class ProductController {
         }
     }
 
+    // API update product
+    @PostMapping("/api/products/{uuid}/update")
+    public ResponseEntity<?> productApiUpdate(@PathVariable("uuid") Integer id, @RequestBody ProductRequest request) {
+        try {
+            Response data = productService.updateById(id, request);
+            return ResponseEntity.ok(data);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
+    }
+
     @RequestMapping("/products/delete/{uuid}")
     public String deleteProductPage(Model model, @PathVariable("uuid") Integer id) {
         try {
@@ -102,6 +131,18 @@ public class ProductController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "redirect:/dashboard";
+        }
+    }
+
+    // API delete product
+    @RequestMapping("/api/products/delete/{uuid}")
+    public ResponseEntity<?> deleteProductApi(@PathVariable("uuid") Integer id) {
+        try {
+            Response data = productService.deleteById(id);
+            return ResponseEntity.ok(data);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
         }
     }
 

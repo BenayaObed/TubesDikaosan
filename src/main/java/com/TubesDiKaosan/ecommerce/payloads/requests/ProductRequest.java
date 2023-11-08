@@ -8,21 +8,19 @@ public class ProductRequest {
     private String description;
     private Integer price;
     private Integer visible;
-    private CategoryRequest category;
     private List<StockProductRequest> stock;
     private List<ImagesProductRequest> images;
     
     public ProductRequest() {
     }
 
-    public ProductRequest(String name_product, int category_id, String description, Integer price, Integer visible,
-            CategoryRequest category, List<StockProductRequest> stock, List<ImagesProductRequest> images) {
+    public ProductRequest(String name_product, Integer category_id, String description, Integer price, Integer visible,
+            Integer categoryID, List<StockProductRequest> stock, List<ImagesProductRequest> images) {
         this.name_product = name_product;
         this.category_id = category_id;
         this.description = description;
         this.price = price;
         this.visible = visible;
-        this.category = category;
         this.stock = stock;
         this.images = images;
     }
@@ -35,11 +33,11 @@ public class ProductRequest {
         this.name_product = name_product;
     }
 
-    public int getCategory_id() {
+    public Integer getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(int category_id) {
+    public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
     }
 
@@ -67,14 +65,6 @@ public class ProductRequest {
         this.visible = visible;
     }
 
-    public CategoryRequest getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryRequest category) {
-        this.category = category;
-    }
-
     public List<StockProductRequest> getStock() {
         return stock;
     }
@@ -90,4 +80,5 @@ public class ProductRequest {
     public void setImages(List<ImagesProductRequest> images) {
         this.images = images;
     }
+
 }
