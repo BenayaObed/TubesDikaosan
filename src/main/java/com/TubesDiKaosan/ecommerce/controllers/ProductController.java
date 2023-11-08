@@ -7,11 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.TubesDiKaosan.ecommerce.services.CategoryServiceImplement;
 import com.TubesDiKaosan.ecommerce.services.ProductServiceImplement;
@@ -146,15 +148,30 @@ public class ProductController {
         }
     }
 
-    @RequestMapping("/products/visible")
-    public String visibleProductPage(Model model) {
-        try {
-            model.addAttribute("title", "Visible Product");
-            return "pages/dashboard/product_visible";
+    // API search product
+    @GetMapping("/api/search")
+    public ResponseEntity<?> searchProducts(@RequestParam(required = false, defaultValue = "") String product,
+    @RequestParam(required = false, defaultValue = "") String category,
+    @RequestParam(required = false, defaultValue = "0") Double price,
+    @RequestParam(required = false, defaultValue = "") String color,
+    @RequestParam(required = false, defaultValue = "") String size) throws Exception{
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return "redirect:/dashboard";
-        }
+        // sout all param
+       
+
+        // remove " from param
+        product = product.replace("\"", "");
+        category = category.replace("\"", "");
+        color = color.replace("\"", "");
+        size = size.replace("\"", "");
+
+        System.out.println(product);
+        System.out.println(category);
+        System.out.println(price);
+        System.out.println(color);
+        System.out.println(size);
+
+        List<Product> data = (List<Product>) productService.search(product, category, price, color, size).getData();
+        return ResponseEntity.ok(data);
     }
 }

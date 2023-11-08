@@ -1,6 +1,7 @@
 package com.TubesDiKaosan.ecommerce.services;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,7 +26,7 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import java.sql.Timestamp;
 
 @Service
-public class ProductServiceImplement implements CrudService<ProductRequest,Integer> {
+public class ProductServiceImplement implements CrudService<ProductRequest, Integer> {
     @Autowired(required = true)
     private DataSource dataSource;
 
@@ -118,7 +119,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
             }
         }
         connection.close();
-        
+
         if (products.size() == 0)
             return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
         else
@@ -129,8 +130,10 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
     public Response getById(int id) throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM  product JOIN categories ON product.category_id = categories.category_id LEFT JOIN images ON product.product_id = images.product_id LEFT JOIN stock ON product.product_id = stock.product_id WHERE product.product_id = " + id);
-         ArrayList<Product> products = new ArrayList<>();
+        ResultSet resultSet = statement.executeQuery(
+                "SELECT * FROM  product JOIN categories ON product.category_id = categories.category_id LEFT JOIN images ON product.product_id = images.product_id LEFT JOIN stock ON product.product_id = stock.product_id WHERE product.product_id = "
+                        + id);
+        ArrayList<Product> products = new ArrayList<>();
         while (resultSet.next()) {
             int productId = resultSet.getInt("product_id");
             Product product = findProductById(products, productId);
@@ -184,7 +187,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
             }
         }
         connection.close();
-        
+
         if (products.size() == 0)
             return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
         else
@@ -199,7 +202,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
         statement.executeUpdate("DELETE FROM stock WHERE product_id = " + id);
         statement.executeUpdate("DELETE FROM product WHERE product_id = " + id);
         connection.close();
-        
+
         return new Response(HttpStatus.OK.value(), "success", null);
     }
 
@@ -210,7 +213,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
         statement.executeUpdate("UPDATE product SET name_product = '" + request.getName_product() + "', category_id = "
                 + request.getCategory_id() + ", description = '" + request.getDescription() + "', price = "
                 + request.getPrice() + ", visible = " + request.getVisible() + " WHERE product_id = " + id);
-        
+
         // query select for get ID images and stock
         ResultSet resultSet = statement.executeQuery("SELECT * FROM images WHERE product_id = " + id);
         ArrayList<Integer> imagesId = new ArrayList<>();
@@ -247,7 +250,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
                 stockId.remove((Integer) stock.getStock_id());
             }
         }
-        
+
         connection.close();
         if (getById(id).getData() == null)
             return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
@@ -260,27 +263,107 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
         // query include create_at and update_at
-        statement.executeUpdate("INSERT INTO product (name_product, category_id, description, price, visible,created_at,updated_at) VALUES ('"
-                + request.getName_product() + "', " + request.getCategory_id() + ", '" + request.getDescription()
-                + "', " + request.getPrice() + ", " + request.getVisible() + ", NOW(), NOW())");
+        statement.executeUpdate(
+                "INSERT INTO product (name_product, category_id, description, price, visible,created_at,updated_at) VALUES ('"
+                        + request.getName_product() + "', " + request.getCategory_id() + ", '"
+                        + request.getDescription()
+                        + "', " + request.getPrice() + ", " + request.getVisible() + ", NOW(), NOW())");
 
         ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() AS product_id");
         resultSet.next();
         int productId = resultSet.getInt("product_id");
-        
+
         for (ImagesProductRequest image : request.getImages()) {
-            statement.executeUpdate("INSERT INTO images (product_id, image,created_at, updated_at) VALUES (" + productId + ", '"
-                    + image.getImage() + "', NOW(), NOW())");
+            statement.executeUpdate(
+                    "INSERT INTO images (product_id, image,created_at, updated_at) VALUES (" + productId + ", '"
+                            + image.getImage() + "', NOW(), NOW())");
         }
 
         for (StockProductRequest stock : request.getStock()) {
-            statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color,created_at,updated_at) VALUES (" + productId
-                    + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor() + "', NOW(), NOW())");
+            statement.executeUpdate(
+                    "INSERT INTO stock (product_id, size, quantity, color,created_at,updated_at) VALUES (" + productId
+                            + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor()
+                            + "', NOW(), NOW())");
         }
 
         connection.close();
         return new Response(HttpStatus.OK.value(), "success", getById(productId).getData());
     }
 
-    
+    public Response search(String name, String category, Double price, String color, String size) throws SQLException {
+        Connection connection = dataSource.getConnection();
+        // check parameter is null or not and remove " from param
+        name = name.replace("\"", "");
+        category = category.replace("\"", "");
+        color = color.replace("\"", "");
+        size = size.replace("\"", "");
+
+        // query search
+        String query = "SELECT * FROM  product JOIN categories ON product.category_id = categories.category_id LEFT JOIN images ON product.product_id = images.product_id LEFT JOIN stock ON product.product_id = stock.product_id WHERE product.name_product LIKE '%"
+                + name + "%' AND categories.category_name LIKE '%" + category + "%' AND product.price >= " + price
+                + " AND stock.color LIKE '%" + color + "%' AND stock.size LIKE '%" + size + "%'";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        ArrayList<Product> products = new ArrayList<>();
+        while (resultSet.next()) {
+            int productId = resultSet.getInt("product_id");
+            Product product = findProductById(products, productId);
+
+            if (product == null) {
+                product = new Product();
+                product.setProduct_id(productId);
+                product.setName_product(resultSet.getString("name_product"));
+                product.setDescription(resultSet.getString("description"));
+                product.setPrice(resultSet.getInt("price"));
+                product.setVisible(resultSet.getInt("visible"));
+
+                Category product_category = new Category();
+                product_category.setCategory_id(resultSet.getInt("category_id"));
+                product_category.setCategory_name(resultSet.getString("category_name"));
+                product_category.setVisible(resultSet.getInt("visible"));
+                product.setCategory(product_category);
+
+                product.setImages(new ArrayList<Images>());
+                product.setStock(new ArrayList<Stock>());
+
+                products.add(product);
+            }
+
+            int imageId = resultSet.getInt("image_id");
+            if (imageId != 0 && findImageById(product.getImages(), imageId) == null) {
+                Images image = new Images();
+                image.setImage_id(imageId);
+                image.setProduct(product);
+                image.setImage(resultSet.getString("image"));
+                product.getImages().add(image);
+            }
+
+            int stockId = resultSet.getInt("stock_id");
+            if (stockId != 0 && findStockById(product.getStock(), stockId) == null) {
+                Stock stock = new Stock();
+                stock.setStock_id(stockId);
+                stock.setProduct(product);
+                stock.setSize(resultSet.getString("size"));
+                stock.setQuantity(resultSet.getInt("quantity"));
+                stock.setColor(resultSet.getString("color"));
+                product.getStock().add(stock);
+            }
+            // created at and updated at
+            Timestamp createdAt = resultSet.getTimestamp("created_at");
+            if (createdAt != null) {
+                product.setCreatedAt(createdAt.toLocalDateTime());
+            }
+            Timestamp updatedAt = resultSet.getTimestamp("updated_at");
+            if (updatedAt != null) {
+                product.setUpdatedAt(updatedAt.toLocalDateTime());
+            }
+        }
+        connection.close();
+
+        if (products.size() == 0)
+            return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
+        else
+            return new Response(HttpStatus.OK.value(), "success", products);
+    }
+
 }
