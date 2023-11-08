@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.TubesDiKaosan.ecommerce.services.CategoryServiceImplement;
 import com.TubesDiKaosan.ecommerce.services.ProductServiceImplement;
-import com.TubesDiKaosan.ecommerce.payloads.response.Response;
+import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Product;
+import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
 @SpringBootApplication
 @Controller
@@ -20,6 +22,9 @@ import com.TubesDiKaosan.ecommerce.models.Product;
 public class ProductController {
     @Autowired
     private ProductServiceImplement productService;
+
+    @Autowired
+    private CategoryServiceImplement categoryService;
 
     @RequestMapping("/products")
     public String productsPage(Model model) {
@@ -35,10 +40,24 @@ public class ProductController {
         }
     }
 
+    @RequestMapping("/api/products")
+    public ResponseEntity<?> productsApi() {
+        try {
+            Response data = productService.getAll();
+            return ResponseEntity.ok(data);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
+    }
+
     @RequestMapping("/products/add")
     public String addProductPage(Model model) {
         try {
+            // List cateogry
+            List<Category> data = (List<Category>) categoryService.getAll().getData();
             model.addAttribute("title", "Add Product");
+            model.addAttribute("categories", data);
             return "pages/dashboard/product_add";
 
         } catch (Exception e) {

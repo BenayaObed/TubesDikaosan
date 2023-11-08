@@ -57,7 +57,7 @@
                     <label for="exampleInputBorder">Category</label>
                     <select class="custom-select form-control-border" id="category_id" name="category_id">
                       <c:forEach items="${categories}" var="category">
-                        <option value="${category.id}">${category.category_name}</option>
+                        <option value="${category.category_id}">${category.category_name}</option>
                       </c:forEach>
                     </select>
                   </div>

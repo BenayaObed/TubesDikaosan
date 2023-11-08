@@ -80,8 +80,8 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
                 category.setVisible(resultSet.getInt("visible"));
                 product.setCategory(category);
 
-                product.setImages(new ArrayList<>());
-                product.setStock(new ArrayList<>());
+                product.setImages(new ArrayList<Images>());
+                product.setStock(new ArrayList<Stock>());
 
                 products.add(product);
             }
@@ -114,36 +114,51 @@ public class ProductServiceImplement implements CrudService<ProductRequest> {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM products WHERE product_id = " + id);
-        ArrayList<Product> products = new ArrayList<>();
-        ArrayList<Images> images = new ArrayList<>();
-        ArrayList<Stock> stock = new ArrayList<>();
-
+         ArrayList<Product> products = new ArrayList<>();
         while (resultSet.next()) {
-            Product product = new Product();
-            product.setProduct_id(resultSet.getInt("product_id"));
-            product.setName_product(resultSet.getString("name_product"));
+            int productId = resultSet.getInt("product_id");
+            Product product = findProductById(products, productId);
 
-            product.setDescription(resultSet.getString("description"));
-            product.setPrice(resultSet.getInt("price"));
+            if (product == null) {
+                product = new Product();
+                product.setProduct_id(productId);
+                product.setName_product(resultSet.getString("name_product"));
+                product.setDescription(resultSet.getString("description"));
+                product.setPrice(resultSet.getInt("price"));
+                product.setVisible(resultSet.getInt("visible"));
 
-            Category category = new Category();
-            category.setCategory_id(resultSet.getInt("category_id"));
-            product.setCategory(category);
+                Category category = new Category();
+                category.setCategory_id(resultSet.getInt("category_id"));
+                category.setCategory_name(resultSet.getString("category_name"));
+                category.setVisible(resultSet.getInt("visible"));
+                product.setCategory(category);
 
-            Images image = new Images();
-            image.setImage_id(resultSet.getInt("image_id"));
-            images.add(image);
-            product.setImages(images);
+                product.setImages(new ArrayList<Images>());
+                product.setStock(new ArrayList<Stock>());
 
-            Stock stok = new Stock();
-            stok.setStock_id(resultSet.getInt("stock_id"));
-            stock.add(stok);
-            product.setStock(stock);
+                products.add(product);
+            }
 
-            products.add(product);
+            int imageId = resultSet.getInt("image_id");
+            if (imageId != 0 && findImageById(product.getImages(), imageId) == null) {
+                Images image = new Images();
+                image.setImage_id(imageId);
+                image.setProduct_image(product);
+                product.getImages().add(image);
+            }
+
+            int stockId = resultSet.getInt("stock_id");
+            if (stockId != 0 && findStockById(product.getStock(), stockId) == null) {
+                Stock stock = new Stock();
+                stock.setStock_id(stockId);
+                stock.setProduct(product);
+                stock.setSize(resultSet.getString("size"));
+                stock.setQuantity(resultSet.getInt("quantity"));
+                product.getStock().add(stock);
+            }
         }
-        // close connection
         connection.close();
+        
         return new Response(HttpStatus.OK.value(), "success", products);
     }
 

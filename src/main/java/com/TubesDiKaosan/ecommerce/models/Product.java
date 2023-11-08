@@ -6,6 +6,9 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -102,6 +105,7 @@ public class Product {
     this.description = description;
   }
 
+  @JsonIgnoreProperties({ "product" })
   public List<Images> getImages() {
     return images;
   }
@@ -118,6 +122,7 @@ public class Product {
     this.price = price;
   }
 
+  @JsonIgnoreProperties({ "product" })
   public List<Stock> getStock() {
     return stock;
   }
