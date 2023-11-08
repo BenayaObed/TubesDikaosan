@@ -464,10 +464,7 @@
 /* Description-Content End */
 
 /* Payment-Content Start */
-.payment {
-  position: relative;
-  right: 40px;
-}
+
 
 .payment .payment_info{
   position: relative;
@@ -593,6 +590,11 @@
 
 .contact .about_us{
   background-color: #D9DBD4;
+  
+}
+
+.contact .contact_border{
+  overflow: hidden;
 }
 
 
