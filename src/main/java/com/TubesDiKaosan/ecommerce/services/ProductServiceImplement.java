@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import com.TubesDiKaosan.ecommerce.payloads.requests.ImagesProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.StockProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
+import java.sql.Timestamp;
 
 @Service
 public class ProductServiceImplement implements CrudService<ProductRequest,Integer> {
@@ -105,6 +107,15 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
                 stock.setColor(resultSet.getString("color"));
                 product.getStock().add(stock);
             }
+            // created at and updated at
+            Timestamp createdAt = resultSet.getTimestamp("created_at");
+            if (createdAt != null) {
+                product.setCreatedAt(createdAt.toLocalDateTime());
+            }
+            Timestamp updatedAt = resultSet.getTimestamp("updated_at");
+            if (updatedAt != null) {
+                product.setUpdatedAt(updatedAt.toLocalDateTime());
+            }
         }
         connection.close();
         
@@ -163,6 +174,14 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
                 stock.setColor(resultSet.getString("color"));
                 product.getStock().add(stock);
             }
+            Timestamp createdAt = resultSet.getTimestamp("created_at");
+            if (createdAt != null) {
+                product.setCreatedAt(createdAt.toLocalDateTime());
+            }
+            Timestamp updatedAt = resultSet.getTimestamp("updated_at");
+            if (updatedAt != null) {
+                product.setUpdatedAt(updatedAt.toLocalDateTime());
+            }
         }
         connection.close();
         
@@ -181,11 +200,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
         statement.executeUpdate("DELETE FROM product WHERE product_id = " + id);
         connection.close();
         
-        // check response
-        if (getById(id).getData() == null)
-            return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
-        else
-            return new Response(HttpStatus.OK.value(), "success", getById(id).getData());
+        return new Response(HttpStatus.OK.value(), "success", null);
     }
 
     @Override
@@ -244,26 +259,27 @@ public class ProductServiceImplement implements CrudService<ProductRequest,Integ
     public Response add(ProductRequest request) throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
-        statement.executeUpdate("INSERT INTO product (name_product, category_id, description, price, visible) VALUES ('"
+        // query include create_at and update_at
+        statement.executeUpdate("INSERT INTO product (name_product, category_id, description, price, visible,created_at,updated_at) VALUES ('"
                 + request.getName_product() + "', " + request.getCategory_id() + ", '" + request.getDescription()
-                + "', " + request.getPrice() + ", " + request.getVisible() + ")");
+                + "', " + request.getPrice() + ", " + request.getVisible() + ", NOW(), NOW())");
 
         ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() AS product_id");
         resultSet.next();
         int productId = resultSet.getInt("product_id");
         
         for (ImagesProductRequest image : request.getImages()) {
-            statement.executeUpdate("INSERT INTO images (product_id, image) VALUES (" + productId + ", '"
-                    + image.getImage() + "')");
+            statement.executeUpdate("INSERT INTO images (product_id, image,created_at, updated_at) VALUES (" + productId + ", '"
+                    + image.getImage() + "', NOW(), NOW())");
         }
 
         for (StockProductRequest stock : request.getStock()) {
-            statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color) VALUES (" + productId
-                    + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor() + "')");
+            statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color,created_at,updated_at) VALUES (" + productId
+                    + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor() + "', NOW(), NOW())");
         }
 
         connection.close();
-        return new Response(HttpStatus.OK.value(), "success", getById(productId));
+        return new Response(HttpStatus.OK.value(), "success", getById(productId).getData());
     }
 
     
