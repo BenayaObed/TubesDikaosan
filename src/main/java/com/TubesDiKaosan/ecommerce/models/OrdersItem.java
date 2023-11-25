@@ -12,22 +12,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 // order item
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "orders_item")
+public class OrdersItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private Integer order_id;
+    @Column(name = "order_item_id")
+    private Integer order_item_id;
 
     // Relation Order Detail
     @ManyToOne
-    @JoinColumn(name = "order_details_id")
-    private Order_details details_order_id;
+    @JoinColumn(name = "order_id")
+    private Orders order_id;
 
     // Relation Product
     @ManyToOne
@@ -45,33 +44,33 @@ public class Order {
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    public Order() {
+    public OrdersItem() {
     }
 
-    public Order(Integer order_id, Order_details details_order_id, Product product_id, Integer status_order,
+    public OrdersItem(Integer order_item_id, Orders order_id, Product product_id, Integer status_order,
             LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.order_item_id = order_item_id;
         this.order_id = order_id;
-        this.details_order_id = details_order_id;
         this.product_id = product_id;
         this.status_order = status_order;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Integer getOrder_id() {
+    public Integer getOrder_item_id() {
+        return order_item_id;
+    }
+
+    public void setOrder_item_id(Integer order_item_id) {
+        this.order_item_id = order_item_id;
+    }
+
+    public Orders getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(Integer order_id) {
+    public void setOrder_id(Orders order_id) {
         this.order_id = order_id;
-    }
-
-    public Order_details getDetails_order_id() {
-        return details_order_id;
-    }
-
-    public void setDetails_order_id(Order_details details_order_id) {
-        this.details_order_id = details_order_id;
     }
 
     public Product getProduct_id() {
@@ -105,5 +104,6 @@ public class Order {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 
 }

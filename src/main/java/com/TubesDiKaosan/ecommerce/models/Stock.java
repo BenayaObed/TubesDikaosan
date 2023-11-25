@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+@JsonIgnoreProperties({"createdAt", "updatedAt"})
 @Entity
 @Table(name = "stock")
 public class Stock {
@@ -29,6 +32,9 @@ public class Stock {
     @Column(name = "size", length = 3)
     private String size;
 
+    @Column(name = "color", length = 20)
+    private String color;
+
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -43,11 +49,15 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(Integer stock_id, Product product, String size, Integer quantity) {
+    public Stock(Integer stock_id, Product product, String size, String color, Integer quantity,
+            LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.stock_id = stock_id;
         this.product = product;
         this.size = size;
+        this.color = color;
         this.quantity = quantity;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public Integer getStock_id() {
@@ -74,6 +84,14 @@ public class Stock {
         this.size = size;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public Integer getQuantity() {
         return quantity;
     }
@@ -82,4 +100,19 @@ public class Stock {
         this.quantity = quantity;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

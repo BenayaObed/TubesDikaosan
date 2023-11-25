@@ -25,7 +25,7 @@ public class Chats {
     @JoinColumn(name = "user_id")
     private Users user;
 
-    private Integer user_sender_id;
+    private String user_sender_id;
     private String message;
 
     @CreationTimestamp
@@ -36,7 +36,7 @@ public class Chats {
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
     public Chats(){}
-    public Chats(Integer chat_id, Users user, Integer user_sender_id, String message, LocalDateTime createdAt,
+    public Chats(Integer chat_id, Users user, String user_sender_id, String message, LocalDateTime createdAt,
             LocalDateTime updatedAt) {
         this.chat_id = chat_id;
         this.user = user;
@@ -62,11 +62,11 @@ public class Chats {
         this.user = user;
     }
 
-    public Integer getUser_sender_id() {
+    public String getUser_sender_id() {
         return user_sender_id;
     }
 
-    public void setUser_sender_id(Integer user_sender_id) {
+    public void setUser_sender_id(String user_sender_id) {
         this.user_sender_id = user_sender_id;
     }
 
