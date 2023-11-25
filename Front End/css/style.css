@@ -578,6 +578,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 28.8px;
+  cursor: pointer;
 }
 
 .payment .tittle_text_bank a{
@@ -903,9 +904,4 @@ line-height: 28.8px;
   weight: auto;
   margin-left: 10rem;
   margin-top: 1rem;
-}
-
-
-.hai{
-  background-color: #5C9F6B;
 }
