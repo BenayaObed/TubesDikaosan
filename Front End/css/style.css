@@ -65,6 +65,58 @@
   margin-left: 3rem;
 }
 
+.confirm_btn{
+  background-color:#000000;
+  border-color: #000000;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.confirm_btn_success{
+  background-color:#000000;
+  border-color: #000000;
+  font-size: 16px;
+}
+
+.navbar h1{
+  font-size: 48px;
+  font-weight: 1000;
+}
+
+.login span{
+  cursor: pointer;
+}
+
+.login h1{
+  font-size: 48px;
+}
+
+.login a{
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.login .forget_pass a1{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.sign_up a{
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 10px;
+
+}
+
+.success a{
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: #5e5959!important;
+}
+
+
 /* Homepage-Content Start */
 .homepage_content{
   height: auto;
@@ -75,6 +127,7 @@
   overflow-y: hidden;
 }
 
+
 /* iklan */
 .iklan .text-hero{
   position: absolute;
@@ -83,13 +136,15 @@
   top: 35%;
 }
 
+
 .text-hero h1{
-  font-size: 48px;
+  font-size: 45px;
   font-weight: 700;
   line-height: 58px;
   margin-bottom: 1rem;
   color: #111;
 }
+
 
 .iklan .btn-shop{
   text-align: center;
@@ -160,42 +215,15 @@
 .banner .text_banner{
   position:absolute;
   z-index: 2;
-  text-align: left;
-  margin-top: 10rem;
-}
-
-.banner .text_banner h1{
-  overflow-y: hidden;
-}
-
-.banner .text_banner{
-  position:absolute;
-  z-index: 2;
-  text-align: left;
-  font-size: 20px;
-  margin-top: 5rem!important;
-}
-
-.banner .text_banner h1{
-  overflow-y: hidden;
-  font-size: 20px;
-}
-
-.banner .text_banner a{
-  font-size: 10px;
-  padding: 10px 20px 10px 20px;
-}
-
-.banner .text_banner{
-  position:absolute;
-  z-index: 2;
   text-align: center;
-  margin-top: 2.5rem!important;
+  margin-top: 12rem!important;
 }
 
 .banner .text_banner h1{
   overflow-y: hidden;
-  font-size: 20px;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 58px;
 }
 
 .banner .text_banner a{
@@ -360,9 +388,9 @@
 
 /* Description-Content Start */
 .description{
-  position: relative;
-  left: 12rem;
+
 }
+
 
 .description .title_product h1{
   overflow-y: hidden;
@@ -460,6 +488,7 @@
   width: 197px;
   height: 65px;
 }
+
 
 /* Description-Content End */
 
@@ -874,4 +903,9 @@ line-height: 28.8px;
   weight: auto;
   margin-left: 10rem;
   margin-top: 1rem;
+}
+
+
+.hai{
+  background-color: #5C9F6B;
 }
