@@ -20,7 +20,7 @@
               </p>
           </div>
         </div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid mx-5">
             <a1 class="navbar-brand" href="#">DIKAOSAN</a1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -424,34 +424,57 @@
                   </div>
                 </div>
               </div>
-                  <div class=" d-flex flex-column ">
-                        <p style="font-weight: bold; font-size: large;">Payment Methods</p>
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Transfer Bank</label>
-                          <div class="form-check">
-                            <img class="banks" src="./picture/Home/38.PNG" alt="" >
-                            <input type="checkbox" class="form-check-input " id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Bank Central Asia</label>
-                            <div></div>
-                            <img class="banks" src="./picture/Home/39.png" alt="" >
-                            <input type="checkbox" class="form-check-input " id="exampleCheck2">
-                            <label class="form-check-label" for="exampleCheck2">Bank Negara Indonesia</label>
-                            <div></div>
-                            <img class="banks" src="./picture/Home/40.png" alt="" >
-                            <input type="checkbox" class="form-check-input " id="exampleCheck3">
-                            <label class="form-check-label" for="exampleCheck3">Bank Rakyat Indonesia</label>
-                            <div></div>
-                            <img class="banks" src="./picture/Home/41.png" alt="" >
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Bank Mandiri</label>
-                          </div>
-                        </div>
-                            <div>
-                              <input type="checkbox" class="form-check-input" id="exampleCheck">
-                              <label class="form-check-label" for="exampleCheck">Cash On Delivery</label>
-                            </div>
+
+              <div class="checkbox ">
+                <form class="was-validated">
+                  
+                  <!-- Bank -->
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+                    <label class="form-check-label" for="validationFormCheck1">Transfer Bank</label>
+                    <div class="valid-feedback"> 
+                    
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <img src="/TubesDikaosan/Front End/picture/Home/38.png">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Bank Central Asia
+                        </label>
+                      </div>
+        
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Bank Negara Indonesia
+                        </label>
+                      </div>
+        
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Bank Rakyat Indonesia
+                        </label>
+                      </div>
+        
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Bank Mandiri
+                        </label>
+                      </div>
+                    </div>
                   </div>
+                  
+                  <!-- COD -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Cash On Delivery
+                    </label>
+                  </div>
+                
+                </form>
+              </div>
             
                     <div class="button_confirm col d-flex flex-column align-items-center my-3 ">
                       <a href="" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirmation Payment</a>
