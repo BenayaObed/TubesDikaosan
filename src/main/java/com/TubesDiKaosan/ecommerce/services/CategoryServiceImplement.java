@@ -55,7 +55,7 @@ public class CategoryServiceImplement implements CrudService<CategoryRequest,Int
     }
 
     @Override
-    public Response getById(int id) {
+    public Response getById(Integer id) {
         try {
             Category category = categoryRepository.findById(id).get();
             return new Response(HttpStatus.OK.value(), "success", category);

@@ -2,9 +2,12 @@ package com.TubesDiKaosan.ecommerce.services;
 
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Service;
+
 import com.TubesDiKaosan.ecommerce.payloads.requests.OrderRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
+@Service
 public class OrdersService implements CrudService<OrderRequest, Integer> {
 
     @Override
@@ -14,7 +17,7 @@ public class OrdersService implements CrudService<OrderRequest, Integer> {
     }
 
     @Override
-    public Response getById(int id) throws SQLException {
+    public Response getById(Integer id) throws SQLException {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getById'");
     }
