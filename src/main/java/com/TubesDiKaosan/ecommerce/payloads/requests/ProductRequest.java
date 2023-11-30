@@ -2,14 +2,17 @@ package com.TubesDiKaosan.ecommerce.payloads.requests;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class ProductRequest {
-    private String name_product;
-    private Integer category_id;
+    @NotNull @Size(min=5, max=30) private String name_product;
+    @NotNull private Integer category_id;
     private String description;
-    private Integer price;
-    private Integer visible;
-    private List<StockProductRequest> stock;
-    private List<ImagesProductRequest> images;
+    @NotNull private Integer price;
+    @NotNull private Integer visible;
+    @NotNull private List<StockProductRequest> stock;
+    @NotNull private List<ImagesProductRequest> images;
     
     public ProductRequest() {
     }
