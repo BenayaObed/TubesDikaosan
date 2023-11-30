@@ -1,18 +1,16 @@
 package com.TubesDiKaosan.ecommerce.services;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.TubesDiKaosan.ecommerce.models.Category;
@@ -26,36 +24,10 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import java.sql.Timestamp;
 
 @Service
-public class ProductServiceImplement implements CrudService<ProductRequest, Integer> {
+@Component
+public class ProductServiceImplement extends Functions implements CrudService<ProductRequest, Integer> {
     @Autowired(required = true)
     private DataSource dataSource;
-
-    private Product findProductById(List<Product> products, int productId) {
-        for (Product product : products) {
-            if (product.getProduct_id() == productId) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    private Images findImageById(List<Images> images, int imageId) {
-        for (Images image : images) {
-            if (image.getImage_id() == imageId) {
-                return image;
-            }
-        }
-        return null;
-    }
-
-    private Stock findStockById(List<Stock> stockList, int stockId) {
-        for (Stock stock : stockList) {
-            if (stock.getStock_id() == stockId) {
-                return stock;
-            }
-        }
-        return null;
-    }
 
     @Override
     public Response getAll() throws SQLException {
@@ -67,7 +39,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
         ArrayList<Product> products = new ArrayList<>();
         while (resultSet.next()) {
             int productId = resultSet.getInt("product_id");
-            Product product = findProductById(products, productId);
+            Product product = super.findProductById(products, productId);
 
             if (product == null) {
                 product = new Product();
@@ -90,7 +62,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
             }
 
             int imageId = resultSet.getInt("image_id");
-            if (imageId != 0 && findImageById(product.getImages(), imageId) == null) {
+            if (imageId != 0 && super.findImageById(product.getImages(), imageId) == null) {
                 Images image = new Images();
                 image.setImage_id(imageId);
                 image.setProduct(product);
@@ -99,7 +71,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
             }
 
             int stockId = resultSet.getInt("stock_id");
-            if (stockId != 0 && findStockById(product.getStock(), stockId) == null) {
+            if (stockId != 0 && super.findStockById(product.getStock(), stockId) == null) {
                 Stock stock = new Stock();
                 stock.setStock_id(stockId);
                 stock.setProduct(product);
@@ -127,7 +99,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
     }
 
     @Override
-    public Response getById(int id) throws SQLException {
+    public Response getById(Integer id) throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(
@@ -136,7 +108,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
         ArrayList<Product> products = new ArrayList<>();
         while (resultSet.next()) {
             int productId = resultSet.getInt("product_id");
-            Product product = findProductById(products, productId);
+            Product product = super.findProductById(products, productId);
 
             if (product == null) {
                 product = new Product();
@@ -159,7 +131,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
             }
 
             int imageId = resultSet.getInt("image_id");
-            if (imageId != 0 && findImageById(product.getImages(), imageId) == null) {
+            if (imageId != 0 && super.findImageById(product.getImages(), imageId) == null) {
                 Images image = new Images();
                 image.setImage_id(imageId);
                 image.setProduct(product);
@@ -168,7 +140,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
             }
 
             int stockId = resultSet.getInt("stock_id");
-            if (stockId != 0 && findStockById(product.getStock(), stockId) == null) {
+            if (stockId != 0 && super.findStockById(product.getStock(), stockId) == null) {
                 Stock stock = new Stock();
                 stock.setStock_id(stockId);
                 stock.setProduct(product);
@@ -212,7 +184,8 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
         Statement statement = connection.createStatement();
         statement.executeUpdate("UPDATE product SET name_product = '" + request.getName_product() + "', category_id = "
                 + request.getCategory_id() + ", description = '" + request.getDescription() + "', price = "
-                + request.getPrice() + ", visible = " + request.getVisible() + ", updated_at = NOW() WHERE product_id = " + id);
+                + request.getPrice() + ", visible = " + request.getVisible()
+                + ", updated_at = NOW() WHERE product_id = " + id);
 
         // query select for get ID images and stock
         ResultSet resultSet = statement.executeQuery("SELECT * FROM images WHERE product_id = " + id);
@@ -233,23 +206,26 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
                 statement.executeUpdate("INSERT INTO images (product_id, image,created_at, updated_at) VALUES (" + id
                         + ", '" + image.getImage() + "', NOW(), NOW())");
             } else {
-                statement.executeUpdate("UPDATE images SET image = '" + image.getImage() + "', updated_at = NOW() WHERE image_id = "
-                        + image.getImage_id() + " AND product_id = " + id);
+                statement.executeUpdate(
+                        "UPDATE images SET image = '" + image.getImage() + "', updated_at = NOW() WHERE image_id = "
+                                + image.getImage_id() + " AND product_id = " + id);
                 imagesId.remove((Integer) image.getImage_id());
             }
         }
 
         for (StockProductRequest stock : request.getStock()) {
             if (stock.getStock_id() == 0) {
-                statement.executeUpdate("INSERT INTO stock (product_id, size, quantity, color,created_at,updated_at) VALUES (" + id
-                        + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor()
-                        + "', NOW(), NOW())");
+                statement.executeUpdate(
+                        "INSERT INTO stock (product_id, size, quantity, color,created_at,updated_at) VALUES (" + id
+                                + ", '" + stock.getSize() + "', " + stock.getQuantity() + ", '" + stock.getColor()
+                                + "', NOW(), NOW())");
             } else {
                 statement.executeUpdate("UPDATE stock SET size = '" + stock.getSize() + "', quantity = "
-                        + stock.getQuantity() + ", color = '" + stock.getColor() + "' , updated_at = NOW() WHERE stock_id = " + stock.getStock_id() + " AND product_id = " + id);
+                        + stock.getQuantity() + ", color = '" + stock.getColor()
+                        + "' , updated_at = NOW() WHERE stock_id = " + stock.getStock_id() + " AND product_id = " + id);
                 stockId.remove((Integer) stock.getStock_id());
             }
-            
+
         }
 
         connection.close();
@@ -308,7 +284,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
         ArrayList<Product> products = new ArrayList<>();
         while (resultSet.next()) {
             int productId = resultSet.getInt("product_id");
-            Product product = findProductById(products, productId);
+            Product product = super.findProductById(products, productId);
 
             if (product == null) {
                 product = new Product();
@@ -331,7 +307,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
             }
 
             int imageId = resultSet.getInt("image_id");
-            if (imageId != 0 && findImageById(product.getImages(), imageId) == null) {
+            if (imageId != 0 && super.findImageById(product.getImages(), imageId) == null) {
                 Images image = new Images();
                 image.setImage_id(imageId);
                 image.setProduct(product);
@@ -340,7 +316,7 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
             }
 
             int stockId = resultSet.getInt("stock_id");
-            if (stockId != 0 && findStockById(product.getStock(), stockId) == null) {
+            if (stockId != 0 && super.findStockById(product.getStock(), stockId) == null) {
                 Stock stock = new Stock();
                 stock.setStock_id(stockId);
                 stock.setProduct(product);
@@ -366,6 +342,21 @@ public class ProductServiceImplement implements CrudService<ProductRequest, Inte
             return new Response(HttpStatus.NOT_FOUND.value(), "data not found", null);
         else
             return new Response(HttpStatus.OK.value(), "success", products);
+    }
+
+    public Boolean checkStock(Integer product_id, String color,String size,Integer quantity) {
+        try {
+            Connection connection = dataSource.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM stock WHERE product_id = " + product_id + " AND stock.color = '" + color + "' AND stock.size = '" + size + "' AND stock.quantity >= " + quantity);
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
 }

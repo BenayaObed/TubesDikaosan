@@ -1,35 +1,63 @@
 package com.TubesDiKaosan.ecommerce.payloads.requests;
 
 import com.TubesDiKaosan.ecommerce.models.Orders;
-import com.TubesDiKaosan.ecommerce.models.Product;
 
 public class OrderItemRequest {
-    private Orders order;
-    private Product product_id;
-    private Integer status_order;
+    private Integer product_id;
+    private String color;
+    private String size;
+    private Integer quantity;
+    private Orders order_id;
 
-    public OrderItemRequest() {}
-    public OrderItemRequest(Orders order, Product product_id, Integer status_order) {
-        this.order = order;
+    public OrderItemRequest() {
+    }
+
+    public OrderItemRequest(Integer product_id, String color, String size, Integer quantity, Orders order_id) {
         this.product_id = product_id;
-        this.status_order = status_order;
+        this.color = color;
+        this.size = size;
+        this.quantity = quantity;
+        this.order_id = order_id;
     }
-    public Orders getorder() {
-        return order;
-    }
-    public void setorder(Orders order) {
-        this.order = order;
-    }
-    public Product getProduct_id() {
+
+    public Integer getProduct_id() {
         return product_id;
     }
-    public void setProduct_id(Product product_id) {
+
+    public void setProduct_id(Integer product_id) {
         this.product_id = product_id;
     }
-    public Integer getStatus_order() {
-        return status_order;
+
+    public String getColor() {
+        return color;
     }
-    public void setStatus_order(Integer status_order) {
-        this.status_order = status_order;
+
+    public void setColor(String color) {
+        this.color = color;
     }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Orders getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(Orders order_id) {
+        this.order_id = order_id;
+    }
+
 }
