@@ -26,7 +26,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/dashboard">Dashboard</a></li>
-              <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/dashboard/categories">Categories</a></li>
+              <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/dashboard/products">Products</a></li>
               <li class="breadcrumb-item active">${title}</li>
             </ol>
           </div><!-- /.col -->
@@ -40,44 +40,86 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <form action="${pageContext.request.contextPath}/dashboard/products/add/submit" method="POST">
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">${title}</h3>
+            <div class="card-body">
+              <form action="${pageContext.request.contextPath}/dashboard/api/products/add/submit" method="POST">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">${title}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- Card body - Product Section -->
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="productName">Nama Product:</label>
+                            <input type="text" class="form-control" id="productName" name="productName">
+                        </div>
+                        <div class="form-group">
+                            <!-- category using select -->
+                            <label for="category">Category:</label>
+                            <select class="form-control" id="category" name="category">
+                                <c:forEach items="${categories}" var="category">
+                                    <option value="${category.category_id}">${category.category_name}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                        <div class="form-group"> 
+                              <label for="price">Price:</label>
+                              <input type="text" class="form-control" name="price[]"> 
+                        </div> 
+                        <div class="form-group">
+                            <label for="status">Status Visible:</label>
+                            <select class="form-control" id="status" name="status">
+                                <option value="visible">Visible</option>
+                                <option value="hidden">Hidden</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <button type="button" class="btn btn-sm btn-warning float-right" id="addStock"><i class="fas fa-plus"></i> Add stock</button>
-                  <div class="form-group">
-                    <label for="exampleInputBorder">Product</label>
-                    <input type="text" class="form-control form-control-border" id="product_name" name="product_name" placeholder="Enter category">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleInputBorder">Category</label>
-                    <select class="custom-select form-control-border" id="category_id" name="category_id">
-                      <c:forEach items="${categories}" var="category">
-                        <option value="${category.category_id}">${category.category_name}</option>
-                      </c:forEach>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputBorder">Description</label>
-                    <textarea class="form-control form-control-border" id="description" name="description" placeholder="Enter description"></textarea>
-                  </div>
-                  <div class="form-group w-100">
-                    <label for="exampleSelectBorder">Status visibles</label>
-                    <select class="custom-select form-control-border" id="visible" name="visible">
-                      <option value="1">Visible</option> <!-- yes -->
-                      <option value="0">Non Visible</option> <!-- no -->
-                    </select>
-                  </div>
-                  <button type="button" class="btn btn-sm btn-warning float-right mr-2" id="addImage"><i class="fas fa-plus"></i> Add image</button>
-                  <button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
+            
+                <!-- Card body - Stock Section -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="row">
+                          <h3 class="card-title">Stock</h3>
+                          <button type="button" class="btn btn-warning ml-auto" onclick="addStockField()">Add Stock</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Stock:</label>
+                            <div id="stockFields">
+                                <!-- Stock fields will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.card-body -->
-              </div>
+            
+                <!-- Card body - Image Section -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                      <div class="row">
+                        <h3 class="card-title">Images</h3>
+                        <button type="button" class="btn btn-warning ml-auto" onclick="addImageField()">Add Image</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Images:</label>
+                            <div id="imageFields">
+                                <!-- Image fields will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <button type="submit" class="btn btn-success">Submit</button>
             </form>
+            </div>
           </div>
         </div>
         <!-- /.row -->
@@ -95,108 +137,74 @@
 <!-- REQUIRED SCRIPTS -->
 <%@ include file = "../../includes/dashboard/_scripts.jsp" %>
 <script>
- $(document).ready(function() {
-  var counter = 1;
-
-  $('#addStock').click(function() {
-    if (counter > 4) {
-      alert('You can only add 4 stock.');
-      return false;
+  function addStockField() {
+    // Maximum 4 stock fields
+    if ($('#stockFields .row').length < 4) {
+      var newStockField = '<div class="row mb-3">' +
+        '<div class="col-md-6">' +
+        '  <div class="form-group">' +
+        '    <label for="stock">Stock:</label>' +
+        '    <input type="text" class="form-control" name="stock[]">' +
+        '  </div>' +
+        '</div>' +
+        '<div class="col-md-5">' +
+        '  <div class="form-group">' +
+        '    <label for="size">Size:</label>' +
+        '    <input type="text" class="form-control" name="size[]">' +
+        '  </div>' +
+        '</div>' +
+        '<div class="col-md-1 text-right">' +
+        '  <button type="button" class="btn btn-danger btn-sm remove-btn" onclick="removeField(this, \'stock\')">Remove</button>' +
+        '</div>' +
+        '</div>';
+      $('#stockFields').append(newStockField);
     }
-    counter++;
-    if (counter == 2) {
-      $('#submit').before('<label for="exampleInputBorder" class="mt-2 mb-4" id="qty-product">Quantity Product</label>');
-    }
-    // add new before button Add Image
-    var newRow = $('<div class="form-group row" id="row' + counter + '"><div class="col-6"><label for="exampleInputBorder"><button type="button" class="btn btn-danger btn-sm remove-row" data-rowid="' + counter + '"><i class="fas fa-trash-alt"></i></button>&nbsp;Stock</label><input type="number" class="form-control form-control-border" id="stock' + counter + '" name="stock' + counter + '" placeholder="Enter stock"></div><div class="col-6"><label for="exampleInputBorder">Price</label><input type="number" class="form-control form-control-border" id="price' + counter + '" name="price' + counter + '" placeholder="Enter price"></div></div>');
-    $('#submit').before(newRow);
-  });
+  }
 
-  $(document).on('click', '.remove-row', function() {
-    var rowId = $(this).data('rowid');
-    $('#row' + rowId).remove();
-    counter--;
-    if (counter < 2) {
-      $('#qty-product').remove();
+  function addImageField() {
+    // Maximum 3 image fields
+    if ($('#imageFields .form-row').length < 3) {
+      var newImageField = '<div class="form-row mb-3">' +
+        '<div class="col-md-6">' +
+        '<label for="image">Image:</label>' +
+        '<input type="file" class="form-control" name="image[]">' +
+        '</div>' +
+        '<div class="col-md-5">' +
+        '<label>Preview:</label>' +
+        '<div class="image-preview text-center">' +
+        '<img class="img-preview" alt="Preview">' +
+        '</div>' +
+        '</div>' +
+        '<div class="col-md-1 text-right">' +
+        '<button type="button" class="btn btn-danger btn-sm remove-btn" onclick="removeField(this, \'image\')">Remove</button>' +
+        '</div>' +
+        '</div>';
+      $('#imageFields').append(newImageField);
+      setPreviewHandler();
     }
-  });
+  }
 
-  $('#submit').click(function() {
-    var isValid = true;
-    $('input[type="number"]').each(function() {
-      if ($(this).val() < 0) {
-        isValid = false;
-        return false;
+  function removeField(button, type) {
+    if (type === 'stock') {
+      $(button).closest('.row').remove();
+    } else if (type === 'image') {
+      $(button).closest('.form-row').remove();
+    }
+  }
+
+  function setPreviewHandler() {
+    $('input[type="file"]').change(function () {
+      var input = this;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $(input).closest('.form-row').find('.img-preview').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
       }
     });
-
-    if (!isValid) {
-      alert('Stock value cannot be negative.');
-      return false;
-    }
-  });
-});
-
-
+  }
 </script>
 
-<script>
-  // add image preview
-  $(document).ready(function() {
-    $('#image').change(function() {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        $('#image + img').remove();
-        // after label priview
-        $('#label-priview').after('<div class="priview-image text-center" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"><img src="' + e.target.result + '" width="100" height="100" /></div>');
-      };
-      reader.readAsDataURL(this.files[0]);
-    });
-  }); 
-</script>
-
-<script>
-  // add image and image preview, include delete
-  // max 4 image
-  $(document).ready(function() {
-    var counter = 1;
-    // after button add image
-    $('#addImage').click(function() {
-      if (counter > 3) {
-        alert('You can only add 3 image.');
-        return false;
-      }
-      counter++;
-      if (counter == 2) {
-        $('#submit').before('<label for="exampleInputBorder" id="label-image" class="mt-2 mb-4">Image</label>');
-      }
-      var newRow = $('<div class="form-group row" id="row' + counter + '"><div class="col-6"><label for="exampleInputBorder"><button type="button" class="btn btn-danger btn-sm remove-row" data-rowid="' + counter + '"><i class="fas fa-trash-alt"></i></button>&nbsp;Image</label><input type="file" class="form-control form-control-border" id="image' + counter + '" name="image' + counter + '" placeholder="Enter image"></div><div class="col-6"><label for="exampleInputBorder">Priview</label><div class="priview-image text-center" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"><img src="" width="100" height="100" /></div></div></div>');
-      $('#submit').before(newRow);
-    });
-    
-    // remove row
-    $(document).on('click', '.remove-row', function() {
-      var rowId = $(this).data('rowid');
-      $('#row' + rowId).remove();
-      counter--;
-      if (counter < 2) {
-        $('#label-image').remove();
-      }
-      console.log(counter);
-    });
-
-    // Preview image
-    $(document).on('change', 'input[type="file"]', function() {
-      var reader = new FileReader();
-      var rowId = $(this).attr('id').replace('image', '');
-      reader.onload = function(e) {
-        $('#image' + rowId + ' + img').remove();
-        $('#row' + rowId + ' .priview-image').html('<img src="' + e.target.result + '" width="100" height="100" />');
-      };
-      reader.readAsDataURL(this.files[0]);
-    });
-
-    });
-</script>
 </body>
 </html>

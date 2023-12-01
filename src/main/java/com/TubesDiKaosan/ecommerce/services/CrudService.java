@@ -9,7 +9,7 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 @Service
 public interface CrudService<RequestType,IdType> {
     public Response getAll()throws SQLException;
-    public Response getById(int id) throws SQLException;
+    public Response getById(IdType id) throws SQLException;
     public Response deleteById(IdType id) throws SQLException;
     public Response updateById(IdType id, RequestType request) throws SQLException;
     public Response add(RequestType request) throws SQLException;

@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+
+// versi berapa javax.persistence di ganti ke jakarta.persistence?
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,18 +25,27 @@ public class OrdersItem {
     @Column(name = "order_item_id")
     private Integer order_item_id;
 
-    // Relation Order Detail
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Orders order_id;
-
     // Relation Product
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product_id;
 
-    @Column(name = "status_order")
-    private Integer status_order;
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "size")
+    private String size;
+
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    // Relation Orders
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Orders order_id;
+
+    // total price
+    private Integer total_price;
 
     @CreationTimestamp
     @Column(name = "createdAt")
@@ -43,16 +54,19 @@ public class OrdersItem {
     @UpdateTimestamp
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
-
+    
     public OrdersItem() {
     }
 
-    public OrdersItem(Integer order_item_id, Orders order_id, Product product_id, Integer status_order,
-            LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public OrdersItem(Integer order_item_id, Product product_id, String color, String size, Integer quantity,
+            Orders order_id, Integer total_price, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.order_item_id = order_item_id;
-        this.order_id = order_id;
         this.product_id = product_id;
-        this.status_order = status_order;
+        this.color = color;
+        this.size = size;
+        this.quantity = quantity;
+        this.order_id = order_id;
+        this.total_price = total_price;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -65,14 +79,6 @@ public class OrdersItem {
         this.order_item_id = order_item_id;
     }
 
-    public Orders getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(Orders order_id) {
-        this.order_id = order_id;
-    }
-
     public Product getProduct_id() {
         return product_id;
     }
@@ -81,12 +87,44 @@ public class OrdersItem {
         this.product_id = product_id;
     }
 
-    public Integer getStatus_order() {
-        return status_order;
+    public String getColor() {
+        return color;
     }
 
-    public void setStatus_order(Integer status_order) {
-        this.status_order = status_order;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Orders getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(Orders order_id) {
+        this.order_id = order_id;
+    }
+
+    public Integer getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(Integer total_price) {
+        this.total_price = total_price;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -104,6 +142,5 @@ public class OrdersItem {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 
 }
