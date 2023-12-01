@@ -1,454 +1,475 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>${title}</title>
-    <%@ include file="../includes/_header.jsp" %>
+    <title>Homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+  
 </head>
+  <body>
+    <!-- Navbar Section Start -->
+    <section class="header">
+        <div class="heading">
+            <div class="container-fluid">
+                <p class="iklan mx-5 mt-2 mb-2">
+                  &nbsp;
+                </p>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid mx-5">
+              <a1 class="navbar-brand" href="homepage.html">DIKAOSAN</a1>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto">
+                  <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+                  <a class="nav-link" href="shop.html">Shop</a>
+                  <a class="nav-link" href="contact.html">Contact</a>
+                </div>
+                <span class="nav-button-right">
+                    <span class="input-search">
+                        <input class="form-control search" type="text" name="search" id="search" placeholder="Search">
+                    </span>
+                    <span class="Cart mx-3 mt-2 m3">
+                        <div class="cart">
+                            <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                        </div>
+                    </span>
+                    <span class="sign">
+                        <div class="sign-in mt-1">
+                          <!-- Trigger Modal -->
+                          <a  href="#" data-bs-toggle="modal" data-bs-target="#loginDikaosan">Sign in</a> 
 
-<body>
-    <%@ include file="../includes/_navbar.jsp" %>
-
-    <!-- Content -->
-
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <h2>Elevate Your Style With Trendy Clothes From Our Store</h2>
-                                <a href="#" class="primary-btn">Order Now</a>
-                                <div class="hero__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                          <!-- Modal Login -->
+                          <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content login">
+                                <div class="modal-header title">
+                                  <h1 class="modal-title fs-5" id="loginDikaosan">Welcome to Dikaosan!</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-2.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <h6>Summer Collection</h6>
-                                <h2>Fall - Winter Collections 2030</h2>
-                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
-                                <div class="hero__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                <div class="modal-body">
+
+                                  <div class="row email">
+                                    <a>Email address</a>
+                                    <span class="input-Email">
+                                      <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
+                                    </span>
+                                  </div>
+
+                                  <div class="row password">
+                                    <a>Password</a>
+                                    <span class="input-password">
+                                      <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
+                                    </span>
+                                  </div>
+
+                                  <div class="row forget_pass text-end">
+                                    <a1 href="#" >Forgot password?</a1>
+                                  </div>  
+
+                                  <div class="row justify-content-center text-center">
+                                    <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal">Login</button>
+                                    <a class="my-1">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
+                                  </div>
                                 </div>
+                                <div class="modal-footer">
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
+                          </div>
 
-    <!-- Banner Section Begin -->
-    <section class="banner spad">
-        <div class="container">
+                          <!-- Modal Sign-Up -->
+                          <div class="modal sign_up" id="Sign-UpDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content Sign-Up">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="Sign-UpDikaosan">Welcome to Dikaosan!</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                  <div class="row name">
+                                    <a>Name</a>
+                                    <span class="input-name">
+                                      <input class="form-control name" type="text" name="name" id="name" placeholder="Your name">
+                                    </span>
+                                  </div>
+                                  
+                                  <div class="row phone_number">
+                                    <a>Phone Number</a>
+                                    <span class="input-phone_number">
+                                      <input class="form-control phone_number" type="text" name="phone_number" id="phone_number" placeholder="Your phone number">
+                                    </span>
+                                  </div>
+
+                                  <div class="row email">
+                                    <a>Email address</a>
+                                    <span class="input-Email">
+                                      <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
+                                    </span>
+                                  </div>
+
+                                  <div class="row password">
+                                    <a>Password</a>
+                                    <span class="input-password">
+                                      <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
+                                    </span>
+                                    <div id="passwordHelpBlock" class="form-text">
+                                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="row justify-content-center text-center">
+                                    <button class="btn btn-primary confirm_btn w-50" data-bs-target="#Successfully" data-bs-toggle="modal">Sign Up</button>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Modal Successfully Sign-Up -->
+                          <div class="modal success" id="Successfully" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content Sign-Up">
+                                <div class="modal-header justify-content-center">
+                                  <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
+                                </div>
+                                <div class="modal-body">
+
+                                  <div class="row succes text-center">
+                                    <a>Your Account Has Been Successfully<br> 
+                                      Registered!
+                                    </a>
+                                  </div>
+                                  
+                                  <div class="row justify-content-center text-center my-2">
+                                    <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Shop Now</button>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                    </span>
+                </span>
+              </div>
+            </div>
+        </nav>
+    </section>
+    <!-- Navbar Section End -->
+
+    <!-- Content Section Start -->
+    <section class="homepage_content">
+      <!-- div heading iklan -->
+      <div class="iklan">
+        <div class="row">
+          <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./picture/Home/Group-57.jpg" class="d-block w-100" alt="...">
+                <div class="col-md-6 text-hero offset-md-5 my-1">
+                  <h1>Elevate Your Style With Trendy <br> 
+                      Clothes From Our Store</h1>
+                  <a href="shop.html" class="btn btn-shop">SHOP NOW</a>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="./picture/Home/Group-58.jpg" class="d-block w-100" alt="...">
+                <div class="col-md-6 text-hero offset-md-5 my-1">
+                  <h1>Combine Your Style With These <br> 
+                      Accessories!</h1>
+                  <a href="shop.html" class="btn btn-shop">SHOP NOW</a>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+        </div>
+      </div>
+      <!-- div end heading iklan -->
+  
+      <!-- box product start-->
+      <div class="box">
+        <div class="row">
+          <div class="col-6 d-flex align-items-center">
+            <div class="col-sm-12 accessories_content d-flex">
+              <div class="box_text1 my-5 mx-1">
+                <h1 class="box_text m-0">Accessories</h1>
+                <a href="shop.html"><u>SHOP NOW</u></a>
+              </div> 
+              <img src="./picture/Home/Produk/C2.jpg" style="max-width: 100%;height: auto;">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="col-sm-12 d-flex">
+              <img src="./picture/Home/Produk/C1.jpg" style="max-width: 100%;height: auto;">
+              <div class="box_text2 my-5 mx-1">
+                <h1 class="box_text m-0">Clothing</h1>
+                <a href="shop.html"><u>SHOP NOW</u></a>
+              </div> 
+            </div>
+            <div class="col-sm-12 d-flex my-4">
+              <img src="./picture/Home/Produk/C3.jpg" style="max-width: 100%;height: auto;">
+              <div class="box_text3 my-5 mx-1">
+                <h1 class="box_text m-0">Shoes</h1>
+                <a href="shop.html"><u>SHOP NOW</u></a>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- box product end -->
+
+      <!-- shope_content start -->
+      <div class="container product_shop my-3">
+        <div class="row homepage_shope">
+          <div class="col-12 product_header d-flex justify-content-center align-items-center">
             <div class="row">
-                <div class="col-lg-7 offset-lg-4">
-                    <div class="banner__item">
-                        <div class="banner__item__pic">
-                            <img src="img/banner/banner-1.jpg" alt="">
-                        </div>
-                        <div class="banner__item__text">
-                            <h2>Clothing</h2>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="banner__item banner__item--middle">
-                        <div class="banner__item__pic">
-                            <img src="img/banner/banner-2.jpg" alt="">
-                        </div>
-                        <div class="banner__item__text">
-                            <h2>Accessories</h2>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="banner__item banner__item--last">
-                        <div class="banner__item__pic">
-                            <img src="img/banner/banner-3.jpg" alt="">
-                        </div>
-                        <div class="banner__item__text">
-                            <h2>Shoes</h2>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
+              <div class="col mx-5">
+                <a class="header_shop" href="#">Best Sellers</a>
+              </div>
             </div>
-        </div>
-    </section>
-    <!-- Banner Section End -->
-
-    <!-- Product Section Begin -->
-    <section class="product spad">
-        <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <ul class="filter__controls">
-                        <li class="active" data-filter="*">Best Sellers</li>
-                        <li data-filter=".new-arrivals">New Arrivals</li>
-                        <li data-filter=".hot-sales">Hot Sales</li>
-                    </ul>
-                </div>
+              <div class="col mx-5">
+                <a class="header_shop"  href="#">New Arrivals</a>
+              </div>
             </div>
-            <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                            <span class="label">New</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$67.24</h5>
-                            <div class="product__color__select">
-                                <label for="pc-1">
-                                    <input type="radio" id="pc-1">
-                                </label>
-                                <label class="active black" for="pc-2">
-                                    <input type="radio" id="pc-2">
-                                </label>
-                                <label class="grey" for="pc-3">
-                                    <input type="radio" id="pc-3">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$67.24</h5>
-                            <div class="product__color__select">
-                                <label for="pc-4">
-                                    <input type="radio" id="pc-4">
-                                </label>
-                                <label class="active black" for="pc-5">
-                                    <input type="radio" id="pc-5">
-                                </label>
-                                <label class="grey" for="pc-6">
-                                    <input type="radio" id="pc-6">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                            <span class="label">Sale</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Multi-pocket Chest Bag</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$43.48</h5>
-                            <div class="product__color__select">
-                                <label for="pc-7">
-                                    <input type="radio" id="pc-7">
-                                </label>
-                                <label class="active black" for="pc-8">
-                                    <input type="radio" id="pc-8">
-                                </label>
-                                <label class="grey" for="pc-9">
-                                    <input type="radio" id="pc-9">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Diagonal Textured Cap</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$60.9</h5>
-                            <div class="product__color__select">
-                                <label for="pc-10">
-                                    <input type="radio" id="pc-10">
-                                </label>
-                                <label class="active black" for="pc-11">
-                                    <input type="radio" id="pc-11">
-                                </label>
-                                <label class="grey" for="pc-12">
-                                    <input type="radio" id="pc-12">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Lether Backpack</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$31.37</h5>
-                            <div class="product__color__select">
-                                <label for="pc-13">
-                                    <input type="radio" id="pc-13">
-                                </label>
-                                <label class="active black" for="pc-14">
-                                    <input type="radio" id="pc-14">
-                                </label>
-                                <label class="grey" for="pc-15">
-                                    <input type="radio" id="pc-15">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
-                            <span class="label">Sale</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Ankle Boots</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$98.49</h5>
-                            <div class="product__color__select">
-                                <label for="pc-16">
-                                    <input type="radio" id="pc-16">
-                                </label>
-                                <label class="active black" for="pc-17">
-                                    <input type="radio" id="pc-17">
-                                </label>
-                                <label class="grey" for="pc-18">
-                                    <input type="radio" id="pc-18">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>T-shirt Contrast Pocket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$49.66</h5>
-                            <div class="product__color__select">
-                                <label for="pc-19">
-                                    <input type="radio" id="pc-19">
-                                </label>
-                                <label class="active black" for="pc-20">
-                                    <input type="radio" id="pc-20">
-                                </label>
-                                <label class="grey" for="pc-21">
-                                    <input type="radio" id="pc-21">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Basic Flowing Scarf</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$26.28</h5>
-                            <div class="product__color__select">
-                                <label for="pc-22">
-                                    <input type="radio" id="pc-22">
-                                </label>
-                                <label class="active black" for="pc-23">
-                                    <input type="radio" id="pc-23">
-                                </label>
-                                <label class="grey" for="pc-24">
-                                    <input type="radio" id="pc-24">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Product Section End -->
-
-    <!-- Categories Section Begin -->
-    <section class="categories spad">
-        <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="categories__text">
-                        <h2>Clothings Hot <br /> <span>Shoe Collection</span> <br /> Accessories</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="categories__hot__deal">
-                        <img src="img/product-sale.png" alt="">
-                        <div class="hot__deal__sticker">
-                            <span>Sale Of</span>
-                            <h5>$29.99</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-1">
-                    <div class="categories__deal__countdown">
-                        <span>Deal Of The Week</span>
-                        <h2>Multi-pocket Chest Bag Black</h2>
-                        <div class="categories__deal__countdown__timer" id="countdown">
-                            <div class="cd-item">
-                                <span>3</span>
-                                <p>Days</p>
-                            </div>
-                            <div class="cd-item">
-                                <span>1</span>
-                                <p>Hours</p>
-                            </div>
-                            <div class="cd-item">
-                                <span>50</span>
-                                <p>Minutes</p>
-                            </div>
-                            <div class="cd-item">
-                                <span>18</span>
-                                <p>Seconds</p>
-                            </div>
-                        </div>
-                        <a href="#" class="primary-btn">Shop now</a>
-                    </div>
-                </div>
+              <div class="col mx-5">
+                <a class="header_shop"  href="#">Hot Sales</a>
+              </div>
             </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
+          </div>
+          <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 m-0">
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G1.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Man Kimono Set</p>
+                  <p class="mb-0 p-0">Rp 249.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G2.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Reebok M1 Shoes</p>
+                  <p class="mb-0 p-0">Rp 699.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G3.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Burnion Denim Jacket</p>
+                  <p class="mb-0 p-0">Rp 349.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G4.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Black Glasses</p>
+                  <p class="mb-0 p-0">Rp 149.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G5.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">School Bag</p>
+                  <p class="mb-0 p-0">Rp 119.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
 
-    <!-- End Content -->
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G6.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Woman Long Pants</p>
+                  <p class="mb-0 p-0">Rp 299.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G7.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Cute Cat T-Shirt Set</p>
+                  <p class="mb-0 p-0">Rp 119.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column border-danger p-2">
+              <img class="product-img" src="./picture/Home/Produk/G8.jpg" />
+              <div class="row p-0 m-0">
+                <div class="col-11 p-0 w product-desc">
+                  <p class="mb-0 p-0">Comfortable Jacket</p>
+                  <p class="mb-0 p-0">Rp 499.999</p>
+                </div>
+                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- shope_content end -->
+      
+      <!-- banner -->
+      <div class="banner">
+          <div class="row banner_1 my-5">
+            <img src="./picture/Home/Group 13.jpg" alt="" srcset="">
+                <div class="col-4 offset-7 text_banner my-5">
+                  <h1 class="banner_text">High Quality Bag</h1>
+                  <a href="shop.html" class="btn btn-shop">SHOP NOW</a>
+              </div>
+          </div>
+      </div> 
+      <!-- end banner -->
+      
+      <!-- Medsos --> 
+      <div class="medsos">
+        <div class="container">
+          <div class="row medsos-pict">
+            <div class="col-sm-12 medsos_tittle d-flex justify-content-center align-items-center ">
+              <h1 class="medsos_text">Our Media Social</h1>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-sm-6 d-flex flex-column p-0">
+                  <img src="./picture/Home/Group 14.jpg">
+              </div>
+              <div class="col-sm-6 d-flex flex-column justify-content-center align-items-left">
+                  <div class="info_contact w-75">
+                      <div class="row">
+                          <div class="d-flex flex-column">
+                              <h1 class="m-0">Instagram</h1>
+                              <div class="d-flex mt-2 my-5">
+                                  <div class="Instagram">
+                                      <img src="./picture/Home/44.png" alt="">
+                                  </div>
+                                  <div class="d-flex align-items-center p-0 m-0">
+                                      <a class="text_medsos text-left m-0" href="#">@dikaosan_store</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="d-flex flex-column">
+                              <h1 class="m-0">Facebook</h1>
+                              <div class="d-flex mt-2 my-5">
+                                  <div class="Facebook mx-2">
+                                      <img src="./picture/Home/45.png" alt="">
+                                  </div>
+                                  <div class="d-flex align-items-center p-0 mx-1">
+                                      <a class="text_medsos text-left m-0" href="#">@dikaosan_store</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div> 
+        </div>     
+      </div>
+    </section>
+    <!-- Content Section End -->
+
     
-    <%@ include file="../includes/_footer.jsp" %>
-    <%@ include file="../includes/_scripts.jsp" %>
-</body>
-
+    <!-- Footer Section Start -->
+    <section class="footer">
+      <div class="footer_element">
+        <div class="container d-flex flex-column align-items-center footer-cont">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <h1>Dikaosan</h1>
+              <p>
+                Our store specializes in the fashion industry, offering a <br />
+                wide range of trendy and stylish clothing and accessories.
+              </p>
+            </div>
+          </div>
+          <div class="row border-top pt-4 mt-4">
+            <div class="col-sm-12">
+              <div class="footer-nav">
+                <a class="nav-link" href="#">My Contact</a>
+                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="#">Payment Methods</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer Section End-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="dikaosan.js"></script>
+  </body>
 </html>
+
