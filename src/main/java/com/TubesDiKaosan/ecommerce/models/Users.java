@@ -1,18 +1,20 @@
 package com.TubesDiKaosan.ecommerce.models;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+
+import javax.management.relation.Role;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -36,9 +38,8 @@ public class Users {
   @Column(name = "password", length = 255)
   private String password;
 
-  @ManyToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "role_id")
-  private Roles role_id;
+  @ManyToOne
+  private Roles role;
 
   @OneToMany(mappedBy = "user")
   private List<Chats> chat;
@@ -54,14 +55,14 @@ public class Users {
   public Users() {
   }
 
-  public Users(String user_id, String first_name, String last_name, String email, String password, Roles role_id,
+  public Users(String user_id, String first_name, String last_name, String email, String password, Roles role,
       List<Chats> chat, LocalDateTime createdAt, LocalDateTime updatedAt) {
     this.user_id = user_id;
     this.first_name = first_name;
     this.last_name = last_name;
     this.email = email;
     this.password = password;
-    this.role_id = role_id;
+    this.role = role;
     this.chat = chat;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
@@ -107,12 +108,12 @@ public class Users {
     this.password = password;
   }
 
-  public Roles getRole_id() {
-    return role_id;
+  public Roles getRole() {
+    return role;
   }
 
-  public void setRole_id(Roles role_id) {
-    this.role_id = role_id;
+  public void setRole(Roles role) {
+    this.role = role;
   }
 
   public List<Chats> getChat() {
@@ -137,6 +138,7 @@ public class Users {
 
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
-  }
-  
+  } 
+
+
 }

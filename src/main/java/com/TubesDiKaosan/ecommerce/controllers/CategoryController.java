@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.payloads.requests.CategoryRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
-import com.TubesDiKaosan.ecommerce.services.CategoryServiceImplement;
+import com.TubesDiKaosan.ecommerce.services.CategoryService;
 
 @SpringBootApplication
 @Controller
 @RequestMapping("/dashboard")
 public class CategoryController{
-    @Autowired
-    private CategoryServiceImplement categoryService;
+    @Autowired(required = true)
+    private CategoryService categoryService;
     
     @RequestMapping("/categories")
     public String categoriesPage(Model model) throws SQLException{
@@ -63,11 +63,11 @@ public class CategoryController{
     @PostMapping("/categories/add/submit")
     public String addCategory_save(@ModelAttribute("/categories/add/submit") CategoryRequest request, Model model) throws SQLException {
         try {
-            categoryService.add(request);
+            categoryService.createData(request);
             return "redirect:/dashboard/categories";
         } catch (Exception e) {
-            model.addAttribute("status", categoryService.add(request).getStatus());
-            System.out.println(categoryService.add(request).getStatus());
+            model.addAttribute("status", categoryService.createData(request).getStatus());
+            System.out.println(categoryService.createData(request).getStatus());
             return "redirect:/dashboard/categories/add";
         }
     }
@@ -77,12 +77,12 @@ public class CategoryController{
     public String editCategoryPage(Model model, @PathVariable("uuid") Integer id) throws SQLException {
         try {
             model.addAttribute("title", "Update category");
-            Category data = (Category) categoryService.getById(id).getData();
+            Category data = (Category) categoryService.findDataByID(id).getData();
             model.addAttribute("data", data);
             return "pages/dashboard/category_edit";
         } catch (Exception e) {
-            model.addAttribute("status", categoryService.getById(id).getStatus());
-            System.out.println(categoryService.getById(id).getStatus());
+            model.addAttribute("status", categoryService.findDataByID(id).getStatus());
+            System.out.println(categoryService.findDataByID(id).getStatus());
             return "redirect:/dashboard/categories";
         }
     }
@@ -90,11 +90,11 @@ public class CategoryController{
     @PostMapping("/categories/update/{uuid}")
     public String editCategory_save(@ModelAttribute("category") CategoryRequest request, @PathVariable("uuid") Integer id, Model model) throws SQLException {
         try {
-            categoryService.updateById(id, request);
+            categoryService.updateDataById(id, request);
             return "redirect:/dashboard/categories";
         } catch (Exception e) {
-            model.addAttribute("status", categoryService.updateById(id, request).getStatus());
-            System.out.println(categoryService.updateById(id, request).getStatus());
+            model.addAttribute("status", categoryService.updateDataById(id, request).getStatus());
+            System.out.println(categoryService.updateDataById(id, request).getStatus());
 
             return "redirect:/dashboard/categories/edit/" + id;
         }
@@ -104,11 +104,11 @@ public class CategoryController{
     @RequestMapping("/category/delete/{uuid}")
     public String deleteCategory(@PathVariable("uuid") Integer id, Model model) throws SQLException{
         try {
-            categoryService.deleteById(id);
-            model.addAttribute("status", categoryService.deleteById(id).getStatus());
+            categoryService.deleteDataByID(id);
+            model.addAttribute("status", categoryService.deleteDataByID(id).getStatus());
             return "redirect:/dashboard/categories";
         } catch (Exception e) {
-            model.addAttribute("status", categoryService.deleteById(id).getStatus());
+            model.addAttribute("status", categoryService.deleteDataByID(id).getStatus());
             return "redirect:/dashboard/categories";
         }
     }
