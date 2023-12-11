@@ -37,129 +37,13 @@
                     </span>
                     <span class="Cart mx-3 mt-2 m3">
                         <div class="cart">
-                            <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                            <a href="./shoping_cart.html"><i class="fa-solid fa-shopping-cart"></i></a>
                         </div>
                     </span>
                     <span class="sign">
                         <div class="sign-in mt-1">
                           <!-- Trigger Modal -->
-                          <a  href="#" data-bs-toggle="modal" data-bs-target="#loginDikaosan">Sign in</a> 
-
-                          <!-- Modal Login -->
-                          <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content login">
-                                <div class="modal-header title">
-                                  <h1 class="modal-title fs-5" id="loginDikaosan">Welcome to Dikaosan!</h1>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                  <div class="row email">
-                                    <a>Email address</a>
-                                    <span class="input-Email">
-                                      <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
-                                    </span>
-                                  </div>
-
-                                  <div class="row password">
-                                    <a>Password</a>
-                                    <span class="input-password">
-                                      <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
-                                    </span>
-                                  </div>
-
-                                  <div class="row forget_pass text-end">
-                                    <a1 href="#" >Forgot password?</a1>
-                                  </div>  
-
-                                  <div class="row justify-content-center text-center">
-                                    <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal">Login</button>
-                                    <a class="my-1">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- Modal Sign-Up -->
-                          <div class="modal sign_up" id="Sign-UpDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content Sign-Up">
-                                <div class="modal-header">
-                                  <h1 class="modal-title fs-5" id="Sign-UpDikaosan">Welcome to Dikaosan!</h1>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                  <div class="row name">
-                                    <a>Name</a>
-                                    <span class="input-name">
-                                      <input class="form-control name" type="text" name="name" id="name" placeholder="Your name">
-                                    </span>
-                                  </div>
-                                  
-                                  <div class="row phone_number">
-                                    <a>Phone Number</a>
-                                    <span class="input-phone_number">
-                                      <input class="form-control phone_number" type="text" name="phone_number" id="phone_number" placeholder="Your phone number">
-                                    </span>
-                                  </div>
-
-                                  <div class="row email">
-                                    <a>Email address</a>
-                                    <span class="input-Email">
-                                      <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
-                                    </span>
-                                  </div>
-
-                                  <div class="row password">
-                                    <a>Password</a>
-                                    <span class="input-password">
-                                      <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
-                                    </span>
-                                    <div id="passwordHelpBlock" class="form-text">
-                                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                                    </div>
-                                  </div>
-                                  
-                                  <div class="row justify-content-center text-center">
-                                    <button class="btn btn-primary confirm_btn w-50" data-bs-target="#Successfully" data-bs-toggle="modal">Sign Up</button>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- Modal Successfully Sign-Up -->
-                          <div class="modal success" id="Successfully" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content Sign-Up">
-                                <div class="modal-header justify-content-center">
-                                  <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
-                                </div>
-                                <div class="modal-body">
-
-                                  <div class="row succes text-center">
-                                    <a>Your Account Has Been Successfully<br> 
-                                      Registered!
-                                    </a>
-                                  </div>
-                                  
-                                  <div class="row justify-content-center text-center my-2">
-                                    <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Shop Now</button>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
+                          <button  type="button" data-bs-toggle="modal" data-bs-target="#loginDikaosan">Sign in</button> 
                         </div>
                     </span>
                 </span>
@@ -168,6 +52,193 @@
         </nav>
     </section>
     <!-- Navbar Section End -->
+
+    <!-- Modal Login Start -->
+      <section>
+        <!-- Modal Login -->
+        <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content login">
+              <div class="modal-header title">
+                <h1 class="modal-title fs-5" id="loginDikaosan">Welcome to Dikaosan!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+  
+                <div class="row email">
+                  <a>Email address</a>
+                  <span class="input-Email">
+                    <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
+                  </span>
+                </div>
+  
+                <div class="row password">
+                  <a>Password</a>
+                  <span class="input-password">
+                    <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
+                  </span>
+                </div>
+  
+                <div class="row forget_pass text-end">
+                  <a1 href="#" data-bs-toggle="modal" data-bs-target="#reset-PasswordDikaosan" >Forgot password?</a1>
+                </div>  
+  
+                <div class="row justify-content-center sign_up text-center">
+                  <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal">Login</button>
+                  <a class="my-1 " style="text-decoration: none;">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Modal Reset Password -->
+        <div class="modal reset_password" id="reset-PasswordDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content login">
+              <div class="modal-header title">
+                <h1 class="modal-title fs-5" id="loginDikaosan">Change Password</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+  
+                <div class="row oldPass">
+                  <a>Old Password</a>
+                  <span class="input-oldPass">
+                    <input class="form-control oldPass" type="text" name="oldPass" id="oldPass" placeholder="">
+                  </span>
+                </div>
+  
+                <div class="row newPass">
+                  <a>New Password</a>
+                  <span class="input-newPass">
+                    <input class="form-control newPass" type="text" name="newPass" id="newPass" placeholder="">
+                  </span>
+                </div>
+  
+                <div class="row confirmPass">
+                  <a>Confirm New Password</a>
+                  <span class="input-confirmPass">
+                    <input class="form-control confirmPass" type="text" name="confirmPass" id="confirmPass" placeholder="">
+                  </span>
+                </div>
+  
+                <div class="row justify-content-center text-center">
+                  <button class="btn btn-primary confirm_btn w-50" data-bs-target="#SuccessfullyResetPass" data-bs-toggle="modal">Set Password</button>
+                </div>
+  
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Modal Successfully Reset Password -->
+        <div class="modal successResetPass" id="SuccessfullyResetPass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content Sign-Up">
+              <div class="modal-header justify-content-center">
+                <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
+              </div>
+              <div class="modal-body">
+  
+                <div class="row succes text-center">
+                  <a>Your Account Has Been Successfully<br> 
+                    Reset Password!
+                  </a>
+                </div>
+                
+                <div class="row justify-content-center text-center my-2">
+                  <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Oke</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Modal Sign-Up -->
+        <div class="modal sign_up" id="Sign-UpDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content Sign-Up">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="Sign-UpDikaosan">Welcome to Dikaosan!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+  
+                <div class="row name">
+                  <a>Name</a>
+                  <span class="input-name">
+                    <input class="form-control name" type="text" name="name" id="name" placeholder="Your name">
+                  </span>
+                </div>
+                
+                <div class="row phone_number">
+                  <a>Phone Number</a>
+                  <span class="input-phone_number">
+                    <input class="form-control phone_number" type="text" name="phone_number" id="phone_number" placeholder="Your phone number">
+                  </span>
+                </div>
+  
+                <div class="row email">
+                  <a>Email address</a>
+                  <span class="input-Email">
+                    <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
+                  </span>
+                </div>
+  
+                <div class="row password">
+                  <a>Password</a>
+                  <span class="input-password">
+                    <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
+                  </span>
+                  <div id="passwordHelpBlock" class="form-text">
+                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                  </div>
+                </div>
+                
+                <div class="row justify-content-center text-center">
+                  <button type="button" class = "btn btn-primary confirm_btn w-50" data-bs-target="#Successfully_signUP" data-bs-toggle="modal">Sign Up</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Modal Successfully Sign-Up -->
+        <div class="modal success_sign-up" id="Successfully_signUP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content Sign-Up">
+              <div class="modal-header justify-content-center">
+                <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
+              </div>
+              <div class="modal-body">
+  
+                <div class="row succes text-center">
+                  <a>Your Account Has Been Successfully<br> 
+                    Registered!
+                  </a>
+                </div>
+                
+                <div class="row justify-content-center text-center my-2">
+                  <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Shop Now</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Modal Login End -->
+                          
 
     <!-- Content Section Start -->
     <section class="homepage_content">
@@ -251,27 +322,27 @@
                 <a class="header_shop"  href="#">New Arrivals</a>
               </div>
             </div>
-            <div class="row">
-              <div class="col mx-5">
-                <a class="header_shop"  href="#">Hot Sales</a>
-              </div>
-            </div>
+            0
           </div>
           <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 m-0">
-            <div class="col d-flex flex-column border-danger p-2">
+            <div class="col d-flex flex-column p-2">
+              <a href="./description.html" class="col d-flex flex-column p-0" style="text-decoration: none;">
               <img class="product-img" src="./picture/Home/Produk/G1.jpg" />
-              <div class="row p-0 m-0">
-                <div class="col-11 p-0 w product-desc">
-                  <p class="mb-0 p-0">Man Kimono Set</p>
-                  <p class="mb-0 p-0">Rp 249.999</p>
-                </div>
-                <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                  </svg>
+                <div class="row p-0 m-0">
+                  <div class="col-11 p-0 w product-desc">
+                    <p class="mb-0 p-0">Man Kimono Set</p>
+                    <p class="mb-0 p-0">Rp 249.999</p>
+                  </div>
+              </a>
+                <div class="col-1 product-cart d-flex justify-content-center p-0">
+                    <a href="./shoping_cart.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                    </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
   
             <div class="col d-flex flex-column border-danger p-2">
               <img class="product-img" src="./picture/Home/Produk/G2.jpg" />

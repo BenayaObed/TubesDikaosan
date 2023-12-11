@@ -63,11 +63,35 @@
 .sign-in a{
   text-decoration: none;
   color: #767F43;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+.sign-in button{
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+.username button{
+  background-color: transparent;
+  color: #111111;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
 }
 
 .activity_nav a{
   display: inline-block;
   margin-left: 3rem;
+}
+
+.forget_pass{
+  cursor:pointer;
 }
 
 .confirm_btn{
@@ -81,6 +105,10 @@
   background-color:#000000;
   border-color: #000000;
   font-size: 16px;
+}
+
+.sign_up a{
+  color: #000000;
 }
 
 .navbar h1{
@@ -359,7 +387,9 @@
   transition: all 250ms;
 }
 
-
+.product-desc p{
+  color:#111111;
+}
 
 .product a{
   color: #111;
@@ -388,6 +418,16 @@
 .header_shop{
   text-decoration: none;
 }
+
+.category{
+  background-color: #7e8d81;
+}
+
+.filter a{
+  color: #111111;
+}
+
+
 /* Shop-Content End */
 
 

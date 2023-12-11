@@ -163,4 +163,7 @@ public class ProductController {
         Response data = productService.search(product, category, price, color, size);
         return ResponseEntity.status(data.getStatus()).body(data);
     }
+
+    // View Product
+    
 }
