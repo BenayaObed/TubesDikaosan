@@ -8,12 +8,6 @@ import org.springframework.ui.Model;
 @SpringBootApplication
 @Controller
 public class HomeController{
-
-    @RequestMapping("/login")
-    public String loginPage(Model model) {
-        model.addAttribute("title", "Login");
-        return "pages/login";
-    }
     @RequestMapping({"/", "/home"})
     public String homePage(Model model) {
         model.addAttribute("title", "Home");

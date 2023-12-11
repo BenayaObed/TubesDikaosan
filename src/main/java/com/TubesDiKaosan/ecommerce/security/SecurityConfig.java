@@ -57,15 +57,15 @@ public class SecurityConfig extends WebMvcAutoConfiguration {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 return http
-                                // Ignore CSRF checks for all requests
                                 .csrf().disable()
                                 .authorizeHttpRequests(requests -> requests
-                                                .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/")).permitAll()
-                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/login")).permitAll()
-                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/dashboard/**")).hasAuthority("ADMIN")
+                                                .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET, "/")).permitAll()
+                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/api/login")).permitAll()
+                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/api/register")).permitAll()
+                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/dashboard/**")).hasRole("ADMIN")
                                                 .anyRequest().permitAll())
                                 .formLogin(form -> form
-                                                .loginPage("/login")
+                                                .loginPage("/api/login")
                                                 .defaultSuccessUrl("/")
                                                 .successHandler((request, response, authentication) -> response
                                                                 .sendRedirect("/")))

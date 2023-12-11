@@ -3,17 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/pages/landing/index.jsp
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>${title}</title>
-    <%@ include file="../../includes/_header.jsp" %>
-=======
     <title>Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
   
->>>>>>> 0a03a9677daa87a2d336b7c29a554c9aa52e7fc4:src/main/webapp/WEB-INF/views/pages/index.jsp
 </head>
   <body>
     <!-- Navbar Section Start -->
@@ -51,28 +45,6 @@
                           <!-- Trigger Modal -->
                           <a  href="#" data-bs-toggle="modal" data-bs-target="#loginDikaosan">Sign in</a> 
 
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/pages/landing/index.jsp
-<body>
-    <%@ include file="../../includes/_navbar.jsp" %>
-
-    <!-- Content -->
-
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <h2>Elevate Your Style With Trendy Clothes From Our Store</h2>
-                                <a href="#" class="primary-btn">Order Now</a>
-                                <div class="hero__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-=======
                           <!-- Modal Login -->
                           <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -80,7 +52,6 @@
                                 <div class="modal-header title">
                                   <h1 class="modal-title fs-5" id="loginDikaosan">Welcome to Dikaosan!</h1>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
->>>>>>> 0a03a9677daa87a2d336b7c29a554c9aa52e7fc4:src/main/webapp/WEB-INF/views/pages/index.jsp
                                 </div>
                                 <div class="modal-body">
 
@@ -471,11 +442,6 @@
     <!-- Content Section End -->
 
     
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/pages/landing/index.jsp
-    <%@ include file="../../includes/_footer.jsp" %>
-    <%@ include file="../../includes/_scripts.jsp" %>
-</body>
-=======
     <!-- Footer Section Start -->
     <section class="footer">
       <div class="footer_element">
@@ -506,5 +472,4 @@
     <script src="dikaosan.js"></script>
   </body>
 </html>
->>>>>>> 0a03a9677daa87a2d336b7c29a554c9aa52e7fc4:src/main/webapp/WEB-INF/views/pages/index.jsp
 

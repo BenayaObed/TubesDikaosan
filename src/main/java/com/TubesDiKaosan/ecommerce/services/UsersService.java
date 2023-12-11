@@ -155,18 +155,12 @@ public UserDetails loadUserByUsername(String email) throws UsernameNotFoundExcep
     if (user == null) {
         throw new UsernameNotFoundException("Invalid username or password.");
     }
-
-    // Assuming Roles class has a method getRole_name() to get the role name
     String roleName = user.getRole().getRole_name();
-
-    // Use SimpleGrantedAuthority to create a GrantedAuthority from the role name
     GrantedAuthority authority = new SimpleGrantedAuthority(roleName);
 
-    // Use a Set to store the authorities (roles) of the user
     Set<GrantedAuthority> authorities = new HashSet<>();
     authorities.add(authority);
 
-    // Create UserDetails using the user's email, password, and authorities
     return new User(user.getEmail(), user.getPassword(), authorities);
 }
 

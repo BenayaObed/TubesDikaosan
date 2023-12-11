@@ -87,7 +87,6 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
         if (productRepository.findById(id).isPresent()) {
             Product product = productRepository.findById(id).get();
 
-            // Update general product information
             product.setName_product(request.getName_product());
             product.setPrice(request.getPrice());
             product.setDescription(request.getDescription());
@@ -100,9 +99,13 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
             }
             product.setCategory((Category) category.getData());
 
-            // Handle Images
+            // print product.getImages()
             // Create separate lists for existing and new images
-            List<Images> existingImages = product.getImages();
+            List<Images> existingImages = (List<Images>)imagesRepository.findImagesByProductId(id);
+            System.out.println("Images:");
+            for (Images img : existingImages) {
+                System.out.println("> " + img.getImage_id());
+            }
             List<Images> newImages = new ArrayList<>();
 
             for (ImagesProductRequest imagesRequest : request.getImages()) {
@@ -114,7 +117,8 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
                     Optional<Images> existingImage = existingImages.stream()
                             .filter(img -> img.getImage_id() == imageId)
                             .findFirst();
-
+                    
+                    
                     // If image found, update its details
                     if (existingImage.isPresent()) {
                         existingImage.get().setImage(imagesRequest.getImage());
@@ -126,14 +130,12 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
                     newImages.add(image);
                 }
             }
-
-            // Update Images in product
+            System.out.println(existingImages.size() + " " + newImages.size());
             product.setImages(existingImages);
             product.getImages().addAll(newImages);
 
-            // Handle Stock
             // Create separate lists for existing and new stock
-            List<Stock> existingStock = product.getStock();
+            List<Stock> existingStock = stockRepository.findStockByProductId(id);
             List<Stock> newStock = new ArrayList<>();
 
             for (StockProductRequest stockRequest : request.getStock()) {

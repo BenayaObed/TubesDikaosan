@@ -14,7 +14,6 @@ public class UserRequest {
     this.last_name = last_name;
     this.email = email;
     this.password = password;
-    this.role = role;
   }
 
   public String getFirst_name() {
