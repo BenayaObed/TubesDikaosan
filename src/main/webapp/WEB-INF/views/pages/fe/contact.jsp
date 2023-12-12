@@ -1,14 +1,53 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
+
   <head>
-    <%@ include file = "../../includes/FE_includes/_header.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
+  
   <body>
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
+    <section class="header">
+        <div class="heading">
+            <div class="container-fluid">
+                <p class="iklan mx-5 mt-2 mb-2">
+                  &nbsp;
+                </p>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid mx-5">
+              <a1 class="navbar-brand" href="homepage.html">DIKAOSAN</a1>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto">
+                  <a class="nav-link" href="homepage.html">Home</a>
+                  <a class="nav-link" aria-current="page" href="shop.html">Shop</a>
+                  <a class="nav-link active" href="contact.html">Contact</a>
+                </div>
+                <span class="nav-button-right">
+                    <span class="input-search">
+                        <input class="form-control search" type="text" name="search" id="search" placeholder="Search">
+                    </span>
+                    <span class="Cart mx-3 mt-2 m3">
+                        <div class="cart">
+                            <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                        </div>
+                    </span>
+                    <span class="Sign">
+                        <div class="sign-in mt-1">
+                            <a href="#">Sign in</a> 
+                        </div>
+                    </span>
+                </span>
+              </div>
+            </div>
+          </nav>
+        </section>
     <!-- Navbar Section End -->
-
           <!-- Activity Information Start-->
           <div class="activity_page">
             <div class="container activity-cont offset mx-1">
@@ -30,8 +69,7 @@
             </div>
           </div>
           <!-- Activity Information End-->
-    </section>
-    <!-- Navbar Section End -->
+
 
     <!-- Content Section Start -->
     <section class="contact_section ">
@@ -114,12 +152,32 @@
     <!-- Content Section End -->
 
 
-      <!-- Footer Section Start -->
-      <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
+    <!-- Footer Section Start -->
+    <section class="footer">
+        <div class="footer_element">
+          <div class="container d-flex flex-column align-items-center footer-cont">
+            <div class="row">
+              <div class="col-sm-12 text-center">
+                <h1>Dikaosan</h1>
+                <p>
+                  Our store specializes in the fashion industry, offering a <br />
+                  wide range of trendy and stylish clothing and accessories.
+                </p>
+              </div>
+            </div>
+            <div class="row border-top pt-4 mt-4">
+              <div class="col-sm-12">
+                <div class="footer-nav">
+                  <a class="nav-link" href="#">My Contact</a>
+                  <a class="nav-link" href="#">Contact Us</a>
+                  <a class="nav-link" href="#">Payment Methods</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Footer Section End-->
-      
-      <!-- script Section Start -->
-      <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
-      <!-- script Section End -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

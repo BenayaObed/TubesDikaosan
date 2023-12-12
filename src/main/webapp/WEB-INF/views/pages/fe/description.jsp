@@ -1,42 +1,44 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
+
   <head>
     <%@ include file = "../../includes/FE_includes/_header.jsp" %>
   </head>
+
   <body>
     <!-- Navbar Section Start -->
     <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
-          <!-- Activity Information Start-->
-          <div class="activity_page">
-            <div class="container activity-cont offset mx-1">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="activity-nav offset-mx-1">
-                    <h1>Man Kimono Set</h1>
-                    <a class="nav-link" href="homepage.html" style="word-spacing: 2px;">Home 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg> 
-                        <a class="nav-link" href="homepage.html" style="word-spacing: 2px;">Shop
-                          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                        </a>
-                        <a href="./description.html" style="text-decoration: none;">
-                          <span>Man Kimono Set</span>
-                        </a>
-                      </a>
-                  </div>
-                </div>
+    <!-- Activity Information Start-->
+    <section class="activity">
+      <div class="activity_page">
+        <div class="container activity-cont offset mx-1">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="activity-nav offset-mx-1">
+                <h1>Man Kimono Set</h1>
+                <a class="nav-link" href="homepage.html" style="word-spacing: 2px;">Home 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg> 
+                    <a class="nav-link" href="homepage.html" style="word-spacing: 2px;">Shop
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                    </a>
+                    <a href="./description.html" style="text-decoration: none;">
+                      <span>Man Kimono Set</span>
+                    </a>
+                  </a>
               </div>
             </div>
           </div>
-          <!-- Activity Information End-->
+        </div>
+      </div>
     </section>
-    <!-- Navbar Section End -->
+    <!-- Activity Information End-->
 
     <!-- Description Section Start -->
     <section class="description_content">
@@ -379,6 +381,6 @@
     
     <!-- script Section Start -->
     <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
-    <!-- script Section End --
-    </body>
-  </html>
+    <!-- script Section End -->
+  </body>
+</html>
