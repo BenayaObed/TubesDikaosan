@@ -7,12 +7,13 @@ import org.springframework.ui.Model;
 
 @SpringBootApplication
 @Controller
-public class HomeController{
-    @RequestMapping({"/", "/home"})
+public class HomeController {
+    @RequestMapping({ "/", "/home" })
     public String homePage(Model model) {
         model.addAttribute("title", "Home");
-        return "pages/index";
+        return "pages/fe/homepage";
     }
+
     @RequestMapping("/shop")
     public String shopPage(Model model) {
         model.addAttribute("title", "Shop");

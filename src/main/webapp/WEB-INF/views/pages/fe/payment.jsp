@@ -1,56 +1,14 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body>
+  <head>
+    <%@ include file = "../../includes/FE_includes/_header.jsp" %>
+  </head>
+  <body>
     <!-- Navbar Section Start -->
-    <section class="header">
-    <div class="heading">
-        <div class="container-fluid">
-            <p class="iklan mx-5 mt-2 mb-2">
-                &nbsp;
-            </p>
-        </div>
-    </div>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid mx-5">
-            <a1 class="navbar-brand" href="homepage.html">DIKAOSAN</a1>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav mx-auto">
-                <a class="nav-link" href="homepage.html">Home</a>
-                <a class="nav-link active" aria-current="page" href="shop.html">Shop</a>
-                <a class="nav-link" href="contact.html">Contact</a>
-            </div>
-            <span class="nav-button-right">
-                <span class="input-search">
-                    <input class="form-control search" type="text" name="search" id="search" placeholder="Search">
-                </span>
-                <span class="Cart mx-3 mt-2 m3">
-                    <div class="cart">
-                        <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
-                    </div>
-                </span>
-                <span class="Sign">
-                    <div class="sign-in mt-1">
-                        <a href="#">Sign in</a> 
-                    </div>
-                </span>
-            </span>
-            </div>
-        </div>
-        </nav>
-    </section>
+    <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
+
         <!-- Activity Information Start-->
         <div class="activity_page">
         <div class="container activity-cont offset mx-1">
@@ -88,7 +46,8 @@
         </div>
         </div>
         <!-- Activity Information End-->
-
+    </section>
+    <!-- Navbar Section End -->
 
     <!-- Payment Section Start -->
     <section class="payment">
@@ -267,32 +226,12 @@
     <!-- Payment Section End -->
 
 
-<!-- Footer Section Start -->
-    <section class="footer">
-    <div class="footer_element">
-        <div class="container d-flex flex-column align-items-center footer-cont">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-            <h1>Dikaosan</h1>
-            <p>
-                Our store specializes in the fashion industry, offering a <br />
-                wide range of trendy and stylish clothing and accessories.
-            </p>
-            </div>
-        </div>
-        <div class="row border-top pt-4 mt-4">
-            <div class="col-sm-12">
-            <div class="footer-nav">
-                <a class="nav-link" href="#">My Contact</a>
-                <a class="nav-link" href="#">Contact Us</a>
-                <a class="nav-link" href="#">Payment Methods</a>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </section>
+    <!-- Footer Section Start -->
+    <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
     <!-- Footer Section End-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- script Section Start -->
+    <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
+    <!-- script Section End -->
 </body>
 </html>

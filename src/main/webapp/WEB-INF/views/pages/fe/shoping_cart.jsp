@@ -1,94 +1,47 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Checkout</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/style.css">
-  
-</head>
+    <%@ include file = "../../includes/FE_includes/_header.jsp" %>
+  </head>
   <body>
     <!-- Navbar Section Start -->
-    <section class="header">
-        <div class="heading">
-          <div class="container-fluid">
-              <p class="iklan mx-5 mt-2 mb-2">
-                &nbsp;
-              </p>
-          </div>
-        </div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid mx-5">
-            <a1 class="navbar-brand" href="#">DIKAOSAN</a1>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav mx-auto">
-                <a class="nav-link" href="#">Home</a>
-                <a class="nav-link active" aria-current="page" href="#">Shop</a>
-                <a class="nav-link" href="#">Contact</a>
-              </div>
-              <span class="nav-button-right">
-                  <span class="input-search">
-                      <input class="form-control search" type="text" name="search" id="search" placeholder="Search">
-                  </span>
-                  <span class="Cart mx-3 mt-2 m3">
-                      <div class="cart">
-                          <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
-                      </div>
-                  </span>
-                  <span class="Sign">
-                      <div class="sign-in mt-1">
-                          <a href="#">Sign in</a> 
-                      </div>
-                  </span>
-              </span>
-            </div>
-          </div>
-        </nav>
-      </section>
-      <!-- Navbar Section End -->
+    <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
+    <!-- Navbar Section End -->
 
-          <!-- Activity Information Start-->
-          <div class="activity_page ">
-            <div class="container activity-cont offset mx-1">
-              <div class="row">
-                <div class="col-sm-12 ">
-                  <div class="activity-nav offset-mx-1 ">
-                    <h1>Checkout</h1>
-                    <a class="nav-link" href="./homepage.html" >Home 
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                      </svg>  
-                      <a class="nav-link" href="./shop.html">Shop 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                        <a class="nav-link" href="shoping_cart.html">Shoping Cart 
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                      <!-- <i class="bi bi-chevron-right"></i> -->
-                      <span>Checkout</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+    <!-- Activity Information Start-->
+    <div class="activity_page">
+      <div class="container activity-cont offset mx-1">
+        <div class="row">
+          <div class="col-sm-12 ">
+            <div class="activity-nav offset-mx-1 ">
+              <h1>Shoping Cart </h1>
+              <a class="nav-link" href="#" >Home 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>  
+                <a class="nav-link" href="./shop.html">Shop 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                <a  href="./shoping_cart.html" style="text-decoration: none;">
+                  <span>Shoping Cart </span>
+                </a>
+              </a>
             </div>
           </div>
         </div>
-          <!-- Activity Information End-->
+      </div>
+    </div>
+    <!-- Activity Information End-->
+    
 
-
-    <!-- Checkout Section Start -->
+    <!-- Shoping_cart Section Start -->
     <section class="content">
       <div class="row">
         <div class="col-12 d-flex border-primary">
-          <div class="col-sm-6 ">
+          <div class="col-sm-6  ">
 
             <div class="col-sm-12 ">
               <div class="fontSize">
@@ -382,106 +335,89 @@
             </div>
           </div>
 
-          <div class="col-sm-6 mx-5 ">
+          <div class="col-sm-6  ">
             <div class="fontSize">
-            <div class="your_order col-sm-6 d-flex flex-column activity-right offset mx-5 w-60 ">
-              <p style="font-weight: bold; font-size: large;">YOUR ORDER</p>
+            <div class="your_order col-sm-10 d-flex flex-column activity-right offset mx-5 w-60 ">
+              <p style="font-weight: bold; font-size: large;">BILLING DETAILS</p>
+
               <div class="row">
-                <div class="col">
-                  <div class="row ">
-                    <div class="col-sm-6 ">
-                      <p class="m-0 p-0" style="font-weight: bold; font-size: large;">Product</p>
-                    </div>
-                    <div class="col-sm-6 d-flex flex-column  align-items-end">
-                      <p class="m-0 p-0" style="font-weight: bold; font-size: large;">Total</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6 d-flex flex-column my-1 ">
-                      <p>Man Kimono Set</p>
-                      <p>Reebok M1 Shoes</p>
-                      <p>Black Glasses</p>
-                      <p>School Bag</p>
-                    </div>
-                    <div class="col-sm-6 d-flex flex-column  align-items-end my-1  ">
-                      <p>Rp 299.999</p>
-                      <p>Rp 699.999</p>
-                      <p>Rp 149.999</p>
-                      <p>Rp 119.999</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="">
                 <div class="col d-flex flex-column my-lg-3 ">
                   <div class="row">
-                    <div class="col-sm-6 d-flex flex-column">
-                      <p class="m-0 p-0" style="font-weight: bold; font-size: large;">Total</p>
+                    <div class="col-sm-6 d-flex flex-column ">
+                      <p>First name <span style="color: red;">*</span></p>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                    </span>
                     </div>
-                    <div class="col-sm-6 d-flex flex-column  align-items-end">
-                      <p class="m-0 p-0" style="color: red; font-weight: bold; font-size: large;">Rp 1.219.999</p>
+                    <div class="col-sm-6 d-flex flex-column">
+                      <p>Last Name <span style="color: red;">*</span></p>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                      </span>
                     </div>
                   </div>
+                    <div class="col-sm-12 d-flex flex-column  my-3">
+                      <p>Address <span style="color: red;">*</span></p>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="Street Address">
+                      </span>
+                      <div class="my-2"></div>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="Apartment, suite, unite ect (optinal)">
+                      </span>
+                    </div>
+                    </div>
+                  </div>
+                    <div class="col-sm-12 d-flex flex-column  my-3 ">
+                      <p>Town/City <span style="color: red;">*</span></p>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                      </span>
+
+                    </div>
+                    <div class="col-sm-12 d-flex flex-column  my-3 ">
+                      <p>Province <span style="color: red;">*</span></p>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                      </span>
+                      
+                    </div>
+                    <div class="col-sm-12 d-flex flex-column  my-3 ">
+                      <p>Post Code/ZIP <span style="color: red;">*</span></p>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                      </span>
+                      
+                    </div>
+                    <div class="col-sm-6 d-flex flex-column  my-3 ">
+                      <p>Phone <span style="color: red;">*</span></p>
+                      <span class="input-search">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                      </span>
+                      
+                    </div>
+                    <div class="col-sm-12 d-flex flex-column  my-3 ">
+                      <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page</p>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck">
+                    <label class="form-check-label" for="exampleCheck">Note about your order, e.g, special noe for delivery</label>
+                  </div>
+
+                  <div class="col-sm-12 d-flex flex-column  my-3 ">
+                    <p>Orde Notes <span style="color: red;">*</span></p>
+                    <span class="input-search">
+                      <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                    </span>
+                    
+                  </div>
+                  <div class="button_confirm col d-flex flex-column align-items-center my-3 ">
+                    <a href="./checkout.html" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirm & go to Payment</a>
+
+                    </div>
                 </div>
               </div>
-
-              <div class="checkbox ">
-                <form class="was-validated">
-                  
-                  <!-- Bank -->
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
-                    <label class="form-check-label" for="validationFormCheck1">Transfer Bank</label>
-                    <div class="valid-feedback"> 
                     
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/TubesDikaosan/Front End/picture/Home/38.png">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Central Asia
-                        </label>
-                      </div>
-        
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Negara Indonesia
-                        </label>
-                      </div>
-        
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/TubesDikaosan/Front End/picture/Home/39.png">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Rakyat Indonesia
-                        </label>
-                      </div>
-        
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/TubesDikaosan/Front End/picture/Home/41.png">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Mandiri
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- COD -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                      Cash On Delivery
-                    </label>
-                  </div>
-                
-                </form>
-              </div>
-            
-                    <div class="button_confirm col d-flex flex-column align-items-center my-3 ">
-                      <a href="./payment.html" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirmation Payment</a>
-
-                      </div>
 
                     </div>
                   </div>
@@ -489,34 +425,14 @@
             </div>
             </div>
     </section>
-    <!-- Checkout Section End -->
+    <!-- Shoping_cart Section End -->
 
     <!-- Footer Section Start -->
-    <section class="footer">
-      <div class="footer_element">
-        <div class="container d-flex flex-column align-items-center footer-cont">
-          <div class="row">
-            <div class="col-sm-12 text-center">
-              <h1>Dikaosan</h1>
-              <p>
-                Our store specializes in the fashion industry, offering a <br />
-                wide range of trendy and stylish clothing and accessories.
-              </p>
-            </div>
-          </div>
-          <div class="row border-top pt-4 mt-4">
-            <div class="col-sm-12">
-              <div class="footer-nav">
-                <a class="nav-link" href="#">My Contact</a>
-                <a class="nav-link" href="#">Contact Us</a>
-                <a class="nav-link" href="#">Payment Methods</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
     <!-- Footer Section End-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- script Section Start -->
+    <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
+    <!-- script Section End -->
   </body>
 </html>
