@@ -126,7 +126,7 @@ pageEncoding="UTF-8"%>
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <h5>$67.24</h5>
+                                    <h5>$67.24</h5> 
                                     <div class="product__color__select">
                                         <label for="pc-4">
                                             <input type="radio" id="pc-4">
