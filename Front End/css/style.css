@@ -228,7 +228,7 @@
 }
 
 
-/* homepage_shope */
+/* homepage_shop */
 .product_shop .homepage_shop{
   justify-content: center;
 }
@@ -349,6 +349,47 @@
   border-radius: 0%;
 }
 
+/* Filter Section */
+.container {
+  overflow: hidden;
+}
+
+.filterDiv {
+  float: left;
+  /* background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px; */
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.product_cont .btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
 
 /* product */
 .shop_content{
@@ -425,6 +466,15 @@
 
 .filter a{
   color: #111111;
+}
+
+.filter_button button{
+  border:none;
+  background-color: transparent;
+  color: #111;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
 }
 
 
@@ -1256,3 +1306,4 @@ line-height: 28.8px;
   width: 49px;
   height: 18px;
 }
+
