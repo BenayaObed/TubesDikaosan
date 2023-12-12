@@ -1,14 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
-
   <head>
-    <%@ include file = "../../includes/FE_includes/_header.jsp" %>
+    <title>Description</title>
+    <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
 
   <body>
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Activity Information Start-->
@@ -119,7 +119,7 @@
           </div>
 
           <div class="col-4 d-flex justify-content-center product_pic align-items-center">
-            <img src="./picture/Home/G1.jpg" alt="">
+            <img src="./images/G1.jpg" alt="">
           </div>
 
           <div class="col-5">
@@ -137,19 +137,19 @@
             <div class="row">
               <div class="d-flex justify-content-left align-items-center">
                 <div class="product_img">
-                  <img src="./picture/Home/Deskripsi Produk/G1.jpg" alt="">
+                  <img src="./images/Deskripsi Produk/G1.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="./picture/Home/Deskripsi Produk/G2.jpg" alt="">
+                  <img src="./images/Deskripsi Produk/G2.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="./picture/Home/Deskripsi Produk/G3.jpg" alt="">
+                  <img src="./images/Deskripsi Produk/G3.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="./picture/Home/Deskripsi Produk/G4.jpg" alt="">
+                  <img src="./images/Deskripsi Produk/G4.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="./picture/Home/Deskripsi Produk/G5.jpg" alt="">
+                  <img src="./images/Deskripsi Produk/G5.jpg" alt="">
                 </div>
               </div>
 
@@ -228,7 +228,7 @@
               <div class="d-flex message">
                 <div class="message_box">
                   <div class="col-12 d-flex align-items-center justify-content-center my-2">
-                    <img class="my-1" src="./picture/Home/Deskripsi Produk/msg.png">
+                    <img class="my-1" src="./images/Deskripsi Produk/msg.png">
                     <a>Message Now!</a>
                   </div>
                 </div>
@@ -249,7 +249,7 @@
           <div class="row">
             <div class="row desc_shop row-cols-md-3 row-cols-lg-4 m-0">
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G2.jpg" />
+                <img class="product-img" src="./images/Produk/G2.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">Reebok M1 Shoes</p>
@@ -264,7 +264,7 @@
               </div>
     
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G3.jpg" />
+                <img class="product-img" src="./images/Produk/G3.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">Burnion Denim Jacket</p>
@@ -279,7 +279,7 @@
               </div>
     
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G4.jpg" />
+                <img class="product-img" src="./images/Produk/G4.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">Black Glasses</p>
@@ -294,7 +294,7 @@
               </div>
     
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G5.jpg" />
+                <img class="product-img" src="./images/Produk/G5.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">School Bag</p>
@@ -309,7 +309,7 @@
               </div>
   
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G6.jpg" />
+                <img class="product-img" src="./images/Produk/G6.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">Woman Long Pants</p>
@@ -324,7 +324,7 @@
               </div>
   
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G7.jpg" />
+                <img class="product-img" src="./images/Produk/G7.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">Cute Cat T-Shirt Set</p>
@@ -339,7 +339,7 @@
               </div>
   
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G8.jpg" />
+                <img class="product-img" src="./images/Produk/G8.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">Comfortable Jacket</p>
@@ -354,7 +354,7 @@
               </div>
   
               <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="./picture/Home/Produk/G9.jpg" />
+                <img class="product-img" src="./images/Produk/G9.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
                     <p class="mb-0 p-0">Nike Vision Set Woman</p>
@@ -376,11 +376,11 @@
     <!-- shop Section End -->
 
     <!-- Footer Section Start -->
-    <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
     <!-- Footer Section End-->
     
     <!-- script Section Start -->
     <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
-    <!-- script Section End -->
-  </body>
-</html>
+    <!-- script Section End --
+    </body>
+  </html>

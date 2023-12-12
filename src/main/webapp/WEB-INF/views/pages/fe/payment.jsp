@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <title>Payment</title>
     <%@ include file = "../../includes/FE_includes/_header.jsp" %>
   </head>
   <body>

@@ -1,9 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
-
+  
   <!-- Header Section Start -->
   <head>
+    <title>Homepage</title>
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
   <!-- Header Section Start -->
@@ -289,7 +290,7 @@
           </div>
           <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 m-0">
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/data.produk.image" />
+              <img class="product-img" src="/images/Produk/G1.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">Man Kimono Set</p>
@@ -304,7 +305,7 @@
             </div>
   
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/G2.jpg" />
+              <img class="product-img" src="/images/Produk/G2.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">Reebok M1 Shoes</p>
@@ -319,7 +320,7 @@
             </div>
   
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/G3.jpg" />
+              <img class="product-img" src="/images/Produk/G3.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">Burnion Denim Jacket</p>
@@ -334,7 +335,7 @@
             </div>
   
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/G4.jpg" />
+              <img class="product-img" src="/images/Produk/G4.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">Black Glasses</p>
@@ -349,7 +350,7 @@
             </div>
   
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/G5.jpg" />
+              <img class="product-img" src="./images/Produk/G5.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">School Bag</p>
@@ -364,7 +365,7 @@
             </div>
 
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/G6.jpg" />
+              <img class="product-img" src="./images/Produk/G6.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">Woman Long Pants</p>
@@ -379,7 +380,7 @@
             </div>
 
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/G7.jpg" />
+              <img class="product-img" src="/images/Produk/G7.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">Cute Cat T-Shirt Set</p>
@@ -394,7 +395,7 @@
             </div>
 
             <div class="col d-flex flex-column border-danger p-2">
-              <img class="product-img" src="./picture/Home/Produk/G8.jpg" />
+              <img class="product-img" src="/images/Produk/G8.jpg" />
               <div class="row p-0 m-0">
                 <div class="col-11 p-0 w product-desc">
                   <p class="mb-0 p-0">Comfortable Jacket</p>
@@ -415,7 +416,7 @@
       <!-- banner -->
       <div class="banner">
           <div class="row banner_1 my-5">
-            <img src="./picture/Home/Group 13.jpg" alt="" srcset="">
+            <img src="/images/Group 13.jpg" alt="" srcset="">
                 <div class="col-4 offset-7 text_banner my-5">
                   <h1 class="banner_text">High Quality Bag</h1>
                   <a href="shop.html" class="btn btn-shop">SHOP NOW</a>
@@ -434,7 +435,7 @@
 
             <div class="row mt-2">
               <div class="col-sm-6 d-flex flex-column p-0">
-                  <img src="./picture/Home/Group 14.jpg">
+                  <img src="/images/Group 14.jpg">
               </div>
               <div class="col-sm-6 d-flex flex-column justify-content-center align-items-left">
                   <div class="info_contact w-75">
@@ -443,7 +444,7 @@
                               <h1 class="m-0">Instagram</h1>
                               <div class="d-flex mt-2 my-5">
                                   <div class="Instagram">
-                                      <img src="./picture/Home/44.png" alt="">
+                                      <img src="/images/44.png" alt="">
                                   </div>
                                   <div class="d-flex align-items-center p-0 m-0">
                                       <a class="text_medsos text-left m-0" href="#">@dikaosan_store</a>
@@ -454,7 +455,7 @@
                               <h1 class="m-0">Facebook</h1>
                               <div class="d-flex mt-2 my-5">
                                   <div class="Facebook mx-2">
-                                      <img src="./picture/Home/45.png" alt="">
+                                      <img src="/images/45.png" alt="">
                                   </div>
                                   <div class="d-flex align-items-center p-0 mx-1">
                                       <a class="text_medsos text-left m-0" href="#">@dikaosan_store</a>

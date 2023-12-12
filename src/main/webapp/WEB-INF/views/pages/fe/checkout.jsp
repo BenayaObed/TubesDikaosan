@@ -3,6 +3,7 @@
 
 <html lang="en">
   <head>
+    <title>Checkout</title>
     <%@ include file = "../../includes/FE_includes/_header.jsp" %>
   </head>
   <body>
