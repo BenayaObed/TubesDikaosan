@@ -1,54 +1,54 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Payment</title>
-    <%@ include file = "../../includes/FE_includes/_header.jsp" %>
-  </head>
-  <body>
+    <%@ include file = "../../includes/fe_includes/_header.jsp" %>
+</head>
+
+<body>
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar_home.jsp" %>
     <!-- Navbar Section End -->
 
-        <!-- Activity Information Start-->
+    <!-- Activity Section Start -->
+    <section class="activity">
         <div class="activity_page">
-        <div class="container activity-cont offset mx-1">
-            <div class="row">
-            <div class="col-sm-12">
-                <div class="activity-nav offset-mx-1">
-                <h1>Payment</h1>
-                <a class="nav-link" href="./homepage.html" style="word-spacing: 2px;">Home 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>  
-                    <a class="nav-link" href="./shop.html" style="word-spacing: 2px;">Shop 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                    </a>
-                    <a class="nav-link" href="./shoping_cart.html" style="word-spacing: 2px;">Shoping Cart 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                    </a>
-                    <a class="nav-link" href="./checkout.html" style="word-spacing: 2px;">Checkout
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                    </a>
-                    <a href="./payment.html" style="text-decoration: none;">
-                        <span>Payment</span>
-                    </a>
-                </a>
-                
+            <div class="container activity-cont offset mx-1">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="activity-nav offset-mx-1">
+                            <h1>Payment</h1>
+                            <a class="nav-link" href="./homepage.html" style="word-spacing: 2px;">Home 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>  
+                                <a class="nav-link" href="./shop.html" style="word-spacing: 2px;">Shop 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </a>
+                                <a class="nav-link" href="./shoping_cart.html" style="word-spacing: 2px;">Shoping Cart 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </a>
+                                <a class="nav-link" href="./checkout.html" style="word-spacing: 2px;">Checkout
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </a>
+                                <a href="./payment.html" style="text-decoration: none;">
+                                    <span>Payment</span>
+                                </a>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
         </div>
-        </div>
-        <!-- Activity Information End-->
     </section>
-    <!-- Navbar Section End -->
+    <!-- Activity Section End -->
 
     <!-- Payment Section Start -->
     <section class="payment">
@@ -68,40 +68,24 @@
                                 <h2>Total</h2>
                             </div>
                         </div>
-    
-                        <div class="d-flex m-0">
-                            <div class="col-8">
-                                <a>1. Man Kimono Set</a>
-                            </div>
-                            <div class=" col-4 text-end">
-                                <a>Rp 249.999</a>
-                            </div>
-                        </div>
-    
+                        
                         <div class="d-flex">
-                            <div class="col-8">
-                                <a>2. Reebok M1 Shoes</a>
+                            <div class="col-7">
+                                <ol class="list list-group-numbered p-0">
+                                    <li class="list-group-item">Man Kimono Set</li>
+                                    <li class="list-group-item">Reebok M1 Shoes</li>
+                                    <li class="list-group-item">Black Glasses</li>
+                                    <li class="list-group-item">School Bag</li>
+                                </ol>
                             </div>
-                            <div class="col-4 text-end">
-                                <a>Rp 699.999</a>
-                            </div>
-                        </div>
-    
-                        <div class="d-flex">
-                            <div class="col-8">
-                                <a>3. Black Glasses</a>
-                            </div>
-                            <div class="col-4 text-end">
-                                <a>Rp 149.999</a>
-                            </div>
-                        </div>
-    
-                        <div class="d-flex">
-                            <div class="col-8">
-                                <a>4. School Bag</a>
-                            </div>
-                            <div class="col-4 text-end">
-                                <a>Rp 119.999</a>
+
+                            <div class="col-5">
+                                <ul class="list list-group-flush text-end">
+                                    <li class="list-group-item">Rp 249.999</li>
+                                    <li class="list-group-item">Rp 699.999</li>
+                                    <li class="list-group-item">Rp 149.999</li>
+                                    <li class="list-group-item">Rp 119.999</li>
+                                </ul>
                             </div>
                         </div>
     
@@ -226,13 +210,12 @@
     </section>
     <!-- Payment Section End -->
 
-
     <!-- Footer Section Start -->
-    <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
     <!-- Footer Section End-->
-    
-    <!-- script Section Start -->
-    <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
-    <!-- script Section End -->
+
+    <!-- Script Section Start -->
+    <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
+    <!-- Script Section End -->
 </body>
 </html>

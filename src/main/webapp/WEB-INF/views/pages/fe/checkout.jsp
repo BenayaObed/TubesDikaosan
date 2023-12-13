@@ -1,6 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-
 <html lang="en">
   <head>
     <title>Checkout</title>
@@ -11,39 +10,38 @@
     <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
-          <!-- Activity Information Start-->
-          <div class="activity_page ">
-            <div class="container activity-cont offset mx-1">
-              <div class="row">
-                <div class="col-sm-12 ">
-                  <div class="activity-nav offset-mx-1 ">
-                    <h1>Checkout</h1>
-                    <a class="nav-link" href="./homepage.html" >Home 
+    <!-- Activity Information Start-->
+    <section class="activity">
+      <div class="activity_page ">
+        <div class="container activity-cont offset mx-1">
+          <div class="row">
+            <div class="col-sm-12 ">
+              <div class="activity-nav offset-mx-1 ">
+                <h1>Checkout</h1>
+                <a class="nav-link" href="./homepage.html" >Home 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>  
+                  <a class="nav-link" href="./shop.html">Shop 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    <a class="nav-link" href="shoping_cart.html">Shoping Cart 
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                      </svg>  
-                      <a class="nav-link" href="./shop.html">Shop 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                        <a class="nav-link" href="shoping_cart.html">Shoping Cart 
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                      <!-- <i class="bi bi-chevron-right"></i> -->
-                      <span>Checkout</span>
-                    </a>
-                  </div>
-                </div>
+                      </svg>
+                  <!-- <i class="bi bi-chevron-right"></i> -->
+                  <span>Checkout</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
-          <!-- Activity Information End-->
+      </div>
     </section>
-    <!-- Navbar Section End -->
-    
-    <!-- contntent checkout -->
+    <!-- Activity Information End-->
+
+    <!-- Content Checkout Start-->
     <section class="content">
       <div class="row">
         <div class="col-12 d-flex border-primary">
@@ -452,15 +450,14 @@
             </div>
             </div>
     </section>
-    <!-- right bar checkout END-->
-    <!-- navbar -->
+    <!-- Content Checkout End -->
 
-      <!-- Footer Section Start -->
-      <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
-      <!-- Footer Section End-->
-      
-      <!-- script Section Start -->
-      <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
-      <!-- script Section End -->
+    <!-- Footer Section Start -->
+    <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
+    <!-- Footer Section End-->
+    
+    <!-- Script Section Start -->
+    <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
+    <!-- Script Section End -->
   </body>
 </html>

@@ -12,32 +12,33 @@
     <!-- Navbar Section End -->
 
     <!-- Activity Information Start-->
-    <div class="activity_page">
-      <div class="container activity-cont offset mx-1">
-        <div class="row">
-          <div class="col-sm-12 ">
-            <div class="activity-nav offset-mx-1 ">
-              <h1>Shoping Cart </h1>
-              <a class="nav-link" href="#" >Home 
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>  
-                <a class="nav-link" href="./shop.html">Shop 
+    <section class="activity">
+      <div class="activity_page">
+        <div class="container activity-cont offset mx-1">
+          <div class="row">
+            <div class="col-sm-12 ">
+              <div class="activity-nav offset-mx-1 ">
+                <h1>Shoping Cart </h1>
+                <a class="nav-link" href="#" >Home 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                  </svg>
-                <a  href="./shoping_cart.html" style="text-decoration: none;">
-                  <span>Shoping Cart </span>
+                  </svg>  
+                  <a class="nav-link" href="./shop.html">Shop 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                  <a  href="./shoping_cart.html" style="text-decoration: none;">
+                    <span>Shoping Cart </span>
+                  </a>
                 </a>
-              </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- Activity Information End-->
     
-
     <!-- Shoping_cart Section Start -->
     <section class="content">
       <div class="row">

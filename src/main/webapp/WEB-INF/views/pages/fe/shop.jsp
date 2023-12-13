@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <title>Shop</title>
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
   <body>
@@ -11,7 +12,7 @@
     <!-- Navbar Section End -->
 
     <!-- Activity Page Section Start -->
-    <section class="header">
+    <section class="activity">
       <div class="activity_page">
         <div class="container activity-cont offset mx-1">
           <div class="row">

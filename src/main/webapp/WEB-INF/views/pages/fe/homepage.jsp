@@ -15,7 +15,7 @@
     <!-- Navbar Section End -->
 
     <!-- Modal Login Start -->
-    <section>
+    <section class="modal">
       <!-- Modal Login -->
       <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -477,9 +477,9 @@
     <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
     <!-- Footer Section End-->
 
-    <!-- script Section Start -->
+    <!-- Script Section Start -->
     <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
-    <!-- script Section End -->
+    <!-- Script Section End -->
   </body>
 </html>
 
