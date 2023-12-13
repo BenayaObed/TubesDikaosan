@@ -25,11 +25,11 @@ public class HomeController {
         return "pages/fe/homepage";
     }
 
-    @RequestMapping("/shop")
-    public String shopPage(Model model) {
-        model.addAttribute("title", "Shop");
-        return "pages/fe/shop";
-    }
+    // @RequestMapping("/shop")
+    // public String shopPage(Model model) {
+    // model.addAttribute("title", "Shop");
+    // return "pages/fe/shop";
+    // }
 
     // @RequestMapping("/shop1")
     // public String shopPage1(Model model) {
