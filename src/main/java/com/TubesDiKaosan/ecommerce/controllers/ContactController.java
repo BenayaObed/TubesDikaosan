@@ -11,14 +11,13 @@ import org.springframework.ui.Model;
 
 @SpringBootApplication
 @Controller
-public class ShopController {
-    @Autowired
+public class ContactController {
+  @Autowired
     private CategoryServiceImplement category;
 
-    @RequestMapping({ "/shop" })
-    public String shopPage(Model model) {
-        model.addAttribute("title", "Shop");
-        return "pages/fe/shop";
+    @RequestMapping({ "/contact" })
+    public String contactPage(Model model) {
+        model.addAttribute("title", "Contact");
+        return "pages/fe/contact";
     }
-
 }
