@@ -8,7 +8,7 @@
 
 <body>
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/fe_includes/_navbar_home.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Activity Section Start -->

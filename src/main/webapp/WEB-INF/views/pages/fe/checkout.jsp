@@ -3,11 +3,11 @@
 <html lang="en">
   <head>
     <title>Checkout</title>
-    <%@ include file = "../../includes/FE_includes/_header.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
   <body>
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Activity Information Start-->
@@ -454,11 +454,11 @@
     <!-- Content Checkout End -->
 
     <!-- Footer Section Start -->
-    <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
     <!-- Footer Section End-->
     
     <!-- Script Section Start -->
-    <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
     <!-- Script Section End -->
   </body>
 </html>

@@ -4,11 +4,11 @@
 <html lang="en">
   <head>
     <title>Shoping Cart</title>
-    <%@ include file = "../../includes/FE_includes/_header.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
   <body>
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/FE_includes/_navbar.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Activity Information Start-->
@@ -430,11 +430,11 @@
     <!-- Shoping_cart Section End -->
 
     <!-- Footer Section Start -->
-    <%@ include file = "../../includes/FE_includes/_footer.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
     <!-- Footer Section End-->
     
     <!-- script Section Start -->
-    <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
     <!-- script Section End -->
   </body>
 </html>
