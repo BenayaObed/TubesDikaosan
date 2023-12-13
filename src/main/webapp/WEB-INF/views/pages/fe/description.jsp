@@ -381,6 +381,6 @@
     
     <!-- script Section Start -->
     <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
-    <!-- script Section End --
+    <!-- script Section End -->
     </body>
   </html>
