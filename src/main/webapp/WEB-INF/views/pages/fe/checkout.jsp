@@ -101,7 +101,7 @@
                       
                             <!-- Script Section Start -->
                             <%@ include file = "../../includes/fe_includes/_script.jsp" %>
-                            <!-- Script Section End-->S
+                            <!-- Script Section End-->
                           
                             <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
                             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
