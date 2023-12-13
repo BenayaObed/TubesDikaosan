@@ -9,7 +9,7 @@
   
   <body>
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar_contact.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Activity Information Start-->

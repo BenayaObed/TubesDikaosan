@@ -15,8 +15,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav mx-auto">
             <a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
-            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/shop">Shop</a>
-            <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact</a>
+            <a class="nav-link"  href="${pageContext.request.contextPath}/shop">Shop</a>
+            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/contact">Contact</a>
           </div>
           <span class="nav-button-right">
               <span class="input-search">
