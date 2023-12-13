@@ -19,15 +19,15 @@
             <div class="col-sm-12 ">
               <div class="activity-nav offset-mx-1 ">
                 <h1>Shoping Cart </h1>
-                <a class="nav-link" href="#" >Home 
+                <a class="nav-link" href="${pageContext.request.contextPath}/home" >Home 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                   </svg>  
-                  <a class="nav-link" href="./shop.html">Shop 
+                  <a class="nav-link" href="${pageContext.request.contextPath}/shop">Shop 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                     </svg>
-                  <a  href="./shoping_cart.html" style="text-decoration: none;">
+                  <a  href="${pageContext.request.contextPath}/shoping_cart" style="text-decoration: none;">
                     <span>Shoping Cart </span>
                   </a>
                 </a>
@@ -325,7 +325,7 @@
                   <div class="col d-flex flex-column my-lg-3 ">
                     <div class="row">
                       <div class="button_continue_shoping col-sm-6 d-flex flex-column">
-                        <a href="" class="btn btn-add-cart d-flex justify-content-center align-items-center">Continue Shoping</a>
+                        <a href="${pageContext.request.contextPath}/shop" class="btn btn-add-cart d-flex justify-content-center align-items-center">Continue Shoping</a>
                       </div>
                       <div class="button_update_cart col-sm-6 d-flex flex-column align-items-end ">
                           <a href="" class="btn btn-add-cart d-flex justify-content-center align-items-center">Update Cart</a>
@@ -414,7 +414,7 @@
                     
                   </div>
                   <div class="button_confirm col d-flex flex-column align-items-center my-3 ">
-                    <a href="./checkout.html" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirm & go to Payment</a>
+                    <a href="${pageContext.request.contextPath}/checkout" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirm & go to Payment</a>
 
                     </div>
                 </div>

@@ -19,11 +19,11 @@
             <div class="col-sm-12">
               <div class="activity-nav offset-mx-1">
                 <h1>Shop</h1>
-                <a class="nav-link" href="./homepage.html" style="word-spacing: 2px;">Home 
+                <a class="nav-link" href="${pageContext.request.contextPath}/home" style="word-spacing: 2px;">Home 
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                   </svg> 
-                  <a href="./shop.html" style="text-decoration: none;">
+                  <a href="${pageContext.request.contextPath}/shop" style="text-decoration: none;">
                     <span>Shop</span>
                   </a> 
                 </a>
@@ -71,22 +71,22 @@
                   <ul class="list-group">
                     <li class="list-group-item category">CATEGORIES</li>
                     <li class="list-group-item filter">
-                      <a href="./homepage.html" style="text-decoration: none;">
+                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
                         Clothing
                       </a> 
                     </li>
                     <li class="list-group-item filter">
-                      <a href="./homepage.html" style="text-decoration: none;">
+                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
                         Bag
                       </a> 
                     </li>
                     <li class="list-group-item filter">
-                      <a href="./homepage.html" style="text-decoration: none;">
+                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
                         Shoes
                       </a> 
                     </li>
                     <li class="list-group-item filter">
-                      <a href="./homepage.html" style="text-decoration: none;">
+                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
                         Accessories
                       </a> 
                     </li>
@@ -126,7 +126,7 @@
 
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
-                      <a href="./description.html" class="col d-flex flex-column p-0" style="text-decoration: none;">
+                      <a href="${pageContext.request.contextPath}/description" class="col d-flex flex-column p-0" style="text-decoration: none;">
                       <img class="product-img" src="./images/Produk/G1.jpg" />
                         <div class="row p-0 m-0">
                           <div class="col-11 p-0 w product-desc">
@@ -135,7 +135,7 @@
                           </div>
                       </a>
                         <div class="col-1 product-cart d-flex justify-content-center p-0">
-                            <a href="./shoping_cart.html">
+                            <a href="${pageContext.request.contextPath}/shoping_cart.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                               <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                             </svg>

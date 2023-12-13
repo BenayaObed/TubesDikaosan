@@ -19,26 +19,26 @@
                     <div class="col-sm-12">
                         <div class="activity-nav offset-mx-1">
                             <h1>Payment</h1>
-                            <a class="nav-link" href="./homepage.html" style="word-spacing: 2px;">Home 
+                            <a class="nav-link" href="${pageContext.request.contextPath}/home" style="word-spacing: 2px;">Home 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>  
-                                <a class="nav-link" href="./shop.html" style="word-spacing: 2px;">Shop 
+                                <a class="nav-link" href="${pageContext.request.contextPath}/shop" style="word-spacing: 2px;">Shop 
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                     </svg>
                                 </a>
-                                <a class="nav-link" href="./shoping_cart.html" style="word-spacing: 2px;">Shoping Cart 
+                                <a class="nav-link" href="${pageContext.request.contextPath}/shoping_cart" style="word-spacing: 2px;">Shoping Cart 
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                     </svg>
                                 </a>
-                                <a class="nav-link" href="./checkout.html" style="word-spacing: 2px;">Checkout
+                                <a class="nav-link" href="${pageContext.request.contextPath}/checkout" style="word-spacing: 2px;">Checkout
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                     </svg>
                                 </a>
-                                <a href="./payment.html" style="text-decoration: none;">
+                                <a href="${pageContext.request.contextPath}/payment" style="text-decoration: none;">
                                     <span>Payment</span>
                                 </a>
                             </a>

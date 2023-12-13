@@ -189,7 +189,7 @@
               </div>
               
               <div class="row justify-content-center text-center my-2">
-                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Shop Now</button>
+                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close" href="${pageContext.request.contextPath}/shop">Shop Now</button>
               </div>
             </div>
             <div class="modal-footer">
@@ -212,7 +212,7 @@
                 <div class="col-md-6 text-hero offset-md-5 my-1">
                   <h1>Elevate Your Style With Trendy <br> 
                       Clothes From Our Store</h1>
-                  <a href="shop.html" class="btn btn-shop">SHOP NOW</a>
+                  <a href="${pageContext.request.contextPath}/shop" class="btn btn-shop">SHOP NOW</a>
                 </div>
               </div>
 
@@ -221,7 +221,7 @@
                 <div class="col-md-6 text-hero offset-md-5 my-1">
                   <h1>Combine Your Style With These <br> 
                       Accessories!</h1>
-                  <a href="shop.html" class="btn btn-shop">SHOP NOW</a>
+                  <a href="${pageContext.request.contextPath}/shop" class="btn btn-shop">SHOP NOW</a>
                 </div>
               </div>
             </div>
@@ -243,7 +243,7 @@
             <div class="col-sm-12 accessories_content d-flex">
               <div class="box_text1 my-5 mx-1">
                 <h1 class="box_text m-0">Accessories</h1>
-                <a href="shop.html"><u>SHOP NOW</u></a>
+                <a href="${pageContext.request.contextPath}/shop"><u>SHOP NOW</u></a>
               </div> 
               <img src="/images/Produk/C2.jpg" style="max-width: 100%;height: auto;">
             </div>
@@ -253,14 +253,14 @@
               <img src="/images/Produk/C1.jpg" style="max-width: 100%;height: auto;">
               <div class="box_text2 my-5 mx-1">
                 <h1 class="box_text m-0">Clothing</h1>
-                <a href="shop.html"><u>SHOP NOW</u></a>
+                <a href="${pageContext.request.contextPath}/shop"><u>SHOP NOW</u></a>
               </div> 
             </div>
             <div class="col-sm-12 d-flex my-4">
               <img src="/images/Produk/C3.jpg" style="max-width: 100%;height: auto;">
               <div class="box_text3 my-5 mx-1">
                 <h1 class="box_text m-0">Shoes</h1>
-                <a href="shop.html"><u>SHOP NOW</u></a>
+                <a href="${pageContext.request.contextPath}/shop"><u>SHOP NOW</u></a>
               </div> 
             </div>
           </div>
@@ -419,7 +419,7 @@
             <img src="/images/Group 13.jpg" alt="" srcset="">
                 <div class="col-4 offset-7 text_banner my-5">
                   <h1 class="banner_text">High Quality Bag</h1>
-                  <a href="shop.html" class="btn btn-shop">SHOP NOW</a>
+                  <a href="${pageContext.request.contextPath}/shop" class="btn btn-shop">SHOP NOW</a>
               </div>
           </div>
       </div> 
