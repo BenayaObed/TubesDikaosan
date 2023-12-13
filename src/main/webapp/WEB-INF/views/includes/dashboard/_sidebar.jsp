@@ -13,7 +13,7 @@
         <img src="${pageContext.request.contextPath}/dashboard/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">${username}</a>
+        <a href="#" class="d-block">${user.name}</a>
       </div>
     </div>
 

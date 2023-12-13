@@ -1,20 +1,18 @@
 package com.TubesDiKaosan.ecommerce.models;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-
-import javax.management.relation.Role;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -39,10 +37,8 @@ public class Users {
   private String password;
 
   @ManyToOne
+  @JoinColumn(name = "role_id")
   private Roles role;
-
-  @OneToMany(mappedBy = "user")
-  private List<Chats> chat;
 
   @CreationTimestamp
   @Column(name = "createdAt")
@@ -56,14 +52,13 @@ public class Users {
   }
 
   public Users(String user_id, String first_name, String last_name, String email, String password, Roles role,
-      List<Chats> chat, LocalDateTime createdAt, LocalDateTime updatedAt) {
+      LocalDateTime createdAt, LocalDateTime updatedAt) {
     this.user_id = user_id;
     this.first_name = first_name;
     this.last_name = last_name;
     this.email = email;
     this.password = password;
     this.role = role;
-    this.chat = chat;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
@@ -116,14 +111,6 @@ public class Users {
     this.role = role;
   }
 
-  public List<Chats> getChat() {
-    return chat;
-  }
-
-  public void setChat(List<Chats> chat) {
-    this.chat = chat;
-  }
-
   public LocalDateTime getCreatedAt() {
     return createdAt;
   }
@@ -138,7 +125,7 @@ public class Users {
 
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
-  } 
+  }
 
 
 }

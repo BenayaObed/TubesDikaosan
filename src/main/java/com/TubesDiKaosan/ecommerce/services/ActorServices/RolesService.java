@@ -1,4 +1,4 @@
-package com.TubesDiKaosan.ecommerce.services;
+package com.TubesDiKaosan.ecommerce.services.ActorServices;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +11,7 @@ import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.payloads.requests.RoleRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.RolesRepository;
+import com.TubesDiKaosan.ecommerce.services.BaseServices;
 
 @Service
 public class RolesService extends BaseServices<RoleRequest,Integer>{

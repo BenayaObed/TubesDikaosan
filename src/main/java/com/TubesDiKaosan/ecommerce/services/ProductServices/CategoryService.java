@@ -1,4 +1,4 @@
-package com.TubesDiKaosan.ecommerce.services;
+package com.TubesDiKaosan.ecommerce.services.ProductServices;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +11,7 @@ import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.payloads.requests.CategoryRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.CategoryRepository;
+import com.TubesDiKaosan.ecommerce.services.BaseServices;
 
 @Service
 public class CategoryService extends BaseServices<CategoryRequest, Integer>

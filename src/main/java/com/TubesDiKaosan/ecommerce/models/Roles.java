@@ -32,6 +32,10 @@ public class Roles {
 
     public Roles() {}
 
+    public Roles(String role_name) {
+        this.role_name = role_name;
+    }
+
     public Roles(Integer role_id, String role_name, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.role_id = role_id;
         this.role_name = role_name;

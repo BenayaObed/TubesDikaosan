@@ -1,4 +1,4 @@
-package com.TubesDiKaosan.ecommerce.services;
+package com.TubesDiKaosan.ecommerce.services.ProductServices;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,13 +20,13 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.ImagesRepository;
 import com.TubesDiKaosan.ecommerce.repositories.ProductRepository;
 import com.TubesDiKaosan.ecommerce.repositories.StockRepository;
+import com.TubesDiKaosan.ecommerce.services.BaseServices;
 
 @Service
 public class ProductService extends BaseServices<ProductRequest, Integer> {
 
     @Autowired
     private ProductRepository productRepository;
-
     @Autowired
     private ImagesRepository imagesRepository;
     @Autowired

@@ -1,6 +1,6 @@
 package com.TubesDiKaosan.ecommerce.payloads.requests;
 
-public class UserAddress {
+public class CustomerAddressRequest {
     private UserRequest userID;
     private String address;
     private String city;
@@ -8,8 +8,8 @@ public class UserAddress {
     private String postal_code;
     private String phone_number;
 
-    public UserAddress(){}
-    public UserAddress(UserRequest userID, String address, String city, String province, String postal_code,
+    public CustomerAddressRequest(){}
+    public CustomerAddressRequest(UserRequest userID, String address, String city, String province, String postal_code,
             String phone_number) {
         this.userID = userID;
         this.address = address;

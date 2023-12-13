@@ -15,15 +15,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user_address")
-public class UserAddress {
+@Table(name = "customer_address")
+public class CustomerAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users user;
+    @JoinColumn(name = "id_customer")
+    private Users CustomerAddress; // Rename "customer" to "CustomerAddress"
 
     @Column(columnDefinition = "TEXT")
     private String address;
@@ -44,13 +44,13 @@ public class UserAddress {
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    public UserAddress() {
+    public CustomerAddress() {
     }
 
-    public UserAddress(Integer id, Users user, String address, String city, String province, String postal_code,
-            String phone_number, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public CustomerAddress(Integer id, Users customerAddress, String address, String city, String province,
+            String postal_code, String phone_number, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
-        this.user = user;
+        CustomerAddress = customerAddress;
         this.address = address;
         this.city = city;
         this.province = province;
@@ -68,12 +68,12 @@ public class UserAddress {
         this.id = id;
     }
 
-    public Users getUser() {
-        return user;
+    public Users getCustomerAddress() {
+        return CustomerAddress;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setCustomerAddress(Users customerAddress) {
+        CustomerAddress = customerAddress;
     }
 
     public String getAddress() {
@@ -131,4 +131,5 @@ public class UserAddress {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }
