@@ -47,29 +47,30 @@
               </div>
             </div>
           </nav>
-        </section>
+    </section>
     <!-- Navbar Section End -->
-          <!-- Activity Information Start-->
-          <div class="activity_page">
-            <div class="container activity-cont offset mx-1">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="activity-nav offset-mx-1">
-                    <h1>Contact</h1>
-                    <a class="nav-link" href="homepage.html" style="word-spacing: 2px;">Home 
-                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                      </svg>  
-                      <a href="./contact.html" style="text-decoration: none;"   > 
-                        <span>Contact</span>
-                      </a>
-                    </a>
-                  </div>
-                </div>
-              </div>
+
+    <!-- Activity Information Start-->
+    <div class="activity_page">
+      <div class="container activity-cont offset mx-1">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="activity-nav offset-mx-1">
+              <h1>Contact</h1>
+              <a class="nav-link" href="homepage.html" style="word-spacing: 2px;">Home 
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>  
+                <a href="./contact.html" style="text-decoration: none;"   > 
+                  <span>Contact</span>
+                </a>
+              </a>
             </div>
           </div>
-          <!-- Activity Information End-->
+        </div>
+      </div>
+    </div>
+    <!-- Activity Information End-->
 
 
     <!-- Content Section Start -->
@@ -152,33 +153,12 @@
     </section>
     <!-- Content Section End -->
 
-
     <!-- Footer Section Start -->
-    <section class="footer">
-        <div class="footer_element">
-          <div class="container d-flex flex-column align-items-center footer-cont">
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                <h1>Dikaosan</h1>
-                <p>
-                  Our store specializes in the fashion industry, offering a <br />
-                  wide range of trendy and stylish clothing and accessories.
-                </p>
-              </div>
-            </div>
-            <div class="row border-top pt-4 mt-4">
-              <div class="col-sm-12">
-                <div class="footer-nav">
-                  <a class="nav-link" href="#">My Contact</a>
-                  <a class="nav-link" href="#">Contact Us</a>
-                  <a class="nav-link" href="#">Payment Methods</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Footer Section End-->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
+    <!-- Footer Section End-->
+
+    <!-- script Section Start -->
+    <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
+    <!-- script Section End -->
   </body>
 </html>
