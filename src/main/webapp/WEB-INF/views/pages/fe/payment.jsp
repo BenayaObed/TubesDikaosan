@@ -126,7 +126,7 @@
                     </div>
                     <div class="my-1">
                         <div class="title_text_bank border-bottom">
-                            <img src="./picture/Home/38.png"> 
+                            <img src="./images/38.png"> 
                             <a>Bank Central Asia</a>
                             <div class="row mx-4">
                                 <div class="text_norek">

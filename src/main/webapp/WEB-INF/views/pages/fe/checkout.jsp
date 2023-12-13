@@ -80,7 +80,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./picture/Home/Produk/G1.jpg" alt="" >
+                                <img class="images" src="./images/Produk/G1.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>Man Kimono Set</a1>
@@ -143,7 +143,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./picture/Home/Produk/G2.jpg" alt="" >
+                                <img class="images" src="./images/Produk/G2.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>Reebok M1 Shoes</a1>
@@ -206,7 +206,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./picture/Home/Produk/G4.jpg" alt="" >
+                                <img class="images" src="./images/Produk/G4.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>Black Glasses</a1>
@@ -269,7 +269,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./picture/Home/Produk/G5.jpg" alt="" >
+                                <img class="images" src="./images/Produk/G5.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>School Bag</a1>
@@ -397,7 +397,7 @@
                     
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/TubesDikaosan/Front End/picture/Home/38.png">
+                        <img src="./images/38.png">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Bank Central Asia
                         </label>
@@ -405,6 +405,7 @@
         
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <img src="./images/40.png">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Bank Negara Indonesia
                         </label>
@@ -412,7 +413,7 @@
         
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/TubesDikaosan/Front End/picture/Home/39.png">
+                        <img src="./images/39.png">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Bank Rakyat Indonesia
                         </label>
@@ -420,7 +421,7 @@
         
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/TubesDikaosan/Front End/picture/Home/41.png">
+                        <img src="./images/41.png">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Bank Mandiri
                         </label>

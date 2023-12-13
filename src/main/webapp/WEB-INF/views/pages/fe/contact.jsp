@@ -50,7 +50,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-sm-6 d-flex flex-column p-0">
-                    <img src="./picture/Home/Group 14.jpg">
+                    <img src="./images/Group 14.jpg">
                 </div>
                 <div class="col-sm-6 d-flex flex-column justify-content-center align-items-center border-danger">
                     <div class="row">
@@ -64,7 +64,7 @@
                                 <h1 class="m-0">Whatsapp</h1>
                                 <div class="row  wa_contact mt-2 my-5">
                                     <div class="col-sm-3">
-                                        <img src="./picture/Home/42.png" alt="">
+                                        <img src="./images/42.png" alt="">
                                     </div>
                                     <div class="col-sm-9 d-flex align-items-center border-primary p-0 m-0">
                                         <a class="text-left m-0" href="#">081360255137</a>
@@ -75,7 +75,7 @@
                                 <h1 class="m-0">Email</h1>
                                 <div class="row  wa_contact mt-2 my-5">
                                     <div class="col-sm-3">
-                                        <img src="./picture/Home/43.png" alt="">
+                                        <img src="./images/43.png" alt="">
                                     </div>
                                     <div class="col-sm-9 d-flex align-items-center p-0 m-0">
                                         <a class="text-left m-0" href="#">dikaosan@gmail.com</a>
@@ -88,7 +88,7 @@
                                 <h1 class="m-0">Instagram</h1>
                                 <div class="row  wa_contact mt-2 my-5">
                                     <div class="col-sm-3">
-                                        <img src="./picture/Home/44.png" alt="">
+                                        <img src="./images/44.png" alt="">
                                     </div>
                                     <div class="col-sm-9 d-flex align-items-center p-0 m-0">
                                         <a class="text-left m-0" href="#">@dikaosan_store</a>
@@ -99,7 +99,7 @@
                                 <h1 class="m-0">Facebook</h1>
                                 <div class="row  wa_contact mt-2 my-5">
                                     <div class="col-sm-3">
-                                        <img src="./picture/Home/45.png" alt="">
+                                        <img src="./images/45.png" alt="">
                                     </div>
                                     <div class="col-sm-9 d-flex align-items-center p-0 m-0">
                                         <a class="text-left m-0" href="#">@dikaosan_store</a>
