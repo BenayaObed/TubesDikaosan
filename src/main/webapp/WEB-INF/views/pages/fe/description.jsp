@@ -380,7 +380,7 @@
     <!-- Footer Section End-->
     
     <!-- script Section Start -->
-    <%@ include file = "../../includes/FE_includes/_scripts.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
     <!-- script Section End -->
     </body>
   </html>
