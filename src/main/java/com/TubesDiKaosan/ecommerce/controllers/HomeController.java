@@ -25,6 +25,7 @@ public class HomeController {
         return "pages/fe/homepage";
     }
 
+    
     // @RequestMapping("/shop")
     // public String shopPage(Model model) {
     // model.addAttribute("title", "Shop");

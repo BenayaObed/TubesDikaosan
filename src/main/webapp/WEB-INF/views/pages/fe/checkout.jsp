@@ -99,20 +99,9 @@
                               </div>
                             </div>
                       
-                            <script>
-                              // JavaScript to handle the plus and minus functionality
-                              document.getElementById("plus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                numberInput.value = parseInt(numberInput.value) + 1;
-                              });
-                          
-                              document.getElementById("minus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                if (parseInt(numberInput.value) > 0) {
-                                  numberInput.value = parseInt(numberInput.value) - 1;
-                                }
-                              });
-                            </script>
+                            <!-- Script Section Start -->
+                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
+                            <!-- Script Section End-->S
                           
                             <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
                             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -162,20 +151,9 @@
                               </div>
                             </div>
                   
-                            <script>
-                              // JavaScript to handle the plus and minus functionality
-                              document.getElementById("plus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                numberInput.value = parseInt(numberInput.value) + 1;
-                              });
-                          
-                              document.getElementById("minus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                if (parseInt(numberInput.value) > 0) {
-                                  numberInput.value = parseInt(numberInput.value) - 1;
-                                }
-                              });
-                            </script>
+                            <!-- Script Section Start -->
+                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
+                            <!-- Script Section End-->
                   
                               <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
                               <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -225,20 +203,9 @@
                               </div>
                             </div>
                       
-                            <script>
-                              // JavaScript to handle the plus and minus functionality
-                              document.getElementById("plus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                numberInput.value = parseInt(numberInput.value) + 1;
-                              });
-                          
-                              document.getElementById("minus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                if (parseInt(numberInput.value) > 0) {
-                                  numberInput.value = parseInt(numberInput.value) - 1;
-                                }
-                              });
-                            </script>
+                            <!-- Script Section Start -->
+                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
+                            <!-- Script Section End-->
                           
                             <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
                             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -287,21 +254,10 @@
                                 <button id="plus" class="col-sm-4 btn ">></button>
                               </div>
                             </div>
-                      
-                            <script>
-                              // JavaScript to handle the plus and minus functionality
-                              document.getElementById("plus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                numberInput.value = parseInt(numberInput.value) + 1;
-                              });
-                          
-                              document.getElementById("minus").addEventListener("click", function() {
-                                var numberInput = document.getElementById("number");
-                                if (parseInt(numberInput.value) > 0) {
-                                  numberInput.value = parseInt(numberInput.value) - 1;
-                                }
-                              });
-                            </script>
+                            
+                            <!-- Script Section Start -->
+                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
+                            <!-- Script Section End-->
                           
                             <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
                             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
