@@ -238,4 +238,15 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
             return new Response(HttpStatus.OK.value(), "Success", productList);
         }
     }
+
+    public Response hideProduct(Integer id) throws SQLException {
+        if (productRepository.findById(id).isPresent()) {
+            Product product = productRepository.findById(id).get();
+            product.setVisible(0);
+            productRepository.save(product);
+            return new Response(HttpStatus.OK.value(), "success", product);
+        } else {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found!", null);
+        }
+    }
 }

@@ -26,4 +26,8 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
 
     @Query(value = "SELECT * FROM product ORDER BY created_at ASC", nativeQuery = true)
     List<Product> findAllNewProduct();
+
+    // hide product
+    @Query(value = "UPDATE product SET visible = 0 WHERE product_id = ?1", nativeQuery = true)
+    void hideProduct(int product_id);
 }

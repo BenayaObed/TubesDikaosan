@@ -15,7 +15,7 @@
     <div class = "row">
         <div class = "col-md-6 col-md-offset-3">
             <h1> User Login Page </h1>
-            <form action="${pageContext.request.contextPath}/authtentication" method="post">
+            <form action="${pageContext.request.contextPath}/authentication" method="post">
                 <div class="form-group">
                     <label for="Email">Email</label> :
                     <input type="text" class="form-control" id="Email" name="Email"

@@ -31,6 +31,7 @@ public class HomeController {
         }
         return "pages/dashboard/index";
     }
+    
     @RequestMapping("/")
     public String index(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Home");

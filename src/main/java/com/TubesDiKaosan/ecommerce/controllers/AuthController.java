@@ -52,17 +52,7 @@ public class AuthController {
             if (userService instanceof UsersService) {
                 Response response = ((UsersService) userService).createData(UserRequest);
                 if (!response.getMessage().equals("Email not found")) {
-                    Users user = (Users) response.getData();
-
-                    if (user.getRole().getRole_name().equals("ADMIN")) {
-                        session.setAttribute("user", user);
-                        return "redirect:/dashboard";
-                    }
-
-                    if (user.getRole().getRole_name().equals("CUSTOMER")) {
-                        session.setAttribute("user", user);
-                        return "redirect:/";
-                    }
+                    return "redirect:/login";
                 } else
                     return "redirect:/register";
             }

@@ -2,15 +2,12 @@ package com.TubesDiKaosan.ecommerce.services.ActorServices;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.models.Users;
-import com.TubesDiKaosan.ecommerce.payloads.requests.UserRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.UserRepository;
 

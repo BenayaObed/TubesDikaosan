@@ -5,16 +5,37 @@
 <body>
   ${title}
   <% int i = 0; %>
-  <c:if test="${sessionScope.user != null}">
-      <p>Session: ${sessionScope.user.first_name}</p>
-      <a href="${pageContext.request.contextPath}/logout">Logout</a>
-      <c:if test="${sessionScope.user.getRole().getRole_name() == 'ADMIN'}">
-        <p>List Users</p>
+
+  <c:choose>
+    <c:when  test="${sessionScope.user != null}">
+      <p>List Users</p>
         <c:forEach items="${users}" var="item">
             <li>${item.first_name}</li>
             <% i++; %>
         </c:forEach>
-      </c:if>
-  </c:if>
+        <a href="${pageContext.request.contextPath}/logout">logout</a> <br>
+        <p>Create Product</p>
+        <form action="${pageContext.request.contextPath}/dashboard/products/save" method="post" enctype="multipart/form-data">
+          <input type="text" name="name_product" placeholder="Product" />
+          <br>
+          <input type="text" name="category_id" placeholder="Category id" />
+          <br>
+          <input type="text" name="price" placeholder="Price" />
+          <br>
+          <input type="text" name="visible" placeholder="visible" />
+          <input type="text" name="visible" placeholder="visible" />
+          <br>
+          <input type="file" name="images" />
+          <br>
+          <input type="file" name="images" />
+          <br>
+          <input type="submit" value="Submit" />
+        </form>
+    </c:when>
+    <c:otherwise>
+      <a href="${pageContext.request.contextPath}/login">login</a>
+    </c:otherwise>
+  </c:choose>
+
 </body>
 </html>
