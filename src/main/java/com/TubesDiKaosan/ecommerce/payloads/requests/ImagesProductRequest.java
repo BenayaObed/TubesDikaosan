@@ -3,6 +3,8 @@ package com.TubesDiKaosan.ecommerce.payloads.requests;
 public class ImagesProductRequest {
     private Integer image_id;
     private String image;
+    public ImagesProductRequest() {
+    }
     public ImagesProductRequest(Integer image_id, String image) {
         this.image_id = image_id;
         this.image = image;

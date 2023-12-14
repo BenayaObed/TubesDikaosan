@@ -23,4 +23,7 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
 
     @Query(value = "SELECT * FROM product WHERE category_id IN (SELECT category_id FROM categories WHERE category_name = ?1)", nativeQuery = true)
     List<Product> findProductByCategoryName(String category_name);
+
+    @Query(value = "SELECT * FROM product ORDER BY created_at ASC", nativeQuery = true)
+    List<Product> findAllNewProduct();
 }

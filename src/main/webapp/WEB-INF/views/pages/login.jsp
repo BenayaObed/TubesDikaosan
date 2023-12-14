@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -12,7 +15,7 @@
     <div class = "row">
         <div class = "col-md-6 col-md-offset-3">
             <h1> User Login Page </h1>
-            <form action="${pageContext.request.contextPath}/api/auth" method="post">
+            <form action="${pageContext.request.contextPath}/authtentication" method="post">
                 <div class="form-group">
                     <label for="Email">Email</label> :
                     <input type="text" class="form-control" id="Email" name="Email"
@@ -35,7 +38,7 @@
                 </div>
             </form>
             <div class="form-group">
-						<span>New user? <a href="/api/register">Register
+						<span>New user? <a href="${pageContext.request.contextPath}/register">Register
 								here</a></span>
             </div>
         </div>

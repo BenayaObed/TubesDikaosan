@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -33,7 +36,7 @@
                     </div>
 
                     <h1>Registration</h1>
-                    <form action="${pageContext.request.contextPath}/api/registration" method="post">
+                    <form action="${pageContext.request.contextPath}/registration" method="post">
                         <div class="form-group">
                           <label for="first_name" class="control-label">First Name</label>
                           <input type="text" name="first_name" id="first_name" class="form-control" required="required" autofocus="autofocus"/>
@@ -54,7 +57,7 @@
                           <button type="submit" class="btn btn-success">Register</button>
                           <span>
                             Already registered?
-                            <a href="${pageContext.request.contextPath}/api/login" class="btn btn-link">Login</a>
+                            <a href="${pageContext.request.contextPath}/login" class="btn btn-link">Login</a>
                           </span>
                         </div>
                     </form>

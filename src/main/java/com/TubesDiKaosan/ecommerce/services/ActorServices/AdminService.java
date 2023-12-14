@@ -41,41 +41,4 @@ public class AdminService extends UsersService {
         } else
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
     }
-
-    @Override
-    public final Response updateDataById(String id, UserRequest request) throws SQLException {
-        try {
-            Optional<Users> optionalUser = userRepository.findById(id);
-
-            if (optionalUser.isPresent()) {
-                Users data = optionalUser.get();
-                data.setFirst_name(request.getFirst_name());
-                data.setLast_name(request.getLast_name());
-                data.setEmail(request.getEmail());
-                data.setPassword(request.getPassword());
-
-                // Fetch role information
-                Response roleResponse = rolesService.findDataByID(request.getRole());
-                if (roleResponse.getStatus() != HttpStatus.OK.value()) {
-                    return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid role ID!", null);
-                }
-
-                Roles roleData = (Roles) roleResponse.getData();
-
-                // Update user's roles
-                data.setRole(roleData);
-
-                // Save the updated user
-                userRepository.save(data);
-
-                return new Response(HttpStatus.OK.value(), "Success", data);
-            } else {
-                return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
-            }
-        } catch (Exception e) {
-            // Handle specific exceptions and log the error
-            return new Response(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error updating user", null);
-        }
-    }
-
 }

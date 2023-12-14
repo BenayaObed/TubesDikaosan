@@ -1,31 +1,36 @@
 package com.TubesDiKaosan.ecommerce.controllers;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.TubesDiKaosan.ecommerce.models.Users;
-import com.TubesDiKaosan.ecommerce.payloads.requests.UserRequest;
-import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.AdminService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
-import java.sql.SQLException;
-import java.util.List;
-
-@SpringBootApplication
-@Controller
-public class TestController {
+public class HomeController {
     @Autowired
     private List<UsersService> usersServices;
+    
+    @RequestMapping("/dashboard")
+    public String dashboard(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Dashboard");
+        // check session admin or not
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            if (user.getRole().getRole_name().equals("ADMIN")) {
+                return "pages/dashboard/index";
+            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                return "redirect:/";
+            }
+        }
+        return "pages/dashboard/index";
+    }
     @RequestMapping("/")
     public String index(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Home");

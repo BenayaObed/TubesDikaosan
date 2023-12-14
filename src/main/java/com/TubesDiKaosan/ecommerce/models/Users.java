@@ -107,6 +107,9 @@ public class Users {
     return role;
   }
 
+  public Integer getRole_id() {
+    return role.getRole_id();
+  }
   public void setRole(Roles role) {
     this.role = role;
   }

@@ -12,7 +12,7 @@ public class ProductRequest {
     @NotNull private Integer price;
     @NotNull private Integer visible;
     @NotNull private List<StockProductRequest> stock;
-    @NotNull private List<ImagesProductRequest> images;
+    private List<ImagesProductRequest> images;
     
     public ProductRequest() {
     }
