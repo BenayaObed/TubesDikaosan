@@ -47,12 +47,6 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private ServletContext servletContext;
-
-    @Autowired
-    private ResourceLoader resourceLoader;
-
     @RequestMapping({ "", "/" })
     public String product(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Product");

@@ -2,9 +2,7 @@ package com.TubesDiKaosan.ecommerce.controllers;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.HashMap;
 
-import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,7 +83,6 @@ public class AuthController {
         return "redirect:/login";
     }
 
-    // update data password, old password must be same with password in database
     @PostMapping("/users/{uuid}/update-password")
     public String updatePassword(@RequestParam("oldPass") String old_password,
             @RequestParam("newPass") String new_password, @RequestParam("confirmPass") String confirm,

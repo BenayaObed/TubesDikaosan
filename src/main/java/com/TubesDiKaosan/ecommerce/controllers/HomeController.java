@@ -16,10 +16,22 @@ public class HomeController {
     @Autowired
     private List<UsersService> usersServices;
 
+    @RequestMapping({ "/", "/home" })
+    public String index(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Home");
+        for (UsersService userService : usersServices) {
+            if (userService instanceof UsersService) {
+                List<Users> users = (List<Users>) ((UsersService) userService).getAll().getData();
+                model.addAttribute("users", users);
+                return "pages/landing/index";
+            }
+        }
+        return "pages/landing/index";
+    }
+
     @RequestMapping("/dashboard")
     public String dashboard(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Dashboard");
-        // check session admin or not
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
@@ -29,18 +41,5 @@ public class HomeController {
             }
         }
         return "pages/dashboard/index";
-    }
-
-    @RequestMapping({ "/", "/home" })
-    public String index(Model model, HttpSession session) throws SQLException {
-        model.addAttribute("title", "Home");
-        for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                List<Users> users = (List<Users>) ((UsersService) userService).getAll().getData();
-                model.addAttribute("users", users);
-                return "pages/fe/homepage";
-            }
-        }
-        return "pages/fe/homepage";
     }
 }
