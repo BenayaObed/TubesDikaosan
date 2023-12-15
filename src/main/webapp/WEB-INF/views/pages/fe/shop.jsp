@@ -127,7 +127,7 @@
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
                       <a href="${pageContext.request.contextPath}/description" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                      <img class="product-img" src="./images/Produk/G1.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G1.jpg" />
                         <div class="row p-0 m-0">
                           <div class="col-11 p-0 w product-desc">
                             <p class="mb-0 p-0">Man Kimono Set</p>
@@ -147,7 +147,7 @@
 
                   <div class="filterDiv new p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G2.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Reebok M1 Shoes</p>
@@ -165,7 +165,7 @@
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
                       <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                      <img class="product-img" src="./images/Produk/G3.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G3.jpg" />
                         <div class="row p-0 m-0">
                           <div class="col-11 p-0 w product-desc">
                             <p class="mb-0 p-0">Burnion Denim Jacket</p>
@@ -185,7 +185,7 @@
                   
                   <div class="filterDiv new p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G4.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G4.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Black Glasses</p>
@@ -202,7 +202,7 @@
                   
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G5.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G5.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">School Bag</p>
@@ -219,7 +219,7 @@
                   
                   <div class="filterDiv new p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G6.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G6.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Woman Long Pants</p>
@@ -236,7 +236,7 @@
                   
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G7.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G7.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Cute Cat T-Shirt Set</p>
@@ -253,7 +253,7 @@
 
                   <div class="filterDiv new p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G8.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G8.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Comfortable Jacket</p>
@@ -270,7 +270,7 @@
                   
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G9.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G9.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Nike Vision Set Woman</p>
@@ -287,7 +287,7 @@
                   
                   <div class="filterDiv new p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G10.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G10.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Purlinama Hat</p>
@@ -304,7 +304,7 @@
                   
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G11.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G11.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Man Short Pants</p>
@@ -321,7 +321,7 @@
                   
                   <div class="filterDiv new p-0">
                     <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="./images/Produk/G12.jpg" />
+                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G12.jpg" />
                       <div class="row p-0 m-0">
                         <div class="col-11 p-0 w product-desc">
                           <p class="mb-0 p-0">Loafers Man Shoes</p>
