@@ -2,7 +2,9 @@ package com.TubesDiKaosan.ecommerce.controllers;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.HashMap;
 
+import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,16 +70,12 @@ public class AuthController {
         for (UsersService userService : usersServices) {
             if (userService instanceof UsersService) {
                 Response response = ((UsersService) userService).login(Email, password);
-                if (!response.getMessage().equals("Email not found")) {
+                if (response.getMessage().equals("success")) {
                     Users user = (Users) response.getData();
-
+                    session.setAttribute("user", user);
                     if (user.getRole().getRole_name().equals("ADMIN")) {
-                        session.setAttribute("user", user);
                         return "redirect:/dashboard";
-                    }
-
-                    if (user.getRole().getRole_name().equals("CUSTOMER")) {
-                        session.setAttribute("user", user);
+                    } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                         return "redirect:/";
                     }
                 } else

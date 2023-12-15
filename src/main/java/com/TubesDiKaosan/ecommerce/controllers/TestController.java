@@ -2,6 +2,9 @@ package com.TubesDiKaosan.ecommerce.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +21,9 @@ import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -26,6 +32,10 @@ import java.util.List;
 public class TestController {
     @Autowired
     private List<UsersService> usersServices;
+
+    @Autowired
+    private ResourceLoader resourceLoader;
+
     @RequestMapping("/")
     public String index(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Home");
@@ -37,5 +47,15 @@ public class TestController {
             }
         }
         return "pages/landing/index";
+    }
+
+    @RequestMapping("/path-test")
+    public ResponseEntity<?> path() {
+            String path =  "src/main/resources/static/images";
+
+            File file = new File(path);
+            String absolutePath = file.getAbsolutePath();
+            System.out.println(absolutePath);
+            return ResponseEntity.ok("ok");
     }
 }

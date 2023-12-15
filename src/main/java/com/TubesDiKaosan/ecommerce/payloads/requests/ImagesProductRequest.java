@@ -1,19 +1,20 @@
 package com.TubesDiKaosan.ecommerce.payloads.requests;
 
 public class ImagesProductRequest {
-    private Integer image_id;
+    private Integer imageid_request;
     private String image;
     public ImagesProductRequest() {
+        this.imageid_request = 0;
     }
-    public ImagesProductRequest(Integer image_id, String image) {
-        this.image_id = image_id;
+    public ImagesProductRequest(Integer imageid_request, String image) {
+        this.imageid_request = imageid_request;
         this.image = image;
     }
-    public Integer getImage_id() {
-        return image_id;
+    public Integer getimageid_request() {
+        return imageid_request;
     }
-    public void setImage_id(Integer image_id) {
-        this.image_id = image_id;
+    public void setimageid_request(Integer imageid_request) {
+        this.imageid_request = imageid_request;
     }
     public String getImage() {
         return image;

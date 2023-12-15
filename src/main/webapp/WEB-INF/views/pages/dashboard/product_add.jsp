@@ -1,4 +1,7 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +44,7 @@
         <div class="row">
           <div class="col-12">
             <div class="card-body">
-              <form action="${pageContext.request.contextPath}/dashboard/products/add/submit" method="POST" enctype="multipart/form-data">
+              <form action="${pageContext.request.contextPath}/dashboard/products/save" method="POST" enctype="multipart/form-data">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">${title}</h3>
@@ -50,15 +53,15 @@
                     <!-- Card body - Product Section -->
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="productName">Nama Product:</label>
-                            <input type="text" class="form-control" id="productName" name="productName" autocomplete="on">
+                            <label for="name_product">Nama Product:</label>
+                            <input type="text" class="form-control" id="name_product" name="name_product" autocomplete="on">
                         </div>
                         <div class="form-group">
                             <!-- category using select -->
                             <label for="category">Category:</label>
-                            <select class="form-control" id="category" name="category">
-                                <c:forEach items="${categories}" var="category">
-                                    <option value="${category.category_id}">${category.category_name}</option>
+                            <select class="form-control" id="category" name="category_id">
+                                <c:forEach items="${categories}" var="item">
+                                  <option value="${item.category_id}">${item.category_name}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -71,8 +74,8 @@
                               <input type="text" class="form-control" name="price"> 
                         </div> 
                         <div class="form-group">
-                            <label for="status">Status Visible:</label>
-                            <select class="form-control" id="status" name="status">
+                            <label for="visible">Status Visible:</label>
+                            <select class="form-control" id="visible" name="visible">
                                 <option value="visible">Visible</option>
                                 <option value="hidden">Hidden</option>
                             </select>
@@ -242,7 +245,7 @@
       var newImageField = '<div class="form-row mb-3">' +
         '<div class="col-md-6">' +
         '<label for="image">Image:</label>' +
-        '<input type="file" class="form-control" name="images[]">' +
+        '<input type="file" class="form-control" name="images">' +
         '</div>' +
         '<div class="col-md-5">' +
         '<label>Preview:</label>' +
