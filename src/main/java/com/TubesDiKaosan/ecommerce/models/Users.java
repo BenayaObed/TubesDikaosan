@@ -36,12 +36,9 @@ public class Users {
   @Column(name = "password", length = 255)
   private String password;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name = "role_id")
-  private Roles role_id;
-
-  @OneToMany(mappedBy = "user")
-  private List<Chats> chat;
+  private Roles role;
 
   @CreationTimestamp
   @Column(name = "createdAt")
@@ -54,15 +51,14 @@ public class Users {
   public Users() {
   }
 
-  public Users(String user_id, String first_name, String last_name, String email, String password, Roles role_id,
-      List<Chats> chat, LocalDateTime createdAt, LocalDateTime updatedAt) {
+  public Users(String user_id, String first_name, String last_name, String email, String password, Roles role,
+      LocalDateTime createdAt, LocalDateTime updatedAt) {
     this.user_id = user_id;
     this.first_name = first_name;
     this.last_name = last_name;
     this.email = email;
     this.password = password;
-    this.role_id = role_id;
-    this.chat = chat;
+    this.role = role;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
@@ -107,20 +103,15 @@ public class Users {
     this.password = password;
   }
 
-  public Roles getRole_id() {
-    return role_id;
+  public Roles getRole() {
+    return role;
   }
 
-  public void setRole_id(Roles role_id) {
-    this.role_id = role_id;
+  public Integer getRole_id() {
+    return role.getRole_id();
   }
-
-  public List<Chats> getChat() {
-    return chat;
-  }
-
-  public void setChat(List<Chats> chat) {
-    this.chat = chat;
+  public void setRole(Roles role) {
+    this.role = role;
   }
 
   public LocalDateTime getCreatedAt() {
@@ -138,5 +129,6 @@ public class Users {
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
-  
+
+
 }

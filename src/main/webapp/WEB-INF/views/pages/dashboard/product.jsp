@@ -46,7 +46,7 @@
                     <h3 class="card-title">${title}</h3>
                   </div>
                   <div class="col-6">
-                    <a href="${pageContext.request.contextPath}/dashboard/products/add" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add product</a>
+                    <a href="${pageContext.request.contextPath}/dashboard/products/create" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add product</a>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,9 @@
                       <td>${product.category.category_name}</td>
                       <td> ${product.visible == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'}</td>
                       <td>
-                          <img src="" alt="${product.name_product}" width="50" height="50">
+                        <a href="${pageContext.request.contextPath}/resources/uploads/images/products/${product.images[0].image}" target="_blank">
+                          <img src="${pageContext.request.contextPath}/resources/uploads/images/products/${product.images[0].image}" alt="${product.images[0].image}" width="50" height="50">
+                        </a>
                       </td>
                       <td>
                         <a href="${pageContext.request.contextPath}/dashboard/products/edit/${product.product_id}" class="btn btn-primary btn-sm">Edit</a>

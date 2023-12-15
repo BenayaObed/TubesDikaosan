@@ -1,4 +1,7 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +44,7 @@
         <div class="row">
           <div class="col-12">
             <div class="card-body">
-              <form action="${pageContext.request.contextPath}/dashboard/api/products/add/submit" method="POST">
+              <form action="${pageContext.request.contextPath}/dashboard/products/save" method="POST" enctype="multipart/form-data">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">${title}</h3>
@@ -50,15 +53,15 @@
                     <!-- Card body - Product Section -->
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="productName">Nama Product:</label>
-                            <input type="text" class="form-control" id="productName" name="productName">
+                            <label for="name_product">Nama Product:</label>
+                            <input type="text" class="form-control" id="name_product" name="name_product" autocomplete="on">
                         </div>
                         <div class="form-group">
                             <!-- category using select -->
                             <label for="category">Category:</label>
-                            <select class="form-control" id="category" name="category">
-                                <c:forEach items="${categories}" var="category">
-                                    <option value="${category.category_id}">${category.category_name}</option>
+                            <select class="form-control" id="category" name="category_id">
+                                <c:forEach items="${categories}" var="item">
+                                  <option value="${item.category_id}">${item.category_name}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -68,11 +71,11 @@
                         </div>
                         <div class="form-group"> 
                               <label for="price">Price:</label>
-                              <input type="text" class="form-control" name="price[]"> 
+                              <input type="text" class="form-control" name="price"> 
                         </div> 
                         <div class="form-group">
-                            <label for="status">Status Visible:</label>
-                            <select class="form-control" id="status" name="status">
+                            <label for="visible">Status Visible:</label>
+                            <select class="form-control" id="visible" name="visible">
                                 <option value="visible">Visible</option>
                                 <option value="hidden">Hidden</option>
                             </select>
@@ -86,7 +89,7 @@
                     <div class="card-header">
                         <div class="row">
                           <h3 class="card-title">Stock</h3>
-                          <button type="button" class="btn btn-warning ml-auto" onclick="addStockField()">Add Stock</button>
+                          <button type="button" class="btn btn-warning btn-sm ml-auto" data-toggle="modal" data-target="#colorModal">Add Stock</button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -104,14 +107,13 @@
                     <div class="card-header">
                       <div class="row">
                         <h3 class="card-title">Images</h3>
-                        <button type="button" class="btn btn-warning ml-auto" onclick="addImageField()">Add Image</button>
+                        <button type="button" class="btn btn-warning btn-sm ml-auto" onclick="addImageField()">Add Image</button>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
                             <label>Images:</label>
                             <div id="imageFields">
-                                <!-- Image fields will be dynamically added here -->
                             </div>
                         </div>
                     </div>
@@ -124,6 +126,31 @@
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
+
+      <!-- Modal -->
+<div class="modal fade" id="colorModal" tabindex="-1" role="dialog" aria-labelledby="colorModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="colorModalLabel">Enter Color</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="colorInput">Color:</label>
+          <input type="text" class="form-control" id="colorInput">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="addStockField()">Add Stock</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
     <!-- /.content -->
   </div>
@@ -139,25 +166,76 @@
 <script>
   function addStockField() {
     // Maximum 4 stock fields
-    if ($('#stockFields .row').length < 4) {
-      var newStockField = '<div class="row mb-3">' +
-        '<div class="col-md-6">' +
-        '  <div class="form-group">' +
-        '    <label for="stock">Stock:</label>' +
-        '    <input type="text" class="form-control" name="stock[]">' +
-        '  </div>' +
-        '</div>' +
-        '<div class="col-md-5">' +
-        '  <div class="form-group">' +
-        '    <label for="size">Size:</label>' +
-        '    <input type="text" class="form-control" name="size[]">' +
-        '  </div>' +
-        '</div>' +
-        '<div class="col-md-1 text-right">' +
-        '  <button type="button" class="btn btn-danger btn-sm remove-btn" onclick="removeField(this, \'stock\')">Remove</button>' +
-        '</div>' +
-        '</div>';
-      $('#stockFields').append(newStockField);
+    if ($('#stockFields .row').length < 20) {
+      // Tampilkan modal
+      $('#colorModal').modal('show');
+      
+      // Hentikan jika pengguna membatalkan atau menutup modal
+      $('#colorModal').on('hide.bs.modal', function () {
+        $('#colorInput').val('');
+      });
+      
+      
+      var color = $('#colorInput').val();
+
+        if (!color) {
+          return;
+        }
+
+        // cek warna apakah sudah ada
+        var colors = [];
+        $('#stockFields .row').each(function () {
+          colors.push($(this).find('input[name="color[]"]').val());
+        });
+
+        if (colors.includes(color)) {
+          alert('Warna ' + color + ' sudah ada!');
+          return;
+        }
+
+
+        // Setelah warna diisi, munculkan input untuk setiap ukuran (S, M, L, XL)
+        var newStockField = '<div class="row mb-3">' +
+          '<div class="col-md-3">' +
+          '  <div class="form-group">' +
+          '    <label for="color">Color:</label>' +
+          '    <input type="text" class="form-control" name="color[]" value="' + color + '">' +
+          '  </div>' +
+          '</div>' +
+          '<div class="col-md-8">' +
+          '  <div class="row">' +
+          '    <div class="col-md-3">' +
+          '      <div class="form-group">' +
+          '        <label for="sizeS">Size S:</label>' +
+          '        <input type="text" class="form-control" name="size[S][]">' +
+          '      </div>' +
+          '    </div>' +
+          '    <div class="col-md-3">' +
+          '      <div class="form-group">' +
+          '        <label for="sizeM">Size M:</label>' +
+          '        <input type="text" class="form-control" name="size[M][]">' +
+          '      </div>' +
+          '    </div>' +
+          '    <div class="col-md-3">' +
+          '      <div class="form-group">' +
+          '        <label for="sizeL">Size L:</label>' +
+          '        <input type="text" class="form-control" name="size[L][]">' +
+          '      </div>' +
+          '    </div>' +
+          '    <div class="col-md-3">' +
+          '      <div class="form-group">' +
+          '        <label for="sizeXL">Size XL:</label>' +
+          '        <input type="text" class="form-control" name="size[XL][]">' +
+          '      </div>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>' +
+          '<div class="col-md-1 text-right">' +
+          '  <button type="button" class="btn btn-danger btn-sm remove-btn" onclick="removeField(this, \'stock\')">Remove</button>' +
+          '</div>' +
+          '</div>';
+
+        $('#stockFields').append(newStockField);
     }
   }
 
@@ -167,7 +245,7 @@
       var newImageField = '<div class="form-row mb-3">' +
         '<div class="col-md-6">' +
         '<label for="image">Image:</label>' +
-        '<input type="file" class="form-control" name="image[]">' +
+        '<input type="file" class="form-control" name="images">' +
         '</div>' +
         '<div class="col-md-5">' +
         '<label>Preview:</label>' +

@@ -1,41 +1,46 @@
 package com.TubesDiKaosan.ecommerce.controllers;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.ui.Model;
 
-import com.TubesDiKaosan.ecommerce.models.Category;
-import com.TubesDiKaosan.ecommerce.services.CategoryServiceImplement;
+import com.TubesDiKaosan.ecommerce.models.Users;
+import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 
-import org.springframework.ui.Model;
+import jakarta.servlet.http.HttpSession;
 
-@SpringBootApplication
-@Controller
 public class HomeController {
     @Autowired
-    private CategoryServiceImplement category;
+    private List<UsersService> usersServices;
 
-    @RequestMapping({ "/", "/home" })
-    public String homePage(Model model) {
-        model.addAttribute("title", "Home");
-        return "pages/fe/homepage";
+    @RequestMapping("/dashboard")
+    public String dashboard(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Dashboard");
+        // check session admin or not
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            if (user.getRole().getRole_name().equals("ADMIN")) {
+                return "pages/dashboard/index";
+            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                return "redirect:/";
+            }
+        }
+        return "pages/dashboard/index";
     }
 
-    
-    // @RequestMapping("/shop")
-    // public String shopPage(Model model) {
-    // model.addAttribute("title", "Shop");
-    // return "pages/fe/shop";
-    // }
-
-    // @RequestMapping("/shop1")
-    // public String shopPage1(Model model) {
-    // model.addAttribute("title", "Shop");
-    // return "pages/shop";
-    // }
-
+    @RequestMapping({ "/", "/home" })
+    public String index(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Home");
+        for (UsersService userService : usersServices) {
+            if (userService instanceof UsersService) {
+                List<Users> users = (List<Users>) ((UsersService) userService).getAll().getData();
+                model.addAttribute("users", users);
+                return "pages/fe/homepage";
+            }
+        }
+        return "pages/fe/homepage";
+    }
 }

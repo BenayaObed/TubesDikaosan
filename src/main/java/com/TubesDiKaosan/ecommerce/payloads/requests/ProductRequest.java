@@ -2,23 +2,23 @@ package com.TubesDiKaosan.ecommerce.payloads.requests;
 
 import java.util.List;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import org.springframework.lang.Nullable;
 
 public class ProductRequest {
-    @NotNull @Size(min=5, max=30) private String name_product;
-    @NotNull private Integer category_id;
+    private String name_product;
+    private Integer category_id;
     private String description;
-    @NotNull private Integer price;
-    @NotNull private Integer visible;
-    @NotNull private List<StockProductRequest> stock;
-    @NotNull private List<ImagesProductRequest> images;
+    private Integer price;
+    private Integer visible;
+    @Nullable List<StockProductRequest> stock;
+    @Nullable List<ImagesProductRequest> images;
     
     public ProductRequest() {
+        
     }
 
     public ProductRequest(String name_product, Integer category_id, String description, Integer price, Integer visible,
-            Integer categoryID, List<StockProductRequest> stock, List<ImagesProductRequest> images) {
+            List<StockProductRequest> stock, List<ImagesProductRequest> images) {
         this.name_product = name_product;
         this.category_id = category_id;
         this.description = description;
@@ -83,5 +83,4 @@ public class ProductRequest {
     public void setImages(List<ImagesProductRequest> images) {
         this.images = images;
     }
-
 }
