@@ -29,7 +29,6 @@
             </div>
             <div class="modal-body">
               <form id="loginForm">
-
                 <div class="row email">
                   <a>Email address</a>
                   <span class="input-Email">
@@ -49,10 +48,9 @@
                 </div>  
                 
                 <div class="row justify-content-center sign_up text-center">
-                  <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal">Login</button>
+                  <button type="submit" class="btn btn-primary confirm_btn w-50">Login</button>
                   <a class="my-1 " style="text-decoration: none;">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
                 </div>
-                
               </form>
               
             
@@ -404,7 +402,7 @@
       $.ajax({
         type: 'POST',
         url: '${pageContext.request.contextPath}/authentication',
-        data: formData,
+        data: $('#loginForm').serialize(),
         success: function(response) {
           // Handle the success response from the server
           console.log('Success:', response);
