@@ -57,4 +57,49 @@ public class LandingController {
         }
         return "pages/fe/about";
     }
+
+    @RequestMapping("/description")
+    public String deskription(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Description");
+        for (UsersService userService : usersServices) {
+            if (userService instanceof UsersService) {
+                return "pages/fe/description";
+            }
+        }
+        return "pages/fe/about";
+    }
+
+    @RequestMapping("/checkout")
+    public String checkout(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Checkout");
+        for (UsersService userService : usersServices) {
+            if (userService instanceof UsersService) {
+                return "pages/fe/checkout";
+            }
+        }
+        return "pages/fe/about";
+    }
+
+    @RequestMapping("/shoping_cart")
+    public String shoping_cart(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Shoping_Cart");
+        for (UsersService userService : usersServices) {
+            if (userService instanceof UsersService) {
+                return "pages/fe/shoping_cart";
+            }
+        }
+        return "pages/fe/about";
+    }
+
+    @RequestMapping("/payment")
+    public String payment(Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Payment");
+        for (UsersService userService : usersServices) {
+            if (userService instanceof UsersService) {
+                return "pages/fe/payment";
+            }
+        }
+        return "pages/fe/about";
+    }
+
 }

@@ -78,7 +78,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./images/Produk/G1.jpg" alt="" >
+                                <img class="images" src="/resources/images/Produk/G1.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>Man Kimono Set</a1>
@@ -130,7 +130,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./images/Produk/G2.jpg" alt="" >
+                                <img class="images" src="/resources/images/Produk/G2.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>Reebok M1 Shoes</a1>
@@ -182,7 +182,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./images/Produk/G4.jpg" alt="" >
+                                <img class="images" src="/resources/images/Produk/G4.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>Black Glasses</a1>
@@ -234,7 +234,7 @@
                           <div class="col-sm-6 d-flex flex-column">
                             <div class =row>
                               <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="./images/Produk/G5.jpg" alt="" >
+                                <img class="images" src="/resources/images/Produk/G5.jpg" alt="" >
                               </div>
                               <div class = "harga col-sm-8 d-flex flex-column ">
                                 <a1>School Bag</a1>
