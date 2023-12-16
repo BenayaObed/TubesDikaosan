@@ -29,7 +29,6 @@
             </div>
             <div class="modal-body">
               <form id="loginForm">
-
                 <div class="row email">
                   <a>Email address</a>
                   <span class="input-Email">
@@ -49,10 +48,9 @@
                 </div>  
                 
                 <div class="row justify-content-center sign_up text-center">
-                  <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal">Login</button>
+                  <button type="submit" class="btn btn-primary confirm_btn w-50">Login</button>
                   <a class="my-1 " style="text-decoration: none;">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
                 </div>
-                
               </form>
               
             
@@ -304,20 +302,24 @@
           </div>
           <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 m-0">
             <c:forEach items="${products}" var="item">
-              <div class="col d-flex flex-column border-danger p-2">
-                <img class="product-img" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.images[0].image}"/>
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">${item.name_product}</p>
-                    <p class="mb-0 p-0"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
+                <c:if test="${(item.visible == 1)}">
+                  <c:if test="${(item.category.visible == 1)}">
+                      <div class="col d-flex flex-column border-danger p-2">
+                        <img class="product-img" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.images[0].image}"/>
+                        <div class="row p-0 m-0">
+                      <div class="col-11 p-0 w product-desc">
+                        <p class="mb-0 p-0">${item.name_product}</p>
+                        <p class="mb-0 p-0"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
+                      </div>
+                      <a href="${pageContext.request.contextPath}/cart/push?product=${item.product_id}" class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+                </c:if>
+              </c:if>
             </c:forEach>
           </div>
         </div>
@@ -404,7 +406,7 @@
       $.ajax({
         type: 'POST',
         url: '${pageContext.request.contextPath}/authentication',
-        data: formData,
+        data: $('#loginForm').serialize(),
         success: function(response) {
           // Handle the success response from the server
           console.log('Success:', response);

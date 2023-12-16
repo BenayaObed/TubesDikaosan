@@ -47,6 +47,17 @@ public class CategoryService extends BaseServices<CategoryRequest, Integer>
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
     }
 
+    // hide
+    public Response hideDataByID(Integer id) throws SQLException {
+        if (categoryRepository.findById(id).isPresent()) {
+            Category data = categoryRepository.findById(id).get();
+            data.setVisible(0);
+            categoryRepository.save(data);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        } else
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+    }
+
     @Override
     public Response updateDataById(Integer id, CategoryRequest request) throws SQLException {
         if (categoryRepository.findById(id).isPresent()) {

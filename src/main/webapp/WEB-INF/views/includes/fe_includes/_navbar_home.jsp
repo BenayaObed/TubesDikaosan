@@ -30,7 +30,9 @@
                 <span class="sign">
                     <div class="sign-in mt-1">
                       <!-- Trigger Modal -->
-                      <a  href="#" data-bs-toggle="modal" data-bs-target="#loginDikaosan">Sign in</a> 
+                      <a  href="#" data-bs-toggle="modal" data-bs-target="#loginDikaosan">
+                        ${sessionScope.user != null ? sessionScope.user.first_name : 'Sign In'}
+                      </a> 
 
                       <!-- Modal Login -->
                       <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

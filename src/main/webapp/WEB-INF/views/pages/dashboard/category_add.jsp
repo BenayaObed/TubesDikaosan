@@ -40,7 +40,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <form action="${pageContext.request.contextPath}/dashboard/categories/add/submit" method="POST">
+            <form action="${pageContext.request.contextPath}/dashboard/categories/save" method="POST">
               <div class="card card-primary">
                 <div class="card-header">
                   <h3 class="card-title">${title}</h3>
