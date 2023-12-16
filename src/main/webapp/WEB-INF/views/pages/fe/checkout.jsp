@@ -48,10 +48,9 @@
         <div class="col-12 d-flex">
           <div class="col-sm-6 ">
 
-            <div class="col-sm-12 ">
+            <div class="row ">
               <div class="fontSize">
                 <div class="container activity-image offset mx-4 my-1 w-100" >
-                  <div class="row">
                     <div class="col d-flex flex-column my-lg-3 p-3">
                       <div class="row">
                         <div class="col-sm-6 d-flex flex-column font-weight-bold"style="font-weight: bold;">
@@ -65,7 +64,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -316,16 +314,20 @@
                   </div>
                   <div class="row">
                     <div class="col-sm-6 d-flex flex-column my-1 ">
-                      <p>Man Kimono Set</p>
-                      <p>Reebok M1 Shoes</p>
-                      <p>Black Glasses</p>
-                      <p>School Bag</p>
+                      <ol class="list list-group-numbered p-0">
+                        <li class="list-group-item">Man Kimono Set</li>
+                        <li class="list-group-item">Reebok M1 Shoes</li>
+                        <li class="list-group-item">Black Glasses</li>
+                        <li class="list-group-item">School Bag</li>
+                      </ol>
                     </div>
                     <div class="col-sm-6 d-flex flex-column  align-items-end my-1  ">
-                      <p>Rp 299.999</p>
-                      <p>Rp 699.999</p>
-                      <p>Rp 149.999</p>
-                      <p>Rp 119.999</p>
+                      <ul class="list list-group-flush text-end">
+                        <li class="list-group-item">Rp 249.999</li>
+                        <li class="list-group-item">Rp 699.999</li>
+                        <li class="list-group-item">Rp 149.999</li>
+                        <li class="list-group-item">Rp 119.999</li>
+                    </ul>
                     </div>
                   </div>
                 </div>
@@ -349,7 +351,9 @@
                   <!-- Bank -->
                   <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
-                    <label class="form-check-label" for="validationFormCheck1">Transfer Bank</label>
+                    <label class="form-check-label" for="validationFormCheck1">
+                      Transfer Bank
+                    </label>
                     <div class="valid-feedback"> 
                     
                       <div class="form-check">
