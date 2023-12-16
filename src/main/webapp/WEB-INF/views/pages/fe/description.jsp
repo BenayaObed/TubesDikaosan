@@ -45,7 +45,7 @@
       <div class="container description my-5">
         <div class="row">
 
-          <div class="col-sm-3">
+          <!-- <div class="col-sm-3">
             <div class="d-flex flex-column">
               <div class="my-3">
                 <div class="accordion" id="accordionExample">
@@ -116,13 +116,13 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-4 d-flex justify-content-center product_pic align-items-center">
+          <div class="col-6 d-flex justify-content-center align-items-center">
             <img src="/resources/images/G1.jpg" alt="">
           </div>
 
-          <div class="col-5">
+          <div class="col-6">
             <div class="row title_product">
               <div class="col-8">
                 <h1>Man Kimono Set<br> Rp 249.999</h1>
