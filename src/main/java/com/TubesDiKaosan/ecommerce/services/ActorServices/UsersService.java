@@ -52,26 +52,6 @@ public abstract class UsersService extends BaseServices<UserRequest, String> {
     }
 
     @Override
-    public Response createData(UserRequest request) throws SQLException {
-        Users user = new Users();
-        user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setFirst_name(request.getFirst_name());
-        user.setLast_name(request.getLast_name());
-
-        Response roleResponse = rolesService.findDataByID(request.getRole());
-        if (roleResponse.getStatus() != HttpStatus.OK.value()) {
-            return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid role ID!", null);
-        }
-
-        Roles roleData = (Roles) roleResponse.getData();
-        user.setRole(roleData);
-
-        userRepository.save(user);
-        return new Response(HttpStatus.OK.value(), "success", user);
-    }
-
-    @Override
     public Response updateDataById(String id, UserRequest request) throws SQLException {
         try {
             Optional<Users> optionalUser = userRepository.findById(id);

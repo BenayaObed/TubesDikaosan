@@ -73,4 +73,5 @@ public class RolesService extends BaseServices<RoleRequest,Integer>{
     Roles existsByName(String name){
         return rolesRepository.existsByName(name);
     }
+
 }

@@ -129,4 +129,33 @@ public class CustomerService extends UsersService {
         }
     }
 
+    @Override
+    public Response createData(UserRequest request) throws SQLException {
+        Users user = new Users();
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+        user.setFirst_name(request.getFirst_name());
+        user.setLast_name(request.getLast_name());
+
+        Response roleResponse = rolesService.findDataByID(request.getRole());
+        if (roleResponse.getStatus() != HttpStatus.OK.value()) {
+            return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid role ID!", null);
+        }
+
+        Roles roleData = (Roles) roleResponse.getData();
+        user.setRole(roleData);
+
+        userRepository.save(user);
+        return new Response(HttpStatus.OK.value(), "success", user);
+    }
+
+    // query for get roles customer
+    public Response getRolesCustomer() throws SQLException {
+        Roles role = rolesService.existsByName("CUSTOMER");
+        if (role == null) {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+        }
+        return new Response(HttpStatus.OK.value(), "success", role);
+    }
+
 }

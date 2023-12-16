@@ -66,21 +66,21 @@
             </li>
 
             <li class="nav-item">
-              <a href="${pageContext.request.contextPath}/dashboard/categories" class="nav-link">
+              <a href="${pageContext.request.contextPath}/dashboard/users" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p> Employee </p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="${pageContext.request.contextPath}/dashboard/categories" class="nav-link">
+              <a href="${pageContext.request.contextPath}/dashboard/roles" class="nav-link">
                 <i class="nav-icon fas fa-user-tag"></i>
                 <p> Roles </p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="${pageContext.request.contextPath}/dashboard/categories" class="nav-link">
+              <a href="${pageContext.request.contextPath}/dashboard/payments" class="nav-link">
                 <!-- credit card -->
                 <i class="nav-icon fas fa-credit-card"></i>
                 <p> Method Payment </p>

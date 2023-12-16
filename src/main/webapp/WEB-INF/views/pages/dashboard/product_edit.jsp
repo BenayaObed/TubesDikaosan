@@ -160,8 +160,8 @@
                                 <c:forEach items="${product.images}" var="item">
                                 <div class="form-row mb-3">
                                   <div class="col-md-6">
-                                    <label for="image">Image:</label>
-                                    <input type="hidden" name="image_id[]" value="${item.image_id}">
+                                    <label for="image">Image file:</label>
+                                    <input type="hidden" name="image_id" value="${item.image_id}">
                                     <input type="file" class="form-control" name="images" value="${item.image}">
                                   </div>
                                   <div class="col-md-5">
@@ -299,11 +299,11 @@
   }
 
   function addImageField() {
-    // Maximum 3 image fields
     if ($('#imageFields .form-row').length < 3) {
       var newImageField = '<div class="form-row mb-3">' +
         '<div class="col-md-6">' +
-        '<label for="image">Image:</label>' +
+        '<label for="image">Image file:</label>' +
+        '<input type="hidden" name="image_id" value="">'+
         '<input type="file" class="form-control" name="images">' +
         '</div>' +
         '<div class="col-md-5">' +

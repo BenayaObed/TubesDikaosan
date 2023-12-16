@@ -43,10 +43,10 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-6">
-                    <h3 class="card-title">Categories</h3>
+                    <h3 class="card-title">Roles</h3>
                   </div>
                   <div class="col-6">
-                    <a href="${pageContext.request.contextPath}/dashboard/categories/add" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
+                    <a href="${pageContext.request.contextPath}/dashboard/roles/create" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
                   </div>
                 </div>
               </div>
@@ -55,30 +55,27 @@
                 <table id="example1" class="table table-bordered table-striped text-center">
                   <thead>
                   <tr>
-                    <th>Category</th>
-                    <th>Total Items</th>
-                    <th>Visibility</th>
+                    <th>ID ROLE</th>
+                    <th>NAME ROLE</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach items="${categories}" var="category">
+                  <c:forEach items="${data}" var="item">
                     <tr>
-                      <td>${category.category_name}</td>
-                      <td>0</td>
-                      <td> ${category.visible == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'}</td>
+                      <td>${item.role_id}</td>
+                      <td>${item.role_name}</td>
                       <td>
-                        <a href="${pageContext.request.contextPath}/dashboard/categories/edit/${category.category_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="${pageContext.request.contextPath}/dashboard/category/delete/${category.category_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hide</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/roles/edit?roleID=${item.role_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/roles/delete?roleID=${item.role_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
                       </td>
                     </tr>
                   </c:forEach>
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Category</th>
-                    <th>Total Items</th>
-                    <th>Visibility</th>
+                    <th>ID ROLE</th>
+                    <th>NAME ROLE</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.requests.UserRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
+import com.TubesDiKaosan.ecommerce.services.ActorServices.CustomerService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 
 import jakarta.servlet.http.HttpSession;
@@ -47,10 +49,12 @@ public class AuthController {
     // REGISTER FOR CUSTOMER
     @PostMapping("/registration")
     public String registration(@Valid UserRequest UserRequest, Model model, HttpSession session) throws SQLException {
-        UserRequest.setRole(2);
+        UserRequest.setRole(-1);
         for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                Response response = ((UsersService) userService).createData(UserRequest);
+            if (userService instanceof CustomerService) {
+                Roles role_id = (Roles) ((CustomerService) userService).getRolesCustomer().getData();
+                UserRequest.setRole(role_id.getRole_id());
+                Response response = ((CustomerService) userService).createData(UserRequest);
                 if (!response.getMessage().equals("Email not found")) {
                     return "redirect:/login";
                 } else

@@ -1,11 +1,13 @@
 package com.TubesDiKaosan.ecommerce.payloads.requests;
 
+import jakarta.annotation.Nullable;
+
 public class UserRequest {
   private String first_name;
   private String last_name;
   private String email;
   private String password;
-  private Integer role;
+  @Nullable private Integer role;
 
   public UserRequest() {}
 
