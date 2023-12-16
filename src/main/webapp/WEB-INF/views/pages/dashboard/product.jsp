@@ -75,8 +75,8 @@
                         </a>
                       </td>
                       <td>
-                        <a href="${pageContext.request.contextPath}/dashboard/products/edit/${product.product_id}" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="${pageContext.request.contextPath}/dashboard/products/delete/${product.product_id}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/products/edit?productID=${product.product_id}" class="btn btn-primary btn-sm">Update</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/products/delete?productID=${product.product_id}" class="btn btn-danger btn-sm">Hide</a>
                       </td>
                     </tr>
                   </c:forEach>

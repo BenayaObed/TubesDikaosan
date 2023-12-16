@@ -1,14 +1,19 @@
 package com.TubesDiKaosan.ecommerce.controllers.dashboard;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+
+import org.hibernate.engine.internal.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.ResourceLoader;
@@ -25,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Product;
+import com.TubesDiKaosan.ecommerce.models.Stock;
 import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ImagesProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ProductRequest;
@@ -63,11 +69,6 @@ public class ProductController {
         return "redirect:/";
     }
 
-    @RequestMapping("/api")
-    public ResponseEntity<?> productApi() throws SQLException {
-        return ResponseEntity.ok(productService.getAll());
-    }
-
     @RequestMapping("/create")
     public String createPage(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Create Product");
@@ -103,7 +104,7 @@ public class ProductController {
             System.out.println(visible);
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 List<ImagesProductRequest> images = new ArrayList<>();
-                String path =  "src/main/resources/static/uploads/images/products";
+                String path = "src/main/resources/static/uploads/images/products";
                 File dirPath = new File(path);
                 if (!dirPath.exists()) {
                     dirPath.mkdirs();
@@ -174,70 +175,53 @@ public class ProductController {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 Product product = (Product) productService.findDataByID(productID).getData();
+                List<Category> categories = (List<Category>) categoryService.getAll().getData();
+
+                // buatmap untuk menampung data stock yang akan di edit
+                // dengan pakai map jadi color tidak ada yang duplikat
+
+                Map<String, Object> data = new HashMap<>();
+                for (Stock stock : product.getStock()) {
+                    // check color value is exist or not
+                    if (data.containsKey(stock.getColor())) {
+                        Map<String, Object> size = (Map<String, Object>) data.get(stock.getColor());
+                        size.put(stock.getSize(), stock.getQuantity());
+                        data.put(stock.getColor(), size);
+                    } else {
+                        data.put(stock.getColor(), new HashMap<String, Object>() {
+                            {
+                                put("S", stock.getSize().equals("S") ? stock.getQuantity() : "0");
+                                put("M", stock.getSize().equals("M") ? stock.getQuantity() : "0");
+                                put("L", stock.getSize().equals("L") ? stock.getQuantity() : "0");
+                                put("XL", stock.getSize().equals("XL") ? stock.getQuantity() : "0");
+                            }
+                        });
+                    }
+                }
+
+                // data reverse untuk mengurutkan dari belakang ke depan
                 model.addAttribute("product", product);
-                return "pages/dashboard/product/update";
+                model.addAttribute("categories", categories);
+                model.addAttribute("stocks", data);
+                return "pages/dashboard/product_edit";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
             }
         }
-        return "pages/dashboard/product/update";
+        return "redirect:/";
     }
 
-    /*
-     * @PostMapping("/update")
-     * public String update(@RequestParam Integer productID, ProductRequest
-     * productRequest, Model model,
-     * HttpSession session, @RequestParam("images") List<MultipartFile> files)
-     * throws SQLException {
-     * if (session.getAttribute("user") != null) {
-     * Users user = (Users) session.getAttribute("user");
-     * if (user.getRole().getRole_name().equals("ADMIN")) {
-     * 
-     * String uploadDir = "src/main/resources/static/images/product";
-     * File dir = new File(uploadDir);
-     * if (!dir.exists()) {
-     * dir.mkdirs();
-     * }
-     * 
-     * List<ImagesProductRequest> images = productRequest.getImages();
-     * for (MultipartFile file : files) {
-     * String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-     * try {
-     * ImagesProductRequest image = new ImagesProductRequest();
-     * image.setImage(fileName);
-     * images.add(image);
-     * String filePath = uploadDir + "/" + fileName;
-     * File dest = new File(filePath);
-     * file.transferTo(dest);
-     * } catch (Exception e) {
-     * e.printStackTrace();
-     * }
-     * }
-     * productRequest.setImages(images);
-     * productService.updateDataById(productID, productRequest);
-     * 
-     * return "pages/dashboard/product/update";
-     * } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
-     * return "redirect:/";
-     * }
-     * }
-     * return "pages/dashboard/product/update";
-     * }
-     * 
-     * @RequestMapping("/delete")
-     * public String delete(@RequestParam Integer productID, Model model,
-     * HttpSession session) throws SQLException {
-     * model.addAttribute("title", "Delete Product");
-     * if (session.getAttribute("user") != null) {
-     * Users user = (Users) session.getAttribute("user");
-     * if (user.getRole().getRole_name().equals("ADMIN")) {
-     * productService.hideProduct(productID);
-     * return "redirect:/dashboard/products/";
-     * } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
-     * return "redirect:/";
-     * }
-     * }
-     * return "redirect:/dashboard/products/";
-     * }
-     */
+    @RequestMapping("/delete")
+    public String delete(@RequestParam Integer productID, Model model, HttpSession session) throws SQLException {
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            if (user.getRole().getRole_name().equals("ADMIN")) {
+                productService.hideProduct(productID);
+                return "redirect:/dashboard/products";
+            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                return "redirect:/";
+            }
+        }
+        return "redirect:/";
+    }
 }

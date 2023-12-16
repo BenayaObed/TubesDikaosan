@@ -46,7 +46,7 @@
                     <h3 class="card-title">Categories</h3>
                   </div>
                   <div class="col-6">
-                    <a href="${pageContext.request.contextPath}/dashboard/categories/add" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
+                    <a href="${pageContext.request.contextPath}/dashboard/categories/create" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
                   </div>
                 </div>
               </div>
@@ -68,8 +68,8 @@
                       <td>0</td>
                       <td> ${category.visible == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'}</td>
                       <td>
-                        <a href="${pageContext.request.contextPath}/dashboard/categories/edit/${category.category_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="${pageContext.request.contextPath}/dashboard/category/delete/${category.category_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/categories/edit?categoryID=${category.category_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/categories/delete?categoryID=${category.category_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
                       </td>
                     </tr>
                   </c:forEach>
