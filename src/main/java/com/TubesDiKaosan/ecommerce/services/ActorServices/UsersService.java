@@ -14,6 +14,7 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.UserRepository;
 import com.TubesDiKaosan.ecommerce.services.BaseServices;
 
+
 @Service
 public abstract class UsersService extends BaseServices<UserRequest, String> {
     protected final UserRepository userRepository;
@@ -85,5 +86,9 @@ public abstract class UsersService extends BaseServices<UserRequest, String> {
             // Handle specific exceptions and log the error
             return new Response(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error updating user", null);
         }
+    }
+
+    public boolean isEmpty() {
+        return userRepository.findAll().isEmpty();
     }
 }

@@ -46,7 +46,7 @@
                     <h3 class="card-title">Categories</h3>
                   </div>
                   <div class="col-6">
-                    <a href="${pageContext.request.contextPath}/dashboard/categories/add" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
+                    <a href="${pageContext.request.contextPath}/dashboard/categories/create" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
                   </div>
                 </div>
               </div>

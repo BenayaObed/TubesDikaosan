@@ -16,21 +16,22 @@ import jakarta.persistence.Table;
 @Table(name = "roles")
 public class Roles {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer role_id;
-    
+
     @Column(name = "role_name", length = 100)
     private String role_name;
-    
-     @CreationTimestamp
-     @Column(name = "createdAt")
+
+    @CreationTimestamp
+    @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    public Roles() {}
+    public Roles() {
+    }
 
     public Roles(String role_name) {
         this.role_name = role_name;
@@ -74,5 +75,5 @@ public class Roles {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-   
+
 }

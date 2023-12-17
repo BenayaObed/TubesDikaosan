@@ -7,9 +7,8 @@ import org.springframework.stereotype.Repository;
 import com.TubesDiKaosan.ecommerce.models.Users;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users,String>{
-
+public interface UserRepository extends JpaRepository<Users, String> {
     @Query(value = "SELECT * FROM users WHERE email = ?1", nativeQuery = true)
     Users findByEmail(String email);
-     
+
 }

@@ -46,7 +46,7 @@
                     <h3 class="card-title">Employees</h3>
                   </div>
                   <div class="col-6">
-                    <a href="${pageContext.request.contextPath}/dashboard/categories/create" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
+                    <a href="${pageContext.request.contextPath}/dashboard/users/create" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus"></i> Add Category</a>
                   </div>
                 </div>
               </div>
@@ -69,8 +69,8 @@
                       <td>${item.role.role_name}</td>
                       <td>${item.email}</td>
                       <td>
-                        <a href="${pageContext.request.contextPath}/dashboard/categories/edit?categoryID=${category.category_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="${pageContext.request.contextPath}/dashboard/categories/delete?categoryID=${category.category_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/users/edit?userID=${item.user_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/users/delete?userID=${item.user_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
                       </td>
                     </tr>
                     </c:if>

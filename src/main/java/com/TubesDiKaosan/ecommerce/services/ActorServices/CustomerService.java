@@ -157,5 +157,4 @@ public class CustomerService extends UsersService {
         }
         return new Response(HttpStatus.OK.value(), "success", role);
     }
-
 }

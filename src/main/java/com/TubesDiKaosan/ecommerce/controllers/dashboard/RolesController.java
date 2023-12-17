@@ -33,8 +33,6 @@ public class RolesController {
                 List<Roles> roles = (List<Roles>) rolesService.getAll().getData();
                 model.addAttribute("data", roles);
                 return "pages/dashboard/roles";
-            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
-                return "redirect:/";
             }
         }
         return "redirect:/";
@@ -49,11 +47,9 @@ public class RolesController {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 return "pages/dashboard/roles_add";
-            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
-                return "redirect:/";
             }
         }
-        return "pages/dashboard/product/create";
+        return "redirect:/";
     }
 
     // POST CREATE
@@ -63,30 +59,32 @@ public class RolesController {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
-                rolesService.createData(request);
+                Response roles = rolesService.createData(request);
+                if (roles.getStatus() == 200) 
+                    return "redirect:/dashboard/roles";
                 return "redirect:/dashboard/roles";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
             }
         }
-        return "pages/dashboard/product/create";
+        return "redirect:/";
     }
 
     // UPDATE PAGE
-    @RequestMapping("/update")
+    @RequestMapping("/edit")
     public String update(@RequestParam Integer roleID, Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Roles");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
-                Response roles = rolesService.findDataByID(roleID);
-                model.addAttribute("roles", roles);
-                return "pages/dashboard/roles_update";
+                Roles roles = (Roles) rolesService.findDataByID(roleID).getData();
+                model.addAttribute("data", roles);
+                return "pages/dashboard/roles_edit";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
             }
         }
-        return "pages/dashboard/product/update";
+        return "redirect:/";
     }
 
     // POST UPDATE

@@ -74,4 +74,7 @@ public class RolesService extends BaseServices<RoleRequest,Integer>{
         return rolesRepository.existsByName(name);
     }
 
+    public boolean isEmpty(){
+        return rolesRepository.findAll().isEmpty();
+    }
 }

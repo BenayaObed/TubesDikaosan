@@ -12,6 +12,6 @@ public class RoleRequest {
         return this.role_name;
     }
     public void setRole_name(String role_name) {
-        this.role_name = role_name;
+        this.role_name = role_name.toUpperCase();
     }
 }
