@@ -1,25 +1,39 @@
 package com.TubesDiKaosan.ecommerce.services.ActorServices;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.TubesDiKaosan.ecommerce.models.CustomerAddress;
+import com.TubesDiKaosan.ecommerce.models.Orders;
+import com.TubesDiKaosan.ecommerce.models.OrdersItem;
 import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.requests.UserRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.CustomerAddressRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.CustomerAddressRepository;
+import com.TubesDiKaosan.ecommerce.repositories.OrderItemRepository;
+import com.TubesDiKaosan.ecommerce.repositories.OrdersRepository;
 import com.TubesDiKaosan.ecommerce.repositories.UserRepository;
+import com.TubesDiKaosan.ecommerce.services.ShoppingServices.ShoppingServices;
+
+import ch.qos.logback.core.model.Model;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 @Primary
 public class CustomerService extends UsersService {
+    @Autowired
+    private ShoppingServices shoppingServices;
+
     public CustomerService(UserRepository userRepository, RolesService rolesService) {
         super(userRepository, rolesService);
     }
@@ -156,5 +170,30 @@ public class CustomerService extends UsersService {
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
         }
         return new Response(HttpStatus.OK.value(), "success", role);
+    }
+
+
+    @Autowired
+    private OrderItemRepository OrderItemRepository;
+    @Autowired
+    private OrdersRepository OrdersRepository;
+
+    // ORDERS & CARTS
+    public Response getDraftOrder(String id) throws SQLException { // GET DRAFT ORDER (KERANJANG)
+        if (OrdersRepository.getDraftOrder(id) == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            Orders data = OrdersRepository.getDraftOrder(id);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
+    }
+
+    public Response getDataCart(Integer orderID, String UserID) throws SQLException { // GET ALL ITEM IN CART
+        if (OrderItemRepository.getAllItemInCart(orderID).isEmpty())
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<OrdersItem> data = OrderItemRepository.getAllItemInCart(orderID);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
     }
 }

@@ -1,15 +1,25 @@
 package com.TubesDiKaosan.ecommerce.controllers;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.TubesDiKaosan.ecommerce.models.Orders;
+import com.TubesDiKaosan.ecommerce.models.OrdersItem;
 import com.TubesDiKaosan.ecommerce.models.Product;
+import com.TubesDiKaosan.ecommerce.models.Stock;
 import com.TubesDiKaosan.ecommerce.models.Users;
+import com.TubesDiKaosan.ecommerce.payloads.response.Response;
+import com.TubesDiKaosan.ecommerce.services.ActorServices.AdminService;
+import com.TubesDiKaosan.ecommerce.services.ActorServices.CustomerService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.ProductService;
 
@@ -59,14 +69,30 @@ public class LandingController {
     }
 
     @RequestMapping("/description")
-    public String deskription(Model model, HttpSession session) throws SQLException {
+    public String deskription(@RequestParam Integer product, Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Description");
-        for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                return "pages/fe/description";
+        Product data_product = (Product) productService.findDataByID(product).getData();
+        Map<String, Object> data = new HashMap<>();
+        
+        for (Stock stock : data_product.getStock()) {
+            if (data.containsKey(stock.getColor())) {
+                Map<String, Object> size = (Map<String, Object>) data.get(stock.getColor());
+                size.put(stock.getSize(), stock.getQuantity());
+                data.put(stock.getColor(), size);
+            } else {
+                data.put(stock.getColor(), new HashMap<String, Object>() {
+                    {
+                        put("S", stock.getSize().equals("S") ? stock.getQuantity() : "0");
+                        put("M", stock.getSize().equals("M") ? stock.getQuantity() : "0");
+                        put("L", stock.getSize().equals("L") ? stock.getQuantity() : "0");
+                        put("XL", stock.getSize().equals("XL") ? stock.getQuantity() : "0");
+                    }
+                });
             }
         }
-        return "pages/fe/about";
+        model.addAttribute("data_stock", data);
+        model.addAttribute("data", data_product);
+        return "pages/fe/description";
     }
 
     @RequestMapping("/checkout")
@@ -83,12 +109,20 @@ public class LandingController {
     @RequestMapping("/shoping_cart")
     public String shoping_cart(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Shoping_Cart");
-        for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                return "pages/fe/shoping_cart";
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            for (UsersService userService : usersServices) {
+                if (userService instanceof CustomerService) {
+                    Orders orders = (Orders) ((CustomerService) userService).getDraftOrder(user.getUser_id()).getData();
+                    List<OrdersItem> ordersItems = (List<OrdersItem>) ((CustomerService) userService)
+                            .getDataCart(orders.getOrder_id(), user.getUser_id()).getData();
+                    model.addAttribute("data_cart", ordersItems);
+                    model.addAttribute("data_orders", orders);
+                    return "pages/fe/shoping_cart";
+                }
             }
         }
-        return "pages/fe/about";
+        return "redirect:/";
     }
 
     @RequestMapping("/payment")
@@ -99,7 +133,7 @@ public class LandingController {
                 return "pages/fe/payment";
             }
         }
-        return "pages/fe/about";
+        return "redirect:/";
     }
 
 }
