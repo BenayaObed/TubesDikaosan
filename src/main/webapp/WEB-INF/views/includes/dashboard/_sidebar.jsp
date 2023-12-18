@@ -80,7 +80,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="${pageContext.request.contextPath}/dashboard/payments" class="nav-link">
+              <a href="${pageContext.request.contextPath}/dashboard/payment-method" class="nav-link">
                 <!-- credit card -->
                 <i class="nav-icon fas fa-credit-card"></i>
                 <p> Method Payment </p>

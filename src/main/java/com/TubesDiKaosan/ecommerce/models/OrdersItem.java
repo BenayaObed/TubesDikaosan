@@ -26,7 +26,7 @@ public class OrdersItem {
     private Integer order_item_id;
 
     // Relation Product
-    @ManyToOne
+    @ManyToOne(targetEntity = Product.class)
     @JoinColumn(name = "product_id")
     private Product product_id;
 

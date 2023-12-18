@@ -8,12 +8,12 @@ import com.TubesDiKaosan.ecommerce.models.Users;
 public class OrderRequest {
     private String notes;
     private Users user_id;
-    private Payment payment_id;
+    private Integer payment_id;
     private List<OrderItemRequest> orderItemRequestList;
 
     public OrderRequest(){}
 
-    public OrderRequest(String notes, Users user_id, Payment payment_id, List<OrderItemRequest> orderItemRequestList) {
+    public OrderRequest(String notes, Users user_id, Integer payment_id, List<OrderItemRequest> orderItemRequestList) {
         this.notes = notes;
         this.user_id = user_id;
         this.payment_id = payment_id;
@@ -36,11 +36,11 @@ public class OrderRequest {
         this.user_id = user_id;
     }
 
-    public Payment getPayment_id() {
+    public Integer getPayment_id() {
         return payment_id;
     }
 
-    public void setPayment_id(Payment payment_id) {
+    public void setPayment_id(Integer payment_id) {
         this.payment_id = payment_id;
     }
 

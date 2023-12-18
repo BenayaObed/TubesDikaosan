@@ -35,6 +35,7 @@ import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ImagesProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.StockProductRequest;
+import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.CategoryService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.ProductService;
 
@@ -52,9 +53,9 @@ public class ProductController {
 
     @Autowired
     private CategoryService categoryService;
-
+    
     @RequestMapping({ "", "/" })
-    public String product(Model model, HttpSession session) throws SQLException {
+    public String index(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Product");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
@@ -101,7 +102,6 @@ public class ProductController {
         if (session.getAttribute("user") != null) {
             ProductRequest request = new ProductRequest();
             Users user = (Users) session.getAttribute("user");
-            System.out.println(visible);
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 List<ImagesProductRequest> images = new ArrayList<>();
                 String path = "src/main/resources/static/uploads/images/products";

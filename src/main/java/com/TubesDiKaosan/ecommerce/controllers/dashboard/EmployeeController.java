@@ -44,7 +44,6 @@ public class EmployeeController {
         return "redirect:/";
     }
 
-    // CREATE AND POST
     @RequestMapping("/create")
     public String create(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Create User");
@@ -79,14 +78,13 @@ public class EmployeeController {
         }
         return "redirect:/";
     }
-    // END CREATE AND POST
 
     @RequestMapping("/edit")
     public String edit(@RequestParam String userID, Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Edit User");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
-            if (!user.getRole().getRole_name().equals("ADMIN")) {
+            if (user.getRole().getRole_name().equals("ADMIN")) {
                 for (UsersService userService : usersServices) {
                     if (userService instanceof AdminService) {
                         List<Roles> roles = (List<Roles>) ((AdminService) userService).getAllRoles().getData();

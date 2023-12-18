@@ -61,7 +61,6 @@ public class AdminService extends UsersService {
         return new Response(HttpStatus.OK.value(), "success", user);
     }
 
-    // get all roles
     public final Response getAllRoles() throws SQLException {
         if (rolesService.getAll().getData() == null)
             return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
@@ -70,4 +69,5 @@ public class AdminService extends UsersService {
             return new Response(HttpStatus.OK.value(), "success", data);
         }
     }
+
 }

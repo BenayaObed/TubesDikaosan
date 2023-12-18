@@ -66,9 +66,11 @@ public class AuthController {
 
     // auth login
     @PostMapping("/authentication")
-    public String authtentication(@RequestParam("Email") String Email,
+    public String authtentication(
+            @RequestParam("Email") String Email,
             @RequestParam("password") String password, Model model,
             HttpSession session) throws SQLException {
+
         for (UsersService userService : usersServices) {
             if (userService instanceof UsersService) {
                 Response response = ((UsersService) userService).login(Email, password);
@@ -85,6 +87,7 @@ public class AuthController {
             }
         }
         return "redirect:/login";
+        
     }
 
     @PostMapping("/users/{uuid}/update-password")

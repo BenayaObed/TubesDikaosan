@@ -7,17 +7,15 @@ public class OrderItemRequest {
     private String color;
     private String size;
     private Integer quantity;
-    private Orders order_id;
 
     public OrderItemRequest() {
     }
 
-    public OrderItemRequest(Integer product_id, String color, String size, Integer quantity, Orders order_id) {
+    public OrderItemRequest(Integer product_id, String color, String size, Integer quantity) {
         this.product_id = product_id;
         this.color = color;
         this.size = size;
         this.quantity = quantity;
-        this.order_id = order_id;
     }
 
     public Integer getProduct_id() {
@@ -51,13 +49,4 @@ public class OrderItemRequest {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
-    public Orders getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(Orders order_id) {
-        this.order_id = order_id;
-    }
-
 }
