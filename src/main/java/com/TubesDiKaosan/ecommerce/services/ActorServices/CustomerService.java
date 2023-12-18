@@ -37,18 +37,17 @@ public class CustomerService extends UsersService {
     public CustomerService(UserRepository userRepository, RolesService rolesService) {
         super(userRepository, rolesService);
     }
-
+    
     @Override
     public Response getAll() throws SQLException {
         return new Response(HttpStatus.BAD_REQUEST.value(), "Method not allowed", null);
     }
-
+    
     @Override
     public Response deleteDataByID(String id) throws SQLException {
         return new Response(HttpStatus.BAD_REQUEST.value(), "Method not allowed", null);
     }
-
-    // update data
+    
     @Override
     public final Response updateDataById(String id, UserRequest request) throws SQLException {
         try {
@@ -78,10 +77,30 @@ public class CustomerService extends UsersService {
             return new Response(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error updating user", null);
         }
     }
+    
+    @Override
+    public Response createData(UserRequest request) throws SQLException {
+        Users user = new Users();
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+        user.setFirst_name(request.getFirst_name());
+        user.setLast_name(request.getLast_name());
 
+        Response roleResponse = rolesService.findDataByID(request.getRole());
+        if (roleResponse.getStatus() != HttpStatus.OK.value()) {
+            return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid role ID!", null);
+        }
+
+        Roles roleData = (Roles) roleResponse.getData();
+        user.setRole(roleData);
+
+        userRepository.save(user);
+        return new Response(HttpStatus.OK.value(), "success", user);
+    }
+
+    // Address
     @Autowired
     private CustomerAddressRepository addressRepository;
-
     public Response addAddress(String id, CustomerAddressRequest request) throws SQLException {
         Response userResponse = super.findDataByID(id);
         if (userResponse.getStatus() != HttpStatus.OK.value()) {
@@ -143,27 +162,15 @@ public class CustomerService extends UsersService {
         }
     }
 
-    @Override
-    public Response createData(UserRequest request) throws SQLException {
-        Users user = new Users();
-        user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setFirst_name(request.getFirst_name());
-        user.setLast_name(request.getLast_name());
-
-        Response roleResponse = rolesService.findDataByID(request.getRole());
-        if (roleResponse.getStatus() != HttpStatus.OK.value()) {
-            return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid role ID!", null);
+    public Response getAllAddress(String id) throws SQLException { // GET ALL ADDRESS BY CUSTOMER
+        if (addressRepository.findAllByCustomerAddress(id).isEmpty())
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<CustomerAddress> data = addressRepository.findAllByCustomerAddress(id);
+            return new Response(HttpStatus.OK.value(), "success", data);
         }
-
-        Roles roleData = (Roles) roleResponse.getData();
-        user.setRole(roleData);
-
-        userRepository.save(user);
-        return new Response(HttpStatus.OK.value(), "success", user);
     }
-
-    // query for get roles customer
+    
     public Response getRolesCustomer() throws SQLException {
         Roles role = rolesService.existsByName("CUSTOMER");
         if (role == null) {
@@ -173,27 +180,26 @@ public class CustomerService extends UsersService {
     }
 
 
-    @Autowired
-    private OrderItemRepository OrderItemRepository;
-    @Autowired
-    private OrdersRepository OrdersRepository;
-
     // ORDERS & CARTS
+    @Autowired
+    private ShoppingServices shoppingService;
     public Response getDraftOrder(String id) throws SQLException { // GET DRAFT ORDER (KERANJANG)
-        if (OrdersRepository.getDraftOrder(id) == null)
+        if (shoppingService.getDraftOrder(id) == null)
             return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
         else {
-            Orders data = OrdersRepository.getDraftOrder(id);
+            Orders data = (Orders) shoppingService.getDraftOrder(id).getData();
             return new Response(HttpStatus.OK.value(), "success", data);
         }
     }
 
     public Response getDataCart(Integer orderID, String UserID) throws SQLException { // GET ALL ITEM IN CART
-        if (OrderItemRepository.getAllItemInCart(orderID).isEmpty())
+        if (shoppingService.getDataCart(orderID, UserID).getData() == null)
             return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
         else {
-            List<OrdersItem> data = OrderItemRepository.getAllItemInCart(orderID);
+            List<OrdersItem> data = (List<OrdersItem>) shoppingService.getDataCart(orderID, UserID).getData();
             return new Response(HttpStatus.OK.value(), "success", data);
         }
     }
+
+    
 }

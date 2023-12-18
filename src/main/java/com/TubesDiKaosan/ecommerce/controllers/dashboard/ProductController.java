@@ -1,5 +1,7 @@
 package com.TubesDiKaosan.ecommerce.controllers.dashboard;
 
+import java.util.ArrayList;
+
 import java.sql.SQLException;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
@@ -177,9 +178,6 @@ public class ProductController {
                 Product product = (Product) productService.findDataByID(productID).getData();
                 List<Category> categories = (List<Category>) categoryService.getAll().getData();
 
-                // buatmap untuk menampung data stock yang akan di edit
-                // dengan pakai map jadi color tidak ada yang duplikat
-
                 Map<String, Object> data = new HashMap<>();
                 for (Stock stock : product.getStock()) {
                     // check color value is exist or not
@@ -218,6 +216,22 @@ public class ProductController {
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 productService.hideProduct(productID);
                 return "redirect:/dashboard/products";
+            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                return "redirect:/";
+            }
+        }
+        return "redirect:/";
+    }
+
+    @RequestMapping("/search")
+    public String search(@RequestParam String keyword, Model model, HttpSession session) throws SQLException {
+        model.addAttribute("title", "Product");
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            if (user.getRole().getRole_name().equals("ADMIN")) {
+                List<Product> products = (List<Product>) productService.searchProduct(keyword).getData();
+                model.addAttribute("products", products);
+                return "pages/dashboard/product";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
             }

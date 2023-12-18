@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,7 +74,7 @@ public class LandingController {
         model.addAttribute("title", "Description");
         Product data_product = (Product) productService.findDataByID(product).getData();
         Map<String, Object> data = new HashMap<>();
-        
+
         for (Stock stock : data_product.getStock()) {
             if (data.containsKey(stock.getColor())) {
                 Map<String, Object> size = (Map<String, Object>) data.get(stock.getColor());
@@ -136,4 +137,9 @@ public class LandingController {
         return "redirect:/";
     }
 
+    @RequestMapping("/api/search")
+    public ResponseEntity<?> api(@RequestParam String keyword, Model model) throws SQLException {
+        List<Product> products = (List<Product>) productService.searchProduct(keyword).getData();
+        return ResponseEntity.ok(products);
+    }
 }

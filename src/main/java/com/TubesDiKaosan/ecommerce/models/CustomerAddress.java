@@ -21,9 +21,9 @@ public class CustomerAddress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Users.class)
     @JoinColumn(name = "id_customer")
-    private Users CustomerAddress; // Rename "customer" to "CustomerAddress"
+    private Users CustomerAddress; 
 
     @Column(columnDefinition = "TEXT")
     private String address;

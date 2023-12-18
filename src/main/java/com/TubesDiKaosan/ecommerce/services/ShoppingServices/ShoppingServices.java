@@ -31,31 +31,31 @@ public class ShoppingServices {
     @Autowired
     private OrderItemRepository OrderItemRepository;
 
+    public Response getAllOrdersByUsers(String id) throws SQLException { // ORDERS CUSTOMER
+        if (OrdersRepository.findAllByUser(id).isEmpty())
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<Orders> data = OrdersRepository.findAllByUser(id);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
+    }
+
     // ORDERS
-    public Response getAllOrders() throws SQLException { // LIST ORDERS FOR ADMIN
-        if (OrdersRepository.findAll().isEmpty())
-            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
-        else {
-            List<Orders> data = OrdersRepository.findAll();
-            return new Response(HttpStatus.OK.value(), "success", data);
-        }
-    }
-
-    public Response getAllOrdersByCustomer(String id) throws SQLException { // ORDERS CUSTOMER
-        if (OrdersRepository.findAllByCustomer(id).isEmpty())
-            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
-        else {
-            List<Orders> data = OrdersRepository.findAllByCustomer(id);
-            return new Response(HttpStatus.OK.value(), "success", data);
-        }
-    }
-
-    
     public Response getDraftOrder(String id) throws SQLException { // GET DRAFT ORDER
         if (OrdersRepository.getDraftOrder(id) == null)
             return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
         else {
             Orders data = OrdersRepository.getDraftOrder(id);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
+        
+    }
+
+    public Response getDataCart(Integer orderID, String UserID) throws SQLException { // GET ALL ITEM IN CART
+        if (OrderItemRepository.getAllItemInCart(orderID).isEmpty())
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<OrdersItem> data = OrderItemRepository.getAllItemInCart(orderID);
             return new Response(HttpStatus.OK.value(), "success", data);
         }
     }

@@ -18,5 +18,5 @@ public interface OrdersRepository extends JpaRepository<Orders,Integer>{
     Orders getDraftOrder(String id);
     
     @Query(value = "SELECT * FROM orders WHERE user_id = ?1", nativeQuery = true)
-    List<Orders> findAllByCustomer(String id);
+    List<Orders> findAllByUser(String id);
 }

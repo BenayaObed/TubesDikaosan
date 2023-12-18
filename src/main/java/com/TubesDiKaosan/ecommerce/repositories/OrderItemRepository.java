@@ -15,7 +15,10 @@ public interface OrderItemRepository extends JpaRepository<OrdersItem,Integer>{
     @Query(value = "SELECT * FROM orders_item WHERE order_id = ?1", nativeQuery = true)
     List<OrdersItem> getAllItemInCart(Integer order_id);
 
+    // GET ORDER DETAILS BY ORDER ID
+    @Query(value = "SELECT * FROM orders_item WHERE order_id = ?1", nativeQuery = true)
+    List<OrdersItem> getOrderDetail(Integer order_id);
+
     @Query(value = "SELECT SUM(price) FROM orders_item WHERE product_id = ?1 AND order_id = ?2", nativeQuery = true)
     Integer TotalPrice(Integer product_id, Integer order_id);
-
 }
