@@ -24,8 +24,6 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/dashboard")
 public class DashboardController {
-    @Autowired
-    private List<UsersService> usersServices;
 
     @RequestMapping({ "", "/", "/index" })
     public String dashboard(Model model, HttpSession session) throws SQLException {
@@ -40,62 +38,6 @@ public class DashboardController {
             }
         }
         return "redirect:/login";
-    }
-
-    @RequestMapping("/orders")
-    public String ordersPage(Model model, HttpSession session) throws SQLException {
-        model.addAttribute("title", "Orders");
-        if (session.getAttribute("user") != null) {
-            Users user = (Users) session.getAttribute("user");
-            for (UsersService userService : usersServices) {
-                if (userService instanceof AdminService && user.getRole().getRole_name().equals("ADMIN")) {
-                    List<Orders> data = (List<Orders>) ((AdminService) userService).getAllOrders().getData();
-                    model.addAttribute("data", data);
-                    return "pages/dashboard/orders";
-                }
-            }
-        }
-        return "redirect:/";
-    }
-
-    @RequestMapping("/orders/detail")
-    public String ordersDetailPage(@RequestParam Integer OrderID, Model model, HttpSession session,
-            @RequestParam String userID)
-            throws SQLException {
-        model.addAttribute("title", "Orders Detail");
-        if (session.getAttribute("user") != null) {
-            Users user = (Users) session.getAttribute("user");
-            for (UsersService userService : usersServices) {
-                if (userService instanceof AdminService && user.getRole().getRole_name().equals("ADMIN")) {
-                    List<OrdersItem> data = (List<OrdersItem>) ((AdminService) userService).getOrderDetail(OrderID)
-                            .getData();
-                    CustomerAddress address = (CustomerAddress) ((AdminService) userService)
-                            .getAddressCustomer(userID).getData();
-                    model.addAttribute("customer_address", address);
-                    model.addAttribute("data", data);
-                    return "pages/dashboard/order_details";
-                }
-            }
-        }
-        return "redirect:/";
-    }
-
-    @RequestMapping("/test/detail")
-    public ResponseEntity<?> testDetailPage(@RequestParam Integer OrderID, Model model, HttpSession session,
-            @RequestParam String userID)
-            throws SQLException {
-        for (UsersService userService : usersServices) {
-            if (userService instanceof AdminService) {
-                List<OrdersItem> data = (List<OrdersItem>) ((AdminService) userService).getOrderDetail(OrderID)
-                        .getData();
-                CustomerAddress address = (CustomerAddress) ((AdminService) userService)
-                        .getAddressCustomer(userID).getData();
-                model.addAttribute("customer_address", address);
-                model.addAttribute("data", data);
-                return ResponseEntity.ok(address);
-            }
-        }
-        return ResponseEntity.ok("ERROR");
     }
 
 }

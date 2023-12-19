@@ -37,6 +37,19 @@
     </section>
 
     <section class="content">
+      <!-- alert -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <c:if test="${not empty alert}">
+              <div class="alert alert-${alert.type} alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                ${alert.message}
+              </div>
+            </c:if>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -122,11 +135,11 @@
               <div class="row no-print">
                 <div class="col-12">
                   <!-- a tag process, delivered, cancel -->
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/process?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Process</a>
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/delivered?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}" class="btn btn-primary float-right" style="margin-right: 5px;">
+                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=process" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Process</a>
+                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=delivered" class="btn btn-primary float-right" style="margin-right: 5px;">
                     <i class="fas fa-download"></i> Delivered
                   </a>
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/cancel?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}" class="btn btn-danger float-right" style="margin-right: 5px;">
+                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=cancel" class="btn btn-danger float-right" style="margin-right: 5px;">
                     <i class="fas fa-download"></i> Cancel
                   </a>
                 </div>

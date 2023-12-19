@@ -129,4 +129,14 @@ public class AdminService extends UsersService {
             return new Response(HttpStatus.OK.value(), "success", data);
         }
     }
+
+    public Response updateStatusOrder(Integer orderID, String status) {
+        if (OrdersRepository.findById(orderID).isPresent()) {
+            Orders data = OrdersRepository.findById(orderID).get();
+            data.setStatus(status);
+            OrdersRepository.save(data);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        } else
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+    }
 }
