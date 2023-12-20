@@ -1,6 +1,7 @@
 package com.TubesDiKaosan.ecommerce.payloads.requests;
 
 public class StockProductRequest {
+    private Integer id;
     private String size;
     private Integer quantity;
     private String color;
@@ -8,10 +9,18 @@ public class StockProductRequest {
     public StockProductRequest() {
     }
 
-    public StockProductRequest(String size, Integer quantity, String color) {
+    public StockProductRequest(Integer id,String size, Integer quantity, String color) {
         this.size = size;
         this.quantity = quantity;
         this.color = color;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id= id;
     }
 
     public String getSize() {

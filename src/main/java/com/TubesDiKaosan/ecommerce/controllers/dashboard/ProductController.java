@@ -54,7 +54,7 @@ public class ProductController {
 
     @Autowired
     private CategoryService categoryService;
-    
+
     @RequestMapping({ "", "/" })
     public String index(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Product");
@@ -112,10 +112,10 @@ public class ProductController {
                 }
                 for (MultipartFile file : files) {
                     String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-                    fileName = System.currentTimeMillis() + fileName;
                     if (fileName.equals(""))
                         continue;
                     try {
+                        fileName = System.currentTimeMillis() + fileName;
                         Path filePath = Path.of(path + "/" + fileName);
                         System.out.println(filePath);
                         ImagesProductRequest image = new ImagesProductRequest();
@@ -188,6 +188,7 @@ public class ProductController {
                     } else {
                         data.put(stock.getColor(), new HashMap<String, Object>() {
                             {
+                                put("id", stock.getStock_id().toString());
                                 put("S", stock.getSize().equals("S") ? stock.getQuantity() : "0");
                                 put("M", stock.getSize().equals("M") ? stock.getQuantity() : "0");
                                 put("L", stock.getSize().equals("L") ? stock.getQuantity() : "0");
@@ -209,6 +210,99 @@ public class ProductController {
         return "redirect:/";
     }
 
+    @PostMapping("/update")
+    public String updateProduct(@RequestParam("productID") Integer productID,
+            @RequestParam("name_product") String name_product,
+            @RequestParam("category_id") Integer category_id,
+            @RequestParam("description") String description,
+            @RequestParam("price") Integer price,
+            @RequestParam("visible") String visible,
+            @RequestParam("image_id") List<Integer> image_id,
+            @RequestParam("images") List<MultipartFile> files,
+            @RequestParam("color[]") List<String> color,
+            @RequestParam("stock_id") List<Integer> stock_id,
+            @RequestParam("size[S][]") List<String> sizeS,
+            @RequestParam("size[M][]") List<String> sizeM,
+            @RequestParam("size[L][]") List<String> sizeL,
+            @RequestParam("size[XL][]") List<String> sizeXL,
+            Model model, HttpSession session) throws SQLException {
+        if (session.getAttribute("user") != null) {
+            ProductRequest request = new ProductRequest();
+            Users user = (Users) session.getAttribute("user");
+            if (user.getRole().getRole_name().equals("ADMIN")) {
+                List<ImagesProductRequest> images = new ArrayList<>();
+                String path = "src/main/resources/static/uploads/images/products";
+                int idx_imageID = 0;
+                for (MultipartFile file : files) {
+                    try {
+                        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+                        if (fileName.equals(""))
+                            continue;
+                        fileName = System.currentTimeMillis() + fileName;
+                        Path filePath = Path.of(path + "/" + fileName);
+
+                        ImagesProductRequest image = new ImagesProductRequest();
+                        image.setImage(fileName);
+                        image.setimageid_request(image_id.get(idx_imageID));
+                        images.add(image);
+
+                        Files.copy(file.getInputStream(), filePath);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        e.printStackTrace();
+                    }
+                    idx_imageID++;
+                }
+
+                Object[][] stock = new Object[][] {
+                        { "S", sizeS },
+                        { "M", sizeM },
+                        { "L", sizeL },
+                        { "XL", sizeXL }
+                };
+
+                // getstock
+                List<StockProductRequest> stocks = new ArrayList<>();
+                for (int i = 0; i < color.size(); i++) {
+                    for (int j = 0; j < stock.length; j++) {
+                        StockProductRequest stockProductRequest = new StockProductRequest();
+                        if (color.get(i).equals("") || ((List<String>) stock[j][1]).get(i).equals(""))
+                            continue;
+                        stockProductRequest.setColor(color.get(i));
+                        if (Integer.parseInt(((List<String>) stock[j][1]).get(i)) < 1)
+                            continue;
+                        stockProductRequest.setQuantity(Integer.parseInt(((List<String>) stock[j][1]).get(i)));
+                        stockProductRequest.setSize((String) stock[j][0]);
+                        if (stock_id.get(i) != null) {
+                            Stock stockData = productService.getStockById(stock_id.get(i));
+                            stockProductRequest.setId(productService.findStockByProductIdAndSizeAndColor(productID,
+                                    (String) stock[j][0], stockData.getColor()));
+                        } else {
+                            stockProductRequest.setId(null);
+                        }
+                        stocks.add(stockProductRequest);
+                    }
+                }
+                request.setName_product(name_product);
+                request.setCategory_id(category_id);
+                request.setDescription(description);
+                request.setPrice(price);
+                // parset to int
+                request.setVisible(visible.equals("visible") ? 1 : 0);
+                request.setImages(images);
+                request.setStock(stocks);
+
+                productService.updateDataById(productID, request);
+
+                return "redirect:/dashboard/products";
+            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                return "redirect:/";
+            }
+        }
+        return "redirect:/";
+
+    }
+
     @RequestMapping("/delete")
     public String delete(@RequestParam Integer productID, Model model, HttpSession session) throws SQLException {
         if (session.getAttribute("user") != null) {
@@ -226,12 +320,32 @@ public class ProductController {
     @RequestMapping("/search")
     public String search(@RequestParam String keyword, Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Product");
+        List<Product> products = (List<Product>) productService.searchProduct(keyword).getData();
+        model.addAttribute("products", products);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/delete_stock")
+    public String deleteStock(@RequestParam Integer productID,@RequestParam String color, Model model, HttpSession session) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
-                List<Product> products = (List<Product>) productService.searchProduct(keyword).getData();
-                model.addAttribute("products", products);
-                return "pages/dashboard/product";
+                productService.removeStock(productID, color);
+                return "redirect:/dashboard/products";
+            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                return "redirect:/";
+            }
+        }
+        return "redirect:/";
+    }
+
+    @RequestMapping("/delete_image")
+    public String deleteImage(@RequestParam Integer imageID, Model model, HttpSession session) throws SQLException {
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            if (user.getRole().getRole_name().equals("ADMIN")) {
+                productService.removeImages(imageID);
+                return "redirect:/dashboard/products";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
             }

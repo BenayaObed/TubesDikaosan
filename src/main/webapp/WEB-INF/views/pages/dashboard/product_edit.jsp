@@ -43,7 +43,7 @@
         <div class="row">
           <div class="col-12">
             <div class="card-body">
-              <form action="${pageContext.request.contextPath}/dashboard/products/save" method="POST" enctype="multipart/form-data">
+              <form action="${pageContext.request.contextPath}/dashboard/products/update" method="POST" enctype="multipart/form-data">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">${title}</h3>
@@ -53,7 +53,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name_product">Nama Product:</label>
-                            <input type="hidden" name="product_id" value="${product.product_id}">
+                            <input type="hidden" name="productID" value="${product.product_id}">
                             <input type="text" class="form-control" id="name_product" name="name_product" autocomplete="on" value="${product.name_product}">
                         </div>
                         <div class="form-group">
@@ -76,8 +76,9 @@
                         <div class="form-group">
                             <label for="visible">Status Visible:</label>
                             <select class="form-control" id="visible" name="visible" value="${product.visible}">
-                                <option value="visible" selected="${item.category_id eq product.visible}">Visible</option>
-                                <option value="hidden" selected="${item.category_id eq product.visible}">Hidden</option>
+                                <option value="1" ${product.visible == 1 ? "selected" : "" }>Visible</option>
+                                <option value="0" ${product.visible == 0 ? "selected" : "" }>Hidden</option>
+                              
                             </select>
                         </div>
                     </div>
@@ -102,6 +103,7 @@
                                   <div class="col-md-3">
                                     <div class="form-group">
                                       <label for="color">Color:</label>
+                                      <input type="hidden" class="form-control" name="stock_id" value="${item.value.id}">
                                       <input type="text" class="form-control" name="color[]" value="${item.key}">
                                     </div>
                                   </div>
@@ -317,20 +319,51 @@
         '</div>' +
         '</div>';
       $('#imageFields').append(newImageField);
-      setPreviewHandler();
     }
   }
 
   function removeField(button, type) {
     if (type === 'stock') {
+      // Ambil productID
+      var id = $('input[name="productID"]').val();
+      var color = $(button).closest('.row').find('input[name="color[]"]').val();
+      if (id) {
+
+        $.ajax({
+          url: '${pageContext.request.contextPath}/dashboard/products/delete_stock',
+          method: 'POST',
+          data: {
+            productID: id,
+            color: color
+          },
+          success: function (response) {
+            console.log(response);
+          }
+        });
+      }
+
       $(button).closest('.row').remove();
     } else if (type === 'image') {
+      var id = $(button).closest('.form-row').find('input[name="image_id"]').val();
+
+      if (id) {
+        $.ajax({
+          url: '${pageContext.request.contextPath}/dashboard/products/delete_image',
+          method: 'POST',
+          data: {
+            imageID: id
+          },
+          success: function (response) {
+            console.log(response);
+          }
+        });
+      }
+
       $(button).closest('.form-row').remove();
     }
   }
 
-  function setPreviewHandler() {
-    $('input[type="file"]').change(function () {
+  $(document).on('change','input[type="file"]',function () {
       var input = this;
       if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -340,7 +373,9 @@
         reader.readAsDataURL(input.files[0]);
       }
     });
-  }
 </script>
+
+
+
 </body>
 </html>

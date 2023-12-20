@@ -100,7 +100,6 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
             }
             product.setCategory((Category) category.getData());
 
-            // print product.getImages()
             // Create separate lists for existing and new images
             List<Images> existingImages = (List<Images>)imagesRepository.findImagesByProductId(id);
             
@@ -136,34 +135,34 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
             List<Stock> existingStock = stockRepository.findStockByProductId(id);
             List<Stock> newStock = new ArrayList<>();
 
-            // for (StockProductRequest stockRequest : request.getStock()) {
-            //     Stock stock = new Stock();
-            //     Integer stockId = stockRequest.getstock_id_request();
+            for (StockProductRequest stockRequest : request.getStock()) {
+                Stock stock = new Stock();
+                Integer stockId = stockRequest.getId();
 
-            //     // If stock_id exists, update existing stock
-            //     if (stockId != null) {
-            //         Optional<Stock> existingStockItem = existingStock.stream()
-            //                 .filter(s -> s.getStock_id() == stockId)
-            //                 .findFirst();
+                // If stock_id exists, update existing stock
+                if (stockId != null) {
+                    Optional<Stock> existingStockItem = existingStock.stream()
+                            .filter(s -> s.getStock_id() == stockId)
+                            .findFirst();
 
-            //         // If stock found, update its details
-            //         if (existingStockItem.isPresent()) {
-            //             existingStockItem.get().setSize(stockRequest.getSize());
-            //             existingStockItem.get().setQuantity(stockRequest.getQuantity());
-            //             existingStockItem.get().setColor(stockRequest.getColor());
-            //         }
-            //     } else {
-            //         // If no stock_id, add new stock
-            //         stock.setSize(stockRequest.getSize());
-            //         stock.setQuantity(stockRequest.getQuantity());
-            //         stock.setColor(stockRequest.getColor());
-            //         stock.setProduct(product);
-            //         newStock.add(stock);
-            //     }
-            // }
+                    // If stock found, update its details
+                    if (existingStockItem.isPresent()) {
+                        existingStockItem.get().setSize(stockRequest.getSize());
+                        existingStockItem.get().setQuantity(stockRequest.getQuantity());
+                        existingStockItem.get().setColor(stockRequest.getColor());
+                    }
+                } else {
+                    // If no stock_id, add new stock
+                    stock.setSize(stockRequest.getSize());
+                    stock.setQuantity(stockRequest.getQuantity());
+                    stock.setColor(stockRequest.getColor());
+                    stock.setProduct(product);
+                    newStock.add(stock);
+                }
+            }
 
-            // product.setStock(existingStock);
-            // product.getStock().addAll(newStock);
+            product.setStock(existingStock);
+            product.getStock().addAll(newStock);
             productRepository.save(product);
            
             return new Response(HttpStatus.OK.value(), "success", product);
@@ -274,6 +273,46 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
             stock.setProduct(product);
             stockRepository.save(stock);
             return new Response(HttpStatus.OK.value(), "success", stock);
+        } else {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found!", null);
+        }
+    }
+
+    // findStockByProductIdAndSizeAndColor
+    public Integer findStockByProductIdAndSizeAndColor(Integer product_id, String size, String color) throws SQLException {
+        if (stockRepository.findStockByProductIdAndSizeAndColor(product_id, size, color) == null) {
+            return null;
+        } else {
+            Stock stock = stockRepository.findStockByProductIdAndSizeAndColor(product_id, size, color);
+            return stock.getStock_id();
+        }
+    }
+
+    // get stock by id
+    public Stock getStockById(Integer id) throws SQLException {
+        if (stockRepository.findById(id).isPresent()) {
+            Stock stock = stockRepository.findById(id).get();
+            return stock;
+        } else {
+            return null;
+        }
+    }
+
+    // remove images
+    public Response removeImages(Integer id) throws SQLException {
+        if (imagesRepository.findById(id).isPresent()) {
+            imagesRepository.deleteById(id);
+            return new Response(HttpStatus.OK.value(), "success", null);
+        } else {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found!", null);
+        }
+    }
+
+    // remove stock
+    public Response removeStock(Integer id, String color) throws SQLException {
+        if (stockRepository.findById(id).isPresent()) {
+            stockRepository.deleteStockByColor(id,color);
+            return new Response(HttpStatus.OK.value(), "success", null);
         } else {
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found!", null);
         }

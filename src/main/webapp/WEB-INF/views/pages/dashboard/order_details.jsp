@@ -135,7 +135,7 @@
               <div class="row no-print">
                 <div class="col-12">
                   <!-- a tag process, delivered, cancel -->
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=process" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Process</a>
+                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=process" class="btn btn-success float-right" onclick="print()"><i class="far fa-credit-card"></i> Process</a>
                   <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=delivered" class="btn btn-primary float-right" style="margin-right: 5px;">
                     <i class="fas fa-download"></i> Delivered
                   </a>

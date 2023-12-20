@@ -7,7 +7,7 @@
   
   <!-- Header Section Start -->
   <head>
-    <title>Homepage</title>
+    <title>${title}</title>
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
   <!-- Header Section Start -->
@@ -16,201 +16,6 @@
     <!-- Navbar Section Start -->
     <%@ include file = "../../includes/fe_includes/_navbar_home.jsp" %>
     <!-- Navbar Section End -->
-
-    <!-- Modal Login Start -->
-    <section class="modal">
-      <!-- Modal Login -->
-      <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content login">
-            <div class="modal-header title">
-              <h1 class="modal-title fs-5" id="loginDikaosan">Welcome to Dikaosan!</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="loginForm">
-                <div class="row email">
-                  <a>Email address</a>
-                  <span class="input-Email">
-                    <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
-                  </span>
-                </div>
-                
-                <div class="row password">
-                  <a>Password</a>
-                  <span class="input-password">
-                    <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
-                  </span>
-                </div>
-                
-                <div class="row forget_pass text-end">
-                  <a1 href="#" data-bs-toggle="modal" data-bs-target="#reset-PasswordDikaosan" >Forgot password?</a1>
-                </div>  
-                
-                <div class="row justify-content-center sign_up text-center">
-                  <button type="submit" class="btn btn-primary confirm_btn w-50">Login</button>
-                  <a class="my-1 " style="text-decoration: none;">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
-                </div>
-              </form>
-              
-            
-
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Reset Password -->
-      <div class="modal reset_password" id="reset-PasswordDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content login">
-            <div class="modal-header title">
-              <h1 class="modal-title fs-5" id="loginDikaosan">Change Password</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="resetPasswordForm">
-                <div class="row oldPass">
-                  <a>Old Password</a>
-                  <span class="input-oldPass">
-                    <input class="form-control oldPass" type="text" name="oldPass" id="oldPass" placeholder="">
-                  </span>
-                </div>
-                
-                <div class="row newPass">
-                  <a>New Password</a>
-                  <span class="input-newPass">
-                    <input class="form-control newPass" type="text" name="newPass" id="newPass" placeholder="">
-                  </span>
-                </div>
-
-                <div class="row confirmPass">
-                <a>Confirm New Password</a>
-                <span class="input-confirmPass">
-                  <input class="form-control confirmPass" type="text" name="confirmPass" id="confirmPass" placeholder="">
-                </span>
-                </div>
-              
-                <div class="row justify-content-center text-center">
-                  <button class="btn btn-primary confirm_btn w-50" data-bs-target="#SuccessfullyResetPass" data-bs-toggle="modal">Set Password</button>
-                </div>
-              </form>
-              
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Successfully Reset Password -->
-      <div class="modal successResetPass" id="SuccessfullyResetPass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content Sign-Up">
-            <div class="modal-header justify-content-center">
-              <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
-            </div>
-            <div class="modal-body">
-              <form id="success_resetPassForm">
-                <div class="row succes text-center">
-                  <a>Your Account Has Been Successfully<br> 
-                    Reset Password!
-                  </a>
-                </div>
-                
-                <div class="row justify-content-center text-center my-2">
-                  <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Oke</button>
-                </div>
-              </form>
-
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Sign-Up -->
-      <div class="modal sign_up" id="Sign-UpDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content Sign-Up">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="Sign-UpDikaosan">Welcome to Dikaosan!</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="sign-upForm">
-                <div class="row name">
-                  <a>Name</a>
-                  <span class="input-name">
-                    <input class="form-control name" type="text" name="name" id="name" placeholder="Your name">
-                  </span>
-                </div>
-                
-                <div class="row phone_number">
-                  <a>Phone Number</a>
-                  <span class="input-phone_number">
-                    <input class="form-control phone_number" type="text" name="phone_number" id="phone_number" placeholder="Your phone number">
-                  </span>
-                </div>
-  
-                <div class="row email">
-                  <a>Email address</a>
-                  <span class="input-Email">
-                    <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
-                  </span>
-                </div>
-  
-                <div class="row password">
-                  <a>Password</a>
-                  <span class="input-password">
-                    <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
-                  </span>
-                  <div id="passwordHelpBlock" class="form-text">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                  </div>
-                </div>
-                
-                <div class="row justify-content-center text-center">
-                  <button type="button" class = "btn btn-primary confirm_btn w-50" data-bs-target="#Successfully_signUP" data-bs-toggle="modal">Sign Up</button>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Successfully Sign-Up -->
-      <div class="modal success_sign-up" id="Successfully_signUP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content Sign-Up">
-            <div class="modal-header justify-content-center">
-              <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
-            </div>
-            <div class="modal-body">
-              <form id="success_sign-upForm">
-                <div class="row succes text-center">
-                  <a>Your Account Has Been Successfully<br> 
-                    Registered!
-                  </a>
-                </div>
-                
-                <div class="row justify-content-center text-center my-2">
-                  <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close" href="${pageContext.request.contextPath}/shop">Shop Now</button>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Modal Login End -->
 
     <!-- Content Section Start -->
     <section class="homepage_content">
@@ -394,121 +199,125 @@
     <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
     <script>
       $(document).ready(function() {
+
     // Select your form by ID or any other appropriate selector
-      $('#loginForm').submit(function(e) {
-      // Prevent the default form submission
-      e.preventDefault();
+      // $('#loginForm').submit(function(e) {
+      // // Prevent the default form submission
+      // e.preventDefault();
 
-      // Serialize form data into a query string
-      var formData = $(this).serialize();
+      // // Serialize form data into a query string
+      // var formData = $(this).serialize();
 
-      // Make a POST request using jQuery AJAX
-      $.ajax({
-        type: 'POST',
-        url: '${pageContext.request.contextPath}/authentication',
-        data: $('#loginForm').serialize(),
-        success: function(response) {
-          // Handle the success response from the server
-          console.log('Success:', response);
-        },
-        error: function(error) {
-          // Handle errors
-          console.log('Error:', error);
-            }
-          });
-        });
+      // // Make a POST request using jQuery AJAX
+      // $.ajax({
+      //   type: 'POST',
+      //   url: '${pageContext.request.contextPath}/authentication',
+      //   data: $('#loginForm').serialize(),
+      //   success: function(response) {
+      //     // Handle the success response from the server
+      //     console.log('Success:', response);
+      //   },
+      //   error: function(error) {
+      //     // Handle errors
+      //     console.log('Error:', error);
+      //       }
+      //     });
+      //   });
 
-        $('#resetPasswordForm').submit(function(e) {
-      // Prevent the default form submission
-      e.preventDefault();
 
-      // Serialize form data into a query string
-      var formData = $(this).serialize();
+        // -----
 
-      // Make a POST request using jQuery AJAX
-      $.ajax({
-        type: 'POST',
-        url: '${pageContext.request.contextPath}/update',
-        data: formData,
-        success: function(response) {
-          // Handle the success response from the server
-          console.log('Success:', response);
-        },
-        error: function(error) {
-          // Handle errors
-          console.log('Error:', error);
-            }
-          });
-        });
+      //   $('#resetPasswordForm').submit(function(e) {
+      // // Prevent the default form submission
+      // e.preventDefault();
 
-        $('#success_resetPassForm').submit(function(e) {
-      // Prevent the default form submission
-      e.preventDefault();
+      // // Serialize form data into a query string
+      // var formData = $(this).serialize();
 
-      // Serialize form data into a query string
-      var formData = $(this).serialize();
+      // // Make a POST request using jQuery AJAX
+      // $.ajax({
+      //   type: 'POST',
+      //   url: '${pageContext.request.contextPath}/update',
+      //   data: formData,
+      //   success: function(response) {
+      //     // Handle the success response from the server
+      //     console.log('Success:', response);
+      //   },
+      //   error: function(error) {
+      //     // Handle errors
+      //     console.log('Error:', error);
+      //       }
+      //     });
+      //   });
 
-      // Make a POST request using jQuery AJAX
-      $.ajax({
-        type: 'POST',
-        url: '${pageContext.request.contextPath}/alert',
-        data: formData,
-        success: function(response) {
-          // Handle the success response from the server
-          console.log('Success:', response);
-        },
-        error: function(error) {
-          // Handle errors
-          console.log('Error:', error);
-            }
-          });
-        });
+      //   $('#success_resetPassForm').submit(function(e) {
+      // // Prevent the default form submission
+      // e.preventDefault();
 
-        $('#sign-upForm').submit(function(e) {
-      // Prevent the default form submission
-      e.preventDefault();
+      // // Serialize form data into a query string
+      // var formData = $(this).serialize();
 
-      // Serialize form data into a query string
-      var formData = $(this).serialize();
+      // // Make a POST request using jQuery AJAX
+      // $.ajax({
+      //   type: 'POST',
+      //   url: '${pageContext.request.contextPath}/alert',
+      //   data: formData,
+      //   success: function(response) {
+      //     // Handle the success response from the server
+      //     console.log('Success:', response);
+      //   },
+      //   error: function(error) {
+      //     // Handle errors
+      //     console.log('Error:', error);
+      //       }
+      //     });
+      //   });
 
-      // Make a POST request using jQuery AJAX
-      $.ajax({
-        type: 'POST',
-        url: '${pageContext.request.contextPath}/registration',
-        data: formData,
-        success: function(response) {
-          // Handle the success response from the server
-          console.log('Success:', response);
-        },
-        error: function(error) {
-          // Handle errors
-          console.log('Error:', error);
-            }
-          });
-        });
+      //   $('#sign-upForm').submit(function(e) {
+      // // Prevent the default form submission
+      // e.preventDefault();
 
-        $('#success_sign-upForm').submit(function(e) {
-      // Prevent the default form submission
-      e.preventDefault();
+      // // Serialize form data into a query string
+      // var formData = $(this).serialize();
 
-      // Serialize form data into a query string
-      var formData = $(this).serialize();
+      // // Make a POST request using jQuery AJAX
+      // $.ajax({
+      //   type: 'POST',
+      //   url: '${pageContext.request.contextPath}/registration',
+      //   data: formData,
+      //   success: function(response) {
+      //     // Handle the success response from the server
+      //     console.log('Success:', response);
+      //   },
+      //   error: function(error) {
+      //     // Handle errors
+      //     console.log('Error:', error);
+      //       }
+      //     });
+      //   });
 
-      // Make a POST request using jQuery AJAX
-      $.ajax({
-        type: 'POST',
-        url: '${pageContext.request.contextPath}/alert',
-        data: formData,
-        success: function(response) {
-          // Handle the success response from the server
-          console.log('Success:', response);
-        },
-        error: function(error) {
-          // Handle errors
-          console.log('Error:', error);
-            }
-          });
-        });
+      //   $('#success_sign-upForm').submit(function(e) {
+      // // Prevent the default form submission
+      // e.preventDefault();
+
+      // // Serialize form data into a query string
+      // var formData = $(this).serialize();
+
+      // // Make a POST request using jQuery AJAX
+      // $.ajax({
+      //   type: 'POST',
+      //   url: '${pageContext.request.contextPath}/alert',
+      //   data: formData,
+      //   success: function(response) {
+      //     // Handle the success response from the server
+      //     console.log('Success:', response);
+      //   },
+      //   error: function(error) {
+      //     // Handle errors
+      //     console.log('Error:', error);
+      //       }
+      //     });
+      //   });
       });
     </script>
     <!-- Script Section End -->
