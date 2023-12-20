@@ -45,79 +45,6 @@
       <div class="container description my-5">
         <div class="row">
 
-          <!-- <div class="col-sm-3">
-            <div class="d-flex flex-column">
-              <div class="my-3">
-                <div class="accordion" id="accordionExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        CATEGORIES
-                      </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <ul class="p-0 m-0">
-                          <li><a href="#">Men (20)</a></li>
-                          <li><a href="#">Women (20)</a></li>
-                          <li><a href="#">Bags (20)</a></li>
-                          <li><a href="#">Clothing (20)</a></li>
-                          <li><a href="#">Shoes (20)</a></li>
-                          <li><a href="#">Accessories (20)</a></li>
-                          <li><a href="#">Kids (20)</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        FILTER PRICE
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <ul class="p-0">
-                          <li><a href="#">Rp0 - Rp50.000</a></li>
-                          <li><a href="#">Rp50.000 - Rp100.000</a></li>
-                          <li><a href="#">Rp100.000 - Rp200.000</a></li>
-                          <li><a href="#">Rp200.000 - Rp300.000</a></li>
-                          <li><a href="#">Rp300.000 - Rp400.000</a></li>
-                          <li><a href="#">Rp450.000+</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        TAGS
-                      </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <ul class="p-0 my-3">
-                          <div class="d-flex tags-content my-1 ">
-                            <li><a class="btn btn-tags d-flex justify-content-center align-items-center ">PRODUCT</a></li>
-                            <li><a class="btn btn-tags d-flex justify-content-center align-items-center mx-2">BAGS</a></li>
-                          </div>
-                          <div class="d-flex my-1">
-                            <li><a class="btn btn-tags d-flex justify-content-center align-items-center">SHOES</a></li>
-                            <li><a class="btn btn-tags d-flex justify-content-center align-items-center mx-2">ACCESSORIES</a></li>
-                          </div>
-                          <div class="d-flex my-1">
-                            <li><a class="btn btn-tags d-flex justify-content-center align-items-center">CLOTHING</a></li>
-                            <li><a class="btn btn-tags d-flex justify-content-center align-items-center mx-2">HATS</a></li>
-                          </div>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
           <div class="col-6 d-flex justify-content-center align-items-center">
             <img src="/resources/images/G1.jpg" alt="">
           </div>
@@ -125,12 +52,26 @@
           <div class="col-6">
             <div class="row title_product">
               <div class="col-8">
-                <h1>Man Kimono Set<br> Rp 249.999</h1>
+                <h1 class="m-0">Man Kimono Set
+                  <br> Rp 249.999</h1>
               </div>
               <div class="col-1 product-cart d-flex cart p-0 my-2 mx-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                 </svg>
+              </div>
+            </div>
+
+            <div class="d-flex rating-desc">
+              <div class="col-2">
+                <a style="text-decoration: none;">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <a>4.0</a>
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -153,41 +94,99 @@
                 </div>
               </div>
 
+              
+
               <div class="d-flex color my-2">
                 <div class="justify-content-center align-items-center text_color">
                   <a>Color:</a>
                 </div>
-                <div class="justify-content-center align-items-center p-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#7A7A7C" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                    <circle cx="8" cy="8" r="8"/>
-                  </svg>
-                </div>
-                <div class="justify-content-center align-items-center p-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#577F8D" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                    <circle cx="8" cy="8" r="8"/>
-                  </svg>
-                </div>
-                <div class="justify-content-center align-items-center p-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#7E6F94" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                    <circle cx="8" cy="8" r="8"/>
-                  </svg>
+                <div id="myBtnColor">
+                  <!-- <input type="text" value="" id="color_selected"> <br> -->
+                  <button class="btn color-btn" onclick="filterSelection('abu')">Abu</button>
+                  <button class="btn color-btn" onclick="filterSelection('biru')">Biru</button>
+                  <button class="btn color-btn" onclick="filterSelection('ungu')">Ungu</button>
                 </div>
               </div>
 
-              <div class="d-flex size my-2">
-                <div class="size_product">
-                  <a class="btn btn-size">S</a>
-                </div>
-                <div class="size_product">
-                  <a class="btn btn-size">M</a>
-                </div>
-                <div class="size_product">
-                  <a class="btn btn-size">L</a>
-                </div>
-                <div class="size_product">
-                  <a class="btn btn-size">XL</a>
-                </div>
+              <!-- Size Section Start -->
+              <div id="myBtnSize">
+                <!-- <input type="text" value="" id="size_selected"> <br> -->
+                <button class="btn size-btn" onclick="filterSelection('s')">S</button>
+                <button class="btn size-btn" onclick="filterSelection('m')">M</button>
+                <button class="btn size-btn" onclick="filterSelection('l')">L</button>
+                <button class="btn size-btn" onclick="filterSelection('xl')">XL</button>
               </div>
+
+              <!-- <div class="container">
+                <div class="filterDiv S"></div>
+                <div class="filterDiv M"></div>
+                <div class="filterDiv L"></div>
+                <div class="filterDiv XL"></div>
+              </div> -->
+            
+              <script>
+                function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("filterDiv");
+                if (c == "all") c = "";
+                // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                      }
+                }
+
+                // Show filtered elements
+                function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) {
+                    element.className += " " + arr2[i];
+                    // cek button yg dipilih warna/ukuran
+                    console.log(arr1);
+                    document.getElementById("color_selected").value = arr1[1];
+                    document.getElementById("size_selected").value = arr1[1];
+                    }
+                  }
+                }
+
+                // Hide elements that are not selected
+                function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                    }
+                  }
+                element.className = arr1.join(" ");
+                }
+
+                // Add active class to the current control button (highlight it)
+                var btnContainer = document.getElementById("myBtnColor");
+                var btns = btnContainer.getElementsByClassName("btn");
+                for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                    });
+                }
+
+                var btnContainer = document.getElementById("myBtnSize");
+                var btns = btnContainer.getElementsByClassName("btn");
+                for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                    });
+                }
+              </script>
+              <!-- Size Section End -->
 
               <div class="d-flex button_description my-2">
                 <!-- <div class="button_cart">
@@ -209,31 +208,12 @@
                     Material : Polyester<br>
                     Suitabel Type : Loose<br>
                     Waist Type : Half<br>
-                  </p> 
-
-                  <h1>Package Contents :</h1>
-                  <p>
                     1 * Top<br>
                     1 * Shorts<br>
                   </p> 
-
-                  <h1>Remember :</h1>
-                  <p>
-                    Please refer to the Size Reference to find the correct size.
-                  </p> 
-                  
                 </div>
               </div>
 
-              <div class="d-flex message">
-                <div class="message_box">
-                  <div class="col-12 d-flex align-items-center justify-content-center my-2">
-                    <img class="my-1" src="/resources/images/Deskripsi Produk/msg.png">
-                    <a>Message Now!</a>
-                  </div>
-                </div>
-              </div>
-              <!-- <a class="btn-message-desc border">Message Now!</a> -->
             </div>
           </div>
 
@@ -374,6 +354,10 @@
       </div>
     </section>
     <!-- shop Section End -->
+
+    <!-- Chat Section Start -->
+    <%@ include file = "../../includes/fe_includes/_chat.jsp" %>
+    <!-- Chat Section End -->
 
     <!-- Footer Section Start -->
     <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
