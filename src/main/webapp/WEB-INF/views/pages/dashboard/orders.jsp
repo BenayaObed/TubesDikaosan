@@ -75,6 +75,9 @@
                           <c:when test="${item.status == 'cancel'}">
                             <span class="badge badge-danger">Cancelled</span>
                           </c:when>
+                          <c:when test="${item.status == 'sending'}">
+                            <span class="badge badge-primary">Sending</span>
+                          </c:when>
                         </c:choose>
                       </td>
                       <td>

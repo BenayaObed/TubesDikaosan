@@ -139,6 +139,10 @@
                   <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=delivered" class="btn btn-primary float-right" style="margin-right: 5px;">
                     <i class="fas fa-download"></i> Delivered
                   </a>
+                  <!-- sending -->
+                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=sending" class="btn btn-info float-right" style="margin-right: 5px;">
+                    <i class="fas fa-download"></i> Sending
+                  </a>
                   <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=cancel" class="btn btn-danger float-right" style="margin-right: 5px;">
                     <i class="fas fa-download"></i> Cancel
                   </a>

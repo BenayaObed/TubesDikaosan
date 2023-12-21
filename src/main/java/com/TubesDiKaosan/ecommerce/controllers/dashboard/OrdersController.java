@@ -98,7 +98,7 @@ public class OrdersController {
                         .getAddressCustomer(userID).getData();
                 model.addAttribute("customer_address", address);
                 model.addAttribute("data", data);
-                return ResponseEntity.ok(address);
+                return ResponseEntity.ok(data);
             }
         }
         return ResponseEntity.ok("ERROR");

@@ -75,10 +75,9 @@
                         </div> 
                         <div class="form-group">
                             <label for="visible">Status Visible:</label>
-                            <select class="form-control" id="visible" name="visible" value="${product.visible}">
-                                <option value="1" ${product.visible == 1 ? "selected" : "" }>Visible</option>
-                                <option value="0" ${product.visible == 0 ? "selected" : "" }>Hidden</option>
-                              
+                            <select class="form-control" id="visible" name="visible">
+                                <option value="1" selected="${product.visible eq 1}">Visible</option>
+                                <option value="0" selected="${product.visible eq 0}">Not Visible</option>
                             </select>
                         </div>
                     </div>

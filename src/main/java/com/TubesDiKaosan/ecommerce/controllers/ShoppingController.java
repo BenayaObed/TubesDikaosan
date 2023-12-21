@@ -40,7 +40,7 @@ public class ShoppingController {
 
     @PostMapping("/api/addToCart")
     public ResponseEntity<?> addToCart(@RequestBody OrderItemRequest request ,HttpSession session) throws SQLException {
-        Users user = userRepository.findById("33ba7717-1765-487e-b675-6068fda0d592").get();
+        Users user = userRepository.findById("0a8215af-8207-4a5c-9ce2-dd53985d193b").get();
         // Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
         Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
         if (orders == null) { 

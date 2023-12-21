@@ -216,7 +216,7 @@ public class ProductController {
             @RequestParam("category_id") Integer category_id,
             @RequestParam("description") String description,
             @RequestParam("price") Integer price,
-            @RequestParam("visible") String visible,
+            @RequestParam("visible") Integer visible,
             @RequestParam("image_id") List<Integer> image_id,
             @RequestParam("images") List<MultipartFile> files,
             @RequestParam("color[]") List<String> color,
@@ -288,7 +288,7 @@ public class ProductController {
                 request.setDescription(description);
                 request.setPrice(price);
                 // parset to int
-                request.setVisible(visible.equals("visible") ? 1 : 0);
+                request.setVisible(visible);
                 request.setImages(images);
                 request.setStock(stocks);
 
