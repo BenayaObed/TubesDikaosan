@@ -46,7 +46,7 @@
         <div class="row">
 
           <div class="col-6 d-flex justify-content-center align-items-center">
-            <img src="/resources/images/G1.jpg" alt="">
+            <img style="width: 606px; height: 850px;" src="/resources/images/G1.jpg" alt="">
           </div>
 
           <div class="col-6">
@@ -78,19 +78,19 @@
             <div class="row">
               <div class="d-flex justify-content-left align-items-center">
                 <div class="product_img">
-                  <img src="/resources/images/Deskripsi Produk/G1.jpg" alt="">
+                  <img style="width: 94px; height: 91px;" src="/resources/images/Deskripsi Produk/G1.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="/resources/images/Deskripsi Produk/G2.jpg" alt="">
+                  <img style="width: 94px; height: 91px;" src="/resources/images/Deskripsi Produk/G2.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="/resources/images/Deskripsi Produk/G3.jpg" alt="">
+                  <img style="width: 94px; height: 91px;" src="/resources/images/Deskripsi Produk/G3.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="/resources/images/Deskripsi Produk/G4.jpg" alt="">
+                  <img style="width: 94px; height: 91px;" src="/resources/images/Deskripsi Produk/G4.jpg" alt="">
                 </div>
                 <div class="product_img">
-                  <img src="/resources/images/Deskripsi Produk/G5.jpg" alt="">
+                  <img style="width: 94px; height: 91px;" src="/resources/images/Deskripsi Produk/G5.jpg" alt="">
                 </div>
               </div>
 
@@ -101,7 +101,9 @@
                   <a>Color:</a>
                 </div>
                 <div id="myBtnColor">
-                  <!-- <input type="text" value="" id="color_selected"> <br> -->
+                  <input type="text" value="" id="color_selected" hidden> 
+                  <!-- <br> -->
+                  <!-- <button class="btn active" onclick="filterSelection('putih')" hidden>Putih</button> -->
                   <button class="btn color-btn" onclick="filterSelection('abu')">Abu</button>
                   <button class="btn color-btn" onclick="filterSelection('biru')">Biru</button>
                   <button class="btn color-btn" onclick="filterSelection('ungu')">Ungu</button>
@@ -110,19 +112,24 @@
 
               <!-- Size Section Start -->
               <div id="myBtnSize">
-                <!-- <input type="text" value="" id="size_selected"> <br> -->
+                <input type="text" value="" id="size_selected" hidden>
+                <!-- <br> -->
                 <button class="btn size-btn" onclick="filterSelection('s')">S</button>
                 <button class="btn size-btn" onclick="filterSelection('m')">M</button>
                 <button class="btn size-btn" onclick="filterSelection('l')">L</button>
                 <button class="btn size-btn" onclick="filterSelection('xl')">XL</button>
               </div>
 
-              <!-- <div class="container">
-                <div class="filterDiv S"></div>
-                <div class="filterDiv M"></div>
-                <div class="filterDiv L"></div>
-                <div class="filterDiv XL"></div>
-              </div> -->
+              <div class="container">
+                <div class="filterDiv abu"></div>
+                <div class="filterDiv biru"></div>
+                <div class="filterDiv ungu"></div>
+
+                <div class="filterDiv s"></div>
+                <div class="filterDiv m"></div>
+                <div class="filterDiv l"></div>
+                <div class="filterDiv xl"></div>
+              </div>
             
               <script>
                 function filterSelection(c) {
@@ -225,25 +232,115 @@
     <!-- Shop Section Start -->
     <section class="shop_content_desc">
       <div class="col-sm-12">
-        <div class="container product_cont ">
-          <div class="row">
+        <div class="container product_cont d-flex justify-content-center align-items-center">
+          <div class="row justify-content-center align-items-center">
             <div class="row desc_shop row-cols-md-3 row-cols-lg-4 m-0">
-              <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G2.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">Reebok M1 Shoes</p>
-                    <p class="mb-0 p-0">Rp 699.999</p>
+
+              <div class="col d-flex flex-column p-2" style="width: 262px; height: 303px;">
+                <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
+                  <img class="product-img" style="width: 262px; height: 260px;" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
+                  <div class="row p-0 m-0">
+                    <div class="col-12 p-0 product-desc">
+                      <p class="mb-0 p-0">Reebok M1 Shoes</p>
+                      <p class="mb-0 p-0">Rp 699.999</p>
+                    </div>
+                </a>
+                  <div class="col-3 product-rating d-flex p-0">
+                    <div class="col-7">
+                      <a style="text-decoration: none;" >
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="col-5" style="text-align: end;">
+                      <a>4.0</a>
+                    </div>
                   </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
+                </div>
+              </div>
+
+              <div class="col d-flex flex-column p-2" style="width: 262px; height: 303px;">
+                <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
+                  <img class="product-img" style="width: 262px; height: 260px;" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
+                  <div class="row p-0 m-0">
+                    <div class="col-12 p-0 product-desc">
+                      <p class="mb-0 p-0">Reebok M1 Shoes</p>
+                      <p class="mb-0 p-0">Rp 699.999</p>
+                    </div>
+                </a>
+                  <div class="col-3 product-rating d-flex p-0">
+                    <div class="col-7">
+                      <a style="text-decoration: none;" >
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="col-5" style="text-align: end;">
+                      <a>4.0</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col d-flex flex-column p-2" style="width: 262px; height: 303px;">
+                <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
+                  <img class="product-img" style="width: 262px; height: 260px;" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
+                  <div class="row p-0 m-0">
+                    <div class="col-12 p-0 product-desc">
+                      <p class="mb-0 p-0">Reebok M1 Shoes</p>
+                      <p class="mb-0 p-0">Rp 699.999</p>
+                    </div>
+                </a>
+                  <div class="col-3 product-rating d-flex p-0">
+                    <div class="col-7">
+                      <a style="text-decoration: none;" >
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="col-5" style="text-align: end;">
+                      <a>4.0</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col d-flex flex-column p-2" style="width: 262px; height: 303px;">
+                <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
+                  <img class="product-img" style="width: 262px; height: 260px;" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
+                  <div class="row p-0 m-0">
+                    <div class="col-12 p-0 product-desc">
+                      <p class="mb-0 p-0">Reebok M1 Shoes</p>
+                      <p class="mb-0 p-0">Rp 699.999</p>
+                    </div>
+                </a>
+                  <div class="col-3 product-rating d-flex p-0">
+                    <div class="col-7">
+                      <a style="text-decoration: none;" >
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="col-5" style="text-align: end;">
+                      <a>4.0</a>
+                    </div>
                   </div>
                 </div>
               </div>
     
-              <div class="col d-flex flex-column p-2">
+              <!-- <div class="col d-flex flex-column p-2">
                 <img class="product-img" src="/resources/images/Produk/G3.jpg" />
                 <div class="row p-0 m-0">
                   <div class="col-11 p-0 w product-desc">
@@ -347,7 +444,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             
           </div>
         </div>

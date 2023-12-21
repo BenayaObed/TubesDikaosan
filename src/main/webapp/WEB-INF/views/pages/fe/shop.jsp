@@ -127,7 +127,7 @@
                   <div class="filterDiv best p-0">
                     <div class="col d-flex flex-column p-2">
                       <a href="${pageContext.request.contextPath}/description" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G1.jpg" />
+                      <img class="product-img" style="width: 220px; height: 217px;" src="${pageContext.request.contextPath}/resources/images/Produk/G1.jpg" />
                         <div class="row p-0 m-0">
                           <div class="col-12 p-0 product-desc ">
                             <p class="mb-0 p-0">Man Kimono Set</p>
@@ -155,7 +155,7 @@
                   <div class="filterDiv new p-0">
                     <div class="col d-flex flex-column p-2">
                       <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                        <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
+                        <img class="product-img" style="width: 220px; height: 217px;" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
                         <div class="row p-0 m-0">
                           <div class="col-12 p-0 product-desc">
                             <p class="mb-0 p-0">Reebok M1 Shoes</p>
