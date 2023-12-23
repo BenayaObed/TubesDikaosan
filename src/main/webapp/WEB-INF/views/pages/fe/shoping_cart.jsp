@@ -44,14 +44,13 @@
     <!-- Shoping_cart Section Start -->
     <section class="content">
       <div class="row">
-        <div class="col-12 d-flex border-primary">
+        <div class="col-12 d-flex">
           <div class="col-sm-6  ">
 
-            <div class="col-sm-12 ">
+            <div class="row ">
               <div class="fontSize">
-                <div class="container activity-head offset mx-4 my-1 w-100" >
-                  <div class="row">
-                    <div class="col d-flex flex-column my-lg-3 ">
+                <div class="container activity-image offset mx-4 my-1 w-100" >
+                    <div class="col d-flex flex-column my-lg-3 p-3">
                       <div class="row">
                         <div class="col-sm-6 d-flex flex-column font-weight-bold"style="font-weight: bold;">
                           <a1>PRODUCT</a1>
@@ -64,12 +63,15 @@
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
               </div>
-            </div>
-    
-            <div class="col-sm-12 ">
+            </div
+
+    <div class="col-sm-12">
+      <c:forEach items="${products}" var="item">
+        <c:if test="${(item.visible == 1)}">
+          <c:if test="${(item.category.visible == 1)}">
+            <div class="col-sm-12">
               <div class="fontSize">
                 <div class = "container activity-image offset mx-4 w-100">
                   
@@ -91,7 +93,7 @@
                             </div>    
                           </div>
                       <!-- quantitity -->
-                          <div class="number-size col-sm-3 d-flex flex-column">
+                          <div class="col-sm-3 d-flex flex-column justify-content-center align-items-center">
                             <div class="container">
                               <div class="number-input">
                                 <button id="minus" class="col-sm-4 btn "><</button>
@@ -103,7 +105,7 @@
                       <!-- total -->
                           <div class="col-sm-3 d-flex flex-column ">
                             <div class = "jumlah_check col-sm-12 flex-column-reverse">
-                              <a1 style="font-weight: bold;">RP 250.000</a1>
+                              <p style="font-weight: bold;"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
                             </div>
                           </div>
                         </div>

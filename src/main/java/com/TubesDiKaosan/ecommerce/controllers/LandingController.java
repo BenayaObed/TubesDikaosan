@@ -101,6 +101,8 @@ public class LandingController {
         model.addAttribute("title", "Checkout");
         for (UsersService userService : usersServices) {
             if (userService instanceof UsersService) {
+                List<Product> products = (List<Product>) productService.getAll().getData();
+                model.addAttribute("products", products);
                 return "pages/fe/checkout";
             }
         }

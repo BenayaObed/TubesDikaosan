@@ -1,4 +1,7 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,20 +21,20 @@
             <div class="col-sm-12 ">
               <div class="activity-nav offset-mx-1 ">
                 <h1>Checkout</h1>
-                <a class="nav-link" href="${pageContext.request.contextPath}/home" >Home 
+                <a class="nav-link m-0" href="${pageContext.request.contextPath}/home" >Home 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                   </svg>  
-                  <a class="nav-link" href="${pageContext.request.contextPath}/shop">Shop 
+                  <a class="nav-link m-0" href="${pageContext.request.contextPath}/shop">Shop 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                     </svg>
-                    <a class="nav-link" href="${pageContext.request.contextPath}/shoping_cart">Shoping Cart 
+                    <a class="nav-link m-0" href="${pageContext.request.contextPath}/shoping_cart">Shoping Cart 
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                       </svg>
                   <!-- <i class="bi bi-chevron-right"></i> -->
-                  <a  href="${pageContext.request.contextPath}/checkout" style="text-decoration: none;">
+                  <a class="nav-link m-0" href="${pageContext.request.contextPath}/checkout" style="text-decoration: none;">
                   <span>Checkout</span>
                 </a>
               </div>
@@ -68,213 +71,67 @@
               </div>
             </div>
             <!-- container produk checkout -->
-            <div class="col-sm-12 ">
-              <div class="fontSize">
-                <div class = "container activity-image offset mx-4 w-100">
-                  <div class ="row">
-                    <div class = bord>
-                      <div class = "col d-fex flex-column my-lg-3">
-                        <div class = "row">
-                    <!-- photo dan harga -->
-                          <div class="col-sm-6 d-flex flex-column">
-                            <div class =row>
-                              <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="/resources/images/Produk/G1.jpg" alt="" >
+            <div class="col-sm-12">
+              <c:forEach items="${products}" var="item">
+                <c:if test="${(item.visible == 1)}">
+                  <c:if test="${(item.category.visible == 1)}">
+                    <div class="col-sm-12">
+                      <div class="fontSize">
+                        <div class = "container activity-image offset mx-4 w-100">
+                          <div class ="row">
+                            <div class = bord>
+                              <div class = "col d-fex flex-column my-lg-3">
+                                <div class = "row">
+                            <!-- photo dan harga -->
+                                  <div class="col-sm-6 d-flex flex-column">
+                                    <div class =row>
+                                      <div class="col-sm-4 d-flex flex-column">
+                                        <img class="images" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.images[0 ].image}" />
+                                      </div>
+                                      <div class = "harga col-sm-8 d-flex flex-column ">
+                                        <p>${item.name_product}</p>
+                                        <p style="font-weight: bold;"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
+                                      </div>
+                                    </div>    
+                                  </div>
+                              <!-- quantitity -->
+                                  <div class="col-sm-3 d-flex flex-column justify-content-center align-items-center">
+                                    <div class="container">
+                                      <div class="number-input">
+                                        <button id="minus" class="col-sm-4 btn "><</button>
+                                        <input class="col-sm-4" type="text" id="number" value="0">
+                                        <button id="plus" class="col-sm-4 btn ">></button>
+                                      </div>
+                                    </div>
+                              
+                                    <!-- Script Section Start -->
+                                    <%@ include file = "../../includes/fe_includes/_script.jsp" %>
+                                    <!-- Script Section End-->
+                                  
+                                    <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
+                                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+                                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                                  </div>
+                              <!-- total -->
+                                  <div class="col-sm-3 d-flex flex-column ">
+                                    <div class = "jumlah_check col-sm-12 flex-column-reverse">
+                                      <p style="font-weight: bold;"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                              <div class = "harga col-sm-8 d-flex flex-column ">
-                                <a1>Man Kimono Set</a1>
-                                <a1 style="font-weight: bold;">RP 250.000</a1>
-                              </div>
-                            </div>    
-                          </div>
-                      <!-- quantitity -->
-                          <div class="number-size col-sm-3 d-flex flex-column">
-                            <div class="container">
-                              <div class="number-input">
-                                <button id="minus" class="col-sm-4 btn "><</button>
-                                <input class="col-sm-4" type="text" id="number" value="0">
-                                <button id="plus" class="col-sm-4 btn ">></button>
-                              </div>
-                            </div>
-                      
-                            <!-- Script Section Start -->
-                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
-                            <!-- Script Section End-->
-                          
-                            <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
-                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                          </div>
-                      <!-- total -->
-                          <div class="col-sm-3 d-flex flex-column ">
-                            <div class = "jumlah_check col-sm-12 flex-column-reverse">
-                              <a1 style="font-weight: bold;">RP 250.000</a1>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </c:if>
+                </c:if>
+              </c:forEach>
             </div>
     
-            <div class="col-sm-12 ">
-              <div class="fontSize">
-                <div class = "container activity-image offset mx-4 w-100">
-                  <div class ="row">
-                    <div class = bord>
-                      <div class = "col d-fex flex-column my-lg-3">
-                        <div class = "row">
-                        <!-- photo dan harga -->
-                          <div class="col-sm-6 d-flex flex-column">
-                            <div class =row>
-                              <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="/resources/images/Produk/G2.jpg" alt="" >
-                              </div>
-                              <div class = "harga col-sm-8 d-flex flex-column ">
-                                <a1>Reebok M1 Shoes</a1>
-                                <a1 style="font-weight: bold;">RP 699.999</a1>
-                              </div>
-                            </div>    
-                          </div>
-                          <!-- quantitity -->
-                          <div class="number-size col-sm-3 d-flex flex-column">
-                            <div class="container">
-                              <div class="number-input">
-                                <button id="minus" class="col-sm-4 btn "><</button>
-                                <input class="col-sm-4" type="text" id="number" value="0">
-                                <button id="plus" class="col-sm-4 btn ">></button>
-                              </div>
-                            </div>
-                  
-                            <!-- Script Section Start -->
-                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
-                            <!-- Script Section End-->
-                  
-                              <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
-                              <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-                              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                          </div>
-                  <!-- total -->
-                          <div class="col-sm-3 d-flex flex-column ">
-                            <div class = "jumlah_check col-sm-12 flex-column-reverse">
-                              <a1 style="font-weight: bold;">RP 699.999</a1>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-12 ">
-              <div class="fontSize">
-                <div class = "container activity-image offset mx-4 w-100">
-                  <div class ="row">
-                    <div class = bord>
-                      <div class = "col d-fex flex-column my-lg-3">
-                        <div class = "row">
-                        <!-- photo dan harga -->
-                          <div class="col-sm-6 d-flex flex-column">
-                            <div class =row>
-                              <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="/resources/images/Produk/G4.jpg" alt="" >
-                              </div>
-                              <div class = "harga col-sm-8 d-flex flex-column ">
-                                <a1>Black Glasses</a1>
-                                <a1 style="font-weight: bold;">RP 149.999</a1>
-                              </div>
-                            </div>    
-                          </div>
-                          <!-- quantitity -->
-                          <div class="number-size col-sm-3 d-flex flex-column">
-                            <div class="container">
-                              <div class="number-input">
-                                <button id="minus" class="col-sm-4 btn "><</button>
-                                <input class="col-sm-4" type="text" id="number" value="0">
-                                <button id="plus" class="col-sm-4 btn ">></button>
-                              </div>
-                            </div>
-                      
-                            <!-- Script Section Start -->
-                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
-                            <!-- Script Section End-->
-                          
-                            <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
-                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                          </div>
-                          <!-- total -->
-                          <div class="col-sm-3 d-flex flex-column ">
-                            <div class = "jumlah_check col-sm-12 flex-column-reverse">
-                              <a1 style="font-weight: bold;">RP 149.999</a1>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-12 ">
-              <div class="fontSize">
-                <div class = "container activity-image offset mx-4 w-100">
-                  <div class ="row">
-                    <div class = bord>
-                      <div class = "col d-fex flex-column my-lg-3">
-                        <div class = "row">
-                          <!-- photo dan harga -->
-                          <div class="col-sm-6 d-flex flex-column">
-                            <div class =row>
-                              <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="/resources/images/Produk/G5.jpg" alt="" >
-                              </div>
-                              <div class = "harga col-sm-8 d-flex flex-column ">
-                                <a1>School Bag</a1>
-                                <a1 style="font-weight: bold;">RP 119.999</a1>
-                              </div>
-                            </div>    
-                          </div>
-                          <!-- quantitity -->
-                          <div class="number-size col-sm-3 d-flex flex-column">
-                            <div class="container">
-                              <div class="number-input">
-                                <button id="minus" class="col-sm-4 btn "><</button>
-                                <input class="col-sm-4" type="text" id="number" value="0">
-                                <button id="plus" class="col-sm-4 btn ">></button>
-                              </div>
-                            </div>
-                            
-                            <!-- Script Section Start -->
-                            <%@ include file = "../../includes/fe_includes/_script.jsp" %>
-                            <!-- Script Section End-->
-                          
-                            <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
-                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                          </div>
-                          <!-- total -->
-                          <div class="col-sm-3 d-flex flex-column ">
-                            <div class = "jumlah_check col-sm-12 flex-column-reverse">
-                              <a1 style="font-weight: bold;">RP 119.999</a1>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <!-- container produk checkout END -->
 
             <!-- footer checkout -->

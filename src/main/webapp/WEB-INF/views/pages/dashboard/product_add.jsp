@@ -97,6 +97,7 @@
                             <label>Stock:</label>
                             <div id="stockFields">
                                 <!-- Stock fields will be dynamically added here -->
+                                
                             </div>
                         </div>
                     </div>
