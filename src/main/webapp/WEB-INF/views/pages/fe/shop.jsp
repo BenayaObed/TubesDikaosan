@@ -8,7 +8,7 @@
   <body>
 
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar-sidebar.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Activity Page Section Start -->
@@ -49,10 +49,12 @@
               <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Velman Harefa">
             </div>
   
-            <label for="staticEmail" class="col-sm-2 col-form-label">Nama:</label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Velman Harefa">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="velman@gmail.com">
             </div>
+
+            
           </div>
         </div>
       </div>
