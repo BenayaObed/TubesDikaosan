@@ -216,7 +216,7 @@ public class ProductController {
             @RequestParam("category_id") Integer category_id,
             @RequestParam("description") String description,
             @RequestParam("price") Integer price,
-            @RequestParam("visible") Integer visible,
+            @RequestParam("visible") String visible,
             @RequestParam("image_id") List<Integer> image_id,
             @RequestParam("images") List<MultipartFile> files,
             @RequestParam("color[]") List<String> color,
@@ -266,14 +266,20 @@ public class ProductController {
                 for (int i = 0; i < color.size(); i++) {
                     for (int j = 0; j < stock.length; j++) {
                         StockProductRequest stockProductRequest = new StockProductRequest();
-                        if (color.get(i).equals("") || ((List<String>) stock[j][1]).get(i).equals(""))
+                        if (color.get(i).equals("") || ((List<String>) stock[j][1]).get(i).equals("")) {
                             continue;
+                        }
+                
                         stockProductRequest.setColor(color.get(i));
-                        if (Integer.parseInt(((List<String>) stock[j][1]).get(i)) < 1)
+                        int quantity = Integer.parseInt(((List<String>) stock[j][1]).get(i));
+                        if (quantity < 1) {
                             continue;
-                        stockProductRequest.setQuantity(Integer.parseInt(((List<String>) stock[j][1]).get(i)));
+                        }
+                
+                        stockProductRequest.setQuantity(quantity);
                         stockProductRequest.setSize((String) stock[j][0]);
-                        if (stock_id.get(i) != null) {
+                
+                        if (stock_id.size() > i && stock_id.get(i) != null) {
                             Stock stockData = productService.getStockById(stock_id.get(i));
                             stockProductRequest.setId(productService.findStockByProductIdAndSizeAndColor(productID,
                                     (String) stock[j][0], stockData.getColor()));
@@ -283,12 +289,13 @@ public class ProductController {
                         stocks.add(stockProductRequest);
                     }
                 }
+                
                 request.setName_product(name_product);
                 request.setCategory_id(category_id);
                 request.setDescription(description);
                 request.setPrice(price);
                 // parset to int
-                request.setVisible(visible);
+                request.setVisible(visible.equals("visible") ? 1 : 0);
                 request.setImages(images);
                 request.setStock(stocks);
 

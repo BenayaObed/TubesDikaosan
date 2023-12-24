@@ -38,6 +38,20 @@ public class ShoppingController {
     //     return ResponseEntity.ok(ordersItem);
     // }
 
+    @PostMapping("/addTocart")
+    public String addToCart(@RequestParam("product_id") int product_id, @RequestParam("quantity") int quantity,
+            HttpSession session) throws SQLException {
+        Users user = userRepository.findById("0a8215af-8207-4a5c-9ce2-dd53985d193b").get();
+        // Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
+        Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
+        if (orders == null) { 
+            shoppingServices.createDraftOrder(user);
+        }
+        Orders container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
+
+        return "redirect:/cart";
+    }
+
     @PostMapping("/api/addToCart")
     public ResponseEntity<?> addToCart(@RequestBody OrderItemRequest request ,HttpSession session) throws SQLException {
         Users user = userRepository.findById("0a8215af-8207-4a5c-9ce2-dd53985d193b").get();

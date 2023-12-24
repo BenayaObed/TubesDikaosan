@@ -89,7 +89,7 @@
 
               
               <form action="${pageContext.request.contextPath}/addToCart" method="post">
-                <input type="hidden" name="id_product" value="${data.id_product}">
+                <input type="hidden" name="product_id" value="${data.product_id}">
                 
                 <div class="d-flex color my-2 gap-1">
                   <div class="justify-content-center align-items-center text_color">
