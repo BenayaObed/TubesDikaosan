@@ -236,8 +236,7 @@ public class ProductController {
                 for (MultipartFile file : files) {
                     try {
                         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-                        if (fileName.equals(""))
-                            continue;
+                        if (fileName.equals("")) continue;
                         fileName = System.currentTimeMillis() + fileName;
                         Path filePath = Path.of(path + "/" + fileName);
 
@@ -326,12 +325,12 @@ public class ProductController {
     }
 
     @RequestMapping("/delete_stock")
-    public String deleteStock(@RequestParam Integer productID,@RequestParam String color, Model model, HttpSession session) throws SQLException {
+    public String deleteStock(@RequestParam Integer ProductID,@RequestParam Integer stockID,@RequestParam String color, Model model, HttpSession session) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
-                productService.removeStock(productID, color);
-                return "redirect:/dashboard/products";
+                productService.removeStock(ProductID, color);
+                return "redirect:/dashboard/products/edit?productID=" + ProductID;
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
             }

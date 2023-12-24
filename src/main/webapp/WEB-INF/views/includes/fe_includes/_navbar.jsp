@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <section class="header">
     <div class="heading">
         <div class="container-fluid">
@@ -30,7 +33,17 @@
                 <span class="sign">
                     <div class="sign-in mt-1">
                       <!-- Trigger Modal -->
-                      <a  href="#" data-bs-toggle="modal" data-bs-target="#loginDikaosan">Sign in</a> 
+                      <!-- session scope -->
+                      <c:choose>
+                        <c:when test="${sessionScope.user != null}">
+                            <a href="#">${sessionScope.user.first_name}</a> 
+                        </c:when>
+                        <c:otherwise>
+                          <a href="#" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#loginDikaosan">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginDikaosan">Sign in</a> 
+                          </a>
+                        </c:otherwise>
+                      </c:choose>
 
                       <!-- Modal Login -->
                       <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

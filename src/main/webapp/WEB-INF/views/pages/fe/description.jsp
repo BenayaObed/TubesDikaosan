@@ -2,6 +2,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!doctype html>
 <html lang="en">
@@ -88,42 +89,35 @@
               </div>
 
               
-              <form action="${pageContext.request.contextPath}/addToCart" method="post">
-                <input type="hidden" name="id_product" value="${data.id_product}">
-                
+              <form action="${pageContext.request.contextPath}/addTocart" method="post">
+                <input type="hidden" name="product_id" value="${data.product_id}">
+            
                 <div class="d-flex color my-2 gap-1">
-                  <div class="justify-content-center align-items-center text_color">
-                    <a>Color: </a>
-                  </div>
-                  <div id="myBtnColor">
-                    <c:forEach items="${data_stock}" var="item" varStatus="colorIndex">
-                      <div class="color_product">
-                        <input type="radio" class="btn-check" name="colors" id="colors-${colorIndex.index}" value="${item.key}" autocomplete="off">
-                        <label class="btn btn-secondary" for="colors-${colorIndex.index}">${item.key}</label>
-                      </div>
-                    </c:forEach>
-                  </div>
+                    <div class="justify-content-center align-items-center text_color">
+                        <a>Color: </a>
+                    </div>
+                    <div id="myBtnColor" class="d-flex">
+                        <c:forEach items="${data_stock}" var="item" varStatus="colorIndex">
+                            <div class="color_product d-flex px-1">
+                                <input type="radio" class="btn-check mx-5" name="colors" id="colors-${colorIndex.index}" value="${item.key}" autocomplete="off">
+                                <label class="btn btn-secondary" for="colors-${colorIndex.index}" data-color="${item.key}">${item.key}</label>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
-                <div class="d-flex size my-2 gap-3">
-                  <div class="justify-content-center align-items-center text_color">
-                    <a>Size: </a>
-                  </div>
-                  <c:forEach items="${data_stock}" var="item" varStatus="sizeIndex">
-                    <c:forEach items="${item.value}" var="color" varStatus="colorIndex">
-                      <c:if test="${color.value > 0}">
-                        <input type="radio" class="btn-check" name="sizes" id="sizes-${sizeIndex.index}-${colorIndex.index}" value="${color.key}" autocomplete="off">
-                        <label class="btn btn-secondary" for="sizes-${sizeIndex.index}-${colorIndex.index}">${color.key}</label>
-                      </c:if>
-                    </c:forEach>
-                  </c:forEach>
+                
+                <div class="d-flex size my-2 gap-3" id="sizeContainer">
+                  
                 </div>
-
+            
                 <div class="d-flex button_description my-2">
-                  <div class="button_buy"> 
-                    <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/shoping_cart">ADD TO CART</a>
-                  </div>
+                    <div class="button_buy">
+                        <!-- <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/shoping_cart">ADD TO CART</a> -->
+                        <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center">ADD TO CART</button>
+                      </div>
                 </div>
-              </form>
+            </form>
+
               <div class="d-flex text_description my-2">
                 <div class="description_product">
                   <h1>Description :</h1>
@@ -268,5 +262,57 @@
     <!-- script Section Start -->
     <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
     <!-- script Section End -->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var rawDataStock = '${data_stock}';
+          var formattedDataStock = rawDataStock.replace(/(\w+)=/g, '"$1":').replace(/=/g, ':');
+          var dataStock = JSON.parse(formattedDataStock);
+  
+          var colorRadios = document.querySelectorAll('input[name="colors"]');
+          var sizeRadios = document.querySelectorAll('input[name="sizes"]');
+          var sizeContainer = document.getElementById('sizeContainer');
+  
+          console.log(dataStock);
+  
+          colorRadios.forEach(function (colorRadio) {
+              colorRadio.addEventListener('change', function () {
+                  var selectedColor = this.value;
+                  var sizes = dataStock[selectedColor];
+                  console.log('Selected Color:', selectedColor);
+                  sizeContainer.innerHTML = '';
+  
+                  for (var size in sizes) {
+                      if (sizes.hasOwnProperty(size) && sizes[size] > 0) {
+                          var sizeDiv = document.createElement('div');
+                          sizeDiv.classList.add('size_product');
+  
+                          var sizeRadio = document.createElement('input');
+                          sizeRadio.type = 'radio';
+                          sizeRadio.classList.add('btn-check');
+                          sizeRadio.name = 'sizes';
+                          sizeRadio.id = 'sizes-' + selectedColor + '-' + size;
+                          sizeRadio.value = size;
+                          sizeRadio.autocomplete = 'off';
+  
+                          sizeRadio.addEventListener('change', function () {
+                              console.log('Selected Size:', this.value);
+                          });
+  
+                          var sizeLabel = document.createElement('label');
+                          sizeLabel.classList.add('btn', 'btn-secondary');
+                          sizeLabel.htmlFor = 'sizes-' + selectedColor + '-' + size;
+                          sizeLabel.dataset.size = size;
+                          sizeLabel.innerText = size;
+  
+                          sizeDiv.appendChild(sizeRadio);
+                          sizeDiv.appendChild(sizeLabel);
+                          sizeContainer.appendChild(sizeDiv);
+                      }
+                  }
+              });
+          });
+      });
+  </script>
     </body>
   </html>

@@ -76,8 +76,8 @@
                         <div class="form-group">
                             <label for="visible">Status Visible:</label>
                             <select class="form-control" id="visible" name="visible">
-                                <option value="1" selected="${product.visible eq 1}">Visible</option>
-                                <option value="0" selected="${product.visible eq 0}">Not Visible</option>
+                                <option value="${product.visible}" selected>${product.visible == 1 ? "Visible" : "Hidden"}</option>
+                                 ${product.visible == 1 ? "<option value='0'>Hidden</option>" : "<option value='1'>Visible</option>"}
                             </select>
                         </div>
                     </div>
@@ -259,6 +259,7 @@
           '<div class="col-md-3">' +
           '  <div class="form-group">' +
           '    <label for="color">Color:</label>' +
+          '    <input type="hidden" class="form-control" name="stock_id" value="">' +
           '    <input type="text" class="form-control" name="color[]" value="' + color + '">' +
           '  </div>' +
           '</div>' +
@@ -323,24 +324,23 @@
 
   function removeField(button, type) {
     if (type === 'stock') {
-      // Ambil productID
-      var id = $('input[name="productID"]').val();
-      var color = $(button).closest('.row').find('input[name="color[]"]').val();
-      if (id) {
+      // ajax delete stock
+      var id = $(button).closest('.row').find('input[name="stock_id"]').val();
 
+      if (id) {
         $.ajax({
           url: '${pageContext.request.contextPath}/dashboard/products/delete_stock',
           method: 'POST',
           data: {
-            productID: id,
-            color: color
+            ProductID: '${product.product_id}',
+            stockID: id,
+            color: $(button).closest('.row').find('input[name="color[]"]').val()
           },
           success: function (response) {
             console.log(response);
           }
         });
       }
-
       $(button).closest('.row').remove();
     } else if (type === 'image') {
       var id = $(button).closest('.form-row').find('input[name="image_id"]').val();

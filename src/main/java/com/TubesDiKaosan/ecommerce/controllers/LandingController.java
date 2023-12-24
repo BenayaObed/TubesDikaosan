@@ -91,6 +91,7 @@ public class LandingController {
                 });
             }
         }
+        // data_stock set to json
         model.addAttribute("data_stock", data);
         model.addAttribute("data", data_product);
         return "pages/fe/description";
