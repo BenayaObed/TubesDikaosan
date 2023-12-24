@@ -216,7 +216,7 @@ public class ProductController {
             @RequestParam("category_id") Integer category_id,
             @RequestParam("description") String description,
             @RequestParam("price") Integer price,
-            @RequestParam("visible") String visible,
+            @RequestParam("visible") Integer visible,
             @RequestParam("image_id") List<Integer> image_id,
             @RequestParam("images") List<MultipartFile> files,
             @RequestParam("color[]") List<String> color,
@@ -236,8 +236,7 @@ public class ProductController {
                 for (MultipartFile file : files) {
                     try {
                         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-                        if (fileName.equals(""))
-                            continue;
+                        if (fileName.equals("")) continue;
                         fileName = System.currentTimeMillis() + fileName;
                         Path filePath = Path.of(path + "/" + fileName);
 
@@ -266,20 +265,14 @@ public class ProductController {
                 for (int i = 0; i < color.size(); i++) {
                     for (int j = 0; j < stock.length; j++) {
                         StockProductRequest stockProductRequest = new StockProductRequest();
-                        if (color.get(i).equals("") || ((List<String>) stock[j][1]).get(i).equals("")) {
+                        if (color.get(i).equals("") || ((List<String>) stock[j][1]).get(i).equals(""))
                             continue;
-                        }
-                
                         stockProductRequest.setColor(color.get(i));
-                        int quantity = Integer.parseInt(((List<String>) stock[j][1]).get(i));
-                        if (quantity < 1) {
+                        if (Integer.parseInt(((List<String>) stock[j][1]).get(i)) < 1)
                             continue;
-                        }
-                
-                        stockProductRequest.setQuantity(quantity);
+                        stockProductRequest.setQuantity(Integer.parseInt(((List<String>) stock[j][1]).get(i)));
                         stockProductRequest.setSize((String) stock[j][0]);
-                
-                        if (stock_id.size() > i && stock_id.get(i) != null) {
+                        if (stock_id.get(i) != null) {
                             Stock stockData = productService.getStockById(stock_id.get(i));
                             stockProductRequest.setId(productService.findStockByProductIdAndSizeAndColor(productID,
                                     (String) stock[j][0], stockData.getColor()));
@@ -289,13 +282,12 @@ public class ProductController {
                         stocks.add(stockProductRequest);
                     }
                 }
-                
                 request.setName_product(name_product);
                 request.setCategory_id(category_id);
                 request.setDescription(description);
                 request.setPrice(price);
                 // parset to int
-                request.setVisible(visible.equals("visible") ? 1 : 0);
+                request.setVisible(visible);
                 request.setImages(images);
                 request.setStock(stocks);
 
@@ -333,12 +325,12 @@ public class ProductController {
     }
 
     @RequestMapping("/delete_stock")
-    public String deleteStock(@RequestParam Integer productID,@RequestParam String color, Model model, HttpSession session) throws SQLException {
+    public String deleteStock(@RequestParam Integer ProductID,@RequestParam Integer stockID,@RequestParam String color, Model model, HttpSession session) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
-                productService.removeStock(productID, color);
-                return "redirect:/dashboard/products";
+                productService.removeStock(ProductID, color);
+                return "redirect:/dashboard/products/edit?productID=" + ProductID;
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
             }

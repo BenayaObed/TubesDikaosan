@@ -309,9 +309,9 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
     }
 
     // remove stock
-    public Response removeStock(Integer id, String color) throws SQLException {
-        if (stockRepository.findById(id).isPresent()) {
-            stockRepository.deleteStockByColor(id,color);
+    public Response removeStock(Integer productID, String color) throws SQLException {
+        if (stockRepository.findStockByProductIdAndColor(productID,color) != null) {
+            stockRepository.deleteStockByColor(productID,color);
             return new Response(HttpStatus.OK.value(), "success", null);
         } else {
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found!", null);

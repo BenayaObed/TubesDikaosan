@@ -32,37 +32,32 @@ public class ShoppingController {
 
     // @RequestMapping("/api/cart")
     // // 037208b9-0f92-4eaa-8fed-e10b7e9afbd8
-    // public ResponseEntity<?> cart(Model model, HttpSession session) throws SQLException {
-    //     Response orders = shoppingServices.getAllOrdersByCustomer("17bacaa6-5a9a-45ef-92e6-0353bbd2844a"); // bundle
-    //     Response ordersItem = shoppingServices.getAllOrdersItem(1,"17bacaa6-5a9a-45ef-92e6-0353bbd2844a"); // bundle order id
-    //     return ResponseEntity.ok(ordersItem);
+    // public ResponseEntity<?> cart(Model model, HttpSession session) throws
+    // SQLException {
+    // Response orders =
+    // shoppingServices.getAllOrdersByCustomer("17bacaa6-5a9a-45ef-92e6-0353bbd2844a");
+    // // bundle
+    // Response ordersItem =
+    // shoppingServices.getAllOrdersItem(1,"17bacaa6-5a9a-45ef-92e6-0353bbd2844a");
+    // // bundle order id
+    // return ResponseEntity.ok(ordersItem);
     // }
 
     @PostMapping("/addTocart")
-    public String addToCart(@RequestParam("product_id") int product_id, @RequestParam("quantity") int quantity,
-            HttpSession session) throws SQLException {
-        Users user = userRepository.findById("0a8215af-8207-4a5c-9ce2-dd53985d193b").get();
-        // Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-        Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-        if (orders == null) { 
-            shoppingServices.createDraftOrder(user);
+    public String addToCart(@RequestParam("product_id") Integer product_id, @RequestParam("colors") String color,
+            @RequestParam("sizes") String size, HttpSession session)
+            throws SQLException {
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
+            if (orders == null) {
+                shoppingServices.createDraftOrder(user);
+            }
+            Orders container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
+            OrderItemRequest request = new OrderItemRequest(product_id, color, size, 1);
+            shoppingServices.addOrderItem(request, container_draft);
+            return "redirect:/shoping_cart";
         }
-        Orders container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-
-        return "redirect:/cart";
-    }
-
-    @PostMapping("/api/addToCart")
-    public ResponseEntity<?> addToCart(@RequestBody OrderItemRequest request ,HttpSession session) throws SQLException {
-        Users user = userRepository.findById("0a8215af-8207-4a5c-9ce2-dd53985d193b").get();
-        // Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-        Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-        if (orders == null) { 
-            shoppingServices.createDraftOrder(user);
-        }
-        Orders container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-        shoppingServices.addOrderItem(request,container_draft);
-
-        return ResponseEntity.ok(orders);
+        return "redirect:/";
     }
 }

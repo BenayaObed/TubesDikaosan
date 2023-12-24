@@ -19,6 +19,9 @@ public interface StockRepository extends JpaRepository<Stock,Integer> {
     @Query(value = "SELECT * FROM stock WHERE product_id = ?1 AND size = ?2 AND color = ?3", nativeQuery = true)
     Stock findStockByProductIdAndSizeAndColor(int product_id, String size, String color);
 
+    @Query(value = "SELECT * FROM stock WHERE product_id = ?1 AND color = ?2", nativeQuery = true)
+    List<Stock> findStockByProductIdAndColor(int product_id, String color);
+
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM stock WHERE product_id = ?1 AND color = ?2", nativeQuery = true)
