@@ -88,46 +88,40 @@
               </div>
 
               
-
-              <div class="d-flex color my-2 gap-1">
-                <div class="justify-content-center align-items-center text_color">
-                  <a>Color: </a>
+              <form action="${pageContext.request.contextPath}/addToCart" method="post">
+                <div class="d-flex color my-2 gap-1">
+                  <div class="justify-content-center align-items-center text_color">
+                    <a>Color: </a>
+                  </div>
+                  <div id="myBtnColor">
+                    <c:forEach items="${data_stock}" var="item" varStatus="colorIndex">
+                      <div class="color_product">
+                        <input type="radio" class="btn-check" name="colors" id="colors-${colorIndex.index}" value="${item.key}" autocomplete="off">
+                        <label class="btn btn-secondary" for="colors-${colorIndex.index}">${item.key}</label>
+                      </div>
+                    </c:forEach>
+                  </div>
                 </div>
-                <div id="myBtnColor">
-                  <c:forEach items="${data_stock}" var="item" varStatus="colorIndex">
-                    <div class="color_product">
-                      <input type="radio" class="btn-check" name="colors" id="colors-${colorIndex.index}" value="${item.key}" autocomplete="off">
-                      <label class="btn btn-secondary" for="colors-${colorIndex.index}">${item.key}</label>
-                    </div>
+                <div class="d-flex size my-2 gap-3">
+                  <div class="justify-content-center align-items-center text_color">
+                    <a>Size: </a>
+                  </div>
+                  <c:forEach items="${data_stock}" var="item" varStatus="sizeIndex">
+                    <c:forEach items="${item.value}" var="color" varStatus="colorIndex">
+                      <c:if test="${color.value > 0}">
+                        <input type="radio" class="btn-check" name="sizes" id="sizes-${sizeIndex.index}-${colorIndex.index}" value="${color.key}" autocomplete="off">
+                        <label class="btn btn-secondary" for="sizes-${sizeIndex.index}-${colorIndex.index}">${color.key}</label>
+                      </c:if>
+                    </c:forEach>
                   </c:forEach>
                 </div>
-              </div>
-              
-              <div class="d-flex size my-2 gap-3">
-                <div class="justify-content-center align-items-center text_color">
-                  <a>Size: </a>
+
+                <div class="d-flex button_description my-2">
+                  <div class="button_buy"> 
+                    <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/shoping_cart">ADD TO CART</a>
+                  </div>
                 </div>
-                <c:forEach items="${data_stock}" var="item" varStatus="sizeIndex">
-                  <c:forEach items="${item.value}" var="color" varStatus="colorIndex">
-                    <c:if test="${color.value > 0}">
-                      <input type="radio" class="btn-check" name="sizes" id="sizes-${sizeIndex.index}-${colorIndex.index}" value="${color.key}" autocomplete="off">
-                      <label class="btn btn-secondary" for="sizes-${sizeIndex.index}-${colorIndex.index}">${color.key}</label>
-                    </c:if>
-                  </c:forEach>
-                </c:forEach>
-              </div>
-
-              <!-- Size Section End -->
-
-              <div class="d-flex button_description my-2">
-                <!-- <div class="button_cart">
-                  <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="./shoping_cart.html">ADD TO CART</a>
-                </div> -->
-                <div class="button_buy"> 
-                  <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/shoping_cart">ADD TO CART</a>
-                </div>
-              </div>
-
+              </form>
               <div class="d-flex text_description my-2">
                 <div class="description_product">
                   <h1>Description :</h1>
