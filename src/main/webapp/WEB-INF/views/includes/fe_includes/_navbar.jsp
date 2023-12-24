@@ -41,6 +41,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                              <form action="${pageContext.request.contextPath}/authentication" method="post">
 
                               <div class="row email">
                                 <a>Email address</a>
@@ -61,9 +62,11 @@
                               </div>  
 
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal">Login</button>
+                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal" type="submit">Login</button>
                                 <a class="my-1">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
                               </div>
+                            </form>
+
                             </div>
                             <div class="modal-footer">
                             </div>
