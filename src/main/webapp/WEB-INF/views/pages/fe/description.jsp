@@ -89,97 +89,34 @@
 
               
 
-              <div class="d-flex color my-2">
+              <div class="d-flex color my-2 gap-1">
                 <div class="justify-content-center align-items-center text_color">
-              <a>Color: </a>
+                  <a>Color: </a>
                 </div>
                 <div id="myBtnColor">
-                  <input type="text" value="" id="color_selected" hidden> 
-                  <!-- <br> -->
-                  <!-- <button class="btn active" onclick="filterSelection('putih')" hidden>Putih</button> -->
-                  <button class="btn color-btn" onclick="filterSelection('abu')">Abu</button>
-                  <button class="btn color-btn" onclick="filterSelection('biru')">Biru</button>
-                  <button class="btn color-btn" onclick="filterSelection('ungu')">Ungu</button>
+                  <c:forEach items="${data_stock}" var="item" varStatus="colorIndex">
+                    <div class="color_product">
+                      <input type="radio" class="btn-check" name="colors" id="colors-${colorIndex.index}" value="${item.key}" autocomplete="off">
+                      <label class="btn btn-secondary" for="colors-${colorIndex.index}">${item.key}</label>
+                    </div>
+                  </c:forEach>
                 </div>
               </div>
-
-              <div class="d-flex size my-2">
-                <div class="size_product">
-                  <a class="btn btn-size">S</a>
+              
+              <div class="d-flex size my-2 gap-3">
+                <div class="justify-content-center align-items-center text_color">
+                  <a>Size: </a>
                 </div>
-                <div class="size_product">
-                  <a class="btn btn-size">M</a>
-                </div>
-                <div class="size_product">
-                  <a class="btn btn-size">L</a>
-                </div>
-                <div class="size_product">
-                  <a class="btn btn-size">XL</a>
-                </div>
+                <c:forEach items="${data_stock}" var="item" varStatus="sizeIndex">
+                  <c:forEach items="${item.value}" var="color" varStatus="colorIndex">
+                    <c:if test="${color.value > 0}">
+                      <input type="radio" class="btn-check" name="sizes" id="sizes-${sizeIndex.index}-${colorIndex.index}" value="${color.key}" autocomplete="off">
+                      <label class="btn btn-secondary" for="sizes-${sizeIndex.index}-${colorIndex.index}">${color.key}</label>
+                    </c:if>
+                  </c:forEach>
+                </c:forEach>
               </div>
-            
-              <script>
-                function filterSelection(c) {
-                var x, i;
-                x = document.getElementsByClassName("filterDiv");
-                if (c == "all") c = "";
-                // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-                for (i = 0; i < x.length; i++) {
-                    w3RemoveClass(x[i], "show");
-                    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-                      }
-                }
 
-                // Show filtered elements
-                function w3AddClass(element, name) {
-                var i, arr1, arr2;
-                arr1 = element.className.split(" ");
-                arr2 = name.split(" ");
-                for (i = 0; i < arr2.length; i++) {
-                    if (arr1.indexOf(arr2[i]) == -1) {
-                    element.className += " " + arr2[i];
-                    // cek button yg dipilih warna/ukuran
-                    console.log(arr1);
-                    document.getElementById("color_selected").value = arr1[1];
-                    document.getElementById("size_selected").value = arr1[1];
-                    }
-                  }
-                }
-
-                // Hide elements that are not selected
-                function w3RemoveClass(element, name) {
-                var i, arr1, arr2;
-                arr1 = element.className.split(" ");
-                arr2 = name.split(" ");
-                for (i = 0; i < arr2.length; i++) {
-                    while (arr1.indexOf(arr2[i]) > -1) {
-                    arr1.splice(arr1.indexOf(arr2[i]), 1);
-                    }
-                  }
-                element.className = arr1.join(" ");
-                }
-
-                // Add active class to the current control button (highlight it)
-                var btnContainer = document.getElementById("myBtnColor");
-                var btns = btnContainer.getElementsByClassName("btn");
-                for (var i = 0; i < btns.length; i++) {
-                btns[i].addEventListener("click", function() {
-                    var current = document.getElementsByClassName("active");
-                    current[0].className = current[0].className.replace(" active", "");
-                    this.className += " active";
-                    });
-                }
-
-                var btnContainer = document.getElementById("myBtnSize");
-                var btns = btnContainer.getElementsByClassName("btn");
-                for (var i = 0; i < btns.length; i++) {
-                btns[i].addEventListener("click", function() {
-                    var current = document.getElementsByClassName("active");
-                    current[0].className = current[0].className.replace(" active", "");
-                    this.className += " active";
-                    });
-                }
-              </script>
               <!-- Size Section End -->
 
               <div class="d-flex button_description my-2">
@@ -187,7 +124,7 @@
                   <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="./shoping_cart.html">ADD TO CART</a>
                 </div> -->
                 <div class="button_buy"> 
-                  <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/shoping_cart">BUY NOW</a>
+                  <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/shoping_cart">ADD TO CART</a>
                 </div>
               </div>
 
@@ -318,113 +255,6 @@
                   </div>
                 </div>
               </div>
-    
-              <!-- <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G3.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">Burnion Denim Jacket</p>
-                    <p class="mb-0 p-0">Rp 349.999</p>
-                  </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G4.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">Black Glasses</p>
-                    <p class="mb-0 p-0">Rp 149.999</p>
-                  </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G5.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">School Bag</p>
-                    <p class="mb-0 p-0">Rp 119.999</p>
-                  </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G6.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">Woman Long Pants</p>
-                    <p class="mb-0 p-0">Rp 299.999</p>
-                  </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G7.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">Cute Cat T-Shirt Set</p>
-                    <p class="mb-0 p-0">Rp 119.999</p>
-                  </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G8.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">Comfortable Jacket</p>
-                    <p class="mb-0 p-0">Rp 499.999</p>
-                  </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="col d-flex flex-column p-2">
-                <img class="product-img" src="/resources/images/Produk/G9.jpg" />
-                <div class="row p-0 m-0">
-                  <div class="col-11 p-0 w product-desc">
-                    <p class="mb-0 p-0">Nike Vision Set Woman</p>
-                    <p class="mb-0 p-0">Rp 799.999</p>
-                  </div>
-                  <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            
           </div>
         </div>
       </div>

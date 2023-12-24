@@ -21,8 +21,8 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/dashboard/users")
-public class EmployeeController {
-    @Autowired
+public class AdminController {
+     @Autowired
     private List<UsersService> usersServices;
 
     @RequestMapping({ "", "/" })
@@ -136,4 +136,5 @@ public class EmployeeController {
         }
         return "redirect:/";
     }
+    
 }
