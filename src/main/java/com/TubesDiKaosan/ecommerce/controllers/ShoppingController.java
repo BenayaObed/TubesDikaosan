@@ -1,6 +1,8 @@
 package com.TubesDiKaosan.ecommerce.controllers;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,20 +52,19 @@ public class ShoppingController {
 
     // update cart
     @PostMapping("/updateCart")
-    public String updateCart(@RequestParam("product_id") Integer product_id, @RequestParam("colors") String color,
-            @RequestParam("sizes") String size, @RequestParam("quantity") Integer quantity, HttpSession session)
-            throws SQLException {
-        if (session.getAttribute("user") != null) {
-            Users user = (Users) session.getAttribute("user");
-            Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-            if (orders == null) {
-                shoppingServices.createDraftOrder(user);
-            }
-            Orders container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-            OrderItemRequest request = new OrderItemRequest(product_id, color, size, quantity);
-            // shoppingServices.updateOrderItem(request, container_draft);
-            return "redirect:/shoping_cart";
+    public String updateCart(@RequestParam("order_item_id") List<Integer> order_item_id,
+            @RequestParam("quantity") List<Integer> quantity, @RequestParam("product_id") List<Integer> product_id) {
+        List<OrderItemRequest> cart = new ArrayList<>();
+        for (int i = 0; i < order_item_id.size(); i++) {
+            OrderItemRequest request = new OrderItemRequest();
+            request.setQuantity(quantity.get(i));
+            request.setProduct_id(product_id.get(i));
+            cart.add(request);
         }
-        return "redirect:/";
+
+        for (OrderItemRequest orderItemRequest : cart) {
+            System.out.println(orderItemRequest.getProduct_id() + " " + orderItemRequest.getQuantity());
+        }
+        return "redirect:/shoping_cart";
     }
 }

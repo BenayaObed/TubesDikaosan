@@ -72,46 +72,46 @@
             <div class="col-sm-12 ">
               <div class="fontSize">
                 <div class = "container activity-image offset mx-4 w-100">
-                  
                   <c:forEach items="${data_cart}" var="item" varStatus="loop">
-  <div class="row">
-    <div class="bord">
-      <div class="col d-flex flex-column my-lg-3">
-        <div class="row">
-          <!-- photo dan harga -->
-          <div class="col-sm-6 d-flex flex-column">
-            <div class="row">
-              <div class="col-sm-4 d-flex flex-column">
-                <img class="images" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.product_id.images[0].image}" alt="${item.product_id.images[0].image}">
-              </div>
-              <div class="harga col-sm-8 d-flex flex-column">
-                <input type="hidden" name="product_id" value="${item.product_id.product_id}">
-                <p>${item.product_id.name_product} ( ${item.size}, ${item.color} )</p>
-                <p style="font-weight: bold;" class="price"><fmt:formatNumber value="${item.product_id.price}" type="currency" currencyCode="IDR" /></p> <!-- harga -->
-              </div>
-            </div>
-          </div>
-          <!-- quantity -->
-          <div class="number-size col-sm-3 d-flex flex-column mt-3 pt-3">
-            <div class="container">
-              <div class="number-input">
-                <button class="col-sm-4 btn minus" data-index="${loop.index}">-</button>
-                <input class="col-sm-4 quantity-input" type="text" value="${item.quantity}" data-index="${loop.index}" readonly>
-                <button class="col-sm-4 btn plus" data-index="${loop.index}">+</button>
-              </div>
-            </div>
-          </div>
-          <!-- total -->
-          <div class="col-sm-3 d-flex flex-column">
-            <div class="jumlah_check col-sm-12 flex-column-reverse">
-              <p style="font-weight: bold;" class="total-price" data-index="${loop.index}">IDR${item.product_id.price}</p> <!-- total harga -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</c:forEach>
+                    <div class="row">
+                      <div class="bord">
+                        <div class="col d-flex flex-column my-lg-3">
+                          <div class="row">
+                            <!-- photo dan harga -->
+                            <div class="col-sm-6 d-flex flex-column">
+                              <div class="row">
+                                <div class="col-sm-4 d-flex flex-column">
+                                  <img class="images" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.product_id.images[0].image}" alt="${item.product_id.images[0].image}">
+                                </div>
+                                <div class="harga col-sm-8 d-flex flex-column">
+                                  <input type="hidden" name="order_item_id" value="${item.order_item_id}">
+                                  <input type="hidden" name="product_id" value="${item.product_id.product_id}">
+                                  <p>${item.product_id.name_product} ( ${item.size}, ${item.color} )</p>
+                                  <p style="font-weight: bold;" class="price"><fmt:formatNumber value="${item.product_id.price}" type="currency" currencyCode="IDR" /></p> <!-- harga -->
+                                </div>
+                              </div>
+                            </div>
+                            <!-- quantity -->
+                            <div class="number-size col-sm-3 d-flex flex-column mt-3 pt-3">
+                              <div class="container">
+                                <div class="number-input">
+                                  <button class="col-sm-4 btn minus" data-index="${loop.index}">-</button>
+                                  <input class="col-sm-4 quantity-input" type="text" value="${item.quantity}" data-index="${loop.index}" readonly>
+                                  <button class="col-sm-4 btn plus" data-index="${loop.index}">+</button>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- total -->
+                            <div class="col-sm-3 d-flex flex-column">
+                              <div class="jumlah_check col-sm-12 flex-column-reverse">
+                                <p style="font-weight: bold;" class="total-price" data-index="${loop.index}">IDR${item.product_id.price}</p> <!-- total harga -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </c:forEach>
 
                 
                 </div>
@@ -127,7 +127,7 @@
                         <a href="${pageContext.request.contextPath}/shop" class="btn btn-add-cart d-flex justify-content-center align-items-center">Continue Shoping</a>
                       </div>
                       <div class="button_update_cart col-sm-6 d-flex flex-column align-items-end ">
-                          <a href="" class="btn btn-add-cart d-flex justify-content-center align-items-center">Update Cart</a>
+                        <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center">Update Cart</button>
                       </div>
                     </div>
                   </div>
