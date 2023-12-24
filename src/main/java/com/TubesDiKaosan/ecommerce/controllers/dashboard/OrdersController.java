@@ -52,9 +52,6 @@ public class OrdersController {
                 if (userService instanceof AdminService && user.getRole().getRole_name().equals("ADMIN")) {
                     List<OrdersItem> data = (List<OrdersItem>) ((AdminService) userService).getOrderDetail(OrderID)
                             .getData();
-                    CustomerAddress address = (CustomerAddress) ((AdminService) userService)
-                            .getAddressCustomer(userID).getData();
-                    model.addAttribute("customer_address", address);
                     model.addAttribute("data", data);
                     return "pages/dashboard/order_details";
                 }
@@ -94,10 +91,6 @@ public class OrdersController {
             if (userService instanceof AdminService) {
                 List<OrdersItem> data = (List<OrdersItem>) ((AdminService) userService).getOrderDetail(OrderID)
                         .getData();
-                CustomerAddress address = (CustomerAddress) ((AdminService) userService)
-                        .getAddressCustomer(userID).getData();
-                model.addAttribute("customer_address", address);
-                model.addAttribute("data", data);
                 return ResponseEntity.ok(data);
             }
         }

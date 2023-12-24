@@ -18,6 +18,7 @@ import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.requests.UserRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.CustomerAddressRequest;
+import com.TubesDiKaosan.ecommerce.payloads.requests.OrderRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.CustomerAddressRepository;
 import com.TubesDiKaosan.ecommerce.repositories.OrderItemRepository;
@@ -33,6 +34,9 @@ import jakarta.servlet.http.HttpSession;
 public class CustomerService extends UsersService {
     @Autowired
     private ShoppingServices shoppingServices;
+
+    @Autowired
+    private OrdersRepository OrdersRepository;
 
     public CustomerService(UserRepository userRepository, RolesService rolesService) {
         super(userRepository, rolesService);
@@ -98,79 +102,6 @@ public class CustomerService extends UsersService {
         return new Response(HttpStatus.OK.value(), "success", user);
     }
 
-    // Address
-    @Autowired
-    private CustomerAddressRepository addressRepository;
-    public Response addAddress(String id, CustomerAddressRequest request) throws SQLException {
-        Response userResponse = super.findDataByID(id);
-        if (userResponse.getStatus() != HttpStatus.OK.value()) {
-            return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid user ID!", null);
-        }
-
-        Users userData = (Users) userResponse.getData();
-
-        CustomerAddress addressData = new CustomerAddress();
-        addressData.setAddress(request.getAddress());
-        addressData.setCity(request.getCity());
-        addressData.setProvince(request.getProvince());
-        addressData.setPostal_code(request.getPostal_code());
-        addressData.setPhone_number(request.getPhone_number());
-        addressData.setCustomerAddress(userData);
-
-        addressRepository.save(addressData);
-        return new Response(HttpStatus.OK.value(), "Success", addressData);
-    }
-
-    public Response updateAddress(String id, Integer addressId, CustomerAddressRequest request) throws SQLException {
-        Response userResponse = super.findDataByID(id);
-        if (userResponse.getStatus() != HttpStatus.OK.value()) {
-            return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid user ID!", null);
-        }
-
-        Users userData = (Users) userResponse.getData();
-
-        Optional<CustomerAddress> optionalAddress = addressRepository.findById(addressId);
-        if (optionalAddress.isPresent()) {
-            CustomerAddress addressData = optionalAddress.get();
-            addressData.setAddress(request.getAddress());
-            addressData.setCity(request.getCity());
-            addressData.setProvince(request.getProvince());
-            addressData.setPostal_code(request.getPostal_code());
-            addressData.setPhone_number(request.getPhone_number());
-            addressData.setCustomerAddress(userData);
-
-            addressRepository.save(addressData);
-            return new Response(HttpStatus.OK.value(), "Success", addressData);
-        } else {
-            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
-        }
-    }
-
-    public Response deleteAddress(String id, Integer addressId) throws SQLException {
-        Response userResponse = super.findDataByID(id);
-        if (userResponse.getStatus() != HttpStatus.OK.value()) {
-            return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid user ID!", null);
-        }
-
-        Optional<CustomerAddress> optionalAddress = addressRepository.findById(addressId);
-        if (optionalAddress.isPresent()) {
-            CustomerAddress addressData = optionalAddress.get();
-            addressRepository.delete(addressData);
-            return new Response(HttpStatus.OK.value(), "Success", null);
-        } else {
-            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
-        }
-    }
-
-    public Response getAllAddress(String id) throws SQLException { // GET ALL ADDRESS BY CUSTOMER
-        if (addressRepository.findAllByCustomerAddress(id).isEmpty())
-            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
-        else {
-            List<CustomerAddress> data = addressRepository.findAllByCustomerAddress(id);
-            return new Response(HttpStatus.OK.value(), "success", data);
-        }
-    }
-    
     public Response getRolesCustomer() throws SQLException {
         Roles role = rolesService.existsByName("CUSTOMER");
         if (role == null) {
@@ -179,27 +110,7 @@ public class CustomerService extends UsersService {
         return new Response(HttpStatus.OK.value(), "success", role);
     }
 
-
-    // ORDERS & CARTS
-    @Autowired
-    private ShoppingServices shoppingService;
-    public Response getDraftOrder(String id) throws SQLException { // GET DRAFT ORDER (KERANJANG)
-        if (shoppingService.getDraftOrder(id) == null)
-            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
-        else {
-            Orders data = (Orders) shoppingService.getDraftOrder(id).getData();
-            return new Response(HttpStatus.OK.value(), "success", data);
-        }
-    }
-
-    public Response getDataCart(Integer orderID, String UserID) throws SQLException { // GET ALL ITEM IN CART
-        if (shoppingService.getDataCart(orderID, UserID).getData() == null)
-            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
-        else {
-            List<OrdersItem> data = (List<OrdersItem>) shoppingService.getDataCart(orderID, UserID).getData();
-            return new Response(HttpStatus.OK.value(), "success", data);
-        }
-    }
+    
 
     
 }

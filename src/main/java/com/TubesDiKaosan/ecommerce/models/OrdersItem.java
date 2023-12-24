@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 // versi berapa javax.persistence di ganti ke jakarta.persistence?
 import jakarta.persistence.Column;
@@ -19,6 +21,8 @@ import jakarta.persistence.Table;
 // order item
 @Entity
 @Table(name = "orders_item")
+// JSON IGNORE
+@JsonIgnoreProperties({"createdAt", "updatedAt"})
 public class OrdersItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +30,7 @@ public class OrdersItem {
     private Integer order_item_id;
 
     // Relation Product
-    @ManyToOne(targetEntity = Product.class)
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product_id;
 
@@ -49,11 +53,11 @@ public class OrdersItem {
 
     @CreationTimestamp
     @Column(name = "createdAt")
-    private LocalDateTime createdAt;
+    @JsonIgnore private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updatedAt")
-    private LocalDateTime updatedAt;
+    @JsonIgnore private LocalDateTime updatedAt;
     
     public OrdersItem() {
     }

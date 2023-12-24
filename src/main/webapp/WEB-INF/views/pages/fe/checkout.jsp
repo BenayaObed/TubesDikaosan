@@ -72,9 +72,7 @@
             </div>
             <!-- container produk checkout -->
             <div class="col-sm-12">
-              <c:forEach items="${products}" var="item">
-                <c:if test="${(item.visible == 1)}">
-                  <c:if test="${(item.category.visible == 1)}">
+              <c:forEach items="${data_cart}" var="item">
                     <div class="col-sm-12">
                       <div class="fontSize">
                         <div class = "container activity-image offset mx-4 w-100">
@@ -86,11 +84,13 @@
                                   <div class="col-sm-6 d-flex flex-column">
                                     <div class =row>
                                       <div class="col-sm-4 d-flex flex-column">
-                                        <img class="images" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.images[0 ].image}" />
+                                        <img class="images" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.product_id.images[0].image}" />
                                       </div>
                                       <div class = "harga col-sm-8 d-flex flex-column ">
-                                        <p>${item.name_product}</p>
-                                        <p style="font-weight: bold;"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
+                                        <p>${item.product_id.name_product}</p>
+                                        <p style="font-weight: bold;">
+                                          ${item.product_id.price}
+                                        </p>
                                       </div>
                                     </div>    
                                   </div>
@@ -98,25 +98,16 @@
                                   <div class="col-sm-3 d-flex flex-column justify-content-center align-items-center">
                                     <div class="container">
                                       <div class="number-input">
-                                        <button id="minus" class="col-sm-4 btn "><</button>
-                                        <input class="col-sm-4" type="text" id="number" value="0">
-                                        <button id="plus" class="col-sm-4 btn ">></button>
+                                        <input class="col-sm-4" type="text" id="number" value="${item.quantity}" readonly>
                                       </div>
                                     </div>
-                              
-                                    <!-- Script Section Start -->
-                                    <%@ include file = "../../includes/fe_includes/_script.jsp" %>
-                                    <!-- Script Section End-->
-                                  
-                                    <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
-                                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-                                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                                   </div>
                               <!-- total -->
                                   <div class="col-sm-3 d-flex flex-column ">
                                     <div class = "jumlah_check col-sm-12 flex-column-reverse">
-                                      <p style="font-weight: bold;"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
+                                      <p style="font-weight: bold;">
+                                        ${item.total_price}
+                                      </p>
                                     </div>
                                   </div>
                                 </div>
@@ -126,8 +117,6 @@
                         </div>
                       </div>
                     </div>
-                  </c:if>
-                </c:if>
               </c:forEach>
             </div>
     
@@ -143,8 +132,11 @@
                       <div class="button_continue_shoping col-sm-6 d-flex flex-column">
                         <a href="${pageContext.request.contextPath}/shop" class="btn btn-add-cart d-flex justify-content-center align-items-center">Continue Shoping</a>
                       </div>
-                      <div class="button_update_cart col-sm-6 d-flex flex-column align-items-end ">
-                          <a href="${pageContext.request.contextPath}/checkout" class="btn btn-add-cart d-flex justify-content-center align-items-center">Update Cart</a>
+                      <div class="button_update_cart col-sm-6 d-flex flex-column">
+                        <form action="${pageContext.request.contextPath}/cancelOrder" method="post">
+                          <input type="hidden" name="order_id" value="${order_id}">
+                          <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center">Cancel Order</button>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -172,18 +164,16 @@
                   <div class="row">
                     <div class="col-sm-6 d-flex flex-column my-1 ">
                       <ol class="list list-group-numbered p-0">
-                        <li class="list-group-item">Man Kimono Set</li>
-                        <li class="list-group-item">Reebok M1 Shoes</li>
-                        <li class="list-group-item">Black Glasses</li>
-                        <li class="list-group-item">School Bag</li>
+                          <c:forEach items="${data_cart}" var="item">
+                            <li class="list-group-item">${item.product_id.name_product}</li>
+                          </c:forEach>
                       </ol>
                     </div>
                     <div class="col-sm-6 d-flex flex-column  align-items-end my-1  ">
                       <ul class="list list-group-flush text-end">
-                        <li class="list-group-item">Rp 249.999</li>
-                        <li class="list-group-item">Rp 699.999</li>
-                        <li class="list-group-item">Rp 149.999</li>
-                        <li class="list-group-item">Rp 119.999</li>
+                        <c:forEach items="${data_cart}" var="item">
+                          <li class="list-group-item">${item.total_price}</li>
+                        </c:forEach>
                     </ul>
                     </div>
                   </div>
@@ -196,75 +186,55 @@
                       <p class="m-0 p-0" style="font-weight: bold; font-size: large;">Total</p>
                     </div>
                     <div class="col-sm-6 d-flex flex-column  align-items-end">
-                      <p class="m-0 p-0" style="color: red; font-weight: bold; font-size: large;">Rp 1.219.999</p>
+                      <p class="m-0 p-0" style="color: red; font-weight: bold; font-size: large;">Rp ${total}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
+              <form class="was-validated" action="${pageContext.request.contextPath}/payment" method="post">
+              <input type="hidden" name="total" value="${total}">
               <div class="checkbox ">
-                <form class="was-validated">
                   
                   <!-- Bank -->
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+                    <input type="checkbox" class="form-check-input" id="validationFormCheck1" name="method">
                     <label class="form-check-label" for="validationFormCheck1">
                       Transfer Bank
                     </label>
                     <div class="valid-feedback"> 
                     
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/resources/images/38.png">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Central Asia
-                        </label>
-                      </div>
-        
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/resources/images/40.png">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Negara Indonesia
-                        </label>
-                      </div>
-        
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/resources/images/39.png">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Rakyat Indonesia
-                        </label>
-                      </div>
-        
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <img src="/resources/images/41.png">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Bank Mandiri
-                        </label>
-                      </div>
+                      <c:forEach items="${paymentMethods}" var="item">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="bank" id="${item.payment_method_name}" value="${item.id}">
+                          <label class="form-check-label" for="${item.payment_method_name}">
+                            ${item.payment_method_name}
+                          </label>
+                        </div>
+                      </c:forEach>
                     </div>
                   </div>
                   
                   <!-- COD -->
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" value="COD" id="flexCheckChecked" name="method">
                     <label class="form-check-label" for="flexCheckChecked">
                       Cash On Delivery
                     </label>
                   </div>
                 
-                </form>
+
               </div>
             
                     <div class="button_confirm col d-flex flex-column align-items-center my-3 ">
-                      <a href="${pageContext.request.contextPath}/payment" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirmation Payment</a>
-
-                      </div>
+                      <!-- <a href="${pageContext.request.contextPath}/payment" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirmation Payment</a> -->
+                      <button type="submit" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirmation Payment</button>
+                    </div>
 
                     </div>
                   </div>
+                </form>
+
               </div>
             </div>
             </div>

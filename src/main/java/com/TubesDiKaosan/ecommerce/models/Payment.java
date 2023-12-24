@@ -21,13 +21,13 @@ public class Payment {
     private Integer payment_id;
 
     @OneToOne(targetEntity = PaymentMethod.class)
-    private Integer payment_method;
+    private PaymentMethod payment_method;
 
     @Column(name = "payment_status")
-    private Integer payment_status;
+    private String payment_status; // PAID, UNPAID, CANCELLED
 
     @Column(name = "payment_total")
-    private Integer payment_total;
+    private Float payment_total;
 
     @CreationTimestamp
     @Column(name = "createdAt")
@@ -40,7 +40,7 @@ public class Payment {
     public Payment() {
     }
     
-    public Payment(Integer payment_id, Integer payment_method, Integer payment_status, Integer payment_total,
+    public Payment(Integer payment_id, PaymentMethod payment_method, String payment_status, Float payment_total,
             LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.payment_id = payment_id;
         this.payment_method = payment_method;
@@ -58,27 +58,27 @@ public class Payment {
         this.payment_id = payment_id;
     }
 
-    public Integer getPayment_method() {
+    public PaymentMethod getPayment_method() {
         return payment_method;
     }
 
-    public void setPayment_method(Integer payment_method) {
+    public void setPayment_method(PaymentMethod payment_method) {
         this.payment_method = payment_method;
     }
 
-    public Integer getPayment_status() {
+    public String getPayment_status() {
         return payment_status;
     }
 
-    public void setPayment_status(Integer payment_status) {
+    public void setPayment_status(String payment_status) {
         this.payment_status = payment_status;
     }
 
-    public Integer getPayment_total() {
+    public Float getPayment_total() {
         return payment_total;
     }
 
-    public void setPayment_total(Integer payment_total) {
+    public void setPayment_total(Float payment_total) {
         this.payment_total = payment_total;
     }
 

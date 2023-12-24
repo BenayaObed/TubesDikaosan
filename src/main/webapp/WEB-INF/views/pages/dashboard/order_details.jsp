@@ -53,10 +53,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-
-            <!-- Main content -->
             <div class="invoice p-3 mb-3">
-              <!-- title row -->
               <div class="row">
                 <div class="col-12">
                   <h4>
@@ -72,8 +69,8 @@
                   Order By
                   <address>
                     <strong>${data[0].order_id.user_id.first_name} ${data[0].order_id.user_id.last_name}</strong><br>
-                    ${customer_address.address}, ${customer_address.city}, ${customer_address.province}, ${customer_address.postal_code}<br>
-                    Phone: ${customer_address.phone_number}<br>
+                    ${data[0].order_id.address_id.address}, ${data[0].order_id.address_id.city}, ${data[0].order_id.address_id.province}, ${data[0].order_id.address_id.postal_code}<br>
+                    Phone: ${data[0].order_id.address_id.phone_number}<br>
                     Email: ${data[0].order_id.user_id.email}
                   </address>
                 </div>

@@ -36,13 +36,13 @@ public class Product {
   @Column(columnDefinition = "TEXT")
   private String description;
 
-  @OneToMany(mappedBy = "image_id", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
   private List<Images> images;
 
   private int price;
 
   // Stock
-  @OneToMany(mappedBy = "stock_id", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
   private List<Stock> stock;
 
   @Column(name = "visible") private Integer visible;
@@ -104,7 +104,6 @@ public class Product {
     this.description = description;
   }
 
-  @JsonIgnoreProperties({ "product" })
   public List<Images> getImages() {
     return images;
   }
@@ -121,7 +120,6 @@ public class Product {
     this.price = price;
   }
 
-  @JsonIgnoreProperties({ "product" })
   public List<Stock> getStock() {
     return stock;
   }

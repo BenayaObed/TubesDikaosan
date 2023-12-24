@@ -85,6 +85,7 @@ public class PaymentMethodController {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 PaymentMethod method = (PaymentMethod) paymentMethodService.updateDataById(methodID, paymentMethod).getData();
+                model.addAttribute("data", method);
                 return "redirect:/dashboard/payment-method/edit?methodID="+methodID;
             }
         }

@@ -7,11 +7,12 @@ public class OrderItemRequest {
     private String color;
     private String size;
     private Integer quantity;
+    private Float total_price;
 
     public OrderItemRequest() {
     }
 
-    public OrderItemRequest(Integer product_id, String color, String size, Integer quantity) {
+    public OrderItemRequest(Integer product_id, String color, String size, Integer quantity, Float total_price) {
         this.product_id = product_id;
         this.color = color;
         this.size = size;
@@ -48,5 +49,13 @@ public class OrderItemRequest {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Float getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(Float total_price) {
+        this.total_price = total_price;
     }
 }

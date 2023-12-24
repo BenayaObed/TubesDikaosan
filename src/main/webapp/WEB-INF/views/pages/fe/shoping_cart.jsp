@@ -46,7 +46,7 @@
       <div class="row">
         <div class="col-12 d-flex border-primary">
           <div class="col-sm-6  ">
-
+            <form action="${pageContext.request.contextPath}/updateCart" method="POST">
             <div class="col-sm-12 ">
               <div class="fontSize">
                 <div class="container activity-head offset mx-4 my-1 w-100" >
@@ -68,11 +68,16 @@
                 </div>
               </div>
             </div>
-    
             <div class="col-sm-12 ">
               <div class="fontSize">
                 <div class = "container activity-image offset mx-4 w-100">
-                  <c:forEach items="${data_cart}" var="item" varStatus="loop">
+                  <!-- if data_cart size 0 / null show message -->
+                  <c:choose>
+                    <c:when test="${empty data_cart}">
+                          Barang tidak ada!
+                    </c:when>
+                    <c:otherwise>
+                      <c:forEach items="${data_cart}" var="item" varStatus="loop">
                     <div class="row">
                       <div class="bord">
                         <div class="col d-flex flex-column my-lg-3">
@@ -87,7 +92,9 @@
                                   <input type="hidden" name="order_item_id" value="${item.order_item_id}">
                                   <input type="hidden" name="product_id" value="${item.product_id.product_id}">
                                   <p>${item.product_id.name_product} ( ${item.size}, ${item.color} )</p>
-                                  <p style="font-weight: bold;" class="price"><fmt:formatNumber value="${item.product_id.price}" type="currency" currencyCode="IDR" /></p> <!-- harga -->
+                                  <p style="font-weight: bold;" class="price">
+                                    RP ${item.product_id.price}
+                                  </p> <!-- harga -->
                                 </div>
                               </div>
                             </div>
@@ -95,16 +102,16 @@
                             <div class="number-size col-sm-3 d-flex flex-column mt-3 pt-3">
                               <div class="container">
                                 <div class="number-input">
-                                  <button class="col-sm-4 btn minus" data-index="${loop.index}">-</button>
-                                  <input class="col-sm-4 quantity-input" type="text" value="${item.quantity}" data-index="${loop.index}" readonly>
-                                  <button class="col-sm-4 btn plus" data-index="${loop.index}">+</button>
+                                  <button type="button" class="col-sm-4 btn minus" data-index="${loop.index}">-</button>
+                                  <input class="col-sm-4 quantity-input" type="text" value="${item.quantity}" data-index="${loop.index}" readonly name="quantity">
+                                  <button type="button" class="col-sm-4 btn plus" data-index="${loop.index}">+</button>
                                 </div>
                               </div>
                             </div>
                             <!-- total -->
                             <div class="col-sm-3 d-flex flex-column">
                               <div class="jumlah_check col-sm-12 flex-column-reverse">
-                                <p style="font-weight: bold;" class="total-price" data-index="${loop.index}">IDR${item.product_id.price}</p> <!-- total harga -->
+                                <p style="font-weight: bold;" class="total-price" data-index="${loop.index}">RP ${item.product_id.price}</p> <!-- total harga -->
                               </div>
                             </div>
                           </div>
@@ -112,12 +119,11 @@
                       </div>
                     </div>
                   </c:forEach>
-
-                
+                    </c:otherwise>
+                  </c:choose>
                 </div>
               </div>
             </div>
-
             <div class="footer_checkout col-sm-12 justify-content-center">
               <div class="container activity-foot offset mx-3 w-100 ">
                 <div class="row">
@@ -134,66 +140,66 @@
                 </div>
               </div>
             </div>
+          </form>
           </div>
 
           <div class="col-sm-6  ">
             <div class="fontSize">
             <div class="your_order col-sm-10 d-flex flex-column activity-right offset mx-5 w-60 ">
               <p style="font-weight: bold; font-size: large;">BILLING DETAILS</p>
-
+              <form action="${pageContext.request.contextPath}/setBillingAddress" method="POST">
+                <!-- order_id -->
+                <input type="hidden" name="orders_id" value="${order_id}">
               <div class="row">
                 <div class="col d-flex flex-column my-lg-3 ">
                   <div class="row">
                     <div class="col-sm-6 d-flex flex-column ">
                       <p>First name <span style="color: red;">*</span></p>
                       <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" value="${sessionScope.user.first_name}" placeholder="${sessionScope.user.first_name}" readonly>
                     </span>
                     </div>
                     <div class="col-sm-6 d-flex flex-column">
                       <p>Last Name <span style="color: red;">*</span></p>
                       <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                        <input class="inpt form" type="text" name="first_name" id="first_name" value="${sessionScope.user.last_name}" placeholder="${sessionScope.user.last_name}" readonly>
                       </span>
                     </div>
                   </div>
                     <div class="col-sm-12 d-flex flex-column  my-3">
                       <p>Address <span style="color: red;">*</span></p>
                       <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="Street Address">
+                        <input class="inpt form" type="text" name="address" id="address" placeholder="Street Address">
                       </span>
                       <div class="my-2"></div>
-                      <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="Apartment, suite, unite ect (optinal)">
-                      </span>
                     </div>
                     </div>
                   </div>
                     <div class="col-sm-12 d-flex flex-column  my-3 ">
                       <p>Town/City <span style="color: red;">*</span></p>
                       <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                        <input class="inpt form" type="text" name="city" id="city" placeholder="">
                       </span>
 
                     </div>
                     <div class="col-sm-12 d-flex flex-column  my-3 ">
                       <p>Province <span style="color: red;">*</span></p>
                       <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                        <input class="inpt form" type="text" name="province" id="province" placeholder="">
                       </span>
                       
                     </div>
                     <div class="col-sm-12 d-flex flex-column  my-3 ">
                       <p>Post Code/ZIP <span style="color: red;">*</span></p>
                       <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                        <input class="inpt form" type="text" name="postal_code" id="postal_code" placeholder="">
                       </span>
                       
                     </div>
                     <div class="col-sm-6 d-flex flex-column  my-3 ">
                       <p>Phone <span style="color: red;">*</span></p>
                       <span class="input-search">
-                        <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                        <input class="inpt form" type="text" name="phone_number" id="phone_number" placeholder="">
                       </span>
                       
                     </div>
@@ -208,14 +214,15 @@
                   <div class="col-sm-12 d-flex flex-column  my-3 ">
                     <p>Orde Notes <span style="color: red;">*</span></p>
                     <span class="input-search">
-                      <input class="inpt form" type="text" name="first_name" id="first_name" placeholder="">
+                      <input class="inpt form" type="text" name="notes" id="notes" placeholder="">
                     </span>
                     
                   </div>
                   <div class="button_confirm col d-flex flex-column align-items-center my-3 ">
-                    <a href="${pageContext.request.contextPath}/checkout" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirm & go to Payment</a>
-
-                    </div>
+                    <!-- <a href="${pageContext.request.contextPath}/checkout" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirm & go to Payment</a> -->
+                    <button type="submit" class="btn btn_confirm d-flex justify-content-center align-items-center">Confirm & go to Payment</button>
+                  </div>
+                  </form>
                 </div>
               </div>
                     
@@ -242,44 +249,45 @@
                             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                             <script>
                               $(document).ready(function () {
-  $('.plus').on('click', function () {
-    var index = $(this).data('index');
-    updateQuantity(index, 'plus');
-  });
+                                  $('.plus').on('click', function () {
+                                    var index = $(this)
+                                    updateQuantity(index, 'plus');
+                                  });
 
-  $('.minus').on('click', function () {
-    var index = $(this).data('index');
-    updateQuantity(index, 'minus');
-  });
-});
+                                  $('.minus').on('click', function () {
+                                    var index = $(this)
+                                    updateQuantity(index, 'minus');
+                                  });
+                                });
 
-function updateQuantity(index, action) {
-  var inputSelector = '.quantity-input[data-index="' + index + '"]';
-  var quantityInput = $(inputSelector);
-  var currentQuantity = parseInt(quantityInput.val());
+                                function updateQuantity(element, action) {
+                                  var index = element.data('index');
+                                  var inputSelector = '.quantity-input[data-index="' + index + '"]';
+                                  var quantityInput = $(inputSelector);
+                                  var currentQuantity = parseInt(quantityInput.val());
 
-  var priceSelector = '.harga.col-sm-8 p.price'; // Corrected price selector
-  var priceElement = $('.total-price[data-index="' + index + '"]');
-  var itemPrice = parseFloat($(priceSelector).text().replace('IDR', '')); // Corrected price selector
-  if (action === 'plus') {
-    currentQuantity++;
-  } else if (action === 'minus' && currentQuantity > 1) {
-    currentQuantity--;
-  }
+                                  var priceSelector = '.harga.col-sm-8 p.price';
+                                  var priceElement = $('.total-price[data-index="' + index + '"]');
+                                  var itemPrice = parseFloat($(element).closest('div.row').find('p.price').text().replace('RP', ''));
+                                  if (action === 'plus') {
+                                    currentQuantity++;
+                                  } else if (action === 'minus' && currentQuantity > 1) {
+                                    currentQuantity--;
+                                  }
 
-  quantityInput.val(currentQuantity);
+                                  quantityInput.val(currentQuantity);
 
-  // Update the total based on quantity and price
-  var total = currentQuantity * itemPrice;
+                                  // Update the total based on quantity and price
+                                  var total = currentQuantity * itemPrice;
 
-  console.log(total);
-  priceElement.text('IDR ' + total.toFixed(2));
+                                  console.log(itemPrice);
+                                  priceElement.text('RP ' + total);
 
-  // If the quantity becomes 0, you might want to remove the item or handle it accordingly
-  if (currentQuantity === 0) {
-    // ?
-  }
-}
+                                  // If the quantity becomes 0, you might want to remove the item or handle it accordingly
+                                  if (currentQuantity === 0) {
+                                    // ?
+                                  }
+                                }
 
 
 

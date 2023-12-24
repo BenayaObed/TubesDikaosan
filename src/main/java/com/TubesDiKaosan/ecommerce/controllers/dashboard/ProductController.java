@@ -111,10 +111,10 @@ public class ProductController {
                     dirPath.mkdirs();
                 }
                 for (MultipartFile file : files) {
-                    String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-                    if (fileName.equals(""))
-                        continue;
                     try {
+                        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+                        if (fileName.equals(""))
+                            continue;
                         fileName = System.currentTimeMillis() + fileName;
                         Path filePath = Path.of(path + "/" + fileName);
                         System.out.println(filePath);
@@ -161,8 +161,6 @@ public class ProductController {
                 productService.createData(request);
 
                 return "redirect:/dashboard/products";
-            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
-                return "redirect:/";
             }
         }
         return "redirect:/";
@@ -198,7 +196,6 @@ public class ProductController {
                     }
                 }
 
-                // data reverse untuk mengurutkan dari belakang ke depan
                 model.addAttribute("product", product);
                 model.addAttribute("categories", categories);
                 model.addAttribute("stocks", data);
@@ -236,7 +233,10 @@ public class ProductController {
                 for (MultipartFile file : files) {
                     try {
                         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-                        if (fileName.equals("")) continue;
+                        if (fileName.equals("")) {
+                            idx_imageID++;
+                            continue;
+                        }
                         fileName = System.currentTimeMillis() + fileName;
                         Path filePath = Path.of(path + "/" + fileName);
 
@@ -251,6 +251,11 @@ public class ProductController {
                         e.printStackTrace();
                     }
                     idx_imageID++;
+                }
+
+                // loop list images
+                for (int i = 0; i < images.size(); i++) {
+                    System.out.println(images.get(i).getImage());
                 }
 
                 Object[][] stock = new Object[][] {
@@ -268,11 +273,11 @@ public class ProductController {
                         if (color.get(i).equals("") || ((List<String>) stock[j][1]).get(i).equals(""))
                             continue;
                         stockProductRequest.setColor(color.get(i));
-                        if (Integer.parseInt(((List<String>) stock[j][1]).get(i)) < 1)
+                        if (Integer.parseInt(((List<String>) stock[j][1]).get(i)) < 0)
                             continue;
                         stockProductRequest.setQuantity(Integer.parseInt(((List<String>) stock[j][1]).get(i)));
                         stockProductRequest.setSize((String) stock[j][0]);
-                        if (stock_id.get(i) != null) {
+                        if (stock_id.get(i) != null && stock.length > i) {
                             Stock stockData = productService.getStockById(stock_id.get(i));
                             stockProductRequest.setId(productService.findStockByProductIdAndSizeAndColor(productID,
                                     (String) stock[j][0], stockData.getColor()));
@@ -325,7 +330,8 @@ public class ProductController {
     }
 
     @RequestMapping("/delete_stock")
-    public String deleteStock(@RequestParam Integer ProductID,@RequestParam Integer stockID,@RequestParam String color, Model model, HttpSession session) throws SQLException {
+    public String deleteStock(@RequestParam Integer ProductID, @RequestParam Integer stockID,
+            @RequestParam String color, Model model, HttpSession session) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.TubesDiKaosan.ecommerce.models.Orders;
 import com.TubesDiKaosan.ecommerce.models.OrdersItem;
+import com.TubesDiKaosan.ecommerce.models.PaymentMethod;
 import com.TubesDiKaosan.ecommerce.models.Product;
 import com.TubesDiKaosan.ecommerce.models.Stock;
 import com.TubesDiKaosan.ecommerce.models.Users;
@@ -22,7 +23,9 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.AdminService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.CustomerService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
+import com.TubesDiKaosan.ecommerce.services.PaymentServices.PaymentMethodService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.ProductService;
+import com.TubesDiKaosan.ecommerce.services.ShoppingServices.ShoppingServices;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -33,6 +36,12 @@ public class LandingController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ShoppingServices ShoppingServices;
+
+    @Autowired
+    private PaymentMethodService PaymentMethodService;
 
     @RequestMapping({ "/", "/home" })
     public String index(Model model, HttpSession session) throws SQLException {
@@ -100,14 +109,27 @@ public class LandingController {
     @RequestMapping("/checkout")
     public String checkout(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Checkout");
-        for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                List<Product> products = (List<Product>) productService.getAll().getData();
-                model.addAttribute("products", products);
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            Orders orders = (Orders) ShoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id())
+                    .getData();
+            if (orders != null) {
+                List<OrdersItem> ordersItems = (List<OrdersItem>) ShoppingServices
+                        .getAllOrdersItem(orders.getOrder_id(), user.getUser_id()).getData();
+                List<PaymentMethod> paymentMethods = (List<PaymentMethod>) PaymentMethodService.getAll().getData();
+                model.addAttribute("data_cart", ordersItems);
+                model.addAttribute("order_id", orders.getOrder_id());
+                model.addAttribute("paymentMethods", paymentMethods);
+                Integer total = 0;
+                for (OrdersItem ordersItem : ordersItems) {
+                    total += ordersItem.getTotal_price();
+                }
+                model.addAttribute("total", total);
                 return "pages/fe/checkout";
             }
+            return "redirect:/shoping_cart";
         }
-        return "pages/fe/about";
+        return "redirect:/";
     }
 
     @RequestMapping("/shoping_cart")
@@ -115,27 +137,42 @@ public class LandingController {
         model.addAttribute("title", "Shoping_Cart");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
-            for (UsersService userService : usersServices) {
-                if (userService instanceof CustomerService) {
-                    Orders orders = (Orders) ((CustomerService) userService).getDraftOrder(user.getUser_id()).getData();
-                    List<OrdersItem> ordersItems = (List<OrdersItem>) ((CustomerService) userService)
-                            .getDataCart(orders.getOrder_id(), user.getUser_id()).getData();
-                    model.addAttribute("data_cart", ordersItems);
-                    model.addAttribute("data_orders", orders);
-                    return "pages/fe/shoping_cart";
-                }
+            Orders orders = (Orders) ShoppingServices.getOrderByStatusAndUserID("draft", user.getUser_id())
+                    .getData();
+            if (orders != null) {
+                List<OrdersItem> ordersItems = (List<OrdersItem>) ShoppingServices
+                        .getAllOrdersItem(orders.getOrder_id(), user.getUser_id()).getData();
+                model.addAttribute("data_cart", ordersItems);
+                model.addAttribute("order_id", orders.getOrder_id());
+                return "pages/fe/shoping_cart";
             }
+            orders = (Orders) ShoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id()).getData();
+            if (orders != null) {
+                return "redirect:/checkout";
+            } else
+                return "pages/fe/shoping_cart";
         }
         return "redirect:/";
     }
 
     @RequestMapping("/payment")
-    public String payment(Model model, HttpSession session) throws SQLException {
+    public String payment(@RequestParam(name = "method", required = false) String method,
+            @RequestParam(name = "bank", required = false) Integer bank, @RequestParam("total") Float total,
+            Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Payment");
-        for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                return "pages/fe/payment";
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            Orders orders = (Orders) ShoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id())
+                    .getData();
+            if (method == null || bank == null) {
+                return "redirect:/checkout";
             }
+            if (orders != null) {
+                if(ShoppingServices.setPayment(orders.getOrder_id(), method, bank, total).getStatus() == 200){
+                    return "redirect:/payment";
+                }
+            }
+            return "redirect:/shoping_cart";
         }
         return "redirect:/";
     }

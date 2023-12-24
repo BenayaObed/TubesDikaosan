@@ -3,8 +3,10 @@ package com.TubesDiKaosan.ecommerce.repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.TubesDiKaosan.ecommerce.models.Orders;
 
@@ -19,4 +21,12 @@ public interface OrdersRepository extends JpaRepository<Orders,Integer>{
     
     @Query(value = "SELECT * FROM orders WHERE user_id = ?1", nativeQuery = true)
     List<Orders> findAllByUser(String id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE orders SET address_id = ?1 WHERE order_id = ?2", nativeQuery = true)
+    void updateAddressID(Integer addressID, Integer orderID);
+
+    @Query(value = "SELECT * FROM orders WHERE status = ?1 AND user_id = ?2", nativeQuery = true)
+    Orders getOrderCheckout(String status, String id);
 }
