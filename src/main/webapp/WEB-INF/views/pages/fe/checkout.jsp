@@ -170,22 +170,22 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-6 d-flex flex-column my-1 ">
-                      <ol class="list list-group-numbered p-0">
-                        <li class="list-group-item">Man Kimono Set</li>
-                        <li class="list-group-item">Reebok M1 Shoes</li>
-                        <li class="list-group-item">Black Glasses</li>
-                        <li class="list-group-item">School Bag</li>
-                      </ol>
-                    </div>
-                    <div class="col-sm-6 d-flex flex-column  align-items-end my-1  ">
-                      <ul class="list list-group-flush text-end">
-                        <li class="list-group-item">Rp 249.999</li>
-                        <li class="list-group-item">Rp 699.999</li>
-                        <li class="list-group-item">Rp 149.999</li>
-                        <li class="list-group-item">Rp 119.999</li>
-                    </ul>
-                    </div>
+                    <c:forEach items="${products}" var="item">
+                      <c:if test="${(item.visible == 1)}">
+                        <c:if test="${(item.category.visible == 1)}">
+                          <div class="col-6 p-0 m-0">
+                            <ol class="list list-group-numbered mx-2 p-0 m-0">
+                              <p class="p-0 m-0">${item.name_product}</p>
+                            </ol>
+                          </div>
+                          <div class="col-6  p-0 m-0 align-items-end my-1  ">
+                            <ul class="list list-group-flush text-end mx-2 p-0 m-0">
+                              <p class="p-0 m-0" style="font-weight: bold;"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
+                          </ul>
+                          </div>
+                        </c:if>
+                      </c:if>
+                    </c:forEach>
                   </div>
                 </div>
               </div>
