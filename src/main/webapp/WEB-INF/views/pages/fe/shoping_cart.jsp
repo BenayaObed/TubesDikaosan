@@ -44,13 +44,14 @@
     <!-- Shoping_cart Section Start -->
     <section class="content">
       <div class="row">
-        <div class="col-12 d-flex">
+        <div class="col-12 d-flex border-primary">
           <div class="col-sm-6  ">
 
-            <div class="row ">
+            <div class="col-sm-12 ">
               <div class="fontSize">
-                <div class="container activity-image offset mx-4 my-1 w-100" >
-                    <div class="col d-flex flex-column my-lg-3 p-3">
+                <div class="container activity-head offset mx-4 my-1 w-100" >
+                  <div class="row">
+                    <div class="col d-flex flex-column my-lg-3 ">
                       <div class="row">
                         <div class="col-sm-6 d-flex flex-column font-weight-bold"style="font-weight: bold;">
                           <a1>PRODUCT</a1>
@@ -63,56 +64,55 @@
                         </div>
                       </div>
                     </div>
+                  </div>
                 </div>
               </div>
-            </div
-
-    <div class="col-sm-12">
-      <c:forEach items="${products}" var="item">
-        <c:if test="${(item.visible == 1)}">
-          <c:if test="${(item.category.visible == 1)}">
-            <div class="col-sm-12">
+            </div>
+    
+            <div class="col-sm-12 ">
               <div class="fontSize">
                 <div class = "container activity-image offset mx-4 w-100">
                   
-                  <c:forEach items="${data_cart}" var="item">
-                    <div class ="row">
-                    <div class = bord>
-                      <div class = "col d-fex flex-column my-lg-3">
-                        <div class = "row">
-                    <!-- photo dan harga -->
-                          <div class="col-sm-6 d-flex flex-column">
-                            <div class =row>
-                              <div class="col-sm-4 d-flex flex-column">
-                                <img class="images" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.product_id.images[0].image}" alt="" >
-                              </div>
-                              <div class = "harga col-sm-8 d-flex flex-column ">
-                                <p>${item.product_id.name_product}</p>
-                                <p style="font-weight: bold;"><fmt:formatNumber value="${item.product_id.price}" type="currency" currencyCode="IDR" /></p>
-                              </div>
-                            </div>    
-                          </div>
-                      <!-- quantitity -->
-                          <div class="col-sm-3 d-flex flex-column justify-content-center align-items-center">
-                            <div class="container">
-                              <div class="number-input">
-                                <button id="minus" class="col-sm-4 btn "><</button>
-                                <input class="col-sm-4" type="text" id="number" value="${item.quantity}">
-                                <button id="plus" class="col-sm-4 btn ">></button>
-                              </div>
-                            </div>
-                          </div>
-                      <!-- total -->
-                          <div class="col-sm-3 d-flex flex-column ">
-                            <div class = "jumlah_check col-sm-12 flex-column-reverse">
-                              <p style="font-weight: bold;"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </c:forEach>
+                  <c:forEach items="${data_cart}" var="item" varStatus="loop">
+  <div class="row">
+    <div class="bord">
+      <div class="col d-flex flex-column my-lg-3">
+        <div class="row">
+          <!-- photo dan harga -->
+          <div class="col-sm-6 d-flex flex-column">
+            <div class="row">
+              <div class="col-sm-4 d-flex flex-column">
+                <img class="images" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.product_id.images[0].image}" alt="${item.product_id.images[0].image}">
+              </div>
+              <div class="harga col-sm-8 d-flex flex-column">
+                <input type="hidden" name="product_id" value="${item.product_id.product_id}">
+                <p>${item.product_id.name_product} ( ${item.size}, ${item.color} )</p>
+                <p style="font-weight: bold;" class="price"><fmt:formatNumber value="${item.product_id.price}" type="currency" currencyCode="IDR" /></p> <!-- harga -->
+              </div>
+            </div>
+          </div>
+          <!-- quantity -->
+          <div class="number-size col-sm-3 d-flex flex-column mt-3 pt-3">
+            <div class="container">
+              <div class="number-input">
+                <button class="col-sm-4 btn minus" data-index="${loop.index}">-</button>
+                <input class="col-sm-4 quantity-input" type="text" value="${item.quantity}" data-index="${loop.index}" readonly>
+                <button class="col-sm-4 btn plus" data-index="${loop.index}">+</button>
+              </div>
+            </div>
+          </div>
+          <!-- total -->
+          <div class="col-sm-3 d-flex flex-column">
+            <div class="jumlah_check col-sm-12 flex-column-reverse">
+              <p style="font-weight: bold;" class="total-price" data-index="${loop.index}">IDR${item.product_id.price}</p> <!-- total harga -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</c:forEach>
+
                 
                 </div>
               </div>
@@ -240,5 +240,51 @@
                             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
                             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
                             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                            <script>
+                              $(document).ready(function () {
+  $('.plus').on('click', function () {
+    var index = $(this).data('index');
+    updateQuantity(index, 'plus');
+  });
+
+  $('.minus').on('click', function () {
+    var index = $(this).data('index');
+    updateQuantity(index, 'minus');
+  });
+});
+
+function updateQuantity(index, action) {
+  var inputSelector = '.quantity-input[data-index="' + index + '"]';
+  var quantityInput = $(inputSelector);
+  var currentQuantity = parseInt(quantityInput.val());
+
+  var priceSelector = '.harga.col-sm-8 p.price'; // Corrected price selector
+  var priceElement = $('.total-price[data-index="' + index + '"]');
+  var itemPrice = parseFloat($(priceSelector).text().replace('IDR', '')); // Corrected price selector
+  if (action === 'plus') {
+    currentQuantity++;
+  } else if (action === 'minus' && currentQuantity > 1) {
+    currentQuantity--;
+  }
+
+  quantityInput.val(currentQuantity);
+
+  // Update the total based on quantity and price
+  var total = currentQuantity * itemPrice;
+
+  console.log(total);
+  priceElement.text('IDR ' + total.toFixed(2));
+
+  // If the quantity becomes 0, you might want to remove the item or handle it accordingly
+  if (currentQuantity === 0) {
+    // ?
+  }
+}
+
+
+
+                            </script>
+                            
+                            
   </body>
 </html>
