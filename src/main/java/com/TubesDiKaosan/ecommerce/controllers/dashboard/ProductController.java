@@ -31,14 +31,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Product;
+import com.TubesDiKaosan.ecommerce.models.Riviews;
 import com.TubesDiKaosan.ecommerce.models.Stock;
 import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ImagesProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.ProductRequest;
 import com.TubesDiKaosan.ecommerce.payloads.requests.StockProductRequest;
+import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.CategoryService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.ProductService;
+import com.TubesDiKaosan.ecommerce.services.ProductServices.RiviewServices;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -54,6 +57,9 @@ public class ProductController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private RiviewServices riviewServices;
 
     @RequestMapping({ "", "/" })
     public String index(Model model, HttpSession session) throws SQLException {

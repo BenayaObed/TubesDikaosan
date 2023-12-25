@@ -46,7 +46,7 @@
                 <!-- /.col -->
                 <div class="col-sm-6 invoice-col">
                   <b>Order ID #${data[0].order_id.order_id}</b><br>
-                    <c:if test="${data[0].order_id.payment_id.payment_status == 'UNPAID'}">
+                  <c:if test="${data[0].order_id.payment_id.payment_status == 'UNPAID'}">
                       <b>
                         (Cash on Delivery)
                       </b>

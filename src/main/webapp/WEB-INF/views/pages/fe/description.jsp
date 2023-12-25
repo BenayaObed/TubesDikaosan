@@ -73,7 +73,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
                       <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                     </svg>
-                    <a>4.0</a>
+                    <a>${total_rating} (${total_riviews})</a>
                   </span>
                 </a>
               </div>
@@ -137,50 +137,69 @@
 
     <!-- section riview -->
    <!-- Review Section Start -->
-<section class="review" style="height: 500px; overflow-y: auto;">
-  <div class="container review-cont">
-    <!-- ... (existing code) ... -->
-
-    <div class="row">
-      <!-- Add review content here -->
-      <!-- header riview -->
-      <div class="col-sm-12">
-        <div class="review-header">
-          <h1>Reviews</h1>
-          <div class="rating">
-            <!-- Add rating stars or other rating components here -->
-            <a style="text-decoration: none;">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-                <a>4.0</a>
-              </span>
-            </a>
+   <section class="review" style="height: 300px; overflow-y: auto;">
+    <div class="container review-cont">
+      <!-- ... (existing code) ... -->
+  
+      <div class="row">
+        <!-- Add review content here -->
+        <!-- header review -->
+        <div class="col-sm-12">
+          <div class="review-header">
+            <b>Reviews: </b>
           </div>
         </div>
-      </div>
-      
-      <div class="col-sm-12 my-5">
-        <div class="user-review">
-          <!-- Review 1 -->
-          <div class="review-item">
-            <b>User's Name</b>
-            <div class="rating">
-              Rating:
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <!-- Add more stars if needed -->
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit...</p>
+        
+        <div class="col-sm-12 my-1">
+          <div class="user-review">
+            <!-- Review 1 -->
+            <c:forEach items="${riviews}" var="item">
+              <hr>
+              <div class="review-item">
+                <b>From : ${item.user.first_name} ${item.user.last_name}</b>
+                <div class="rating">
+                  Rating: ${item.rate} (${total_riviews})
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                  </svg>
+                  <!-- Add more stars if needed -->
+                </div>
+                <p>Comment : ${item.comment}</p>
+              </div>
+              <hr>
+            </c:forEach>
+            <!-- Add more reviews as needed -->
           </div>
-          <!-- Add more reviews as needed -->
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- get attribute model.addAttribute("review", true); -->
+  <c:if test="${feedback == true and sessionScope.user != null}">
+    <section class="feedback">
+      <div class="container">
+        <div class="row">
+          <!-- Form for adding a new review -->
+      <div class="col-sm-12 my-5">
+        <form action="${pageContext.request.contextPath}/addReview" method="post">
+          <h2 style="overflow-y: hidden;">Add Your Review</h2>
+          <div class="form-group">
+            <label for="userRating">Rating</label>
+            <input type="number" class="form-control" id="userRating" name="userRating" min="1" max="5" step="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="userComment">Your Comment</label>
+            <textarea class="form-control" id="userComment" name="userComment" rows="4" required></textarea>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+      </div>
+        </div>
+      </div>
+    </section>
+  </c:if>
 <!-- Review Section End -->
 
     <!-- Shop Section Start -->

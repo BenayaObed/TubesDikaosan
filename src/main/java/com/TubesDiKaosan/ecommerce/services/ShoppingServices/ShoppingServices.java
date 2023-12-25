@@ -283,4 +283,14 @@ public class ShoppingServices {
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
         }
     }
+
+    public Response getItemDelivered(String user_id, Integer product_id) {
+        if (OrderItemRepository.getItemDelivered(user_id, product_id).isEmpty()) {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+        } else {
+            List<OrdersItem> ordersItems = OrderItemRepository.getItemDelivered(user_id, product_id);
+            return new Response(HttpStatus.OK.value(), "Success", ordersItems);
+        }
+    }
+    
 }

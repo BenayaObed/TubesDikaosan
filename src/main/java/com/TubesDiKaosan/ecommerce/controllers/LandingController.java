@@ -19,6 +19,7 @@ import com.TubesDiKaosan.ecommerce.models.OrdersItem;
 import com.TubesDiKaosan.ecommerce.models.Payment;
 import com.TubesDiKaosan.ecommerce.models.PaymentMethod;
 import com.TubesDiKaosan.ecommerce.models.Product;
+import com.TubesDiKaosan.ecommerce.models.Riviews;
 import com.TubesDiKaosan.ecommerce.models.Stock;
 import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
@@ -27,6 +28,7 @@ import com.TubesDiKaosan.ecommerce.services.ActorServices.CustomerService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 import com.TubesDiKaosan.ecommerce.services.PaymentServices.PaymentMethodService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.ProductService;
+import com.TubesDiKaosan.ecommerce.services.ProductServices.RiviewServices;
 import com.TubesDiKaosan.ecommerce.services.ShoppingServices.ShoppingServices;
 
 import jakarta.servlet.http.HttpSession;
@@ -44,6 +46,9 @@ public class LandingController {
 
     @Autowired
     private PaymentMethodService PaymentMethodService;
+
+    @Autowired
+    private RiviewServices riviewServices;
 
     @RequestMapping({ "/", "/home" })
     public String index(Model model, HttpSession session) throws SQLException {
@@ -102,9 +107,32 @@ public class LandingController {
                 });
             }
         }
-        // data_stock set to json
+
+        List<Riviews> riviews = (List<Riviews>) riviewServices.riviewsByProduct(product).getData();
+        // mean rating
+        Float mean = 0f;
+        for (Riviews riview : riviews) {
+            mean += riview.getRate();
+        }
+        
+        model.addAttribute("total_riviews", riviews.size());
+        model.addAttribute("total_rating", mean / riviews.size());
+        model.addAttribute("riviews", riviews);
         model.addAttribute("data_stock", data);
         model.addAttribute("data", data_product);
+
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            Response item = ShoppingServices.getItemDelivered(user.getUser_id(), product);
+            if (item.getStatus() == 200) {
+                System.out.println(">>>>>>>>>>>> 1");
+                model.addAttribute("feedback", true);
+            } else {
+                System.out.println(">>>>>>>>>>>> 0");
+                model.addAttribute("feedback", false);
+            }
+        }
+
         return "pages/fe/description";
     }
 

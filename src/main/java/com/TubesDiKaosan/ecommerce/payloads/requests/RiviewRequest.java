@@ -7,11 +7,11 @@ public class RiviewRequest {
     private Integer review_id;
     private Product product;
     private Users user;
-    private Integer rate;
+    private Float rate;
     private String comment;
 
     public RiviewRequest(){}
-    public RiviewRequest(Integer review_id, Product product, Users user, Integer rate, String comment) {
+    public RiviewRequest(Integer review_id, Product product, Users user, Float rate, String comment) {
         this.review_id = review_id;
         this.product = product;
         this.user = user;
@@ -36,10 +36,10 @@ public class RiviewRequest {
     public void setUser(Users user) {
         this.user = user;
     }
-    public Integer getRate() {
+    public Float getRate() {
         return rate;
     }
-    public void setRate(Integer rate) {
+    public void setRate(Float rate) {
         this.rate = rate;
     }
     public String getComment() {
