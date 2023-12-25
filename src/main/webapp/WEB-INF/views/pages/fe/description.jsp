@@ -135,6 +135,54 @@
     </section>
     <!-- Description Section End -->
 
+    <!-- section riview -->
+   <!-- Review Section Start -->
+<section class="review" style="height: 500px; overflow-y: auto;">
+  <div class="container review-cont">
+    <!-- ... (existing code) ... -->
+
+    <div class="row">
+      <!-- Add review content here -->
+      <!-- header riview -->
+      <div class="col-sm-12">
+        <div class="review-header">
+          <h1>Reviews</h1>
+          <div class="rating">
+            <!-- Add rating stars or other rating components here -->
+            <a style="text-decoration: none;">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+                <a>4.0</a>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-sm-12 my-5">
+        <div class="user-review">
+          <!-- Review 1 -->
+          <div class="review-item">
+            <b>User's Name</b>
+            <div class="rating">
+              Rating:
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+              </svg>
+              <!-- Add more stars if needed -->
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit...</p>
+          </div>
+          <!-- Add more reviews as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Review Section End -->
+
     <!-- Shop Section Start -->
     <section class="shop_content_desc">
       <div class="col-sm-12">

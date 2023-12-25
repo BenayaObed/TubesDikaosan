@@ -141,6 +141,9 @@ public class ShoppingServices {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PaymentRepository paymentRepository;
+
     public Response setBillingAddress(String id, CustomerAddressRequest request, Integer orderID) throws SQLException {
         Users user = (Users) userRepository.findById(id).get();
         if (user == null) {
@@ -196,30 +199,85 @@ public class ShoppingServices {
         }
     }
 
+    public Response getPayment(Integer paymentID) throws SQLException {
+        if (OrdersRepository.findById(paymentID).isPresent()) {
+            Payment payment = OrdersRepository.findById(paymentID).get().getPayment_id();
+            return new Response(HttpStatus.OK.value(), "Success", payment);
+        } else {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+        }
+    }
+
     public Response setPayment(Integer order_id, String method, Integer bank, Float total) throws SQLException {
         if (OrdersRepository.findById(order_id).isPresent()) {
-
             Orders orders = OrdersRepository.findById(order_id).get();
-            PaymentMethod paymentMethod = (PaymentMethod) paymentMethodService.findDataByID(bank).getData();
-            System.out.println(paymentMethod.getPayment_method_name() + " " + paymentMethod.getId());
             Payment payment = new Payment();
-            if (method.equals("COD")) {
-                payment.setPayment_method(null);
-                payment.setPayment_status("UNPAID");
+            System.out.println("Check method");
+            System.out.println("METHOD:" + method + " BANK:" + bank + " TOTAL:" + total);
+            if(method != "COD" && bank != null){
+                System.out.println("Method Bank");
+                PaymentMethod paymentMethod = (PaymentMethod) paymentMethodService.findDataByID(bank).getData();
+                System.out.println("SET PAYMENT METHOD");
+                payment.setPayment_method(paymentMethod);
+                payment.setPayment_status("process-payment");
                 payment.setPayment_total(total);
-                
+
                 orders.setPayment_id(payment);
                 orders.setStatus("pending");
-            } else {
-                payment.setPayment_method(paymentMethod);
-                payment.setPayment_status("success");
+                PaymentRepository.save(payment);
+            }else{
+                System.out.println("Method COD");
+                payment.setPayment_status("process-payment");
                 payment.setPayment_total(total);
 
+                orders.setPayment_id(payment);
+                orders.setStatus("pending");
+                PaymentRepository.save(payment);
             }
-            PaymentRepository.save(payment);
-            orders.setPayment_id(payment);
-            orders.setStatus("pending");
+
             OrdersRepository.save(orders);
+
+            return new Response(HttpStatus.OK.value(), "Success", orders);
+        } else {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+        }
+    }
+
+    // update status payment
+    public Response updateStatusPayment(Integer orderID, String status) throws SQLException {
+        if (OrdersRepository.findById(orderID).isPresent()) {
+            Orders orders = OrdersRepository.findById(orderID).get();
+            Payment payment = orders.getPayment_id();
+            payment.setPayment_status(status);
+            PaymentRepository.save(payment);
+            return new Response(HttpStatus.OK.value(), "Success", orders);
+        } else {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+        }
+    }
+
+    public Response updateStatusOrder(Integer order_id, String string) {
+        if (OrdersRepository.findById(order_id).isPresent()) {
+            Orders orders = OrdersRepository.findById(order_id).get();
+            orders.setStatus(string);
+            OrdersRepository.save(orders);
+            return new Response(HttpStatus.OK.value(), "Success", orders);
+        } else {
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+        }
+    }
+
+    public Response getOrderDetail(Integer id) throws SQLException { // GET ORDER DETAIL BY ID
+        if (OrdersRepository.findById(id).isPresent()) {
+            List<OrdersItem> data = OrderItemRepository.getOrderDetail(id);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        } else
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+    }
+
+    public Response getOrderWithoutDraftAndCheckout(Integer order_id, String user_id) {
+        if (OrdersRepository.getOrderWithoutDraftAndCheckout(order_id, user_id) != null) {
+            Orders orders = OrdersRepository.getOrderWithoutDraftAndCheckout(order_id, user_id);
             return new Response(HttpStatus.OK.value(), "Success", orders);
         } else {
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);

@@ -72,19 +72,17 @@
                         <div class="d-flex">
                             <div class="col-7">
                                 <ol class="list list-group-numbered p-0">
-                                    <li class="list-group-item">Man Kimono Set</li>
-                                    <li class="list-group-item">Reebok M1 Shoes</li>
-                                    <li class="list-group-item">Black Glasses</li>
-                                    <li class="list-group-item">School Bag</li>
+                                    <c:forEach items="${data_cart}" var="item">
+                                        <li class="list-group-item">${item.product_id.name_product}</li>
+                                    </c:forEach>
                                 </ol>
                             </div>
 
                             <div class="col-5">
                                 <ul class="list list-group-flush text-end">
-                                    <li class="list-group-item">Rp 249.999</li>
-                                    <li class="list-group-item">Rp 699.999</li>
-                                    <li class="list-group-item">Rp 149.999</li>
-                                    <li class="list-group-item">Rp 119.999</li>
+                                    <c:forEach items="${data_cart}" var="item">
+                                        <li class="list-group-item">${item.product_id.price}</li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>
@@ -94,7 +92,7 @@
                                 <h2>Total</h2>
                             </div>
                             <div class="col-10 text-end">
-                                <a2>Rp 1.219.996</a2>
+                                <a2>Rp ${total}</a2>
                             </div>
                         </div>  
                     </div>
@@ -111,31 +109,23 @@
                                     <a>Total Payment</a>
                                 </div>
                                 <div class="col-3 p-0 text-end">
-                                    <a1>Rp 1.219.996</a1>
-                                </div>
-                            </div>
-                            <div class="row mx-4">
-                                <div class="col-7 p-0">
-                                    <a>No. Rek/Virtual Account</a>
-                                </div>
-                                <div class="col-5 p-0 text-end ">
-                                    <a1>23 Hour 59 Minute 59 Second</a1>
+                                    <a1>Rp ${total}</a1>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="my-1">
                         <div class="title_text_bank border-bottom">
-                            <img src="/resources/images/38.png"> 
-                            <a>Bank Central Asia</a>
+                            <br>
+                            <p class="mx-4">${method.payment_method_name}</p>
                             <div class="row mx-4">
                                 <div class="text_norek">
-                                    <a>No. Rek/Virtual Account</a>
+                                    <a>No. Rek/Virtual Account:</a>
                                 </div>
                             </div>
                             <div class="row mx-4">
                                 <div class="col-10">
-                                    <a1>126 0812 7432 6424</a1>
+                                    <p>${method.norek}</p>
                                 </div>
                                 <div class="col-2 text-end">
                                     <a2 >Copy</a2>
@@ -198,7 +188,17 @@
                     <div class="col-sm-12 total_payment my-1">
                         <div class="title_text justify-content-center align-items-center">
                             <div class="payment_btn">
-                                <a class="btn btn-payment-ok d-flex justify-content-center align-items-center">OK</a>
+                                <!-- <a class="btn btn-payment-ok d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/payment_ok?order_id=${order_id}">OK</a> -->
+                                <form action="${pageContext.request.contextPath}/payment_ok" method="post">
+                                    <div class="row">
+                                        <input type="text" name="order_id" value="${order_id}">
+                                        <input type="text" name="bank" value="${method.id}">
+                                        <input type="text" name="method" value="${method.payment_method_name}">
+                                        <input type="text" name="total" value="${total}">
+
+                                        <button class="btn btn-payment-ok d-flex justify-content-center align-items-center" type="submit">OK</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

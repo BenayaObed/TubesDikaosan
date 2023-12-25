@@ -1,5 +1,7 @@
 package com.TubesDiKaosan.ecommerce.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -9,5 +11,4 @@ public interface PaymentMethodRepository extends JpaRepository<PaymentMethod,Int
 
     @Query(value = "SELECT * FROM payment_method WHERE payment_method_name = ?1", nativeQuery = true)
     PaymentMethod findByName(String payment_method_name);
-    
 }

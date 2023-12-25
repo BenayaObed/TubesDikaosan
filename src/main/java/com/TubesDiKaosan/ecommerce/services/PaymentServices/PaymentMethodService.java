@@ -73,8 +73,14 @@ public class PaymentMethodService extends BaseServices<PaymentMethodRequest, Int
         return new Response(HttpStatus.OK.value(), "success", data);
     }
 
-    PaymentMethod findByName(String payment_method_name) {
-        return paymentMethodRepository.findByName(payment_method_name);
+    public Response findByName(String payment_method_name) {
+        if (paymentMethodRepository.findByName(payment_method_name) != null)
+            return new Response(HttpStatus.OK.value(), "success", paymentMethodRepository.findByName(payment_method_name));
+        else
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
     }
 
+    public PaymentMethod getPaymentMethod(Integer bank) {
+        return paymentMethodRepository.findById(bank).get();
+    }
 }

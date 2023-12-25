@@ -10,6 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -20,7 +23,8 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer payment_id;
 
-    @OneToOne(targetEntity = PaymentMethod.class)
+    @ManyToOne(targetEntity = PaymentMethod.class)
+    @JoinColumn(name = "payment_method_id") // Menambahkan @JoinColumn untuk menentukan kolom foreign key
     private PaymentMethod payment_method;
 
     @Column(name = "payment_status")

@@ -9,47 +9,18 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
-  <!-- Navbar -->
-  <%@ include file = "../../includes/dashboard/_navbar.jsp" %>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <%@ include file = "../../includes/dashboard/_sidebar.jsp" %>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+  <div class="content">
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <h1>Order Details</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Order Details</li>
-            </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <section class="content">
-      <!-- alert -->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <c:if test="${not empty alert}">
-              <div class="alert alert-${alert.type} alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                ${alert.message}
-              </div>
-            </c:if>
-          </div>
-        </div>
-      </div>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -61,9 +32,7 @@
                     <small class="float-right">Status : ${data[0].order_id.status}</small>
                   </h4>
                 </div>
-                <!-- /.col -->
               </div>
-              <!-- info row -->
               <div class="row invoice-info">
                 <div class="col-sm-6 invoice-col">
                   Order By
@@ -145,7 +114,7 @@
                               Cash on Delivery
                             </c:when>
                             <c:otherwise>
-                              Transer to ${data[0].order_id.payment_id.payment_method.payment_method_name}
+                              ${data[0].order_id.payment_id.payment_method.payment_method_name}
                             </c:otherwise>
                           </c:choose>                          
                         </td>
@@ -166,39 +135,21 @@
                     </table>
                   </div>
                 </div>
-                <!-- /.col -->
               </div>
-              <!-- /.row -->
-
-              <!-- this row will not appear when printing -->
               <div class="row no-print">
-                <div class="col-6">
-                  <p>Note From Customer: ${data[0].order_id.notes}</p>
-                </div>
-                <div class="col-6">
-                  <!-- a tag process, delivered, cancel -->
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=process" class="btn btn-success float-right" onclick="print()"><i class="far fa-credit-card"></i> Process</a>
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=delivered" class="btn btn-primary float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Delivered
-                  </a>
-                  <!-- sending -->
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=sending" class="btn btn-info float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Sending
-                  </a>
-                  <a href="${pageContext.request.contextPath}/dashboard/orders/detail_update?OrderID=${data[0].order_id.order_id}&userID=${data[0].order_id.user_id.user_id}&status=cancel" class="btn btn-danger float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Cancel
-                  </a>
+                <div class="col-12">
+                    <div class="float-right">
+                        <a href="javascript:window.print()" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                        <a href="/shop" class="btn btn-primary ml-2"><i class="fas fa-shopping-cart"></i> Back to Shop</a>
+                    </div>
                 </div>
               </div>
             </div>
-            <!-- /.invoice -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
   <%@ include file = "../../includes/dashboard/_footer.jsp" %>

@@ -29,4 +29,8 @@ public interface OrdersRepository extends JpaRepository<Orders,Integer>{
 
     @Query(value = "SELECT * FROM orders WHERE status = ?1 AND user_id = ?2", nativeQuery = true)
     Orders getOrderCheckout(String status, String id);
+
+    // query to get order without draft status and checkout status by order id and user id
+    @Query(value = "SELECT * FROM orders WHERE order_id = ?1 AND user_id = ?2 AND status != 'draft' AND status != 'checkout'", nativeQuery = true)
+    Orders getOrderWithoutDraftAndCheckout(Integer orderID, String userID);
 }

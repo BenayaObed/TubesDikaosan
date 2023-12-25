@@ -52,6 +52,7 @@
                 <table id="example1" class="table table-bordered table-striped text-center">
                   <thead>
                   <tr>
+                    <th>OrderID</th>
                     <th>Order By</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -60,6 +61,7 @@
                   <tbody>
                   <c:forEach items="${data}" var="item">
                     <tr>
+                      <td>${item.order_id}</td>
                       <td>${item.user_id.first_name} ${item.user_id.last_name}</td>
                       <td> 
                         <c:choose>
@@ -88,6 +90,7 @@
                   </tbody>
                   <tfoot>
                   <tr>
+                    <th>Order ID</th>
                     <th>Order By</th>
                     <th>Status</th>
                     <th>Action</th>

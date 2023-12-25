@@ -317,4 +317,14 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found!", null);
         }
     }
+
+    public Response updateStock(Integer stock_id, Stock stock) {
+        if (stockRepository.findById(stock_id).isPresent()) {
+            Stock data = stockRepository.findById(stock_id).get();
+            data.setQuantity(stock.getQuantity());
+            stockRepository.save(data);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        } else
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+    }
 }
