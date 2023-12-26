@@ -87,4 +87,20 @@ public class Category {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    // equalsIgnoreCase
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Category))
+            return false;
+        Category other = (Category) obj;
+        if (category_name == null) {
+            if (other.category_name != null)
+                return false;
+        } else if (!category_name.equalsIgnoreCase(other.category_name))
+            return false;
+        return true;
+    }
 }

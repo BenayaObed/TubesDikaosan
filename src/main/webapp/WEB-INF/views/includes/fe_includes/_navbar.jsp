@@ -23,7 +23,9 @@
             </div>
             <span class="nav-button-right">
                 <span class="input-search">
+                  <form action="${pageContext.request.contextPath}/shop" method="get">
                     <input class="form-control search" type="text" name="search" id="search" placeholder="Search">
+                  </form>
                 </span>
                 <span class="Cart mx-3 mt-2 m3">
                     <div class="cart">
