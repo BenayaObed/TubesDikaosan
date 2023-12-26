@@ -72,15 +72,18 @@ public class RiviewServices extends BaseServices<RiviewRequest, Integer> {
     public Response createData(RiviewRequest request) throws SQLException { // CREATE RIVIEW
         for (UsersService user : users) {
             if (user instanceof UsersService) {
-                Users dataUser = user.findByEmail(request.getUser());
+                Response response = ((UsersService) user).findDataByID(request.getUser());
+                if (response.getStatus() != HttpStatus.OK.value()) {
+                    return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid user ID!", null);
+                }
+                Users dataUser = (Users) response.getData();
                 Product dataProduct = (Product) productServices.findDataByID(request.getProduct()).getData();
                 Riviews data = new Riviews();
-
+                System.out.println(dataUser.getEmail());
                 data.setProduct(dataProduct);
                 data.setUser(dataUser);
                 data.setRate(request.getRate());
                 data.setComment(request.getComment());
-                data.setReview_id(null);
                 riviewRepository.save(data);
                 return new Response(HttpStatus.OK.value(), "success", data);
             }

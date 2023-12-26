@@ -36,6 +36,23 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     @Query(value = "SELECT product.*, SUM(orders_item.quantity) AS total_quantity FROM product JOIN orders_item ON product.product_id = orders_item.product_id JOIN orders ON orders_item.order_id = orders.order_id JOIN reviews ON product.product_id = reviews.product_id WHERE orders.status = 'delivered' AND reviews.rate > 3 GROUP BY product.product_id ORDER BY total_quantity DESC LIMIT 5", nativeQuery = true)
     List<Product> getBestSeller();
 
-    @Query(value = "SELECT product.name_product,COUNT(orders_item.product_id) FROM product JOIN orders_item ON orders_item.product_id = product.product_id JOIN orders ON orders.order_id = orders_item.order_id WHERE orders.status = 'delivered' GROUP BY product.name_product;", nativeQuery = true)
-    Response getReportProductDelivered();
+    @Query(value = "SELECT\r\n" + //
+            "    product.name_product,\r\n" + //
+            "    categories.category_name,\r\n" + //
+            "    COUNT(orders_item.product_id) AS order_count,\r\n" + //
+            "    SUM(orders_item.quantity * product.price) AS total_revenue\r\n" + //
+            "FROM\r\n" + //
+            "    product\r\n" + //
+            "JOIN\r\n" + //
+            "    categories ON product.category_id = categories.category_id\r\n" + //
+            "JOIN\r\n" + //
+            "    orders_item ON orders_item.product_id = product.product_id\r\n" + //
+            "JOIN\r\n" + //
+            "    orders ON orders.order_id = orders_item.order_id\r\n" + //
+            "WHERE\r\n" + //
+            "    orders.status = 'delivered'\r\n" + //
+            "GROUP BY\r\n" + //
+            "    product.name_product, categories.category_name;\r\n" + //
+            "", nativeQuery = true)
+    List<Object[]> getReportProductDelivered();
 }

@@ -433,17 +433,16 @@ public class LandingController {
                 model.addAttribute("data", data);
                 return "pages/fe/invoice";
             }
-            return "redirect:/";
+            return "redirect:/checkout";
         }
         return "redirect:/";
     }
 
     @PostMapping("/feedback")
-    public String rate(RiviewRequest request, RedirectAttributes redirectAttributes, HttpSession session)
+    public String rate(RiviewRequest request, RedirectAttributes redirectAttributes, HttpSession session, Model model)
             throws SQLException {
         if (session.getAttribute("user") != null) {
-            Users user = (Users) session.getAttribute("user");
-            request.setUser(user.getUser_id());
+            request.setUser(((Users) session.getAttribute("user")).getUser_id());
             if (riviewService.createData(request).getStatus() == 200) {
                 redirectAttributes.addFlashAttribute("alert", "Thank you for your feedback");
             } else {

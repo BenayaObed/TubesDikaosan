@@ -18,8 +18,9 @@ import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.CustomerAddressRepository;
 import com.TubesDiKaosan.ecommerce.repositories.OrderItemRepository;
 import com.TubesDiKaosan.ecommerce.repositories.OrdersRepository;
+import com.TubesDiKaosan.ecommerce.repositories.PaymentRepository;
 import com.TubesDiKaosan.ecommerce.repositories.UserRepository;
-
+import com.TubesDiKaosan.ecommerce.repositories.ProductRepository;
 
 @Service
 @Primary
@@ -28,6 +29,12 @@ public class AdminService extends UsersService {
     private OrderItemRepository OrderItemRepository;
     @Autowired
     private OrdersRepository OrdersRepository;
+
+    @Autowired
+    private ProductRepository ProductRepository;
+
+    @Autowired
+    private PaymentRepository PaymentRepository;
 
     @Autowired
     private CustomerAddressRepository CustomerAddressRepository;
@@ -138,5 +145,56 @@ public class AdminService extends UsersService {
             return new Response(HttpStatus.OK.value(), "success", data);
         } else
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+    }
+
+    // getReportOrderStatus
+    public final Response getReportOrderStatus() throws SQLException {
+        if (OrdersRepository.getReportOrderStatus() == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<Object[]> data = OrdersRepository.getReportOrderStatus();
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
+    }
+
+    // getReportProductDelivered
+    public final Response getReportProductDelivered() throws SQLException {
+        if (ProductRepository.getReportProductDelivered() == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<Object[]> data = ProductRepository.getReportProductDelivered();
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
+    }
+
+    //getPaymentReportByMonth
+    public final Response getPaymentReportByMonth() throws SQLException {
+        if (PaymentRepository.getPaymentReportByMonth() == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            // custome object
+            List<Object[]> data = PaymentRepository.getPaymentReportByMonth();
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
+    }
+
+    //getPaymentReportByYear
+    public final Response getPaymentReportByYear(Integer year) throws SQLException {
+        if (PaymentRepository.getPaymentReportByYear(year) == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<Object[]> data = PaymentRepository.getPaymentReportByYear(year);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
+    }
+
+    //getPaymentReportByYearAndMonth
+    public final Response getPaymentReportByYearAndMonth(Integer year, Integer month) throws SQLException {
+        if (PaymentRepository.getPaymentReportByYearAndMonth(year, month) == null)
+            return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
+        else {
+            List<Object[]> data = PaymentRepository.getPaymentReportByYearAndMonth(year, month);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
     }
 }

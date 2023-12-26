@@ -14,10 +14,8 @@ import com.TubesDiKaosan.ecommerce.models.CustomerAddress;
 import com.TubesDiKaosan.ecommerce.models.Orders;
 import com.TubesDiKaosan.ecommerce.models.OrdersItem;
 import com.TubesDiKaosan.ecommerce.models.Users;
-import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.AdminService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
-import com.TubesDiKaosan.ecommerce.services.ShoppingServices.ShoppingServices;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,19 +23,29 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/dashboard")
 public class DashboardController {
 
-    @RequestMapping({ "", "/", "/index" })
+    @Autowired
+    private List<UsersService> usersServices;
+
+    @RequestMapping({"", "/", "/index"})
     public String dashboard(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Dashboard");
-        // check session admin or not
-        if (session.getAttribute("user") != null) {
-            Users user = (Users) session.getAttribute("user");
-            if (user.getRole().getRole_name().equals("ADMIN")) {
-                return "pages/dashboard/index";
-            } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
-                return "redirect:/";
+        for (UsersService userService : usersServices) {
+            if (userService instanceof AdminService && session.getAttribute("user") != null) {
+                Users user = (Users) session.getAttribute("user");
+                if (user.getRole().getRole_name().equals("ADMIN")) {
+                    // ger report
+                    List<Object[]> reportOrderStatus = (List<Object[]>) ((AdminService) userService).getReportOrderStatus().getData();
+                    List<Object[]> reportOrderProduct = (List<Object[]>) ((AdminService) userService).getReportProductDelivered().getData();
+                    List<Orders[]> reportOrderPayment = (List<Orders[]>) ((AdminService) userService).getPaymentReportByMonth().getData();
+                    
+                    model.addAttribute("reportOrderStatus", reportOrderStatus);
+                    model.addAttribute("reportOrderProduct", reportOrderProduct);
+                    model.addAttribute("reportOrderPayment", reportOrderPayment);
+                    return "pages/dashboard/index";
+                } 
             }
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
 }

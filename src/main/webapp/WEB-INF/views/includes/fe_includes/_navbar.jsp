@@ -100,25 +100,26 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                              <form action="${pageContext.request.contextPath}/registration" method="post">
 
                               <div class="row name">
                                 <a>First Name</a>
                                 <span class="input-name">
-                                  <input class="form-control name" type="text" name="name" id="name" placeholder="First Name">
+                                  <input class="form-control name" type="text" name="first_name" id="first_name" placeholder="First Name">
                                 </span>
                               </div>
                               
                               <div class="row phone_number">
                                 <a>Last Name</a>
                                 <span class="input-phone_number">
-                                  <input class="form-control phone_number" type="text" name="phone_number" id="phone_number" placeholder="Last Name">
+                                  <input class="form-control phone_number" type="text" name="last_name" id="last_name" placeholder="Last Name">
                                 </span>
                               </div>
 
                               <div class="row email">
                                 <a>Email address</a>
                                 <span class="input-Email">
-                                  <input class="form-control Email" type="text" name="Email" id="Email" placeholder="Enter email">
+                                  <input class="form-control Email" type="text" name="email" id="email" placeholder="Enter email">
                                 </span>
                               </div>
 
@@ -133,8 +134,10 @@
                               </div>
                               
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#Successfully" data-bs-toggle="modal" style="background-color: black;">Sign Up</button>
+                                <button class="btn btn-primary confirm_btn w-50" style="background-color: black;" type="submit">Sign Up</button>
                               </div>
+                            </form>
+
                             </div>
                             <div class="modal-footer">
                             </div>
@@ -176,11 +179,12 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                  
-                              <div class="row oldPass">
-                                <a>Old Password</a>
-                                <span class="input-oldPass">
-                                  <input class="form-control oldPass" type="text" name="oldPass" id="oldPass" placeholder="">
+                              <form action="${pageContext.request.contextPath}/update-password" method="POST">
+                                <div class="row oldPass">
+                                  <a>Old Password</a>
+                                  <span class="input-oldPass">
+                                  <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
+                                  <input class="form-control oldPass" type="password" name="oldPass" id="oldPass" placeholder="">
                                 </span>
                               </div>
                   
@@ -202,9 +206,9 @@
                               </div>
                   
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#SuccessfullyResetPass" data-bs-toggle="modal" style="background-color: black;">Set Password</button>
+                                <button class="btn btn-primary confirm_btn w-50" type="submit" style="background-color: black;">Set Password</button>
                               </div>
-                  
+                            </form>
                             </div>
                             <div class="modal-footer">
                             </div>
@@ -350,13 +354,15 @@
           <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-toggle="modal" data-bs-target="#historyPembelian" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">History</button>
         </div>
       </div>
-        
+      
+      <c:if test="${sessionScope.user.role == 'ADMIN'}">
       <div class="row dashboard">
         <label for="staticEmail" class="col-sm-4 col-form-label setting_button ">Dashboard</label>
         <div class="col-sm-8">
           <a type="button" class="btn btn-primary confirm_btn_success w-50" href="${pageContext.request.contextPath}/dashboard" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">Dashboard</a>
         </div>
       </div>
+      </c:if>
       
       <div class="row logout d-flex justify-content-center align-items-center">
         <button type="button" class="btn btn-primary w-50 my-2 bottom-button" data-bs-toggle="modal" data-bs-target="#LogOut" style="background-color: black; border-color: black;">Logout</button>

@@ -51,7 +51,11 @@
 
       <div class="container description my-5">
         <div class="row">
-
+          <c:if test="${not empty message}">
+                          <div class="alert alert-danger my-2" role="message">
+                            ${message}
+                          </div>
+                        </c:if>
           <div class="col-6 d-flex justify-content-center align-items-center">
             <img src="${pageContext.request.contextPath}/resources/uploads/images/products/${data.images[0].image}" alt="">
           </div>
@@ -115,7 +119,10 @@
                 <div class="d-flex button_description my-2">
                     <div class="button_buy">
                         <!-- <a class="btn btn-add-cart d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/shoping_cart">ADD TO CART</a> -->
+                        <!-- alert color text red -->
+                        
                         <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center">ADD TO CART</button>
+                        
                       </div>
                 </div>
             </form>
@@ -199,7 +206,7 @@
       <div class="col-sm-12 my-5">
         <form action="${pageContext.request.contextPath}/feedback" method="post">
           <input type="hidden" name="product" value="${data.product_id}">
-          <input type="hidden" name="user" value="${sessionScope.user.user_id}">
+          <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
           <h2 style="overflow-y: hidden;">Add Your Review</h2>
           <div class="form-group">
             <label for="userRating">Rating</label>

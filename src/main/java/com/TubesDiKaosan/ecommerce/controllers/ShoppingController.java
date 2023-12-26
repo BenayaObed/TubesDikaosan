@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.CustomerAddress;
 import com.TubesDiKaosan.ecommerce.models.Orders;
@@ -63,10 +64,14 @@ public class ShoppingController {
     }
 
     @PostMapping("/addTocart")
-    public String addToCart(@RequestParam("product_id") Integer product_id, @RequestParam("colors") String color,
-            @RequestParam("sizes") String size, HttpSession session)
+    public String addToCart(@RequestParam("product_id") Integer product_id, @RequestParam(name ="colors", required = false) String color,
+            @RequestParam(name = "sizes", required = false) String size, HttpSession session,RedirectAttributes redirectAttributes)
             throws SQLException {
         if (session.getAttribute("user") != null) {
+            if (color == null || size == null) {
+                redirectAttributes.addFlashAttribute("message", "Please select color and size");
+                return "redirect:/description?product=" + product_id;
+            }
             Users user = (Users) session.getAttribute("user");
             Orders container_draft = (Orders) shoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id())
                     .getData();

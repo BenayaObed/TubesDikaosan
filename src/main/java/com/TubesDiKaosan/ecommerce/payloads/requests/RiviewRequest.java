@@ -4,14 +4,14 @@ import com.TubesDiKaosan.ecommerce.models.Product;
 
 public class RiviewRequest {
     private Integer product;
-    private String user;
+    private String user_id;
     private Float rate;
     private String comment;
 
     public RiviewRequest(){}
-    public RiviewRequest(Integer product, String user, Float rate, String comment) {
+    public RiviewRequest(Integer product, String user_id, Float rate, String comment) {
         this.product = product;
-        this.user = user;
+        this.user_id = user_id;
         this.rate = rate;
         this.comment = comment;
     }
@@ -23,10 +23,10 @@ public class RiviewRequest {
         this.product = product;
     }
     public String getUser() {
-        return user;
+        return user_id;
     }
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String user_id) {
+        this.user_id = user_id;
     }
     public Float getRate() {
         return rate;

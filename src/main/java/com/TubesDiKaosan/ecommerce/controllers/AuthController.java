@@ -94,26 +94,26 @@ public class AuthController {
 
     }
 
-    @PostMapping("/users/{uuid}/update-password")
-    public String updatePassword(@RequestParam("oldPass") String old_password,
-            @RequestParam("newPass") String new_password, @RequestParam("confirmPass") String confirm,
-            @RequestAttribute("uuid") String uuid, Model model, HttpSession session) throws SQLException {
+    @PostMapping("/update-password")
+    public String updatePassword(@RequestParam("oldPass") String oldPass,
+            @RequestParam("newPass") String newPass, @RequestParam("confirmPass") String confirmPass,
+            @RequestParam("user_id") String user_id, Model model, HttpSession session) throws SQLException {
         for (UsersService userService : usersServices) {
             if (userService instanceof UsersService) {
-                Response response = ((UsersService) userService).findDataByID(uuid);
+                Response response = ((UsersService) userService).findDataByID(user_id);
                 if (!response.getMessage().equals("Data not found")) {
                     Users user = (Users) response.getData();
-                    if (user.getPassword().equals(old_password)) {
-                        if (new_password.equals(confirm)) {
-                            user.setPassword(new_password);
+                    if (user.getPassword().equals(oldPass)) {
+                        if (newPass.equals(confirmPass)) {
+                            user.setPassword(newPass);
                             UserRequest userRequest = new UserRequest();
                             userRequest.setFirst_name(user.getFirst_name());
                             userRequest.setLast_name(user.getLast_name());
                             userRequest.setEmail(user.getEmail());
-                            userRequest.setPassword(new_password);
+                            userRequest.setPassword(newPass);
                             userRequest.setRole(user.getRole_id());
 
-                            Response update_response = ((UsersService) userService).updateDataById(uuid, userRequest);
+                            Response update_response = ((UsersService) userService).updateDataById(user_id, userRequest);
                             if (update_response.getMessage().equals("success")) {
                                 session.setAttribute("user", user);
                                 return "redirect:/";

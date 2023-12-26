@@ -18,6 +18,8 @@
   <!-- Main content -->
   <div class="content-wrapper">
 
+    <!-- index -->
+    
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -37,18 +39,74 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
+          <c:if test="${reportOrderStatus[0][1] > 0}">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>${reportOrderStatus[0][1]}</h3>
+
+                <p>${reportOrderStatus[0][0]}</p>
+              </div>
+            </div>
+          </div>
+          </c:if>
+
+          <c:if test="${reportOrderStatus[1][1] > 0}">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>${reportOrderStatus[1][1]}</h3>
+
+                <p>${reportOrderStatus[1][0]}</p>
+              </div>
+              
+            </div>
+          </div>
+          </c:if>
+
+          <c:if test="${reportOrderStatus[2][1] > 0}">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>${reportOrderStatus[2][1]}</h3>
+
+                <p>${reportOrderStatus[2][0]}</p>
+              </div>
+              
+            </div>
+          </div>
+          </c:if>
+
+          <c:if test="${reportOrderStatus[3][1] > 0}">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>${reportOrderStatus[3][1]}</h3>
+
+                <p>
+                  ${reportOrderStatus[3][0]}
+                </p>
+              </div>
+              
+            </div>
+          </div>
+          </c:if>
+
+        </div>
+        <div class="row">
           <div class="col-md-12">
             <!-- BAR CHART -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">Bar Chart</h3>
+                <h3 class="card-title">Pendapatan</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
                   </button>
                 </div>
               </div>
@@ -63,6 +121,54 @@
 
           </div>
           <!-- /.col (RIGHT) -->
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-6">
+                    <h3 class="card-title">Total pendapatan by product</h3>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped text-center">
+                  <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Terjual</th>
+                    <th>Revenue</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach items="${reportOrderProduct}" var="product">
+                    <tr>
+                      <td>${product[0]}</td>
+                      <td>${product[1]}</td>
+                      <td>${product[2]}</td>
+                      <td>${product[3]}</td>
+                    </tr>
+                  </c:forEach>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Terjual</th>
+                    <th>Revenue</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -86,10 +192,14 @@
       //-------------
       var barChartCanvas = $('#barChart').get(0).getContext('2d')
       var barChartData = {
-        labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels  : [
+        <c:forEach items = "${reportOrderPayment}" var = "month" varStatus = "loop">
+          "${month[1]}" <c:if test="${!loop.last}">, </c:if>
+        </c:forEach>
+        ],
         datasets: [
           {
-            label               : 'Digital Goods',
+            label               : 'Pendapatan Perbulan',
             backgroundColor     : 'rgba(60,141,188,0.9)',
             borderColor         : 'rgba(60,141,188,0.8)',
             pointRadius          : false,
@@ -97,18 +207,11 @@
             pointStrokeColor    : 'rgba(60,141,188,1)',
             pointHighlightFill  : '#fff',
             pointHighlightStroke: 'rgba(60,141,188,1)',
-            data                : [28, 48, 40, 19, 86, 27, 90]
-          },
-          {
-            label               : 'Electronics',
-            backgroundColor     : 'rgba(210, 214, 222, 1)',
-            borderColor         : 'rgba(210, 214, 222, 1)',
-            pointRadius         : false,
-            pointColor          : 'rgba(210, 214, 222, 1)',
-            pointStrokeColor    : '#c1c7d1',
-            pointHighlightFill  : '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data                : [65, 59, 80, 81, 56, 55, 40]
+            data                : [
+            <c:forEach items = "${reportOrderPayment}" var = "month" varStatus = "loop">
+              "${month[0]}" <c:if test="${!loop.last}">, </c:if>
+            </c:forEach>
+            ]
           },
         ]
       }
@@ -116,7 +219,14 @@
       var barChartOptions = {
         responsive              : true,
         maintainAspectRatio     : false,
-        datasetFill             : false
+        datasetFill             : false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
 
       new Chart(barChartCanvas, {

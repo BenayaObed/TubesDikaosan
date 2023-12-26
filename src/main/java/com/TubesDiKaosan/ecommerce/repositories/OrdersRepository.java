@@ -35,6 +35,6 @@ public interface OrdersRepository extends JpaRepository<Orders,Integer>{
     @Query(value = "SELECT * FROM orders WHERE order_id = ?1 AND user_id = ?2 AND status != 'draft' AND status != 'checkout'", nativeQuery = true)
     Orders getOrderWithoutDraftAndCheckout(Integer orderID, String userID);
 
-    @Query(value = "SELECT orders.status,COUNT(orders.status) FROM orders GROUP BY orders.status;", nativeQuery = true)
-    Response getReportOrderStatus();
+    @Query(value = "SELECT orders.status,COUNT(orders.status) FROM orders WHERE orders.status != 'checkout' AND orders.status != 'draft' GROUP BY orders.status;", nativeQuery = true)
+    List<Object[]> getReportOrderStatus();
 }
