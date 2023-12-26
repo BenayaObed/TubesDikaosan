@@ -139,7 +139,10 @@
    <!-- Review Section Start -->
    <section class="review" style="height: 300px; overflow-y: auto;">
     <div class="container review-cont">
-      <!-- ... (existing code) ... -->
+      <!-- if condition -->
+      <c:if test="${not empty alert}">
+        ${alert}
+      </c:if>
   
       <div class="row">
         <!-- Add review content here -->
@@ -177,21 +180,6 @@
                 </c:forEach>
               </c:otherwise>
             </c:choose>
-            <!-- <c:forEach items="${riviews}" var="item">
-              <hr>
-              <div class="review-item">
-                <b>From : ${item.user.first_name} ${item.user.last_name}</b>
-                <div class="rating">
-                  Rating: ${item.rate} (${total_riviews})
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-                </div>
-                <p>Comment : ${item.comment}</p>
-              </div>
-              <hr>
-            </c:forEach> -->
-            <!-- Add more reviews as needed -->
           </div>
         </div>
       </div>
@@ -205,15 +193,17 @@
         <div class="row">
           <!-- Form for adding a new review -->
       <div class="col-sm-12 my-5">
-        <form action="${pageContext.request.contextPath}/addReview" method="post">
+        <form action="${pageContext.request.contextPath}/feedback" method="post">
+          <input type="hidden" name="product" value="${data.product_id}">
+          <input type="hidden" name="user" value="${sessionScope.user.user_id}">
           <h2 style="overflow-y: hidden;">Add Your Review</h2>
           <div class="form-group">
             <label for="userRating">Rating</label>
-            <input type="number" class="form-control" id="userRating" name="userRating" min="1" max="5" step="0.1" required>
+            <input type="number" class="form-control" id="userRating" name="rate" min="1" max="5" step="0.1" required>
           </div>
           <div class="form-group">
             <label for="userComment">Your Comment</label>
-            <textarea class="form-control" id="userComment" name="userComment" rows="4" required></textarea>
+            <textarea class="form-control" id="userComment" name="comment" rows="4" required></textarea>
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Submit Review</button>
