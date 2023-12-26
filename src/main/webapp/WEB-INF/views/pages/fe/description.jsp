@@ -8,6 +8,7 @@
 <html lang="en">
   <head>
     <title>Description</title>
+    <%@ include file = "../../includes/fe_includes/_alert.jsp" %>
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
 
@@ -47,6 +48,7 @@
 
     <!-- Description Section Start -->
     <section class="description_content">
+
       <div class="container description my-5">
         <div class="row">
 
@@ -141,7 +143,9 @@
     <div class="container review-cont">
       <!-- if condition -->
       <c:if test="${not empty alert}">
-        ${alert}
+        <div class="alert alert-primary" role="alert">
+          ${alert}
+        </div>
       </c:if>
   
       <div class="row">

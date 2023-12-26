@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.Payment;
 import com.TubesDiKaosan.ecommerce.models.PaymentMethod;
@@ -47,6 +48,7 @@ public class PaymentMethodController {
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 List<PaymentMethod> paymentMethods = (List<PaymentMethod>) paymentMethodService.getAll().getData();
                 model.addAttribute("data", paymentMethods);
+                
                 return "pages/dashboard/paymentMethod_add";
             }
         }
@@ -54,12 +56,13 @@ public class PaymentMethodController {
     }
 
     @PostMapping("/save")
-    public String save(PaymentMethodRequest paymentMethod, HttpSession session, Model model) throws SQLException {
+    public String save(PaymentMethodRequest paymentMethod, HttpSession session, Model model, RedirectAttributes redirectAttributes) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 Response response = paymentMethodService.createData(paymentMethod);
                 model.addAttribute("alert", response.getStatus());
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil ditambah");
                 return "redirect:/dashboard/payment-method";
             }
         }
@@ -74,6 +77,7 @@ public class PaymentMethodController {
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 PaymentMethod paymentMethod = (PaymentMethod) paymentMethodService.findDataByID(methodID).getData();
                 model.addAttribute("data", paymentMethod);
+                
                 return "pages/dashboard/paymentMethod_edit";
             }
         }
@@ -81,12 +85,13 @@ public class PaymentMethodController {
     }
 
     @PostMapping("/update")
-    public String update(Model model,@RequestParam Integer methodID,PaymentMethodRequest paymentMethod, HttpSession session) throws SQLException{
+    public String update(Model model,@RequestParam Integer methodID,PaymentMethodRequest paymentMethod, HttpSession session, RedirectAttributes redirectAttributes) throws SQLException{
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 PaymentMethod method = (PaymentMethod) paymentMethodService.updateDataById(methodID, paymentMethod).getData();
                 model.addAttribute("data", method);
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil diupdate");
                 return "redirect:/dashboard/payment-method/edit?methodID="+methodID;
             }
         }
@@ -94,11 +99,12 @@ public class PaymentMethodController {
     }
 
     @RequestMapping("/delete")
-    public String delete(Model model,@RequestParam Integer methodID, HttpSession session) throws SQLException{
+    public String delete(Model model,@RequestParam Integer methodID, HttpSession session,RedirectAttributes redirectAttributes) throws SQLException{
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 paymentMethodService.deleteDataByID(methodID);
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil didelete");
                 return "redirect:/dashboard/payment-method";
             }
         }

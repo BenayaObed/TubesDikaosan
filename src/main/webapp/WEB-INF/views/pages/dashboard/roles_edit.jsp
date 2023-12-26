@@ -69,7 +69,11 @@
   <%@ include file = "../../includes/dashboard/_footer.jsp" %>
 </div>
 <!-- ./wrapper -->
-
+<c:if test="${not empty alert}">
+  <script>
+    alert("${alert}")
+  </script>
+    </c:if>
 <!-- REQUIRED SCRIPTS -->
 <%@ include file = "../../includes/dashboard/_scripts.jsp" %>
 </body>

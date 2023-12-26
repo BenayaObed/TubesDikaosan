@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Users;
@@ -24,7 +25,7 @@ public class CategoriesController {
     private CategoryService categoriesService;
 
     @RequestMapping({ "", "/" })
-    public String index(Model model, HttpSession session) throws SQLException{
+    public String index(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Product");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
@@ -41,11 +42,12 @@ public class CategoriesController {
 
     // START CREATE
     @RequestMapping("/create")
-    public String createView(Model model, HttpSession session) throws SQLException{
+    public String createView(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Create Category");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
+
                 return "pages/dashboard/category_add";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                 return "redirect:/";
@@ -55,13 +57,17 @@ public class CategoriesController {
     }
 
     @PostMapping("/save")
-    public String save(CategoryRequest request, HttpSession session) throws SQLException{
+    public String save(CategoryRequest request, HttpSession session, RedirectAttributes redirectAttributes)
+            throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
+
                 categoriesService.createData(request);
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil ditambahkan");
                 return "redirect:/dashboard/categories";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "Data gagal ditambahkan");
                 return "redirect:/";
             }
         }
@@ -70,7 +76,7 @@ public class CategoriesController {
 
     // START UPDATE
     @RequestMapping("/edit")
-    public String editView(@RequestParam Integer categoryID, HttpSession session,Model model) throws SQLException{
+    public String editView(@RequestParam Integer categoryID, HttpSession session, Model model) throws SQLException {
         model.addAttribute("title", "Edit Category");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
@@ -85,9 +91,10 @@ public class CategoriesController {
         return "redirect:/";
     }
 
-
     @PostMapping("/update")
-    public String update(@RequestParam Integer categoryID, CategoryRequest request, HttpSession session) throws SQLException{
+    public String update(@RequestParam Integer categoryID, CategoryRequest request, HttpSession session,
+            RedirectAttributes redirectAttributes)
+            throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
@@ -95,8 +102,10 @@ public class CategoriesController {
                 category.setCategory_name(request.getCategory_name());
                 category.setVisible(request.getVisible());
                 categoriesService.updateDataById(categoryID, request);
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil diupdate");
                 return "redirect:/dashboard/categories/edit?categoryID=" + categoryID;
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "Data gagal diupdate");
                 return "redirect:/";
             }
         }
@@ -106,13 +115,16 @@ public class CategoriesController {
 
     // START DELETE (HIDE)
     @RequestMapping("/delete")
-    public String delete(@RequestParam Integer categoryID, HttpSession session) throws SQLException{
+    public String delete(@RequestParam Integer categoryID, HttpSession session, RedirectAttributes redirectAttributes)
+            throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 categoriesService.hideDataByID(categoryID);
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil di delete");
                 return "redirect:/dashboard/categories";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "Data gagal di delete");
                 return "redirect:/";
             }
         }

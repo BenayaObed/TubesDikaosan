@@ -1,5 +1,7 @@
 package com.TubesDiKaosan.ecommerce.controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -284,7 +286,8 @@ public class LandingController {
     }
 
     @RequestMapping("/shoping_cart")
-    public String shoping_cart(Model model, HttpSession session) throws SQLException {
+    public String shoping_cart(Model model, RedirectAttributes redirectAttributes, HttpSession session)
+            throws SQLException {
         model.addAttribute("title", "Shoping_Cart");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
@@ -303,15 +306,20 @@ public class LandingController {
             } else
                 return "pages/fe/shoping_cart";
         }
+        redirectAttributes.addFlashAttribute("alert", "Login dulu ya ^_^");
         return "redirect:/";
     }
 
     @RequestMapping("/payment")
     public String payment(@RequestParam(name = "method", required = false) String method,
             @RequestParam(name = "bank", required = false) Integer bank, @RequestParam Float total,
-            Model model, HttpSession session) throws SQLException {
+            Model model, HttpSession session, RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("title", "Payment");
         if (session.getAttribute("user") != null) {
+            if (method == null) {
+                redirectAttributes.addFlashAttribute("alert", "Pilih metode pembayaran");
+                return "redirect:/checkout";
+            }
             Users user = (Users) session.getAttribute("user");
             Orders orders = (Orders) ShoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id())
                     .getData();

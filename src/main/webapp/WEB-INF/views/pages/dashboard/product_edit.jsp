@@ -217,7 +217,11 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  <c:if test="${not empty alert}">
+    <script>
+      alert("${alert}")
+    </script>
+  </c:if>
   <!-- Main Footer -->
   <%@ include file = "../../includes/dashboard/_footer.jsp" %>
 </div>

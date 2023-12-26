@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Product;
@@ -85,8 +86,10 @@ public class ProductController {
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 List<Category> categories = (List<Category>) categoryService.getAll().getData();
                 model.addAttribute("categories", categories);
+
                 return "pages/dashboard/product_add";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+
                 return "redirect:/";
             }
         }
@@ -105,7 +108,7 @@ public class ProductController {
             @RequestParam("size[M][]") List<String> sizeM,
             @RequestParam("size[L][]") List<String> sizeL,
             @RequestParam("size[XL][]") List<String> sizeXL,
-            Model model, HttpSession session) throws SQLException {
+            Model model, HttpSession session, RedirectAttributes redirectAttributes) throws SQLException {
         if (session.getAttribute("user") != null) {
             ProductRequest request = new ProductRequest();
             Users user = (Users) session.getAttribute("user");
@@ -165,10 +168,11 @@ public class ProductController {
                 request.setStock(stocks);
 
                 productService.createData(request);
-
+                redirectAttributes.addFlashAttribute("alert", "produk berhasil ditambahkan");
                 return "redirect:/dashboard/products";
             }
         }
+        redirectAttributes.addFlashAttribute("alert", "produk gagal ditambahkan");
         return "redirect:/";
     }
 
@@ -228,7 +232,7 @@ public class ProductController {
             @RequestParam("size[M][]") List<String> sizeM,
             @RequestParam("size[L][]") List<String> sizeL,
             @RequestParam("size[XL][]") List<String> sizeXL,
-            Model model, HttpSession session) throws SQLException {
+            Model model, HttpSession session, RedirectAttributes redirectAttributes) throws SQLException {
         if (session.getAttribute("user") != null) {
             ProductRequest request = new ProductRequest();
             Users user = (Users) session.getAttribute("user");
@@ -303,9 +307,10 @@ public class ProductController {
                 request.setStock(stocks);
 
                 productService.updateDataById(productID, request);
-
+                redirectAttributes.addFlashAttribute("alert", "produk berhasil diupdate");
                 return "redirect:/dashboard/products";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "produk gagal diupdate");
                 return "redirect:/";
             }
         }
@@ -314,13 +319,16 @@ public class ProductController {
     }
 
     @RequestMapping("/delete")
-    public String delete(@RequestParam Integer productID, Model model, HttpSession session) throws SQLException {
+    public String delete(@RequestParam Integer productID, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 productService.hideProduct(productID);
+                redirectAttributes.addFlashAttribute("alert", "produk berhasil didelete");
                 return "redirect:/dashboard/products";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "produk gagal didelete");
                 return "redirect:/";
             }
         }
@@ -337,13 +345,16 @@ public class ProductController {
 
     @RequestMapping("/delete_stock")
     public String deleteStock(@RequestParam Integer ProductID, @RequestParam Integer stockID,
-            @RequestParam String color, Model model, HttpSession session) throws SQLException {
+            @RequestParam String color, Model model, HttpSession session, RedirectAttributes redirectAttributes)
+            throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 productService.removeStock(ProductID, color);
+                redirectAttributes.addFlashAttribute("alert", "produk stock berhasil didelete");
                 return "redirect:/dashboard/products/edit?productID=" + ProductID;
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "produk stock gagal didelete");
                 return "redirect:/";
             }
         }
@@ -351,13 +362,15 @@ public class ProductController {
     }
 
     @RequestMapping("/delete_image")
-    public String deleteImage(@RequestParam Integer imageID, Model model, HttpSession session) throws SQLException {
+    public String deleteImage(@RequestParam Integer imageID, Model model, HttpSession session,RedirectAttributes redirectAttributes) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 productService.removeImages(imageID);
+                redirectAttributes.addFlashAttribute("alert", "produk gambar berhasil didelete");
                 return "redirect:/dashboard/products";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "produk gambar gagal didelete");
                 return "redirect:/";
             }
         }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.models.Users;
@@ -54,18 +55,20 @@ public class RolesController {
 
     // POST CREATE
     @PostMapping("/save")
-    public String create(RoleRequest request, Model model, HttpSession session) throws SQLException {
+    public String create(RoleRequest request, Model model, HttpSession session,RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("title", "Roles");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 Response roles = rolesService.createData(request);
-                if (roles.getStatus() == 200) 
-                    return "redirect:/dashboard/roles";
+                if (roles.getStatus() == 200) {
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil ditambah");
                 return "redirect:/dashboard/roles";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil ditambah");
                 return "redirect:/";
             }
+        }
         }
         return "redirect:/";
     }
@@ -89,14 +92,16 @@ public class RolesController {
 
     // POST UPDATE
     @PostMapping("/update")
-    public String update(@RequestParam Integer roleID, RoleRequest request, Model model, HttpSession session) throws SQLException {
+    public String update(@RequestParam Integer roleID, RoleRequest request, Model model, HttpSession session, RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("title", "Roles");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 rolesService.updateDataById(roleID, request);
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil diupdate");
                 return "redirect:/dashboard/roles";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "Data gagal diupdate");
                 return "redirect:/";
             }
         }
@@ -105,17 +110,20 @@ public class RolesController {
 
     // DELETE
     @RequestMapping("/delete")
-    public String delete(@RequestParam Integer roleID, Model model, HttpSession session) throws SQLException {
+    public String delete(@RequestParam Integer roleID, Model model, HttpSession session,RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("title", "Roles");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 Response roles = rolesService.deleteDataByID(roleID);
                 if (roles.getStatus() == 200) {
+                    redirectAttributes.addFlashAttribute("alert", "Data berhasil di delete");
                     return "redirect:/dashboard/roles";
                 }
+                redirectAttributes.addFlashAttribute("alert", "Data berhasil di delete");
                 return "redirect:/dashboard/roles";
             } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
+                redirectAttributes.addFlashAttribute("alert", "Data gagal di delete");
                 return "redirect:/";
             }
         }

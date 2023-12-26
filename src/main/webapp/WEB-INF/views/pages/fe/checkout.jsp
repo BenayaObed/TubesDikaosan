@@ -9,6 +9,7 @@
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
   <body>
+    
     <!-- Navbar Section Start -->
     <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
@@ -48,7 +49,7 @@
     <!-- Content Checkout Start-->
     <section class="content">
       <div class="row">
-        <div class="col-12 d-flex">
+        <div class="col-12 d-flex border border-danger">
           <div class="col-sm-6 ">
 
             <div class="row ">
@@ -121,8 +122,9 @@
 
                 
                 </div>
-              </div>
-            </div>
+              
+            
+            
     
 
             <!-- container produk checkout END -->
@@ -136,7 +138,7 @@
                       <div class="button_continue_shoping col-sm-6 d-flex flex-column">
                         <a href="${pageContext.request.contextPath}/shop" class="btn btn-add-cart d-flex justify-content-center align-items-center">Continue Shoping</a>
                       </div>
-                      <div class="button_update_cart col-sm-6 d-flex flex-column">
+                      <div class="button_update_cart col-sm-6 d-flex flex-column align-items-end">
                         <form action="${pageContext.request.contextPath}/cancelOrder" method="post">
                           <input type="hidden" name="order_id" value="${order_id}">
                           <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center">Cancel Order</button>
@@ -244,7 +246,11 @@
             </div>
     </section>
     <!-- Content Checkout End -->
-
+    <c:if test="${not empty alert}">
+      <script>
+        alert("${alert}")
+      </script>
+    </c:if>
     <!-- Footer Section Start -->
     <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
     <!-- Footer Section End-->
@@ -298,10 +304,7 @@ function updateQuantity(index, action) {
   }
 }
 
-function TotalItems()
-var priceSelector = '.harga.col-sm-8 p.price'; // Corrected price selector
-var priceElement = $('.total-price[data-index="' + index + '"]');
-var itemPrice = parseInt($(priceSelector).text().replace('IDR', '')); // Corrected price selector
+
 
                             </script>
   </body>
