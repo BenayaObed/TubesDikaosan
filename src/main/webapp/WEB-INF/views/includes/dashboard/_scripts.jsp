@@ -16,7 +16,10 @@
 <script src="${pageContext.request.contextPath}/resources/dashboard/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/dashboard/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
+
+<!-- CHARTS -->
+<script src="${pageContext.request.contextPath}/resources/dashboard/plugins/chart.js/Chart.min.js"></script>
+
 <script src="${pageContext.request.contextPath}/resources/dashboard/js/adminlte.min.js"></script>
 <script>
   // Active sidebar menu

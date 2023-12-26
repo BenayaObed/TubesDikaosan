@@ -13,3 +13,6 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   
+
+  <!-- Chart -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dashboard/plugins/chart.js/Chart.min.css">

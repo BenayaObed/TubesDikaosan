@@ -67,15 +67,21 @@ public class ShoppingController {
             throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
-            Orders orders = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
-            if (orders == null) {
+            Orders container_draft = (Orders) shoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id())
+                    .getData();
+            if (container_draft == null) {
                 shoppingServices.createDraftOrder(user);
+                container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
             }
-            Orders container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
             Product product = (Product) ProductService.findDataByID(product_id).getData();
             OrderItemRequest request = new OrderItemRequest(product_id, color, size, 1,
                     (float) (product.getPrice() * 1));
             shoppingServices.addOrderItem(request, container_draft);
+
+            // check container draft
+            if(container_draft != null){
+                return "redirect:/shoping_cart";
+            }
             return "redirect:/shoping_cart";
         }
         return "redirect:/";

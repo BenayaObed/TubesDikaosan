@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.TubesDiKaosan.ecommerce.models.Orders;
+import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 
 @Repository
 public interface OrdersRepository extends JpaRepository<Orders,Integer>{
@@ -33,4 +34,7 @@ public interface OrdersRepository extends JpaRepository<Orders,Integer>{
     // query to get order without draft status and checkout status by order id and user id
     @Query(value = "SELECT * FROM orders WHERE order_id = ?1 AND user_id = ?2 AND status != 'draft' AND status != 'checkout'", nativeQuery = true)
     Orders getOrderWithoutDraftAndCheckout(Integer orderID, String userID);
+
+    @Query(value = "SELECT orders.status,COUNT(orders.status) FROM orders GROUP BY orders.status;", nativeQuery = true)
+    Response getReportOrderStatus();
 }

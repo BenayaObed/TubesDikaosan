@@ -91,17 +91,7 @@
           <div class="col-12 product_header d-flex justify-content-center align-items-center">
             <div class="row">
               <div class="col mx-5">
-                <a class="header_shop" href="#">Best Sellers</a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col mx-5">
-                <a class="header_shop"  href="#">New Arrivals</a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col mx-5">
-                <a class="header_shop"  href="#">Hot Sales</a>
+                <h1>Our Products</h1>
               </div>
             </div>
           </div>
