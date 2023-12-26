@@ -54,11 +54,12 @@ public class PaymentMethodController {
     }
 
     @PostMapping("/save")
-    public String save(PaymentMethodRequest paymentMethod, HttpSession session) throws SQLException {
+    public String save(PaymentMethodRequest paymentMethod, HttpSession session, Model model) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
-                paymentMethodService.createData(paymentMethod);
+                Response response = paymentMethodService.createData(paymentMethod);
+                model.addAttribute("alert", response.getStatus());
                 return "redirect:/dashboard/payment-method";
             }
         }

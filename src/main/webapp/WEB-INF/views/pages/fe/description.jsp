@@ -139,7 +139,10 @@
    <!-- Review Section Start -->
    <section class="review" style="height: 300px; overflow-y: auto;">
     <div class="container review-cont">
-      <!-- ... (existing code) ... -->
+      <!-- if condition -->
+      <c:if test="${not empty alert}">
+        ${alert}
+      </c:if>
   
       <div class="row">
         <!-- Add review content here -->
@@ -205,15 +208,17 @@
         <div class="row">
           <!-- Form for adding a new review -->
       <div class="col-sm-12 my-5">
-        <form action="${pageContext.request.contextPath}/addReview" method="post">
+        <form action="${pageContext.request.contextPath}/feedback" method="post">
+          <input type="hidden" name="product" value="${data.product_id}">
+          <input type="hidden" name="user" value="${sessionScope.user.user_id}">
           <h2 style="overflow-y: hidden;">Add Your Review</h2>
           <div class="form-group">
             <label for="userRating">Rating</label>
-            <input type="number" class="form-control" id="userRating" name="userRating" min="1" max="5" step="0.1" required>
+            <input type="number" class="form-control" id="userRating" name="rate" min="1" max="5" step="0.1" required>
           </div>
           <div class="form-group">
             <label for="userComment">Your Comment</label>
-            <textarea class="form-control" id="userComment" name="userComment" rows="4" required></textarea>
+            <textarea class="form-control" id="userComment" name="comment" rows="4" required></textarea>
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Submit Review</button>

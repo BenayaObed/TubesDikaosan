@@ -7,17 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.TubesDiKaosan.ecommerce.models.Product;
 import com.TubesDiKaosan.ecommerce.models.Riviews;
+import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.requests.RiviewRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.repositories.RiviewRepository;
 import com.TubesDiKaosan.ecommerce.services.BaseServices;
+import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
+import com.TubesDiKaosan.ecommerce.services.ProductServices.ProductService;
 
 @Service
 public class RiviewServices extends BaseServices<RiviewRequest, Integer> {
  
     @Autowired
     private RiviewRepository riviewRepository;
+
+    @Autowired
+    private ProductService productServices;
+
+    @Autowired
+    private List<UsersService> users;
 
     @Override
     public Response getAll() throws SQLException {
@@ -60,13 +70,22 @@ public class RiviewServices extends BaseServices<RiviewRequest, Integer> {
 
     @Override
     public Response createData(RiviewRequest request) throws SQLException { // CREATE RIVIEW
-        Riviews data = new Riviews();
-        data.setProduct(request.getProduct());
-        data.setRate(request.getRate());
-        data.setComment(request.getComment());
-        data.setUser(request.getUser());
-        riviewRepository.save(data);
-        return new Response(HttpStatus.OK.value(), "success", data);
+        for (UsersService user : users) {
+            if (user instanceof UsersService) {
+                Users dataUser = user.findByEmail(request.getUser());
+                Product dataProduct = (Product) productServices.findDataByID(request.getProduct()).getData();
+                Riviews data = new Riviews();
+
+                data.setProduct(dataProduct);
+                data.setUser(dataUser);
+                data.setRate(request.getRate());
+                data.setComment(request.getComment());
+                data.setReview_id(null);
+                riviewRepository.save(data);
+                return new Response(HttpStatus.OK.value(), "success", data);
+            }
+        }
+        return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
     }
 
 

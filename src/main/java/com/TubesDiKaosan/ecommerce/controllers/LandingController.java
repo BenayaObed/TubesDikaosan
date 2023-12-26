@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Orders;
@@ -27,6 +28,7 @@ import com.TubesDiKaosan.ecommerce.models.Riviews;
 import com.TubesDiKaosan.ecommerce.models.Stock;
 import com.TubesDiKaosan.ecommerce.models.Users;
 import com.TubesDiKaosan.ecommerce.payloads.AnotherClass.ShopPageData;
+import com.TubesDiKaosan.ecommerce.payloads.requests.RiviewRequest;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.AdminService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.CustomerService;
@@ -59,6 +61,9 @@ public class LandingController {
     @Autowired
     private RiviewServices riviewServices;
 
+    @Autowired
+    private RiviewServices riviewService;
+
     @RequestMapping({ "/", "/home" })
     public String index(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Home");
@@ -74,108 +79,109 @@ public class LandingController {
 
     // @RequestMapping("/shop")
     // public String shop(@RequestParam(required = false) String category,
-    //         @RequestParam(required = false) String keyword,
-    //         Model model, HttpSession session) throws SQLException {
-    //     List<Product> products = (List<Product>) productService.getAll().getData();
-    //     List<Riviews> riviews = (List<Riviews>) riviewServices.getAll().getData();
+    // @RequestParam(required = false) String keyword,
+    // Model model, HttpSession session) throws SQLException {
+    // List<Product> products = (List<Product>) productService.getAll().getData();
+    // List<Riviews> riviews = (List<Riviews>) riviewServices.getAll().getData();
 
-    //     // Calculate mean ratings
-    //     Map<Integer, Float> mean = new HashMap<>();
-    //     Map<Integer, Integer> count = new HashMap<>();
+    // // Calculate mean ratings
+    // Map<Integer, Float> mean = new HashMap<>();
+    // Map<Integer, Integer> count = new HashMap<>();
 
-    //     for (Riviews riview : riviews) {
-    //         int productId = riview.getProduct().getProduct_id();
-    //         float rate = riview.getRate();
+    // for (Riviews riview : riviews) {
+    // int productId = riview.getProduct().getProduct_id();
+    // float rate = riview.getRate();
 
-    //         mean.merge(productId, rate, Float::sum);
-    //         count.merge(productId, 1, Integer::sum);
-    //     }
+    // mean.merge(productId, rate, Float::sum);
+    // count.merge(productId, 1, Integer::sum);
+    // }
 
-    //     mean.replaceAll((productId, total) -> total / count.get(productId));
+    // mean.replaceAll((productId, total) -> total / count.get(productId));
 
-    //     // Query for categories
-    //     List<String> categories = (List<String>) categoryService.getAll().getData();
+    // // Query for categories
+    // List<String> categories = (List<String>) categoryService.getAll().getData();
 
-    //     if (category != null) {
-    //         // Filter products by category
-    //         products = products.stream()
-    //                 .filter(product -> {
-    //                     Category productCategory = product.getCategory();
-    //                     return productCategory != null &&
-    //                             productCategory.getCategory_name().equalsIgnoreCase(category);
-    //                 }).collect(Collectors.toList());
+    // if (category != null) {
+    // // Filter products by category
+    // products = products.stream()
+    // .filter(product -> {
+    // Category productCategory = product.getCategory();
+    // return productCategory != null &&
+    // productCategory.getCategory_name().equalsIgnoreCase(category);
+    // }).collect(Collectors.toList());
 
-    //         mean.keySet().retainAll(products.stream().map(Product::getProduct_id).collect(Collectors.toSet()));
-    //     }
+    // mean.keySet().retainAll(products.stream().map(Product::getProduct_id).collect(Collectors.toSet()));
+    // }
 
-    //     // Query for best sellers
-    //     List<Product> bestSellers = (List<Product>) productService.getBestSeller().getData();
-    //     ShopPageData shopPageData = new ShopPageData("Shop", products, mean,
-    //             categories, bestSellers);
-    //     model.addAttribute("shopPageData", shopPageData);
+    // // Query for best sellers
+    // List<Product> bestSellers = (List<Product>)
+    // productService.getBestSeller().getData();
+    // ShopPageData shopPageData = new ShopPageData("Shop", products, mean,
+    // categories, bestSellers);
+    // model.addAttribute("shopPageData", shopPageData);
 
-    //     return "pages/fe/shop";
+    // return "pages/fe/shop";
     // }
 
     @RequestMapping("/shop")
-public String shop(@RequestParam(required = false) String category,
-                   @RequestParam(required = false) String search,
-                   Model model, HttpSession session) throws SQLException {
-    List<Product> products;
+    public String shop(@RequestParam(required = false) String category,
+            @RequestParam(required = false) String search,
+            Model model, HttpSession session) throws SQLException {
+        List<Product> products;
 
-    // Search products by search
-    if (search != null && !search.isEmpty()) {
-        Response searchResponse = productService.searchProduct(search);
-        if (searchResponse.getStatus() == HttpStatus.OK.value()) {
-            products = (List<Product>) searchResponse.getData();
+        // Search products by search
+        if (search != null && !search.isEmpty()) {
+            Response searchResponse = productService.searchProduct(search);
+            if (searchResponse.getStatus() == HttpStatus.OK.value()) {
+                products = (List<Product>) searchResponse.getData();
+            } else {
+                // Handle the case when no products are found
+                model.addAttribute("errorMessage", "No products found for the given keyword.");
+                return "pages/fe/shop";
+            }
         } else {
-            // Handle the case when no products are found
-            model.addAttribute("errorMessage", "No products found for the given keyword.");
-            return "pages/fe/shop";
+            // If no search is provided, retrieve all products
+            products = (List<Product>) productService.getAll().getData();
         }
-    } else {
-        // If no search is provided, retrieve all products
-        products = (List<Product>) productService.getAll().getData();
+
+        List<Riviews> reviews = (List<Riviews>) riviewServices.getAll().getData();
+
+        // Calculate mean ratings
+        Map<Integer, Float> mean = new HashMap<>();
+        Map<Integer, Integer> count = new HashMap<>();
+
+        for (Riviews review : reviews) {
+            int productId = review.getProduct().getProduct_id();
+            float rate = review.getRate();
+
+            mean.merge(productId, rate, Float::sum);
+            count.merge(productId, 1, Integer::sum);
+        }
+
+        mean.replaceAll((productId, total) -> total / count.get(productId));
+
+        // Filter products by category
+        if (category != null) {
+            products = products.stream()
+                    .filter(product -> {
+                        Category productCategory = product.getCategory();
+                        return productCategory != null && productCategory.getCategory_name().equalsIgnoreCase(category);
+                    }).collect(Collectors.toList());
+
+            mean.keySet().retainAll(products.stream().map(Product::getProduct_id).collect(Collectors.toSet()));
+        }
+
+        // Query for categories
+        List<String> categories = (List<String>) categoryService.getAll().getData();
+
+        // Query for best sellers
+        List<Product> bestSellers = (List<Product>) productService.getBestSeller().getData();
+
+        ShopPageData shopPageData = new ShopPageData("Shop", products, mean, categories, bestSellers);
+        model.addAttribute("shopPageData", shopPageData);
+
+        return "pages/fe/shop";
     }
-
-    List<Riviews> reviews = (List<Riviews>) riviewServices.getAll().getData();
-
-    // Calculate mean ratings
-    Map<Integer, Float> mean = new HashMap<>();
-    Map<Integer, Integer> count = new HashMap<>();
-
-    for (Riviews review : reviews) {
-        int productId = review.getProduct().getProduct_id();
-        float rate = review.getRate();
-
-        mean.merge(productId, rate, Float::sum);
-        count.merge(productId, 1, Integer::sum);
-    }
-
-    mean.replaceAll((productId, total) -> total / count.get(productId));
-
-    // Filter products by category
-    if (category != null) {
-        products = products.stream()
-                .filter(product -> {
-                    Category productCategory = product.getCategory();
-                    return productCategory != null && productCategory.getCategory_name().equalsIgnoreCase(category);
-                }).collect(Collectors.toList());
-
-        mean.keySet().retainAll(products.stream().map(Product::getProduct_id).collect(Collectors.toSet()));
-    }
-
-    // Query for categories
-    List<String> categories = (List<String>) categoryService.getAll().getData();
-
-    // Query for best sellers
-    List<Product> bestSellers = (List<Product>) productService.getBestSeller().getData();
-
-    ShopPageData shopPageData = new ShopPageData("Shop", products, mean, categories, bestSellers);
-    model.addAttribute("shopPageData", shopPageData);
-
-    return "pages/fe/shop";
-}
 
     @RequestMapping("/contact")
     public String contact(Model model, HttpSession session) throws SQLException {
@@ -412,6 +418,22 @@ x            }
                 return "pages/fe/invoice";
             }
             return "redirect:/";
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/feedback")
+    public String rate(RiviewRequest request, RedirectAttributes redirectAttributes, HttpSession session)
+            throws SQLException {
+        if (session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            request.setUser(user.getUser_id());
+            if (riviewService.createData(request).getStatus() == 200) {
+                redirectAttributes.addFlashAttribute("alert", "Thank you for your feedback");
+            } else {
+                redirectAttributes.addFlashAttribute("alert", "Failed to give feedback");
+            }
+            return "redirect:/description?product=" + request.getProduct();
         }
         return "redirect:/";
     }
