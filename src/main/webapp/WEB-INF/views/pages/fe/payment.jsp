@@ -179,7 +179,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-5-circle-fill" viewBox="0 0 16 16">
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-8.006 4.158c1.74 0 2.924-1.119 2.924-2.806 0-1.641-1.178-2.584-2.56-2.584-.897 0-1.442.421-1.612.68h-.064l.193-2.344h3.621V4.002H5.791L5.445 8.63h1.149c.193-.358.668-.809 1.435-.809.85 0 1.582.604 1.582 1.57 0 1.085-.779 1.682-1.57 1.682-.697 0-1.389-.31-1.53-1.031H5.276c.065 1.213 1.149 2.115 2.72 2.115Z"/>
                                         </svg>
-                                        <p class="m-0 mx-2">If the notification <b>“Transaction Failed. The amount exceeds the daily limit”</b>, please repeat the transaction using KlikBCA (iBanking) or ATM <b>Dikaosan.</b></p>
+                                        <p class="m-0 mx-2">If the notification <b>Transaction Failed. The amount exceeds the daily limit</b>, please repeat the transaction using KlikBCA (iBanking) or ATM <b>Dikaosan.</b></p>
                                     </div>
                                 </div>
                             </div>
@@ -191,10 +191,10 @@
                                 <!-- <a class="btn btn-payment-ok d-flex justify-content-center align-items-center" href="${pageContext.request.contextPath}/payment_ok?order_id=${order_id}">OK</a> -->
                                 <form action="${pageContext.request.contextPath}/payment_ok" method="post">
                                     <div class="row">
-                                        <input type="text" name="order_id" value="${order_id}">
-                                        <input type="text" name="bank" value="${method.id}">
-                                        <input type="text" name="method" value="${method.payment_method_name}">
-                                        <input type="text" name="total" value="${total}">
+                                        <input type="text" name="order_id" value="${order_id}" hidden>
+                                        <input type="text" name="bank" value="${method.id}" hidden>
+                                        <input type="text" name="method" value="${method.payment_method_name}" hidden>
+                                        <input type="text" name="total" value="${total}" hidden>
 
                                         <button class="btn btn-payment-ok d-flex justify-content-center align-items-center" type="submit">OK</button>
                                     </div>
