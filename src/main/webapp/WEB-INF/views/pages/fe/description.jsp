@@ -8,7 +8,6 @@
 <html lang="en">
   <head>
     <title>Description</title>
-    <%@ include file = "../../includes/fe_includes/_alert.jsp" %>
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
 
