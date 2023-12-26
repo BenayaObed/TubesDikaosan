@@ -187,14 +187,14 @@
                               <div class="row newPass">
                                 <a>New Password</a>
                                 <span class="input-newPass">
-                                  <input class="form-control newPass" type="text" name="newPass" id="newPass" placeholder="">
+                                  <input class="form-control newPass" type="password" name="newPass" id="newPass" placeholder="">
                                 </span>
                               </div>
                   
                               <div class="row confirmPass">
                                 <a>Confirm New Password</a>
                                 <span class="input-confirmPass">
-                                  <input class="form-control confirmPass" type="text" name="confirmPass" id="confirmPass" placeholder="">
+                                  <input class="form-control confirmPass" type="password" name="confirmPass" id="confirmPass" placeholder="">
                                 </span>
                                 <div id="passwordHelpBlock" class="form-text">
                                   Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
@@ -261,14 +261,14 @@
                                 </ul>
                                 <c:forEach items="${sessionScope.history}" var="item">
                                   <ul class="list-group list-group-horizontal">
-                                      <div class="col-4">
-                                      <li class="list-group-item" style="text-align: center;">${item.order_id}</li>
+                                      <div class="col-4 d-fex justify-content-center align-items-center">
+                                        <li class="list-group-item" style="text-align: center; height: 45px;">${item.order_id}</li>
                                       </div>
-                                      <div class="col-4">
-                                      <li class="list-group-item" style="text-align: center;">${item.status}</li>
+                                      <div class="col-4 d-fex justify-content-center align-items-center">
+                                        <li class="list-group-item" style="text-align: center; height: 45px;">${item.status}</li>
                                       </div>
-                                      <div class="col-4">
-                                        <li class="list-group-item" style="text-align: center;"><a href="${pageContext.request.contextPath}/invoice?order_id=${item.order_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Details</a></li>
+                                      <div class="col-4 d-fex justify-content-center align-items-center">
+                                        <li class="list-group-item" style="text-align: center;"><a class="m-0" href="${pageContext.request.contextPath}/invoice?order_id=${item.order_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Details</a></li>
                                       </div>
                                       
                                   </ul>
@@ -292,18 +292,13 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                          <form action="logout">
-                              <div class="row succes text-center">
-                              <a>Select "Logout" below if you are ready to end your current session!
-                              </a>
-                              </div>
-
-                          
-                  
-                              <div class="row justify-content-center text-center my-2">
-                                <a class="btn confirm_btn w-50" href="${pageContext.request.contextPath}/logout" style="text-decoration: none;">Logout</a>
-                              </div>
-                          </form>
+                            <div class="row succes text-center">
+                              <a>Select "Logout" below if you are ready to end your current session!</a>
+                            </div>
+                            
+                            <div class="row justify-content-center text-center logout my-2">
+                              <a class="btn confirm_btn_success w-50" style="background-color: black; color: white;" href="${pageContext.request.contextPath}/logout">Logout</a>
+                            </div>
                           
                           </div>
                           <div class="modal-footer">
@@ -321,44 +316,53 @@
 
 <!-- MODAL TRIGER -->
 <section>
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="height: 385px; overflow-y: hidden;">
   <div class="offcanvas-header">
   <h5 class="offcanvas-title" id="offcanvasRightLabel">Edit Profil</h5>
   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body w-100">
-
-  <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-3 col-form-label">Nama</label>
-      <div class="col-sm-9">
-          <a type="text" readonly class="form-control-plaintext" id="staticEmail" style="text-decoration: none;">${sessionScope.user.first_name} ${sessionScope.user.last_name}</a>
+  <div class="offcanvas-body w-100" style="height:883px;">
+    <div class="mb-3 row triger_modal m-0">
+      <div class="row nama">
+        <label for="staticEmail" class="col-sm-4 col-form-label m-0">Nama</label>
+        <div class="col-sm-8">
+            <a type="text" readonly class="form-control-plaintext" id="staticEmail" style="text-decoration: none;">${sessionScope.user.first_name} ${sessionScope.user.last_name}</a>
+        </div>
       </div>
 
-      <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
-      <div class="col-sm-9">
-          <a type="text" readonly class="form-control-plaintext" id="staticEmail" style="text-decoration: none;">${sessionScope.user.email}</a>
+      <div class="row email">
+        <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+        <div class="col-sm-8">
+            <a type="text" readonly class="form-control-plaintext" id="staticEmail" style="text-decoration: none;">${sessionScope.user.email}</a>
+        </div>
       </div>
 
-      <label for="staticEmail" class="col-sm-3 col-form-label setting_button ">Password</label>
-      <div class="col-sm-9">
-      <button type="button" class="btn btn-primary w-50 m-0" data-bs-toggle="modal" data-bs-target="#reset-PasswordDikaosan" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;" >Ubah Sandi</button>
+      <div class="row passord">
+        <label for="staticEmail" class="col-sm-4 col-form-label setting_button ">Password</label>
+        <div class="col-sm-8">
+        <button type="button" class="btn btn-primary w-50 m-0" data-bs-toggle="modal" data-bs-target="#reset-PasswordDikaosan" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;" >Change</button>
+        </div>
       </div>
 
-
-      <label for="staticEmail" class="col-sm-3 col-form-label setting_button ">History</label>
-      <div class="col-sm-9 my-2">
-        <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-toggle="modal" data-bs-target="#historyPembelian" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">History Pembelian</button>
+      <div class="row history">
+        <label for="staticEmail" class="col-sm-4 col-form-label setting_button ">History</label>
+        <div class="col-sm-8 my-2">
+          <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-toggle="modal" data-bs-target="#historyPembelian" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">History</button>
+        </div>
+      </div>
+        
+      <div class="row dashboard">
+        <label for="staticEmail" class="col-sm-4 col-form-label setting_button ">Dashboard</label>
+        <div class="col-sm-8">
+          <a type="button" class="btn btn-primary confirm_btn_success w-50" href="${pageContext.request.contextPath}/dashboard" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">Dashboard</a>
+        </div>
       </div>
       
-      <label for="staticEmail" class="col-sm-3 col-form-label setting_button ">Dashboard</label>
-      <div class="col-sm-9">
-        <a type="button" class="btn btn-primary confirm_btn_success w-50 my-2" href="${pageContext.request.contextPath}/dashboard" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">Dashboard</a>
+      <div class="row logout d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-primary w-50 my-2 bottom-button" data-bs-toggle="modal" data-bs-target="#LogOut" style="background-color: black; border-color: black;">Logout</button>
       </div>
-
-
-      <button type="button" class="btn btn-primary confirm_btn_success w-50 my-2" data-bs-toggle="modal" data-bs-target="#LogOut" style="">Logout</button>
+    </div>
   </div>
 
-  </div>
 </div>
 </section>

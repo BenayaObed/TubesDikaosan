@@ -14,9 +14,9 @@
             <div class="row border-top pt-4 mt-4">
               <div class="col-sm-12">
                 <div class="footer-nav">
-                    <a class="nav-link" href="#">My Contact</a>
-                    <a class="nav-link" href="#">Contact Us</a>
-                    <a class="nav-link" href="#">Payment Methods</a>
+                    <a class="nav-link" href="#">&nbsp;</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact Us</a>
+                    <a class="nav-link" href="#">&nbsp;</a>
                 </div>
                 </div>
             </div>

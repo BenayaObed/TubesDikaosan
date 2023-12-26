@@ -1586,3 +1586,10 @@ line-height: 28.8px;
     margin-bottom: 70px;
 }
 
+.logout a{
+  color: white!important;
+}
+
+.logout{
+  margin-top: 20px;
+}
