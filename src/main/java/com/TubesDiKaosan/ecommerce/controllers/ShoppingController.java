@@ -43,6 +43,7 @@ public class ShoppingController {
     // ORDERS & CARTS
     @Autowired
     private ShoppingServices shoppingService;
+
     public Response getDraftOrder(String id) throws SQLException { // GET DRAFT ORDER (KERANJANG)
         if (shoppingService.getDraftOrder(id) == null)
             return new Response(HttpStatus.NOT_FOUND.value(), "NO Data!", null);
@@ -77,11 +78,6 @@ public class ShoppingController {
             OrderItemRequest request = new OrderItemRequest(product_id, color, size, 1,
                     (float) (product.getPrice() * 1));
             shoppingServices.addOrderItem(request, container_draft);
-
-            // check container draft
-            if(container_draft != null){
-                return "redirect:/shoping_cart";
-            }
             return "redirect:/shoping_cart";
         }
         return "redirect:/";
@@ -123,13 +119,13 @@ public class ShoppingController {
         return "redirect:/";
     }
 
-    
     @RequestMapping("/cancelOrder")
     public String cancelOrder(@RequestParam("order_id") Integer order_id, HttpSession session)
             throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
-            Orders orders = (Orders) shoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id()).getData();
+            Orders orders = (Orders) shoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id())
+                    .getData();
             if (orders != null) {
                 shoppingServices.cancelOrder(order_id);
                 return "redirect:/shoping_cart";

@@ -13,12 +13,18 @@
   <!-- Header Section Start -->
 
   <body>
+    <c:if test="${not empty alert}">
+        <script>
+          alert("${alert}")
+        </script>
+      </c:if>
     <!-- Navbar Section Start -->
     <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Content Section Start -->
     <section class="homepage_content">
+      
       <!-- div heading iklan -->
       <div class="iklan">
         <div class="row">

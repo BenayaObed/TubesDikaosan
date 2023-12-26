@@ -8,6 +8,7 @@
 <html lang="en">
   <head>
     <title>Description</title>
+    <%@ include file = "../../includes/fe_includes/_alert.jsp" %>
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
 
@@ -47,6 +48,7 @@
 
     <!-- Description Section Start -->
     <section class="description_content">
+
       <div class="container description my-5">
         <div class="row">
 
@@ -141,7 +143,9 @@
     <div class="container review-cont">
       <!-- if condition -->
       <c:if test="${not empty alert}">
-        ${alert}
+        <div class="alert alert-primary" role="alert">
+          ${alert}
+        </div>
       </c:if>
   
       <div class="row">
@@ -180,21 +184,6 @@
                 </c:forEach>
               </c:otherwise>
             </c:choose>
-            <!-- <c:forEach items="${riviews}" var="item">
-              <hr>
-              <div class="review-item">
-                <b>From : ${item.user.first_name} ${item.user.last_name}</b>
-                <div class="rating">
-                  Rating: ${item.rate} (${total_riviews})
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-                </div>
-                <p>Comment : ${item.comment}</p>
-              </div>
-              <hr>
-            </c:forEach> -->
-            <!-- Add more reviews as needed -->
           </div>
         </div>
       </div>
@@ -409,5 +398,5 @@
           });
       });
   </script>
-    </body>
+x    </body>
   </html>

@@ -11,7 +11,7 @@
   <body>
 
     <!-- Navbar Section Start -->
-    <%@ include file = "../../includes/fe_includes/_navbar-sidebar.jsp" %>
+    <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
 
     <!-- Activity Page Section Start -->
@@ -37,32 +37,6 @@
       </div>
     </section>
     <!-- Activity Page Section End -->
-    
-    <!-- Modal Section Start -->
-    <section class="modal">
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">Edit Profil</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body w-100">
-          <div class="mb-3 row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Nama:</label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Velman Harefa">
-            </div>
-  
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="velman@gmail.com">
-            </div>
-
-            
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Modal Section End -->
     
     <!-- Content Section Start -->
     <section class="shop_content">

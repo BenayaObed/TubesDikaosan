@@ -69,7 +69,7 @@
                       <td> ${category.visible == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'}</td>
                       <td>
                         <a href="${pageContext.request.contextPath}/dashboard/categories/edit?categoryID=${category.category_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="${pageContext.request.contextPath}/dashboard/category/delete?categoryID=${category.category_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hide</a>
+                        <a href="${pageContext.request.contextPath}/dashboard/categories/delete?categoryID=${category.category_id}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hide</a>
                       </td>
                     </tr>
                   </c:forEach>
@@ -101,6 +101,12 @@
   <!-- Main Footer -->
   <%@ include file = "../../includes/dashboard/_footer.jsp" %>
 </div>
+<c:if test="${not empty alert}">
+  <script>
+    alert("${alert}")
+  </script>
+    </c:if>
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

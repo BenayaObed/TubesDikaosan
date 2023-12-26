@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.models.Users;
@@ -22,7 +23,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/dashboard/users")
 public class AdminController {
-     @Autowired
+    @Autowired
     private List<UsersService> usersServices;
 
     @RequestMapping({ "", "/" })
@@ -54,6 +55,7 @@ public class AdminController {
                     if (userService instanceof AdminService) {
                         List<Roles> roles = (List<Roles>) ((AdminService) userService).getAllRoles().getData();
                         model.addAttribute("data", roles);
+
                         return "pages/dashboard/employees_add";
                     }
                 }
@@ -63,7 +65,8 @@ public class AdminController {
     }
 
     @PostMapping("/save")
-    public String create(UserRequest userRequest, Model model, HttpSession session) throws SQLException {
+    public String create(UserRequest userRequest, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("title", "Create User");
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
@@ -71,6 +74,7 @@ public class AdminController {
                 for (UsersService userService : usersServices) {
                     if (userService instanceof AdminService) {
                         userService.createData(userRequest);
+                        redirectAttributes.addFlashAttribute("alert", "Data berhasil ditambah");
                         return "redirect:/dashboard/users";
                     }
                 }
@@ -100,7 +104,8 @@ public class AdminController {
     }
 
     @PostMapping("/update")
-    public String update(@RequestParam String userID, UserRequest userRequest, Model model, HttpSession session)
+    public String update(@RequestParam String userID, UserRequest userRequest, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes)
             throws SQLException {
         model.addAttribute("title", "Edit User");
         if (session.getAttribute("user") != null) {
@@ -109,10 +114,14 @@ public class AdminController {
                 for (UsersService userService : usersServices) {
                     if (userService instanceof AdminService) {
                         Response response = ((AdminService) userService).updateDataById(userID, userRequest);
-                        if (response.getStatus() == 200) 
+                        if (response.getStatus() == 200) {
+                            redirectAttributes.addFlashAttribute("alert", "Data berhasil diupdate");
                             return "redirect:/dashboard/users";
-                        else
+                        } else {
+                            redirectAttributes.addFlashAttribute("alert", "Data gagal diupdate");
                             return "redirect:/dashboard/users/edit?userID=" + userID;
+                        }
+
                     }
                 }
             }
@@ -121,20 +130,25 @@ public class AdminController {
     }
 
     @RequestMapping("/delete")
-    public String delete(@RequestParam String userID, Model model, HttpSession session) throws SQLException {
+    public String delete(@RequestParam String userID, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("title", "Delete User");
         if (session.getAttribute("user") != null) {
             for (UsersService userService : usersServices) {
                 if (userService instanceof AdminService) {
                     Response response = ((AdminService) userService).deleteDataByID(userID);
-                    if (response.getStatus() == 200) 
+                    if (response.getStatus() == 200) {
+                        redirectAttributes.addFlashAttribute("alert", "Data gagal didelete");
                         return "redirect:/dashboard/users";
-                    else
+                    } else {
+                        redirectAttributes.addFlashAttribute("alert", "Data gagal didelete");
                         return "redirect:/dashboard/users";
+                    }
+
                 }
             }
         }
         return "redirect:/";
     }
-    
+
 }

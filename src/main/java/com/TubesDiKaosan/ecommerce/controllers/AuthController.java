@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.TubesDiKaosan.ecommerce.models.Roles;
 import com.TubesDiKaosan.ecommerce.models.Users;
@@ -56,17 +57,18 @@ public class AuthController {
                 UserRequest.setRole(role_id.getRole_id());
                 Response response = ((CustomerService) userService).createData(UserRequest);
                 if (!response.getMessage().equals("Email not found")) {
-                    return "redirect:/login";
+                    return "redirect:/";
                 } else
-                    return "redirect:/register";
+                    return "redirect:/";
             }
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     // auth login
     @PostMapping("/authentication")
     public String authtentication(
+            RedirectAttributes redirectAttributes,
             @RequestParam("Email") String Email,
             @RequestParam("password") String password, Model model,
             HttpSession session) throws SQLException {
@@ -82,12 +84,14 @@ public class AuthController {
                     } else if (user.getRole().getRole_name().equals("CUSTOMER")) {
                         return "redirect:/";
                     }
-                } else
-                    return "redirect:/register";
+                } else {
+                    redirectAttributes.addFlashAttribute("alert", "salah password atau email ^_^");
+                    return "redirect:/";
+                }
             }
         }
         return "redirect:/login";
-        
+
     }
 
     @PostMapping("/users/{uuid}/update-password")
@@ -133,8 +137,8 @@ public class AuthController {
         if (session.getAttribute("user") != null) {
             session.removeAttribute("user");
             session.invalidate();
-            return "redirect:/login";
+            return "redirect:/";
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 }

@@ -9,6 +9,7 @@
     <%@ include file = "../../includes/fe_includes/_header.jsp" %>
   </head>
   <body>
+    
     <!-- Navbar Section Start -->
     <%@ include file = "../../includes/fe_includes/_navbar.jsp" %>
     <!-- Navbar Section End -->
@@ -48,7 +49,7 @@
     <!-- Content Checkout Start-->
     <section class="content">
       <div class="row">
-        <div class="col-12 d-flex">
+        <div class="col-12 d-flex border border-danger">
           <div class="col-sm-6 ">
 
             <div class="row ">
@@ -118,7 +119,12 @@
                       </div>
                     </div>
               </c:forEach>
-            </div>
+
+                
+                </div>
+              
+            
+            
     
 
             <!-- container produk checkout END -->
@@ -132,7 +138,7 @@
                       <div class="button_continue_shoping col-sm-6 d-flex flex-column">
                         <a href="${pageContext.request.contextPath}/shop" class="btn btn-add-cart d-flex justify-content-center align-items-center">Continue Shoping</a>
                       </div>
-                      <div class="button_update_cart col-sm-6 d-flex flex-column">
+                      <div class="button_update_cart col-sm-6 d-flex flex-column align-items-end">
                         <form action="${pageContext.request.contextPath}/cancelOrder" method="post">
                           <input type="hidden" name="order_id" value="${order_id}">
                           <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center">Cancel Order</button>
@@ -240,7 +246,11 @@
             </div>
     </section>
     <!-- Content Checkout End -->
-
+    <c:if test="${not empty alert}">
+      <script>
+        alert("${alert}")
+      </script>
+    </c:if>
     <!-- Footer Section Start -->
     <%@ include file = "../../includes/fe_includes/_footer.jsp" %>
     <!-- Footer Section End-->
@@ -248,5 +258,54 @@
     <!-- Script Section Start -->
     <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
     <!-- Script Section End -->
+
+    <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
+                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                            <script>
+                              $(document).ready(function () {
+  $('.plus').on('click', function () {
+    var index = $(this).data('index');
+    updateQuantity(index, 'plus');
+  });
+
+  $('.minus').on('click', function () {
+    var index = $(this).data('index');
+    updateQuantity(index, 'minus');
+  });
+});
+
+function updateQuantity(index, action) {
+  var inputSelector = '.quantity-input[data-index="' + index + '"]';
+  var quantityInput = $(inputSelector);
+  var currentQuantity = parseInt(quantityInput.val());
+
+  var priceSelector = '.harga.col-sm-8 p.price'; // Corrected price selector
+  var priceElement = $('.total-price[data-index="' + index + '"]');
+  var itemPrice = parseInt($(priceSelector).text().replace('IDR', '')); // Corrected price selector
+  if (action === 'plus') {
+    currentQuantity++;
+  } else if (action === 'minus' && currentQuantity > 1) {
+    currentQuantity--;
+  }
+
+  quantityInput.val(currentQuantity);
+
+  // Update the total based on quantity and price
+  var total = currentQuantity * itemPrice;
+
+  console.log(total);
+  priceElement.text('IDR ' + total.toFixed(3));
+
+  // If the quantity becomes 0, you might want to remove the item or handle it accordingly
+  if (currentQuantity === 0) {
+    // ?
+  }
+}
+
+
+
+                            </script>
   </body>
 </html>
