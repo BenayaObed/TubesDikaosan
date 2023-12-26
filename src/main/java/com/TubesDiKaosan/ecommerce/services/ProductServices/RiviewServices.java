@@ -21,7 +21,8 @@ public class RiviewServices extends BaseServices<RiviewRequest, Integer> {
 
     @Override
     public Response getAll() throws SQLException {
-        return new Response(HttpStatus.BAD_REQUEST.value(), "Bad Request", null);
+        List<Riviews> data = riviewRepository.findAll();
+        return new Response(HttpStatus.OK.value(), "success", data);
     }
 
     @Override

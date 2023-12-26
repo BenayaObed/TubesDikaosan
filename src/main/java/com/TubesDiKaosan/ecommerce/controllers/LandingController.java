@@ -1,12 +1,15 @@
 package com.TubesDiKaosan.ecommerce.controllers;
 
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.TubesDiKaosan.ecommerce.models.Category;
 import com.TubesDiKaosan.ecommerce.models.Orders;
 import com.TubesDiKaosan.ecommerce.models.OrdersItem;
 import com.TubesDiKaosan.ecommerce.models.Payment;
@@ -22,11 +26,13 @@ import com.TubesDiKaosan.ecommerce.models.Product;
 import com.TubesDiKaosan.ecommerce.models.Riviews;
 import com.TubesDiKaosan.ecommerce.models.Stock;
 import com.TubesDiKaosan.ecommerce.models.Users;
+import com.TubesDiKaosan.ecommerce.payloads.AnotherClass.ShopPageData;
 import com.TubesDiKaosan.ecommerce.payloads.response.Response;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.AdminService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.CustomerService;
 import com.TubesDiKaosan.ecommerce.services.ActorServices.UsersService;
 import com.TubesDiKaosan.ecommerce.services.PaymentServices.PaymentMethodService;
+import com.TubesDiKaosan.ecommerce.services.ProductServices.CategoryService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.ProductService;
 import com.TubesDiKaosan.ecommerce.services.ProductServices.RiviewServices;
 import com.TubesDiKaosan.ecommerce.services.ShoppingServices.ShoppingServices;
@@ -40,6 +46,9 @@ public class LandingController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Autowired
     private ShoppingServices ShoppingServices;
@@ -63,16 +72,110 @@ public class LandingController {
         return "pages/fe/homepage";
     }
 
+    // @RequestMapping("/shop")
+    // public String shop(@RequestParam(required = false) String category,
+    //         @RequestParam(required = false) String keyword,
+    //         Model model, HttpSession session) throws SQLException {
+    //     List<Product> products = (List<Product>) productService.getAll().getData();
+    //     List<Riviews> riviews = (List<Riviews>) riviewServices.getAll().getData();
+
+    //     // Calculate mean ratings
+    //     Map<Integer, Float> mean = new HashMap<>();
+    //     Map<Integer, Integer> count = new HashMap<>();
+
+    //     for (Riviews riview : riviews) {
+    //         int productId = riview.getProduct().getProduct_id();
+    //         float rate = riview.getRate();
+
+    //         mean.merge(productId, rate, Float::sum);
+    //         count.merge(productId, 1, Integer::sum);
+    //     }
+
+    //     mean.replaceAll((productId, total) -> total / count.get(productId));
+
+    //     // Query for categories
+    //     List<String> categories = (List<String>) categoryService.getAll().getData();
+
+    //     if (category != null) {
+    //         // Filter products by category
+    //         products = products.stream()
+    //                 .filter(product -> {
+    //                     Category productCategory = product.getCategory();
+    //                     return productCategory != null &&
+    //                             productCategory.getCategory_name().equalsIgnoreCase(category);
+    //                 }).collect(Collectors.toList());
+
+    //         mean.keySet().retainAll(products.stream().map(Product::getProduct_id).collect(Collectors.toSet()));
+    //     }
+
+    //     // Query for best sellers
+    //     List<Product> bestSellers = (List<Product>) productService.getBestSeller().getData();
+    //     ShopPageData shopPageData = new ShopPageData("Shop", products, mean,
+    //             categories, bestSellers);
+    //     model.addAttribute("shopPageData", shopPageData);
+
+    //     return "pages/fe/shop";
+    // }
+
     @RequestMapping("/shop")
-    public String shop(Model model, HttpSession session) throws SQLException {
-        model.addAttribute("title", "Shop");
-        for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                return "pages/fe/shop";
-            }
+public String shop(@RequestParam(required = false) String category,
+                   @RequestParam(required = false) String search,
+                   Model model, HttpSession session) throws SQLException {
+    List<Product> products;
+
+    // Search products by search
+    if (search != null && !search.isEmpty()) {
+        Response searchResponse = productService.searchProduct(search);
+        if (searchResponse.getStatus() == HttpStatus.OK.value()) {
+            products = (List<Product>) searchResponse.getData();
+        } else {
+            // Handle the case when no products are found
+            model.addAttribute("errorMessage", "No products found for the given keyword.");
+            return "pages/fe/shop";
         }
-        return "pages/fe/shop";
+    } else {
+        // If no search is provided, retrieve all products
+        products = (List<Product>) productService.getAll().getData();
     }
+
+    List<Riviews> reviews = (List<Riviews>) riviewServices.getAll().getData();
+
+    // Calculate mean ratings
+    Map<Integer, Float> mean = new HashMap<>();
+    Map<Integer, Integer> count = new HashMap<>();
+
+    for (Riviews review : reviews) {
+        int productId = review.getProduct().getProduct_id();
+        float rate = review.getRate();
+
+        mean.merge(productId, rate, Float::sum);
+        count.merge(productId, 1, Integer::sum);
+    }
+
+    mean.replaceAll((productId, total) -> total / count.get(productId));
+
+    // Filter products by category
+    if (category != null) {
+        products = products.stream()
+                .filter(product -> {
+                    Category productCategory = product.getCategory();
+                    return productCategory != null && productCategory.getCategory_name().equalsIgnoreCase(category);
+                }).collect(Collectors.toList());
+
+        mean.keySet().retainAll(products.stream().map(Product::getProduct_id).collect(Collectors.toSet()));
+    }
+
+    // Query for categories
+    List<String> categories = (List<String>) categoryService.getAll().getData();
+
+    // Query for best sellers
+    List<Product> bestSellers = (List<Product>) productService.getBestSeller().getData();
+
+    ShopPageData shopPageData = new ShopPageData("Shop", products, mean, categories, bestSellers);
+    model.addAttribute("shopPageData", shopPageData);
+
+    return "pages/fe/shop";
+}
 
     @RequestMapping("/contact")
     public String contact(Model model, HttpSession session) throws SQLException {
@@ -109,15 +212,15 @@ public class LandingController {
         }
 
         List<Riviews> riviews = (List<Riviews>) riviewServices.riviewsByProduct(product).getData();
-        // mean rating
-        Float mean = 0f;
-        for (Riviews riview : riviews) {
-            mean += riview.getRate();
+        if (riviews != null) {
+            Float mean = 0f;
+            for (Riviews riview : riviews)
+                mean += riview.getRate();
+            model.addAttribute("total_rating", mean / riviews.size());
+            model.addAttribute("riviews", riviews);
+            model.addAttribute("total_riviews", riviews.size());
         }
-        
-        model.addAttribute("total_riviews", riviews.size());
-        model.addAttribute("total_rating", mean / riviews.size());
-        model.addAttribute("riviews", riviews);
+
         model.addAttribute("data_stock", data);
         model.addAttribute("data", data_product);
 

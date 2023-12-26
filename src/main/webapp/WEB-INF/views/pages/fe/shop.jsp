@@ -1,4 +1,7 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="session" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,26 +75,14 @@
                 <div class="dropdown">
                   <ul class="list-group">
                     <li class="list-group-item category">CATEGORIES</li>
-                    <li class="list-group-item filter">
-                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
-                        Clothing
-                      </a> 
-                    </li>
-                    <li class="list-group-item filter">
-                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
-                        Bag
-                      </a> 
-                    </li>
-                    <li class="list-group-item filter">
-                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
-                        Shoes
-                      </a> 
-                    </li>
-                    <li class="list-group-item filter">
-                      <a href="${pageContext.request.contextPath}/home" style="text-decoration: none;">
-                        Accessories
-                      </a> 
-                    </li>
+                    <c:forEach items="${shopPageData.getCategories()}" var = "item">
+                      <li class="list-group-item filter">
+                        <a href="${pageContext.request.contextPath}/shop?category=${item.category_name}" style="text-decoration: none;">
+                          ${item.category_name}
+                        </a> 
+                      </li>
+                  </c:forEach>
+                    
                   </ul>
                 </div>
               </div>
@@ -125,15 +116,18 @@
 
                 
                 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 m-0">
+                  <c:forEach items="${shopPageData.products}" var="product">
+                    <c:if test="${product.visible == 1}">
 
-                  <div class="filterDiv best p-0">
+                    <c:set var="isBestSeller" value="${shopPageData.bestSellers.contains(product)}" />
+                  <div class="filterDiv ${isBestSeller ? 'best' : 'new'} p-0">
                     <div class="col d-flex flex-column p-2">
-                      <a href="${pageContext.request.contextPath}/description" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                      <img class="product-img" style="width: 220px; height: 217px;" src="${pageContext.request.contextPath}/resources/images/Produk/G1.jpg" />
+                      <a href="${pageContext.request.contextPath}/description?product=${product.product_id}" class="col d-flex flex-column p-0" style="text-decoration: none;">
+                      <img class="product-img" style="width: 220px; height: 217px;" src="${pageContext.request.contextPath}/resources/uploads/images/products/${product.images[0].image}" alt="product">
                         <div class="row p-0 m-0">
                           <div class="col-12 p-0 product-desc ">
-                            <p class="mb-0 p-0">Man Kimono Set</p>
-                            <p class="mb-0 p-0">Rp 249.999</p>
+                            <p class="mb-0 p-0">${product.name_product}</p>
+                            <p class="mb-0 p-0">Rp ${product.price}</p>
                           </div>
                       </a>
                         <div class="col-3 product-rating d-flex p-0">
@@ -147,213 +141,15 @@
                             </a>
                           </div>
                           <div class="col-5" style="text-align: end;">
-                            <a>4.0</a>
+                            <a>${shopPageData.meanRatings[product.product_id] == null ? 0 : shopPageData.meanRatings[product.product_id]}</a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                </c:if>
 
-                  <div class="filterDiv new p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                        <img class="product-img" style="width: 220px; height: 217px;" src="${pageContext.request.contextPath}/resources/images/Produk/G2.jpg" />
-                        <div class="row p-0 m-0">
-                          <div class="col-12 p-0 product-desc">
-                            <p class="mb-0 p-0">Reebok M1 Shoes</p>
-                            <p class="mb-0 p-0">Rp 699.999</p>
-                          </div>
-                      </a>
-                        <div class="col-3 product-rating d-flex p-0">
-                          <div class="col-7">
-                            <a style="text-decoration: none;" >
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--YN300, #FFC400)" class="bi bi-star-fill" viewBox="0 0 16 16">
-                                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                </svg>
-                              </span>
-                            </a>
-                          </div>
-                          <div class="col-5" style="text-align: end;">
-                            <a>4.0</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv best p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <a href="#" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G3.jpg" />
-                        <div class="row p-0 m-0">
-                          <div class="col-11 p-0 w product-desc">
-                            <p class="mb-0 p-0">Burnion Denim Jacket</p>
-                            <p class="mb-0 p-0">Rp 349.999</p>
-                          </div>
-                      </a>
-                        <div class="col-3 product-cart d-flex justify-content-center p-0 pt-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                              <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                            </svg>
-                            <a href="#">5.0</a>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv new p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G4.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Black Glasses</p>
-                          <p class="mb-0 p-0">Rp 149.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv best p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G5.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">School Bag</p>
-                          <p class="mb-0 p-0">Rp 119.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv new p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G6.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Woman Long Pants</p>
-                          <p class="mb-0 p-0">Rp 299.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv best p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G7.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Cute Cat T-Shirt Set</p>
-                          <p class="mb-0 p-0">Rp 119.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="filterDiv new p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G8.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Comfortable Jacket</p>
-                          <p class="mb-0 p-0">Rp 499.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv best p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G9.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Nike Vision Set Woman</p>
-                          <p class="mb-0 p-0">Rp 799.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv new p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G10.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Purlinama Hat</p>
-                          <p class="mb-0 p-0">Rp 39.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv best p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G11.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Man Short Pants</p>
-                          <p class="mb-0 p-0">Rp 59.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="filterDiv new p-0">
-                    <div class="col d-flex flex-column p-2">
-                      <img class="product-img" src="${pageContext.request.contextPath}/resources/images/Produk/G12.jpg" />
-                      <div class="row p-0 m-0">
-                        <div class="col-11 p-0 w product-desc">
-                          <p class="mb-0 p-0">Loafers Man Shoes</p>
-                          <p class="mb-0 p-0">Rp 1.499.999</p>
-                        </div>
-                        <div class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </c:forEach>
                 </div>
 
               </div>

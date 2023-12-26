@@ -327,4 +327,9 @@ public class ProductService extends BaseServices<ProductRequest, Integer> {
         } else
             return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
     }
+
+    public Response getBestSeller() {
+        List<Product> data = productRepository.getBestSeller();
+        return new Response(HttpStatus.OK.value(), "success", data);
+    }
 }

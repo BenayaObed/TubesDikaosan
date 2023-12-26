@@ -30,4 +30,11 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     // hide product
     @Query(value = "UPDATE product SET visible = 0 WHERE product_id = ?1", nativeQuery = true)
     void hideProduct(int product_id);
+
+    //     @Query(value = "SELECT product.*, SUM(orders_item.quantity) AS total_quantity FROM product JOIN orders_item ON product.product_id = orders_item.product_id GROUP BY product.product_id ORDER BY total_quantity DESC LIMIT 5", nativeQuery = true)
+    // @Query(value = "SELECT * FROM product WHERE product_id IN (SELECT product_id FROM orders_item GROUP BY product_id ORDER BY SUM(quantity) DESC LIMIT 5) AND product_id IN (SELECT product_id FROM reviews GROUP BY product_id ORDER BY COUNT(product_id) DESC LIMIT 5)", nativeQuery = true)
+    
+        // Best Seller product (top 5) by orders item quantity product and status orders is'delivered' and reviews 'rate > 3'
+    @Query(value = "SELECT product.*, SUM(orders_item.quantity) AS total_quantity FROM product JOIN orders_item ON product.product_id = orders_item.product_id JOIN orders ON orders_item.order_id = orders.order_id JOIN reviews ON product.product_id = reviews.product_id WHERE orders.status = 'delivered' AND reviews.rate > 3 GROUP BY product.product_id ORDER BY total_quantity DESC LIMIT 5", nativeQuery = true)
+    List<Product> getBestSeller();
 }
