@@ -271,7 +271,7 @@ public String shop(@RequestParam(required = false) String category,
                 }
                 model.addAttribute("total", total);
                 return "pages/fe/checkout";
-            }
+x            }
             return "redirect:/shoping_cart";
         }
         return "redirect:/";

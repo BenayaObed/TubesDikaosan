@@ -118,6 +118,10 @@
                       </div>
                     </div>
               </c:forEach>
+
+                
+                </div>
+              </div>
             </div>
     
 
@@ -248,5 +252,57 @@
     <!-- Script Section Start -->
     <%@ include file = "../../includes/fe_includes/_scripts.jsp" %>
     <!-- Script Section End -->
+
+    <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
+                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                            <script>
+                              $(document).ready(function () {
+  $('.plus').on('click', function () {
+    var index = $(this).data('index');
+    updateQuantity(index, 'plus');
+  });
+
+  $('.minus').on('click', function () {
+    var index = $(this).data('index');
+    updateQuantity(index, 'minus');
+  });
+});
+
+function updateQuantity(index, action) {
+  var inputSelector = '.quantity-input[data-index="' + index + '"]';
+  var quantityInput = $(inputSelector);
+  var currentQuantity = parseInt(quantityInput.val());
+
+  var priceSelector = '.harga.col-sm-8 p.price'; // Corrected price selector
+  var priceElement = $('.total-price[data-index="' + index + '"]');
+  var itemPrice = parseInt($(priceSelector).text().replace('IDR', '')); // Corrected price selector
+  if (action === 'plus') {
+    currentQuantity++;
+  } else if (action === 'minus' && currentQuantity > 1) {
+    currentQuantity--;
+  }
+
+  quantityInput.val(currentQuantity);
+
+  // Update the total based on quantity and price
+  var total = currentQuantity * itemPrice;
+
+  console.log(total);
+  priceElement.text('IDR ' + total.toFixed(3));
+
+  // If the quantity becomes 0, you might want to remove the item or handle it accordingly
+  if (currentQuantity === 0) {
+    // ?
+  }
+}
+
+function TotalItems()
+var priceSelector = '.harga.col-sm-8 p.price'; // Corrected price selector
+var priceElement = $('.total-price[data-index="' + index + '"]');
+var itemPrice = parseInt($(priceSelector).text().replace('IDR', '')); // Corrected price selector
+
+                            </script>
   </body>
 </html>
