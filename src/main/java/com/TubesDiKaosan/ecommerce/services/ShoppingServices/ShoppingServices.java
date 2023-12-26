@@ -292,5 +292,4 @@ public class ShoppingServices {
             return new Response(HttpStatus.OK.value(), "Success", ordersItems);
         }
     }
-    
 }

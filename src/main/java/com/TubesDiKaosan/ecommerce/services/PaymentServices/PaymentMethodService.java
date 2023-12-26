@@ -63,14 +63,18 @@ public class PaymentMethodService extends BaseServices<PaymentMethodRequest, Int
 
     @Override
     public Response createData(PaymentMethodRequest request) throws SQLException {
-        if (this.findByName(request.getPayment_method_name()) != null)
-            return new Response(HttpStatus.BAD_REQUEST.value(), "Payment method name already exist!", null);
-        PaymentMethod data = new PaymentMethod();
-        data.setPayment_method_name(request.getPayment_method_name());
-        data.setNorek(request.getNorek());
-        data.setIsActive(request.getIsActive());
-        paymentMethodRepository.save(data);
-        return new Response(HttpStatus.OK.value(), "success", data);
+        if (paymentMethodRepository.findByName(request.getPayment_method_name()) != null)
+            return new Response(HttpStatus.CONFLICT.value(), "Data already exist!", null);
+        else {
+            System.out.println(request.getPayment_method_name());
+            System.out.println(request.getNorek());
+            PaymentMethod data = new PaymentMethod();
+            data.setPayment_method_name(request.getPayment_method_name());
+            data.setNorek(request.getNorek());
+            data.setIsActive(request.getIsActive());
+            paymentMethodRepository.save(data);
+            return new Response(HttpStatus.OK.value(), "success", data);
+        }
     }
 
     public Response findByName(String payment_method_name) {

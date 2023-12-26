@@ -40,13 +40,13 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <form action="${pageContext.request.contextPath}/dashboard/payment-method/save" method="POST">
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">${title}</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">${title}</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  <form action="${pageContext.request.contextPath}/dashboard/payment-method/save" method="POST">
                   <div class="form-group">
                     <label for="exampleInputBorder">Payment Method</label>
                     <input type="text" class="form-control form-control-border" id="payment_method_name" name="payment_method_name" placeholder="Enter category">
@@ -63,10 +63,10 @@
                     </select>
                   </div>
                   <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                </form>
                 </div>
                 <!-- /.card-body -->
               </div>
-            </form>
           </div>
         </div>
         <!-- /.row -->
