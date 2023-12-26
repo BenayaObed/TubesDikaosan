@@ -56,12 +56,12 @@ public class AuthController {
                 UserRequest.setRole(role_id.getRole_id());
                 Response response = ((CustomerService) userService).createData(UserRequest);
                 if (!response.getMessage().equals("Email not found")) {
-                    return "redirect:/login";
+                    return "redirect:/";
                 } else
-                    return "redirect:/register";
+                    return "redirect:/";
             }
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     // auth login
@@ -83,10 +83,10 @@ public class AuthController {
                         return "redirect:/";
                     }
                 } else
-                    return "redirect:/register";
+                    return "redirect:/";
             }
         }
-        return "redirect:/login";
+        return "redirect:/";
         
     }
 
@@ -133,8 +133,8 @@ public class AuthController {
         if (session.getAttribute("user") != null) {
             session.removeAttribute("user");
             session.invalidate();
-            return "redirect:/login";
+            return "redirect:/";
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 }

@@ -83,21 +83,26 @@
       </div>
       <div class="offcanvas-body w-100">
         <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Nama:</label>
-          <div class="col-sm-10">
+          <label for="staticEmail" class="col-sm-3 col-form-label">Nama:</label>
+          <div class="col-sm-9">
             <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Velman Harefa">
           </div>
 
-          <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="velmanh24@gmail.com">
+          <label for="staticEmail" class="col-sm-3 col-form-label">Email:</label>
+          <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="velmanh25@gmail.com">
           </div>
 
-          <label for="staticEmail" class="col-sm-4 col-form-label">Password:</label>
-          <div class="col-sm-8">
-            <button id="staticEmail">Change Password</button>
-            <!-- <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="velmanh24@gmail.com"> -->
+          <label for="staticEmail" class="col-sm-3 col-form-label">Password:</label>
+          <div class="col-sm-9">
+            <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-toggle="modal" data-bs-target="#reset-PasswordDikaosan">Ubah Sandi</button>
           </div>
+
+          <div class="history d-flex flex-column justify-content-center align-items-center my-2">
+            <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-toggle="modal" data-bs-target="#historyPembelian">History Pembelian</button>
+            <button type="button" class="btn btn-primary confirm_btn_success w-50 my-2" data-bs-toggle="modal" data-bs-target="#LogOut">Logout</button>
+          </div>
+          
         </div>
         
 
@@ -106,6 +111,164 @@
 
     <!-- Modal Section End -->
     
+    <!-- MODAL-->
+    <section>
+      <!-- Modal Reset Password -->
+      <div class="modal reset_password" id="reset-PasswordDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content login">
+            <div class="modal-header title">
+              <h1 class="modal-title fs-5" id="loginDikaosan">Change Password</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+  
+              <div class="row oldPass">
+                <a>Old Password</a>
+                <span class="input-oldPass">
+                  <input class="form-control oldPass" type="text" name="oldPass" id="oldPass" placeholder="">
+                </span>
+              </div>
+  
+              <div class="row newPass">
+                <a>New Password</a>
+                <span class="input-newPass">
+                  <input class="form-control newPass" type="text" name="newPass" id="newPass" placeholder="">
+                </span>
+              </div>
+  
+              <div class="row confirmPass">
+                <a>Confirm New Password</a>
+                <span class="input-confirmPass">
+                  <input class="form-control confirmPass" type="text" name="confirmPass" id="confirmPass" placeholder="">
+                </span>
+              </div>
+  
+              <div class="row justify-content-center text-center">
+                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#SuccessfullyResetPass" data-bs-toggle="modal">Set Password</button>
+              </div>
+  
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Modal Successfully Reset Password -->
+      <div class="modal successResetPass" id="SuccessfullyResetPass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content Sign-Up">
+            <div class="modal-header justify-content-center">
+              <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
+            </div>
+            <div class="modal-body">
+  
+              <div class="row succes text-center">
+                <a>Your Account Has Been Successfully<br> 
+                  Reset Password!
+                </a>
+              </div>
+              
+              <div class="row justify-content-center text-center my-2">
+                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Oke</button>
+              </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal History-->
+      <div class="modal history_pembelian" id="historyPembelian" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content login">
+            <div class="modal-header title">
+              <h1 class="modal-title fs-5" id="loginDikaosan">History Pembelian</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+              <div class="header_list">
+                <ul class="list-group list-group-horizontal">
+                    <div class="col-6">
+                      <li class="list-group-item" style="text-align: center;">Order Item</li>
+                    </div>
+                    <div class="col-6">
+                      <li class="list-group-item" style="text-align: center;">Status</li>
+                    </div>
+                </ul>
+
+                <ul class="list-group list-group-horizontal">
+                  <div class="col-6">
+                    <li class="list-group-item" style="text-align: center;">1</li>
+                  </div>
+                  <div class="col-6">
+                    <li class="list-group-item" style="text-align: center;">Sending</li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Logout-->
+      <div class="modal history_pembelian" id="LogOut" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content login">
+            <div class="modal-header title">
+              <h1 class="modal-title fs-5" id="loginDikaosan">Ready to Logout?</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row succes text-center">
+                <a>Select "Logout" below if you are ready to end your current session!
+                </a>
+              </div>
+
+              <div class="row justify-content-center text-center my-2">
+                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="#">Logout</button>
+              </div>
+            
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Successfully Logout -->
+      <div class="modal successResetPass" id="SuccessfullyResetPass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content Sign-Up">
+            <div class="modal-header justify-content-center">
+              <h1 class="modal-title fs-5" id="Successfully">Welcome to Dikaosan!</h1>
+            </div>
+            <div class="modal-body">
+
+              <div class="row succes text-center">
+                <a>Your Account Has Been Successfully<br> 
+                  Reset Password!
+                </a>
+              </div>
+              
+              <div class="row justify-content-center text-center my-2">
+                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Oke</button>
+              </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <!-- MODAL -->
+
     <!-- Content Section Start -->
     <section class="shop_content">
       <div class="container">
