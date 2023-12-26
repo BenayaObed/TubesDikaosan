@@ -38,10 +38,6 @@
     </section>
     <!-- Activity Page Section End -->
     
-    <!-- Modal Section Start -->
-    <%@ include file = "../../includes/fe_includes/_modal.jsp" %>
-    <!-- Modal Section End -->
-    
     <!-- Content Section Start -->
     <section class="shop_content">
       <div class="container">

@@ -71,11 +71,19 @@ public class LandingController {
             if (userService instanceof UsersService) {
                 List<Product> products = (List<Product>) productService.getAll().getData();
                 model.addAttribute("products", products);
+                Users user = (Users) session.getAttribute("user");
+                if (user != null){
+                    List<Orders> history = (List<Orders>) ShoppingServices.getAllOrdersByUsers(user.getUser_id()).getData();
+                    session.setAttribute("history", history);
+                    // model.addAttribute("history", history);
+                        }
                 return "pages/fe/homepage";
             }
         }
         return "pages/fe/homepage";
     }
+
+    
 
     // @RequestMapping("/shop")
     // public String shop(@RequestParam(required = false) String category,

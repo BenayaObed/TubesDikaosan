@@ -18,8 +18,8 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
               <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
-              <a class="nav-link" href="${pageContext.request.contextPath}/shop">Shop</a>
-              <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact</a>
+              <a class="nav-link" aria-current="page"  href="${pageContext.request.contextPath}/shop">Shop</a>
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/contact">Contact</a>
             </div>
             <span class="nav-button-right">
                 <span class="input-search">
@@ -70,7 +70,7 @@
                               <div class="row password">
                                 <a>Password</a>
                                 <span class="input-password">
-                                  <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
+                                  <input class="form-control password" type="password" name="password" id="password" placeholder="Enter password">
                                 </span>
                               </div>
 
@@ -79,7 +79,7 @@
                               </div>  
 
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal" type="submit">Login</button>
+                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal" type="submit" style="background-color: black;">Login</button>
                                 <a class="my-1">Don't have an account? <span class="sign-up_btn" data-bs-toggle="modal" data-bs-target="#Sign-UpDikaosan"> <b>Sign Up</b></span></a>
                               </div>
                             </form>
@@ -102,16 +102,16 @@
                             <div class="modal-body">
 
                               <div class="row name">
-                                <a>Name</a>
+                                <a>First Name</a>
                                 <span class="input-name">
-                                  <input class="form-control name" type="text" name="name" id="name" placeholder="Your name">
+                                  <input class="form-control name" type="text" name="name" id="name" placeholder="First Name">
                                 </span>
                               </div>
                               
                               <div class="row phone_number">
-                                <a>Phone Number</a>
+                                <a>Last Name</a>
                                 <span class="input-phone_number">
-                                  <input class="form-control phone_number" type="text" name="phone_number" id="phone_number" placeholder="Your phone number">
+                                  <input class="form-control phone_number" type="text" name="phone_number" id="phone_number" placeholder="Last Name">
                                 </span>
                               </div>
 
@@ -125,7 +125,7 @@
                               <div class="row password">
                                 <a>Password</a>
                                 <span class="input-password">
-                                  <input class="form-control password" type="text" name="password" id="password" placeholder="Enter password">
+                                  <input class="form-control password" type="password" name="password" id="password" placeholder="Enter password">
                                 </span>
                                 <div id="passwordHelpBlock" class="form-text">
                                   Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
@@ -133,7 +133,7 @@
                               </div>
                               
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#Successfully" data-bs-toggle="modal">Sign Up</button>
+                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#Successfully" data-bs-toggle="modal" style="background-color: black;">Sign Up</button>
                               </div>
                             </div>
                             <div class="modal-footer">
@@ -158,7 +158,7 @@
                               </div>
                               
                               <div class="row justify-content-center text-center my-2">
-                                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Shop Now</button>
+                                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close" style="background-color: black;">Shop Now</button>
                               </div>
                             </div>
                             <div class="modal-footer">
@@ -196,10 +196,13 @@
                                 <span class="input-confirmPass">
                                   <input class="form-control confirmPass" type="text" name="confirmPass" id="confirmPass" placeholder="">
                                 </span>
+                                <div id="passwordHelpBlock" class="form-text">
+                                  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                </div>
                               </div>
                   
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#SuccessfullyResetPass" data-bs-toggle="modal">Set Password</button>
+                                <button class="btn btn-primary confirm_btn w-50" data-bs-target="#SuccessfullyResetPass" data-bs-toggle="modal" style="background-color: black;">Set Password</button>
                               </div>
                   
                             </div>
@@ -225,7 +228,7 @@
                               </div>
                               
                               <div class="row justify-content-center text-center my-2">
-                                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close">Oke</button>
+                                <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-dismiss="modal" aria-label="Close" style="background-color: black;">Oke</button>
                               </div>
                             </div>
                             <div class="modal-footer">
@@ -246,22 +249,30 @@
                             <form id="history">
                                 <div class="header_list">
                                   <ul class="list-group list-group-horizontal">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <li class="list-group-item" style="text-align: center;">Order Item</li>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <li class="list-group-item" style="text-align: center;">Status</li>
                                     </div>
+                                    <div class="col-4">
+                                      <li class="list-group-item" style="text-align: center;">Action</li>
+                                  </div>
                                 </ul>
-                    
-                                <ul class="list-group list-group-horizontal">
-                                    <div class="col-6">
-                                    <li class="list-group-item" style="text-align: center;">1</li>
-                                    </div>
-                                    <div class="col-6">
-                                    <li class="list-group-item" style="text-align: center;">Sending</li>
-                                    </div>
-                                </ul>
+                                <c:forEach items="${sessionScope.history}" var="item">
+                                  <ul class="list-group list-group-horizontal">
+                                      <div class="col-4">
+                                      <li class="list-group-item" style="text-align: center;">${item.order_id}</li>
+                                      </div>
+                                      <div class="col-4">
+                                      <li class="list-group-item" style="text-align: center;">${item.status}</li>
+                                      </div>
+                                      <div class="col-4">
+                                        <li class="list-group-item" style="text-align: center;"><a href="${pageContext.request.contextPath}/invoice?order_id=${item.order_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Details</a></li>
+                                      </div>
+                                      
+                                  </ul>
+                                </c:forEach>
                                 </div>
                             </form>
                             </div>
@@ -286,9 +297,11 @@
                               <a>Select "Logout" below if you are ready to end your current session!
                               </a>
                               </div>
+
+                          
                   
                               <div class="row justify-content-center text-center my-2">
-                              <a class="btn btn-primary confirm_btn_success w-50" href="${pageContext.request.contextPath}/logout">Logout</a>
+                                <a class="btn confirm_btn w-50" href="${pageContext.request.contextPath}/logout" style="text-decoration: none;">Logout</a>
                               </div>
                           </form>
                           
@@ -304,4 +317,48 @@
           </div>
         </div>
     </nav>
+</section>
+
+<!-- MODAL TRIGER -->
+<section>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+  <h5 class="offcanvas-title" id="offcanvasRightLabel">Edit Profil</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body w-100">
+
+  <div class="mb-3 row">
+      <label for="staticEmail" class="col-sm-3 col-form-label">Nama</label>
+      <div class="col-sm-9">
+          <a type="text" readonly class="form-control-plaintext" id="staticEmail" style="text-decoration: none;">${sessionScope.user.first_name} ${sessionScope.user.last_name}</a>
+      </div>
+
+      <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+      <div class="col-sm-9">
+          <a type="text" readonly class="form-control-plaintext" id="staticEmail" style="text-decoration: none;">${sessionScope.user.email}</a>
+      </div>
+
+      <label for="staticEmail" class="col-sm-3 col-form-label setting_button ">Password</label>
+      <div class="col-sm-9">
+      <button type="button" class="btn btn-primary w-50 m-0" data-bs-toggle="modal" data-bs-target="#reset-PasswordDikaosan" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;" >Ubah Sandi</button>
+      </div>
+
+
+      <label for="staticEmail" class="col-sm-3 col-form-label setting_button ">History</label>
+      <div class="col-sm-9 my-2">
+        <button type="button" class="btn btn-primary confirm_btn_success w-50" data-bs-toggle="modal" data-bs-target="#historyPembelian" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">History Pembelian</button>
+      </div>
+      
+      <label for="staticEmail" class="col-sm-3 col-form-label setting_button ">Dashboard</label>
+      <div class="col-sm-9">
+        <a type="button" class="btn btn-primary confirm_btn_success w-50 my-2" href="${pageContext.request.contextPath}/dashboard" style="color: #767F43; background-color: white; border-radius: 0%; border-color: grey;">Dashboard</a>
+      </div>
+
+
+      <button type="button" class="btn btn-primary confirm_btn_success w-50 my-2" data-bs-toggle="modal" data-bs-target="#LogOut" style="">Logout</button>
+  </div>
+
+  </div>
+</div>
 </section>
