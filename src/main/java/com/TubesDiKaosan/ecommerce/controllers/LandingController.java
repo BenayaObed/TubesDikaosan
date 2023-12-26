@@ -277,7 +277,7 @@ public class LandingController {
                 }
                 model.addAttribute("total", total);
                 return "pages/fe/checkout";
-x            }
+            }
             return "redirect:/shoping_cart";
         }
         return "redirect:/";
