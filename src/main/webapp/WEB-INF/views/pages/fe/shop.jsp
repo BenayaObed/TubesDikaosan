@@ -99,7 +99,7 @@
                   <div class="filterDiv ${isBestSeller ? 'best' : 'new'} p-0">
                     <div class="col d-flex flex-column p-2">
                       <a href="${pageContext.request.contextPath}/description?product=${product.product_id}" class="col d-flex flex-column p-0" style="text-decoration: none;">
-                      <img class="product-img" style="width: 220px; height: 217px;" src="${pageContext.request.contextPath}/resources/uploads/images/products/${product.images[0].image}" alt="product">
+                      <img class="product-img" style="width: 220px; height: 217px; object-fit: cover; " src="${pageContext.request.contextPath}/resources/uploads/images/products/${product.images[0].image}" alt="product">
                         <div class="row p-0 m-0">
                           <div class="col-12 p-0 product-desc ">
                             <p class="mb-0 p-0">${product.name_product}</p>

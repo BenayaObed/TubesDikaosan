@@ -49,7 +49,7 @@
     <!-- Content Checkout Start-->
     <section class="content">
       <div class="row">
-        <div class="col-12 d-flex border border-danger">
+        <div class="col-12 d-flex ">
           <div class="col-sm-6 ">
 
             <div class="row ">

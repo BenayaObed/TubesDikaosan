@@ -56,7 +56,7 @@
                           </div>
                         </c:if>
           <div class="col-6 d-flex justify-content-center align-items-center">
-            <img src="${pageContext.request.contextPath}/resources/uploads/images/products/${data.images[0].image}" alt="">
+            <img style="object-fit: cover;" src="${pageContext.request.contextPath}/resources/uploads/images/products/${data.images[0].image}" alt="">
           </div>
 
           <div class="col-6">
