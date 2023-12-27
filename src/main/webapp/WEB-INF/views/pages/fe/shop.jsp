@@ -50,11 +50,13 @@
                   <ul class="list-group">
                     <li class="list-group-item category">CATEGORIES</li>
                     <c:forEach items="${shopPageData.getCategories()}" var = "item">
-                      <li class="list-group-item filter">
-                        <a href="${pageContext.request.contextPath}/shop?category=${item.category_name}" style="text-decoration: none;">
-                          ${item.category_name}
-                        </a> 
-                      </li>
+                      <c:if test="${item.visible == 1}">
+                        <li class="list-group-item filter">
+                          <a href="${pageContext.request.contextPath}/shop?category=${item.category_name}" style="text-decoration: none;">
+                            ${item.category_name}
+                          </a> 
+                        </li>
+                      </c:if>
                   </c:forEach>
                     
                   </ul>
@@ -90,9 +92,8 @@
 
                 
                 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 m-0">
-                  <c:forEach items="${shopPageData.products}" var="product">
-                    <c:if test="${product.visible == 1}">
-
+                  <c:forEach items="${shopPageData.getProducts()}" var="product">
+                    <c:if test="${product.visible == 1 && product.getCategory().getVisible() == 1}">
                     <c:set var="isBestSeller" value="${shopPageData.bestSellers.contains(product)}" />
                   <div class="filterDiv ${isBestSeller ? 'best' : 'new'} p-0">
                     <div class="col d-flex flex-column p-2">

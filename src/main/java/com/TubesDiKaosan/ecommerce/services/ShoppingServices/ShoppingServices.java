@@ -132,8 +132,13 @@ public class ShoppingServices {
 
     // DELETE ORDER ITEM
     public Response deleteOrderItem(Integer orderItemID) throws SQLException {
-        OrderItemRepository.deleteById(orderItemID);
-        return new Response(HttpStatus.OK.value(), "success", null);
+        if(OrderItemRepository.findById(orderItemID).isPresent()){
+            OrdersItem ordersItem = OrderItemRepository.findById(orderItemID).get();
+            OrderItemRepository.delete(ordersItem);
+            return new Response(HttpStatus.OK.value(), "success", ordersItem);
+        }else{
+            return new Response(HttpStatus.NOT_FOUND.value(), "Data not found", null);
+        }
     }
 
     @Autowired

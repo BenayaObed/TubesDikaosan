@@ -119,17 +119,17 @@
                             <br>
                             <p class="mx-4">${method.payment_method_name}</p>
                             <div class="row mx-4">
-                                <div class="text_norek">
-                                    <a>No. Rek/Virtual Account:</a>
-                                </div>
-                            </div>
-                            <div class="row mx-4">
-                                <div class="col-10">
-                                    <p>${method.norek}</p>
-                                </div>
-                                <div class="col-2 text-end">
-                                    <a2 >Copy</a2>
-                                </div>
+                                <c:choose>
+                                    <c:when test ="${method.payment_method_name != null}">
+                                        <div class="row text_norek">
+                                            <p>No. Rek/Virtual Account: ${method.norek}</p>
+                                            <button type="button" class="btn button btn-sm btn-success mb-2">Copy</button>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p class="mb-5">Cash On Delivery</p>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>

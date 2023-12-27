@@ -96,8 +96,8 @@
         <div class="row homepage_shope">
           <div class="col-12 product_header d-flex justify-content-center align-items-center">
             <div class="row">
-              <div class="col mx-5">
-                <h1>Our Products</h1>
+              <div class="col-sm-12 d-flex justify-content-center align-items-center ">
+                <h1 class="" style="color: #111;font-size: 48px;font-weight: 700;line-height: 58px;">OUR PRODUCTS</h1>
               </div>
             </div>
           </div>

@@ -107,6 +107,18 @@ public class ShoppingController {
         return "redirect:/shoping_cart";
     }
 
+    @RequestMapping("/deleteCart")
+    public String deleteCart(@RequestParam("item-cart") Integer item_cart,RedirectAttributes redirectAttributes) throws SQLException {
+        if (item_cart != null){
+            Response response = shoppingServices.deleteOrderItem(item_cart);
+            if (response.getStatus() == 200){
+                redirectAttributes.addFlashAttribute("message", "Item has been deleted");
+                return "redirect:/shoping_cart";
+            }
+        }
+        return "redirect:/shoping_cart";
+    }
+
     @PostMapping("/setBillingAddress")
     public String setBillingAddress(CustomerAddressRequest request, @RequestParam("orders_id") Integer orders_id,
             HttpSession session)
