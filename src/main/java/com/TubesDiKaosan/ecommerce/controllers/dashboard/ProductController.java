@@ -6,12 +6,17 @@ import java.sql.SQLException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.Iterator;
 
 import org.hibernate.engine.internal.Collections;
@@ -239,34 +244,52 @@ public class ProductController {
             if (user.getRole().getRole_name().equals("ADMIN")) {
                 List<ImagesProductRequest> images = new ArrayList<>();
                 String path = "src/main/resources/static/uploads/images/products";
-                int idx_imageID = 0;
+                
+                ExecutorService executor = Executors.newFixedThreadPool(5);
+
+                int[] idx_imageID = { 0 };
+
                 for (MultipartFile file : files) {
-                    try {
-                        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-                        if (fileName.equals("")) {
-                            idx_imageID++;
-                            continue;
+                    executor.submit(() -> {
+                        try {
+                            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+                            if (fileName.equals("")) {
+                                idx_imageID[0]++;
+                                return; // Skip file kosong
+                            }
+
+                            fileName = System.currentTimeMillis() + fileName;
+                            Path filePath = Paths.get(path, fileName);
+
+                            ImagesProductRequest image = new ImagesProductRequest();
+                            image.setImage(fileName);
+                            image.setimageid_request(image_id.get(idx_imageID[0]));
+                            images.add(image);
+
+                            byte[] buffer = new byte[8192];
+                            try (InputStream inputStream = file.getInputStream();
+                                    OutputStream outputStream = Files.newOutputStream(filePath,
+                                            StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+
+                                int bytesRead;
+                                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                    outputStream.write(buffer, 0, bytesRead);
+                                }
+
+                            } catch (IOException e) {
+                                System.out.println(e);
+                                e.printStackTrace();
+                            }
+
+                        } catch (Exception e) {
+                            System.out.println(e);
+                            e.printStackTrace();
                         }
-                        fileName = System.currentTimeMillis() + fileName;
-                        Path filePath = Path.of(path + "/" + fileName);
-
-                        ImagesProductRequest image = new ImagesProductRequest();
-                        image.setImage(fileName);
-                        image.setimageid_request(image_id.get(idx_imageID));
-                        images.add(image);
-
-                        Files.copy(file.getInputStream(), filePath);
-                    } catch (Exception e) {
-                        System.out.println(e);
-                        e.printStackTrace();
-                    }
-                    idx_imageID++;
+                        idx_imageID[0]++;
+                    });
                 }
 
-                // loop list images
-                for (int i = 0; i < images.size(); i++) {
-                    System.out.println(images.get(i).getImage());
-                }
+                executor.shutdown();
 
                 Object[][] stock = new Object[][] {
                         { "S", sizeS },
@@ -362,7 +385,8 @@ public class ProductController {
     }
 
     @RequestMapping("/delete_image")
-    public String deleteImage(@RequestParam Integer imageID, Model model, HttpSession session,RedirectAttributes redirectAttributes) throws SQLException {
+    public String deleteImage(@RequestParam Integer imageID, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes) throws SQLException {
         if (session.getAttribute("user") != null) {
             Users user = (Users) session.getAttribute("user");
             if (user.getRole().getRole_name().equals("ADMIN")) {
