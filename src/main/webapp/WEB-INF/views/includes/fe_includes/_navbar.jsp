@@ -355,7 +355,7 @@
         </div>
       </div>
       
-      <c:if test="${sessionScope.user.role == 'ADMIN'}">
+      <c:if test="${sessionScope.user.role.role_name == 'ADMIN'}">
       <div class="row dashboard">
         <label for="staticEmail" class="col-sm-4 col-form-label setting_button ">Dashboard</label>
         <div class="col-sm-8">

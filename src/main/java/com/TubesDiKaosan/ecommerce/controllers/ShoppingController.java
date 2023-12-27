@@ -76,8 +76,9 @@ public class ShoppingController {
             Orders container_draft = (Orders) shoppingServices.getOrderByStatusAndUserID("checkout", user.getUser_id())
                     .getData();
             if (container_draft == null) {
-                shoppingServices.createDraftOrder(user);
                 container_draft = (Orders) shoppingServices.getDraftOrder(user.getUser_id()).getData();
+                if (container_draft == null)
+                    container_draft = (Orders) shoppingServices.createDraftOrder(user).getData();
             }
             Product product = (Product) ProductService.findDataByID(product_id).getData();
             OrderItemRequest request = new OrderItemRequest(product_id, color, size, 1,
