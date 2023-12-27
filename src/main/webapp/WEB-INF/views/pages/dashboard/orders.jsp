@@ -60,6 +60,7 @@
                   </thead>
                   <tbody>
                   <c:forEach items="${data}" var="item">
+                    <c:if test="${item.status != 'checkout'}">
                     <tr>
                       <td>${item.order_id}</td>
                       <td>${item.user_id.first_name} ${item.user_id.last_name}</td>
@@ -86,6 +87,7 @@
                         <a href="${pageContext.request.contextPath}/dashboard/orders/detail?OrderID=${item.order_id}&userID=${user_id=item.user_id.user_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Details</a>
                       </td>
                     </tr>
+                    </c:if>
                   </c:forEach>
                   </tbody>
                   <tfoot>
