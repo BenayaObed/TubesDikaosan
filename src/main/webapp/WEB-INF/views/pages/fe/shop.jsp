@@ -91,6 +91,7 @@
                 </div>
 
                 
+                <c:if test = "${shopPageData.getProducts() != null}">
                 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 m-0">
                   <c:forEach items="${shopPageData.getProducts()}" var="product">
                     <c:if test="${product.visible == 1 && product.getCategory().getVisible() == 1}">
@@ -123,9 +124,10 @@
                     </div>
                   </div>
                 </c:if>
+              </c:forEach>
 
-                </c:forEach>
                 </div>
+              </c:if>
 
               </div>
             </div>

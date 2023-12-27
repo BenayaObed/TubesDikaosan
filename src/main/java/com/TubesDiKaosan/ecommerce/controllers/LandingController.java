@@ -189,7 +189,6 @@ public class LandingController {
 
         ShopPageData shopPageData = new ShopPageData("Shop", products, mean, categories, bestSellers);
         // print product data from shopPageData
-        System.out.println(">>>>>>>>>>>>>>>>>>>>" + shopPageData.getProducts().get(0).getCategory().getCategory_name());
         model.addAttribute("shopPageData", shopPageData);
 
         return "pages/fe/shop";
