@@ -49,22 +49,22 @@
                   </div>
               </c:if>
       <div class="row">
-        <div class="col-12 d-flex border-primary">
+        <div class="col-12 d-flex ">
           <div class="col-sm-6  ">
             <form action="${pageContext.request.contextPath}/updateCart" method="POST">
             <div class="col-sm-12 ">
               <div class="fontSize">
                 <div class="container activity-head offset mx-4 my-1 w-100" >
                   <div class="row">
-                    <div class="col d-flex flex-column my-lg-3 ">
-                      <div class="row">
+                    <div class="col d-flex flex-column my-lg-3 mx-5">
+                      <div class="row mx-5 " style="overflow-y: hidden;">
                         <div class="col-sm-6 d-flex flex-column font-weight-bold"style="font-weight: bold;">
                           <a1>PRODUCT</a1>
                         </div>
-                        <div class="MID col-sm-3 d-flex flex-column font-weight-bold"style="font-weight: bold;">
+                        <div class="MID col-sm-3    d-flex flex-column justify-content-end align-items-end font-weight-bold " style="font-weight: bold;">
                           <a1>QUANTITY</a1>
                         </div>
-                        <div class="MID col-sm-3 d-flex flex-column"style="font-weight: bold;">
+                        <div class="MID col-sm-3 d-flex flex-column justify-content-end align-items-end"style="font-weight: bold;">
                           <a1>TOTAL</a1>
                         </div>
                       </div>
@@ -120,7 +120,7 @@
                               </div>
                             </div>
                             <!-- delete -->
-                            <div class="col-sm-1 d-flex justify-content-center align-items-center ">
+                            <div class="col-sm-1 d-flex  align-items-center  p-0" style="align-content: start;">
                               <a href="${pageContext.request.contextPath}/deleteCart?item-cart=${item.order_item_id}" class="btn btn-danger btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
