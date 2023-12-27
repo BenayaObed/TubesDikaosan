@@ -105,6 +105,7 @@
             <c:forEach items="${products}" var="item">
                 <c:if test="${(item.visible == 1)}">
                   <c:if test="${(item.category.visible == 1)}">
+                    <a href="${pageContext.request.contextPath}/description?product=${item.product_id}" class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1" style="text-decoration: none;">
                       <div class="col d-flex flex-column border-danger p-2">
                         <img class="product-img" style="height: 217px; object-fit: cover;" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.images[0].image}"/>
                         <div class="row p-0 m-0">
@@ -112,13 +113,9 @@
                         <p class="mb-0 p-0">${item.name_product}</p>
                         <p class="mb-0 p-0"><fmt:formatNumber value="${item.price}" type="currency" currencyCode="IDR" /></p>
                       </div>
-                      <a href="${pageContext.request.contextPath}/description?product=${item.product_id}" class="col-1 product-cart d-flex justify-content-center cart p-0 pt-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                        </svg>
-                      </a>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </c:if>
               </c:if>
             </c:forEach>
