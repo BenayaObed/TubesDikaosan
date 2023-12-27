@@ -106,7 +106,7 @@
                 <c:if test="${(item.visible == 1)}">
                   <c:if test="${(item.category.visible == 1)}">
                       <div class="col d-flex flex-column border-danger p-2">
-                        <img class="product-img" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.images[0].image}"/>
+                        <img class="product-img" style="width: 220px; height: 217px; object-fit: cover;" src="${pageContext.request.contextPath}/resources/uploads/images/products/${item.images[0].image}"/>
                         <div class="row p-0 m-0">
                       <div class="col-11 p-0 w product-desc">
                         <p class="mb-0 p-0">${item.name_product}</p>
