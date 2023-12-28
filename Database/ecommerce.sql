@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Des 2023 pada 14.20
+-- Waktu pembuatan: 28 Des 2023 pada 06.51
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -43,7 +43,7 @@ INSERT INTO `categories` (`category_id`, `category_name`, `created_at`, `updated
 (3, 'Celana', '2023-12-26 22:24:12.000000', '2023-12-27 08:59:19.000000', 1),
 (6, 'Kemeja', '2023-12-27 08:47:10.000000', '2023-12-27 08:47:10.000000', 1),
 (7, 'Kaos', '2023-12-27 08:47:22.000000', '2023-12-27 08:47:22.000000', 1),
-(8, 'Baju', '2023-12-27 08:47:30.000000', '2023-12-27 08:47:30.000000', 1),
+(8, 'Baju', '2023-12-27 08:47:30.000000', '2023-12-28 12:41:47.000000', 0),
 (9, 'Jaket', '2023-12-27 08:47:36.000000', '2023-12-27 08:47:36.000000', 1),
 (10, 'Rok', '2023-12-27 19:17:58.000000', '2023-12-27 19:17:58.000000', 1);
 
@@ -94,7 +94,14 @@ INSERT INTO `customer_address` (`id`, `address`, `city`, `created_at`, `phone_nu
 (7, '', '', '2023-12-26 18:31:19.000000', '', '', '', '2023-12-26 18:31:19.000000', 'dc9c13e9-f294-48c9-9e0a-69c78d31d99a'),
 (8, 'Ciganitri', 'Bandung', '2023-12-27 09:01:31.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-27 09:01:31.000000', 'dc9c13e9-f294-48c9-9e0a-69c78d31d99a'),
 (9, 'Ciganitri', 'Bandung', '2023-12-27 09:03:04.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-27 09:03:04.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
-(10, 'Ciganitri', 'Bandung', '2023-12-27 09:04:23.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-27 09:04:23.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5');
+(10, 'Ciganitri', 'Bandung', '2023-12-27 09:04:23.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-27 09:04:23.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(11, 'Ciganitri', 'Bandung', '2023-12-27 20:27:17.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-27 20:27:17.000000', 'dc9c13e9-f294-48c9-9e0a-69c78d31d99a'),
+(12, 'Ciganitri', 'Bandung', '2023-12-27 20:44:40.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-27 20:44:40.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(13, 'Ciganitri', 'Bandung', '2023-12-27 21:42:48.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-27 21:42:48.000000', 'cc094403-599b-4348-9203-e8c3bdc13317'),
+(14, 'Ciganitri', 'Bandung', '2023-12-28 00:44:14.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-28 00:44:14.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(15, 'Ciganitri', 'Bandung', '2023-12-28 01:03:15.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-28 01:03:15.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(16, 'Dipatiukur', 'Bandung', '2023-12-28 10:47:38.000000', '081278635432', '5623', 'Jawa Barat', '2023-12-28 10:47:38.000000', '3597663b-a776-4564-9c0b-3e8debd856e8'),
+(17, 'Dipatiukur', 'Bandung', '2023-12-28 10:52:34.000000', '081278635432', '5623', 'Jawa Barat', '2023-12-28 10:52:34.000000', '3597663b-a776-4564-9c0b-3e8debd856e8');
 
 -- --------------------------------------------------------
 
@@ -119,7 +126,12 @@ INSERT INTO `images` (`image_id`, `created_at`, `image`, `updated_at`, `product_
 (9, '2023-12-27 19:16:17.000000', '1703679377516bd8dacdecdf8286ca47a54b8620e58f7.jpg', '2023-12-27 19:16:17.000000', 7),
 (10, '2023-12-27 19:20:23.000000', '17036796234935312052a2c358900bfc4172719a16575.jpg', '2023-12-27 19:20:23.000000', 8),
 (11, '2023-12-27 19:22:39.000000', '1703679759309166f4fb0c4317311bca36f3c0e9fbe08.jpg', '2023-12-27 19:22:39.000000', 9),
-(12, '2023-12-27 20:08:29.000000', '1703682509677001de8f943bd925ede4f9c0d60d0ab7b.jpg', '2023-12-27 20:08:29.000000', 10);
+(12, '2023-12-27 20:08:29.000000', '1703682509677001de8f943bd925ede4f9c0d60d0ab7b.jpg', '2023-12-27 20:08:29.000000', 10),
+(13, '2023-12-27 20:26:31.000000', '1703683591871f67d1247d5450be640565f54c3438eb7.jpg', '2023-12-27 20:26:31.000000', 11),
+(15, '2023-12-28 12:33:42.000000', '1703741622093a38e2513ae27e4f3aa1f99707fda4887.jpg', '2023-12-28 12:33:42.000000', 13),
+(16, '2023-12-28 12:37:24.000000', '170374184477500fb16d03bccba6dbb46002954c1ae3c.jpg', '2023-12-28 12:37:24.000000', 14),
+(18, '2023-12-28 12:41:17.000000', '1703742077083C1.jpg', '2023-12-28 12:41:17.000000', 16),
+(19, '2023-12-28 12:47:45.000000', '170374246517191dfb5d0f1ad42544a024b83bb54502d.jpg', '2023-12-28 12:47:45.000000', 17);
 
 -- --------------------------------------------------------
 
@@ -143,7 +155,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `created_at`, `notes`, `status`, `updated_at`, `address_id`, `payment_id`, `user_id`) VALUES
-(12, '2023-12-27 19:13:37.000000', NULL, 'draft', '2023-12-27 19:13:37.000000', NULL, NULL, 'dc9c13e9-f294-48c9-9e0a-69c78d31d99a');
+(13, '2023-12-27 20:44:20.000000', 'Segera ya min', 'delivered', '2023-12-27 21:49:44.000000', 12, 3, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(14, '2023-12-27 21:10:07.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 11:02:50.000000', 15, 5, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(15, '2023-12-27 21:41:28.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 11:03:07.000000', 13, 4, 'cc094403-599b-4348-9203-e8c3bdc13317'),
+(17, '2023-12-28 10:46:42.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 10:48:27.000000', 16, 6, '3597663b-a776-4564-9c0b-3e8debd856e8'),
+(18, '2023-12-28 10:51:44.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 11:03:12.000000', 17, 7, '3597663b-a776-4564-9c0b-3e8debd856e8'),
+(19, '2023-12-28 11:33:18.000000', NULL, 'draft', '2023-12-28 11:33:18.000000', NULL, NULL, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5');
 
 -- --------------------------------------------------------
 
@@ -168,7 +185,11 @@ CREATE TABLE `orders_item` (
 --
 
 INSERT INTO `orders_item` (`order_item_id`, `color`, `created_at`, `quantity`, `size`, `total_price`, `updated_at`, `order_id`, `product_id`) VALUES
-(19, 'Putih', '2023-12-27 19:13:37.000000', 1, 'XL', 199999, '2023-12-27 19:13:37.000000', 12, 6);
+(21, 'Abu', '2023-12-27 20:44:20.000000', 1, 'S', 399999, '2023-12-27 20:44:20.000000', 13, 8),
+(24, 'Abu', '2023-12-27 21:42:07.000000', 1, 'S', 399999, '2023-12-27 21:42:07.000000', 15, 8),
+(27, 'Putih', '2023-12-28 01:03:00.000000', 1, 'S', 199999, '2023-12-28 01:03:00.000000', 14, 6),
+(31, 'Cream', '2023-12-28 10:46:50.000000', 1, 'XL', 399999, '2023-12-28 10:46:50.000000', 17, 8),
+(32, 'Putih', '2023-12-28 10:51:44.000000', 1, 'XL', 399999, '2023-12-28 10:51:44.000000', 18, 11);
 
 -- --------------------------------------------------------
 
@@ -190,7 +211,13 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`payment_id`, `created_at`, `payment_status`, `payment_total`, `updated_at`, `payment_method_id`) VALUES
-(1, '2023-12-26 16:34:18.000000', 'PAID', 70000, '2023-12-26 16:34:18.000000', 1);
+(1, '2023-12-26 16:34:18.000000', 'PAID', 70000, '2023-12-26 16:34:18.000000', 1),
+(2, '2023-12-27 20:27:32.000000', 'PAID', 399999, '2023-12-27 20:27:32.000000', 1),
+(3, '2023-12-27 20:45:21.000000', 'PAID', 399999, '2023-12-27 20:45:21.000000', 2),
+(4, '2023-12-27 21:43:42.000000', 'PAID', 399999, '2023-12-27 21:43:42.000000', 2),
+(5, '2023-12-28 01:06:44.000000', 'PAID', 199999, '2023-12-28 01:06:44.000000', 2),
+(6, '2023-12-28 10:47:47.000000', 'PAID', 399999, '2023-12-28 10:47:47.000000', NULL),
+(7, '2023-12-28 10:52:42.000000', 'PAID', 399999, '2023-12-28 10:52:42.000000', 2);
 
 -- --------------------------------------------------------
 
@@ -239,11 +266,18 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `created_at`, `description`, `name_product`, `price`, `updated_at`, `visible`, `category_id`) VALUES
-(6, '2023-12-27 19:12:30.000000', 'Hadirkan sentuhan gaya kasual yang nyaman dengan Kaos Katun Wanita kami. Dirancang khusus untuk memberikan kenyamanan sepanjang hari, kaos ini terbuat dari katun berkualitas tinggi yang lembut di kulit dan memberikan pernapasan alami.', 'Kaos Katun Wanita ', 199999, '2023-12-27 19:13:37.000000', 1, 7),
-(7, '2023-12-27 19:16:17.000000', 'Bergaya dengan penuh kepercayaan dengan Jaket Kasual Wanita kami yang menawarkan kombinasi sempurna antara kehangatan dan keanggunan kasual. Dirancang untuk menonjolkan keindahan dan kepraktisan, jaket ini menjadi pilihan ideal untuk penampilan kasual yang tetap trendy.', 'Woman Casual Jacket ', 599999, '2023-12-27 19:16:17.000000', 1, 9),
-(8, '2023-12-27 19:20:23.000000', 'Berikan sentuhan kesegaran pada gaya Anda dengan Rok Pendek Wanita kami, sebuah pilihan yang menggabungkan kenyamanan dan kecantikan. Dirancang untuk merayakan kefemininan Anda, rok pendek ini cocok untuk berbagai kesempatan dan memberikan kebebasan gerak untuk gaya hidup aktif Anda.', 'Rok Pendek Wanita', 399999, '2023-12-27 19:20:23.000000', 1, 10),
+(6, '2023-12-27 19:12:30.000000', 'Hadirkan sentuhan gaya kasual yang nyaman dengan Kaos Katun Wanita kami. Dirancang khusus untuk memberikan kenyamanan sepanjang hari, kaos ini terbuat dari katun berkualitas tinggi yang lembut di kulit dan memberikan pernapasan alami.', 'Kaos Katun Wanita ', 199999, '2023-12-28 11:34:08.000000', 1, 7),
+(7, '2023-12-27 19:16:17.000000', 'Bergaya dengan penuh kepercayaan dengan Jaket Kasual Wanita kami yang menawarkan kombinasi sempurna antara kehangatan dan keanggunan kasual. Dirancang untuk menonjolkan keindahan dan kepraktisan, jaket ini menjadi pilihan ideal untuk penampilan kasual yang tetap trendy.', 'Woman Casual Jacket ', 599999, '2023-12-28 11:42:02.000000', 1, 9),
+(8, '2023-12-27 19:20:23.000000', 'Berikan sentuhan kesegaran pada gaya Anda dengan Rok Pendek Wanita kami, sebuah pilihan yang menggabungkan kenyamanan dan kecantikan. Dirancang untuk merayakan kefemininan Anda, rok pendek ini cocok untuk berbagai kesempatan dan memberikan kebebasan gerak untuk gaya hidup aktif Anda.', 'Rok Pendek Wanita', 399999, '2023-12-28 10:50:55.000000', 1, 10),
 (9, '2023-12-27 19:22:39.000000', 'Tampilkan kehangatan dan gaya dengan koleksi Sweater Pria kami, busana yang tidak hanya memberikan kenyamanan luar biasa tetapi juga menambahkan sentuhan modis pada setiap penampilan Anda. Terbuat dari bahan berkualitas tinggi, sweater ini menjadi pilihan yang sempurna untuk menemani kegiatan sehari-hari Anda.', 'Sweater Pria', 249999, '2023-12-27 19:22:39.000000', 1, 9),
-(10, '2023-12-27 20:08:29.000000', 'Hadapi cuaca hangat dengan gaya yang tetap trendi menggunakan Celana Pendek Pria kami. Dirancang untuk kenyamanan sepanjang hari dan penampilan yang tak terbantahkan, celana pendek ini menjadi pilihan ideal untuk kegiatan santai hingga petualangan luar ruangan.', 'Celana Pendek Pria', 149999, '2023-12-27 20:08:29.000000', 1, 3);
+(10, '2023-12-27 20:08:29.000000', 'Hadapi cuaca hangat dengan gaya yang tetap trendi menggunakan Celana Pendek Pria kami. Dirancang untuk kenyamanan sepanjang hari dan penampilan yang tak terbantahkan, celana pendek ini menjadi pilihan ideal untuk kegiatan santai hingga petualangan luar ruangan.', 'Celana Pendek Pria', 149999, '2023-12-28 09:49:17.000000', 1, 3),
+(11, '2023-12-27 20:26:31.000000', 'Tingkatkan gaya kasual Anda dengan Hoodie Pria kami yang tidak hanya menawarkan tampilan trendi, tetapi juga memberikan kenyamanan luar biasa. Dirancang untuk menjaga Anda tetap hangat dan modis, hoodie ini adalah pilihan ideal untuk menambah keberagaman koleksi pakaian kasual Anda.', 'Hoodie ', 399999, '2023-12-28 10:52:42.000000', 1, 9),
+(12, '2023-12-28 12:26:16.000000', 'Tampilkan gaya dan kenyamanan sejati dengan Celana Panjang Wanita \"Elegance Chic\" kami. Didesain untuk memenuhi kebutuhan fashion sehari-hari, celana ini memberikan kombinasi sempurna antara gaya yang modis dan kenyamanan yang tak terkalahkan.', 'Woman Long Pants', 299999, '2023-12-28 12:40:23.000000', 0, 10),
+(13, '2023-12-28 12:33:42.000000', 'Tingkatkan gaya santai Anda dengan Kaos Katun Pria \"Casual Comfort\" kami. Dirancang untuk memberikan kenyamanan luar biasa dan tampilan yang tetap modis, kaos ini menjadi pilihan sempurna untuk gaya kasual sehari-hari.', 'Kaos Katun Pria', 179999, '2023-12-28 12:33:42.000000', 1, 7),
+(14, '2023-12-28 12:37:24.000000', 'Hadirkan sentuhan feminin dan gaya yang anggun dengan Rok Span Wanita \"Elegance Bliss\" kami. Rok ini menggabungkan desain modern dengan kenyamanan yang luar biasa, menjadikannya pilihan ideal untuk berbagai kesempatan, dari acara formal hingga santai.', 'Rok Span Wanita', 399999, '2023-12-28 12:37:24.000000', 1, 10),
+(15, '2023-12-28 12:39:43.000000', 'Hadirkan sentuhan klasik dan keanggunan dengan Kemeja Pria Lengan Panjang \"Timeless White\" kami. Kemeja putih yang tak pernah ketinggalan zaman ini menjadi pilihan sempurna untuk melengkapi gaya kasual maupun semi-formal Anda.', 'Kemeja Putih Pria', 299999, '2023-12-28 12:40:26.000000', 0, 10),
+(16, '2023-12-28 12:41:17.000000', 'Hadirkan sentuhan klasik dan keanggunan dengan Kemeja Wanita Lengan Panjang \"Timeless White\" kami. Kemeja putih yang tak pernah ketinggalan zaman ini menjadi pilihan sempurna untuk melengkapi gaya kasual maupun semi-formal Anda.', 'Kemeja Putih Wanita', 399999, '2023-12-28 12:42:49.000000', 1, 6),
+(17, '2023-12-28 12:47:45.000000', 'Nikmati kehangatan musim panas dengan gaya yang chic dan nyaman menggunakan Celana Pendek Wanita \"Summer Breeze\" kami. Dirancang untuk memberikan kesejukan dan kebebasan gerak, celana pendek ini akan menjadi pilihan favorit Anda untuk menjalani aktivitas sehari-hari dengan gaya.', 'Celana Pendek Wanita', 159999, '2023-12-28 12:47:45.000000', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -258,6 +292,14 @@ CREATE TABLE `reviews` (
   `product_id` int(11) DEFAULT NULL,
   `user_id` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `reviews`
+--
+
+INSERT INTO `reviews` (`review_id`, `comment`, `rate`, `product_id`, `user_id`) VALUES
+(1, 'Barang sangat nyaman digunakan!', 5, 8, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(2, 'Barang lama dikirim', 3, 8, '3597663b-a776-4564-9c0b-3e8debd856e8');
 
 -- --------------------------------------------------------
 
@@ -318,7 +360,7 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`stock_id`, `color`, `created_at`, `quantity`, `size`, `updated_at`, `product_id`) VALUES
-(57, 'Putih', '2023-12-27 19:12:30.000000', 10, 'S', '2023-12-27 19:12:30.000000', 6),
+(57, 'Putih', '2023-12-27 19:12:30.000000', 9, 'S', '2023-12-28 01:06:44.000000', 6),
 (58, 'Putih', '2023-12-27 19:12:30.000000', 10, 'M', '2023-12-27 19:12:30.000000', 6),
 (59, 'Putih', '2023-12-27 19:12:30.000000', 8, 'L', '2023-12-27 19:12:30.000000', 6),
 (60, 'Putih', '2023-12-27 19:12:30.000000', 10, 'XL', '2023-12-27 19:12:30.000000', 6),
@@ -334,14 +376,14 @@ INSERT INTO `stock` (`stock_id`, `color`, `created_at`, `quantity`, `size`, `upd
 (70, 'Ungu', '2023-12-27 19:16:17.000000', 20, 'M', '2023-12-27 19:16:17.000000', 7),
 (71, 'Ungu', '2023-12-27 19:16:17.000000', 19, 'L', '2023-12-27 19:16:17.000000', 7),
 (72, 'Ungu', '2023-12-27 19:16:17.000000', 5, 'XL', '2023-12-27 19:16:17.000000', 7),
-(73, 'Abu', '2023-12-27 19:20:23.000000', 4, 'S', '2023-12-27 19:20:23.000000', 8),
+(73, 'Abu', '2023-12-27 19:20:23.000000', 2, 'S', '2023-12-27 21:43:42.000000', 8),
 (74, 'Abu', '2023-12-27 19:20:23.000000', 2, 'M', '2023-12-27 19:20:23.000000', 8),
 (75, 'Abu', '2023-12-27 19:20:23.000000', 4, 'L', '2023-12-27 19:20:23.000000', 8),
 (76, 'Abu', '2023-12-27 19:20:23.000000', 10, 'XL', '2023-12-27 19:20:23.000000', 8),
 (77, 'Cream', '2023-12-27 19:20:23.000000', 10, 'S', '2023-12-27 19:20:23.000000', 8),
 (78, 'Cream', '2023-12-27 19:20:23.000000', 20, 'M', '2023-12-27 19:20:23.000000', 8),
 (79, 'Cream', '2023-12-27 19:20:23.000000', 10, 'L', '2023-12-27 19:20:23.000000', 8),
-(80, 'Cream', '2023-12-27 19:20:23.000000', 5, 'XL', '2023-12-27 19:20:23.000000', 8),
+(80, 'Cream', '2023-12-27 19:20:23.000000', 4, 'XL', '2023-12-28 10:47:47.000000', 8),
 (81, 'Hitam', '2023-12-27 19:20:23.000000', 10, 'S', '2023-12-27 19:20:23.000000', 8),
 (82, 'Hitam', '2023-12-27 19:20:23.000000', 10, 'L', '2023-12-27 19:20:23.000000', 8),
 (83, 'Hitam', '2023-12-27 19:20:23.000000', 3, 'XL', '2023-12-27 19:20:23.000000', 8),
@@ -354,8 +396,56 @@ INSERT INTO `stock` (`stock_id`, `color`, `created_at`, `quantity`, `size`, `upd
 (90, 'Coklat', '2023-12-27 19:22:39.000000', 5, 'XL', '2023-12-27 19:22:39.000000', 9),
 (91, 'Hijau', '2023-12-27 20:08:29.000000', 4, 'S', '2023-12-27 20:08:29.000000', 10),
 (92, 'Hijau', '2023-12-27 20:08:29.000000', 20, 'M', '2023-12-27 20:08:29.000000', 10),
-(93, 'Hijau', '2023-12-27 20:08:29.000000', 19, 'L', '2023-12-27 20:08:29.000000', 10),
-(94, 'Hijau', '2023-12-27 20:08:29.000000', 5, 'XL', '2023-12-27 20:08:29.000000', 10);
+(93, 'Hijau', '2023-12-27 20:08:29.000000', 5, 'L', '2023-12-27 21:51:18.000000', 10),
+(94, 'Hijau', '2023-12-27 20:08:29.000000', 5, 'XL', '2023-12-27 20:08:29.000000', 10),
+(95, 'Putih', '2023-12-27 20:26:31.000000', 3, 'S', '2023-12-27 20:27:32.000000', 11),
+(96, 'Putih', '2023-12-27 20:26:31.000000', 20, 'M', '2023-12-27 20:26:31.000000', 11),
+(97, 'Putih', '2023-12-27 20:26:31.000000', 10, 'L', '2023-12-27 20:26:31.000000', 11),
+(98, 'Putih', '2023-12-27 20:26:31.000000', 9, 'XL', '2023-12-28 10:52:42.000000', 11),
+(99, 'Cream', '2023-12-28 12:26:16.000000', 4, 'S', '2023-12-28 12:26:16.000000', 12),
+(100, 'Cream', '2023-12-28 12:26:16.000000', 3, 'M', '2023-12-28 12:26:16.000000', 12),
+(101, 'Cream', '2023-12-28 12:26:16.000000', 10, 'L', '2023-12-28 12:26:16.000000', 12),
+(102, 'Cream', '2023-12-28 12:26:16.000000', 10, 'XL', '2023-12-28 12:26:16.000000', 12),
+(103, 'Putih', '2023-12-28 12:33:42.000000', 4, 'S', '2023-12-28 12:33:42.000000', 13),
+(104, 'Putih', '2023-12-28 12:33:42.000000', 20, 'M', '2023-12-28 12:33:42.000000', 13),
+(105, 'Putih', '2023-12-28 12:33:42.000000', 19, 'L', '2023-12-28 12:33:42.000000', 13),
+(106, 'Putih', '2023-12-28 12:33:42.000000', 10, 'XL', '2023-12-28 12:33:42.000000', 13),
+(107, 'Hitam', '2023-12-28 12:33:42.000000', 15, 'S', '2023-12-28 12:33:42.000000', 13),
+(108, 'Hitam', '2023-12-28 12:33:42.000000', 3, 'M', '2023-12-28 12:33:42.000000', 13),
+(109, 'Hitam', '2023-12-28 12:33:42.000000', 4, 'L', '2023-12-28 12:33:42.000000', 13),
+(110, 'Hitam', '2023-12-28 12:33:42.000000', 3, 'XL', '2023-12-28 12:33:42.000000', 13),
+(111, 'Biru', '2023-12-28 12:37:24.000000', 10, 'S', '2023-12-28 12:37:24.000000', 14),
+(112, 'Biru', '2023-12-28 12:37:24.000000', 20, 'M', '2023-12-28 12:37:24.000000', 14),
+(113, 'Biru', '2023-12-28 12:37:24.000000', 10, 'L', '2023-12-28 12:37:24.000000', 14),
+(114, 'Biru', '2023-12-28 12:37:24.000000', 10, 'XL', '2023-12-28 12:37:24.000000', 14),
+(115, 'Hitam', '2023-12-28 12:37:24.000000', 10, 'S', '2023-12-28 12:37:24.000000', 14),
+(116, 'Hitam', '2023-12-28 12:37:24.000000', 3, 'M', '2023-12-28 12:37:24.000000', 14),
+(117, 'Hitam', '2023-12-28 12:37:24.000000', 10, 'L', '2023-12-28 12:37:24.000000', 14),
+(118, 'Hitam', '2023-12-28 12:37:24.000000', 10, 'XL', '2023-12-28 12:37:24.000000', 14),
+(119, 'Putih', '2023-12-28 12:37:24.000000', 15, 'S', '2023-12-28 12:37:24.000000', 14),
+(120, 'Putih', '2023-12-28 12:37:24.000000', 20, 'M', '2023-12-28 12:37:24.000000', 14),
+(121, 'Putih', '2023-12-28 12:37:24.000000', 10, 'L', '2023-12-28 12:37:24.000000', 14),
+(122, 'Putih', '2023-12-28 12:37:24.000000', 10, 'XL', '2023-12-28 12:37:24.000000', 14),
+(123, 'Putih', '2023-12-28 12:39:43.000000', 8, 'S', '2023-12-28 12:39:43.000000', 15),
+(124, 'Putih', '2023-12-28 12:39:43.000000', 15, 'M', '2023-12-28 12:39:43.000000', 15),
+(125, 'Putih', '2023-12-28 12:39:43.000000', 20, 'L', '2023-12-28 12:40:06.000000', 15),
+(126, 'Putih', '2023-12-28 12:39:43.000000', 20, 'XL', '2023-12-28 12:39:43.000000', 15),
+(127, 'Putih', '2023-12-28 12:41:17.000000', 10, 'S', '2023-12-28 12:41:17.000000', 16),
+(128, 'Putih', '2023-12-28 12:41:17.000000', 9, 'M', '2023-12-28 12:41:17.000000', 16),
+(129, 'Putih', '2023-12-28 12:41:17.000000', 10, 'L', '2023-12-28 12:41:17.000000', 16),
+(130, 'Putih', '2023-12-28 12:41:17.000000', 10, 'XL', '2023-12-28 12:41:17.000000', 16),
+(131, 'Cream', '2023-12-28 12:47:45.000000', 10, 'S', '2023-12-28 12:47:45.000000', 17),
+(132, 'Cream', '2023-12-28 12:47:45.000000', 20, 'M', '2023-12-28 12:47:45.000000', 17),
+(133, 'Cream', '2023-12-28 12:47:45.000000', 10, 'L', '2023-12-28 12:47:45.000000', 17),
+(134, 'Cream', '2023-12-28 12:47:45.000000', 10, 'XL', '2023-12-28 12:47:45.000000', 17),
+(135, 'Hitam', '2023-12-28 12:47:45.000000', 15, 'S', '2023-12-28 12:47:45.000000', 17),
+(136, 'Hitam', '2023-12-28 12:47:45.000000', 5, 'M', '2023-12-28 12:47:45.000000', 17),
+(137, 'Hitam', '2023-12-28 12:47:45.000000', 19, 'L', '2023-12-28 12:47:45.000000', 17),
+(138, 'Hitam', '2023-12-28 12:47:45.000000', 10, 'XL', '2023-12-28 12:47:45.000000', 17),
+(139, 'Coklat', '2023-12-28 12:47:45.000000', 15, 'S', '2023-12-28 12:47:45.000000', 17),
+(140, 'Coklat', '2023-12-28 12:47:45.000000', 20, 'M', '2023-12-28 12:47:45.000000', 17),
+(141, 'Coklat', '2023-12-28 12:47:45.000000', 19, 'L', '2023-12-28 12:47:45.000000', 17),
+(142, 'Coklat', '2023-12-28 12:47:45.000000', 10, 'XL', '2023-12-28 12:47:45.000000', 17);
 
 -- --------------------------------------------------------
 
@@ -379,7 +469,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `created_at`, `email`, `first_name`, `last_name`, `password`, `updated_at`, `role_id`) VALUES
-('0aac3b19-1d7f-4b7f-8198-853cffdf62e5', '2023-12-26 15:37:52.000000', 'velmanh24@gmail.com', 'Velman', 'Harefa', 'velman', '2023-12-26 15:37:52.000000', 1),
+('0aac3b19-1d7f-4b7f-8198-853cffdf62e5', '2023-12-26 15:37:52.000000', 'velmanh24@gmail.com', 'Velman', 'Harefa', 'velmann', '2023-12-28 09:51:15.000000', 1),
+('3597663b-a776-4564-9c0b-3e8debd856e8', '2023-12-28 10:46:19.000000', 'alexwumbo@gmail.com', 'Alex', 'Wumbo', 'alexwumbo', '2023-12-28 10:46:19.000000', 1),
+('cc094403-599b-4348-9203-e8c3bdc13317', '2023-12-27 21:39:56.000000', 'velmanharefatest@gmail.com', 'Velman', 'Harefa', 'velman', '2023-12-27 21:39:56.000000', 1),
 ('dc9c13e9-f294-48c9-9e0a-69c78d31d99a', '2023-12-26 11:00:49.000000', 'test@admin.com', 'DiKaosan', 'Admin', 'admin', '2023-12-26 11:00:49.000000', 2);
 
 --
@@ -498,31 +590,31 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT untuk tabel `customer_address`
 --
 ALTER TABLE `customer_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `orders_item`
 --
 ALTER TABLE `orders_item`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `payment_method`
@@ -534,19 +626,19 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT untuk tabel `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
