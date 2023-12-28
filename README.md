@@ -1,4 +1,4 @@
-## Instalation
+## Installation
 - Required Java version 17 : https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9+9.1/OpenJDK17U-jdk_x64_windows_hotspot_17.0.9_9.msi
 
 - Setup Env JAVA_HOME (sesuaikan path JDK versi 17):
@@ -22,7 +22,7 @@
 
 
 
-## INISIALISAI DATA JIKA TIDAK MELAKUKAN IMPORT DATABSE:
+## INIT DATA JIKA TIDAK MELAKUKAN IMPORT DATABSE:
 List users dan Roles di migrate secara default ketika project dijalankan(`./mvn spring-boot:run`) dan ketika table tidak ada data:
 
 #### Default Users:
