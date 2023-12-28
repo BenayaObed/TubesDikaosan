@@ -96,12 +96,12 @@
         </li>
 
         <!-- Chating -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="${pageContext.request.contextPath}/dashboard/chats" class="nav-link">
             <i class="nav-icon fas fa-comments"></i>
             <p> Chats </p>
           </a>
-        </li>
+        </li> -->
         <!-- Product -->
         
         <!-- Logout -->
