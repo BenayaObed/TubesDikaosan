@@ -138,6 +138,11 @@ public class LandingController {
             @RequestParam(required = false) String search,
             Model model, HttpSession session) throws SQLException {
         List<Product> products;
+        Users user = (Users) session.getAttribute("user");
+                if (user != null){
+                    List<Orders> history = (List<Orders>) ShoppingServices.getAllOrdersByUsers(user.getUser_id()).getData();
+                    session.setAttribute("history",history);
+        }
 
         // Search products by search
         if (search != null && !search.isEmpty()) {
@@ -197,12 +202,12 @@ public class LandingController {
     @RequestMapping("/contact")
     public String contact(Model model, HttpSession session) throws SQLException {
         model.addAttribute("title", "Contact");
-        for (UsersService userService : usersServices) {
-            if (userService instanceof UsersService) {
-                return "pages/fe/contact";
-            }
+        Users user = (Users) session.getAttribute("user");
+        if (user != null){
+            List<Orders> history = (List<Orders>) ShoppingServices.getAllOrdersByUsers(user.getUser_id()).getData();
+            session.setAttribute("history",history);
         }
-        return "pages/fe/about";
+        return "pages/fe/contact";
     }
 
     @RequestMapping("/description")
