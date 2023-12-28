@@ -134,7 +134,7 @@
                               </div>
                               
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" style="background-color: black;" type="submit">Sign Up</button>
+                                <button class="btn btn-primary confirm_btn w-50" style="background-color: black;" type="submit" data-bs-toggle="modal" data-bs-target="#SuccessfullySignUp">Sign Up</button>
                               </div>
                             </form>
 
@@ -146,7 +146,7 @@
                       </div>
                       
                       <!-- Modal Successfully Sign-Up -->
-                      <div class="modal success" id="Successfully" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal success" id="SuccessfullySignUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content Sign-Up">
                             <div class="modal-header justify-content-center">
@@ -206,7 +206,7 @@
                               </div>
                   
                               <div class="row justify-content-center text-center">
-                                <button class="btn btn-primary confirm_btn w-50" type="submit" style="background-color: black;">Set Password</button>
+                                <button class="btn btn-primary confirm_btn w-50" type="submit" style="background-color: black;" data-bs-toggle="modal" data-bs-target="#SuccessfullyResetPass">Set Password</button>
                               </div>
                             </form>
                             </div>
