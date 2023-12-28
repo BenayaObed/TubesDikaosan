@@ -79,9 +79,9 @@
                                 </span>
                               </div>
 
-                              <div class="row forget_pass text-end">
+                              <!-- <div class="row forget_pass text-end">
                                 <a1 data-bs-toggle="modal" data-bs-target="#reset-PasswordDikaosan" >Forgot password?</a1>
-                              </div>  
+                              </div>   -->
 
                               <div class="row justify-content-center text-center">
                                 <button class="btn btn-primary confirm_btn w-50" data-bs-target="#" data-bs-toggle="modal" type="submit" style="background-color: black;">Login</button>
