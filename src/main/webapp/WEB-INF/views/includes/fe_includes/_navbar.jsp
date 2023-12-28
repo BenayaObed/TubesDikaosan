@@ -50,7 +50,11 @@
 
                       
                       <!-- Modal Login -->
-                      
+                      <c:if test="${not empty alert_auth}">
+                        <script>
+                          alert("${alert_auth}");
+                        </script>
+                      </c:if>
                       <div class="modal login" id="loginDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content login">
@@ -172,11 +176,7 @@
                       </div>
 
                       <!-- Modal Reset Password -->
-                      <c:if test="${not empty alert_auth}">
-                        <script>
-                          alert("${alert_auth}");
-                        </script>
-                      </c:if>
+                      
                       <div class="modal reset_password" id="reset-PasswordDikaosan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content login">

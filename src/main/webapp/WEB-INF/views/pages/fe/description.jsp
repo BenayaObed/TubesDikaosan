@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 
-                <div class="d-flex size my-2 gap-3" id="sizeContainer">
+                <div class="d-flex size my-2" id="sizeContainer">
                   
                 </div>
             

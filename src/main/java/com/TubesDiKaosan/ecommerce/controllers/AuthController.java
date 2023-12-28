@@ -114,10 +114,13 @@ public class AuthController {
                             userRequest.setRole(user.getRole_id());
 
                             Response update_response = ((UsersService) userService).updateDataById(user_id, userRequest);
-                            if (update_response.getMessage().equals("success")) {
+                            if (update_response.getStatus() == 200) {
                                 session.setAttribute("user", user);
+                                redirectAttributes.addFlashAttribute("alert", "Password berhasil dirubah");
                                 return "redirect:/";
                             }
+                            redirectAttributes.addFlashAttribute("alert", "Password gagal dirubah");
+                            return "redirect:/";
                         } else {
                             // password not match
                             redirectAttributes.addFlashAttribute("alert", "Password yang baru tidak sesuai ^_^");
