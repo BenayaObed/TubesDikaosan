@@ -7,7 +7,7 @@
 - - `Application.properties`:
   - ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/879f2613-95f4-4971-b1e6-299eabf76a83)
 
-- - Database:
+- - Buat Database dengan nama ecommerce:
   - ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/41a9a728-081a-4cc5-a46b-27b090b19bff)
 
 - Jika ingin import database bisa dilakukan di MySQL, contoh import ecommerce.sql:
