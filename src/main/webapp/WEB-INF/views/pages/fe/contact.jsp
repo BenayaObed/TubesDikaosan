@@ -67,7 +67,7 @@
                                         <img src="${pageContext.request.contextPath}/resources/images/42.png" alt="">
                                     </div>
                                     <div class="col-sm-9 d-flex align-items-center border-primary p-0 m-0">
-                                        <a class="text-left m-0" href="#">081360255137</a>
+                                        <a class="text-left m-0" href="https://wa.me/6283119266160">083119266160</a>
                                     </div>
                                 </div>
                             </div>
