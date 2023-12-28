@@ -97,7 +97,7 @@ public class AuthController {
     @PostMapping("/update-password")
     public String updatePassword(@RequestParam("oldPass") String oldPass,
             @RequestParam("newPass") String newPass, @RequestParam("confirmPass") String confirmPass,
-            @RequestParam("user_id") String user_id, Model model, HttpSession session) throws SQLException {
+            @RequestParam("user_id") String user_id, Model model, HttpSession session, RedirectAttributes redirectAttributes) throws SQLException {
         for (UsersService userService : usersServices) {
             if (userService instanceof UsersService) {
                 Response response = ((UsersService) userService).findDataByID(user_id);
@@ -120,10 +120,12 @@ public class AuthController {
                             }
                         } else {
                             // password not match
+                            redirectAttributes.addFlashAttribute("alert", "Password yang baru tidak sesuai ^_^");
                             return "redirect:/";
                         }
                     } else {
                         // old password not match
+                        redirectAttributes.addFlashAttribute("alert", "Password yang lama tidak sesuai ^_^");
                         return "redirect:/";
                     }
                 }
