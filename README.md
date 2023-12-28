@@ -4,11 +4,11 @@
 - Setup Env JAVA_HOME (sesuaikan path JDK versi 17):
 ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/dbe81973-00eb-4c76-877d-aedf1efbddb6)
 - Buat database terlebih dahulu dengan nama ecommerce / sesuaikan dengan `Application.properties`:
-- - `Application.properties`:
-  - ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/879f2613-95f4-4971-b1e6-299eabf76a83)
+   `Application.properties`:
+  ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/879f2613-95f4-4971-b1e6-299eabf76a83)
 
-- - Buat Database dengan nama ecommerce:
-  - ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/41a9a728-081a-4cc5-a46b-27b090b19bff)
+  Buat Database dengan nama ecommerce:
+  ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/41a9a728-081a-4cc5-a46b-27b090b19bff)
 
 - Jika ingin import database bisa dilakukan di MySQL, contoh import ecommerce.sql:
   ![image](https://github.com/velmanharefa/TubesDikaosan/assets/78690451/771a3c05-deaf-46a0-9df1-129186c8b502)
