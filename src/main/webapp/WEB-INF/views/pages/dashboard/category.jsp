@@ -56,7 +56,6 @@
                   <thead>
                   <tr>
                     <th>Category</th>
-                    <th>Total Items</th>
                     <th>Visibility</th>
                     <th>Action</th>
                   </tr>
@@ -65,7 +64,6 @@
                   <c:forEach items="${categories}" var="category">
                     <tr>
                       <td>${category.category_name}</td>
-                      <td>0</td>
                       <td> ${category.visible == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'}</td>
                       <td>
                         <a href="${pageContext.request.contextPath}/dashboard/categories/edit?categoryID=${category.category_id}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
@@ -77,7 +75,6 @@
                   <tfoot>
                   <tr>
                     <th>Category</th>
-                    <th>Total Items</th>
                     <th>Visibility</th>
                     <th>Action</th>
                   </tr>
