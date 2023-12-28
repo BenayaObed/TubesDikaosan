@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 
-    @Query(value = "SELECT CAST(SUM(payment_total) AS FLOAT) as total, MONTHNAME(created_at) as month FROM payments GROUP BY MONTH(created_at)", nativeQuery = true)
+    @Query(value = "SELECT CAST(SUM(payment_total) AS FLOAT) as total, MONTHNAME(payments.created_at) as month FROM payments JOIN orders ON orders.payment_id = payments.payment_id WHERE orders.status = 'delivered' GROUP BY MONTH(payments.created_at)", nativeQuery = true)
     List<Object[]> getPaymentReportByMonth();
 
     @Query(value = "SELECT CAST(SUM(payment_total) AS FLOAT) as total, MONTHNAME(created_at) as month, YEAR(created_at) as year FROM payments WHERE YEAR(created_at) = ?1 GROUP BY MONTH(created_at)", nativeQuery = true)

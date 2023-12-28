@@ -221,7 +221,7 @@
 <!-- Review Section End -->
 
     <!-- Chat Section Start -->
-    <%@ include file = "../../includes/fe_includes/_chat.jsp" %>
+    <!-- <%@ include file = "../../includes/fe_includes/_chat.jsp" %> -->
     <!-- Chat Section End -->
 
     <!-- Footer Section Start -->
