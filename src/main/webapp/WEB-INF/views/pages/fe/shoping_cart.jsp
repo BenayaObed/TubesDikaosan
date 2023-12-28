@@ -143,11 +143,11 @@
                 <div class="row">
                   <div class="col d-flex flex-column my-lg-3 ">
                     <div class="row">
-                      <div class="button_continue_shoping col-sm-6 d-flex flex-column">
+                      <div class="button_continue_shoping col-sm-9 d-flex flex-column">
                         <a href="${pageContext.request.contextPath}/shop" class="btn btn-add-cart d-flex justify-content-center align-items-center">Continue Shoping</a>
                       </div>
-                      <div class="button_update_cart col-sm-6 d-flex flex-column align-items-end ">
-                        <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center">Update Cart</button>
+                      <div class="button_update_cart col-sm-3 d-flex flex-column">
+                        <button type="submit" class="btn btn-add-cart d-flex justify-content-center align-items-center " ${empty data_cart ? 'disabled' : ''}>Update Cart</button>
                       </div>
                     </div>
                   </div>

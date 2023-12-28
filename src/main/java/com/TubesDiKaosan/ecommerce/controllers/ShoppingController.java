@@ -91,9 +91,13 @@ public class ShoppingController {
 
     // update cart
     @PostMapping("/updateCart")
-    public String updateCart(@RequestParam("order_item_id") List<Integer> order_item_id,
-            @RequestParam("quantity") List<Integer> quantity, @RequestParam("product_id") List<Integer> product_id)
+    public String updateCart(@RequestParam(name = "order_item_id", required=false) List<Integer> order_item_id, RedirectAttributes redirectAttributes,
+            @RequestParam(name = "quantity", required=false) List<Integer> quantity, @RequestParam(name = "product_id", required=false) List<Integer> product_id)
             throws SQLException {
+                if (order_item_id.size() < 1 || product_id.size()<1){
+            redirectAttributes.addFlashAttribute("alert", "Barang dalam keranjang tidak tersedia ^_^");
+            return "redirect:/shoping_cart";
+        }
         List<OrderItemRequest> cart = new ArrayList<>();
         for (int i = 0; i < order_item_id.size(); i++) {
             OrderItemRequest request = new OrderItemRequest();

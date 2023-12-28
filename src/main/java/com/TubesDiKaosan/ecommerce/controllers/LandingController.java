@@ -315,7 +315,7 @@ public class LandingController {
             } else
                 return "pages/fe/shoping_cart";
         }
-        redirectAttributes.addFlashAttribute("alert", "Login dulu ya ^_^");
+        redirectAttributes.addFlashAttribute("alert_auth", "Login dulu ya ^_^");
         return "redirect:/";
     }
 
