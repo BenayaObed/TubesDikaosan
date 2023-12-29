@@ -95,6 +95,10 @@ public class CustomerService extends UsersService {
             return new Response(HttpStatus.BAD_REQUEST.value(), "Invalid role ID!", null);
         }
 
+        if (userRepository.findByEmail(request.getEmail()) != null) {
+            return new Response(HttpStatus.BAD_REQUEST.value(), "Email already exists!", null);
+        }
+
         Roles roleData = (Roles) roleResponse.getData();
         user.setRole(roleData);
 

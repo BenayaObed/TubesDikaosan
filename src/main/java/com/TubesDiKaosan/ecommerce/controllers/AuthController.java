@@ -49,16 +49,18 @@ public class AuthController {
 
     // REGISTER FOR CUSTOMER
     @PostMapping("/registration")
-    public String registration(@Valid UserRequest UserRequest, Model model, HttpSession session) throws SQLException {
+    public String registration(@Valid UserRequest UserRequest, Model model, HttpSession session,RedirectAttributes redirectAttributes) throws SQLException {
         UserRequest.setRole(-1);
         for (UsersService userService : usersServices) {
             if (userService instanceof CustomerService) {
                 Roles role_id = (Roles) ((CustomerService) userService).getRolesCustomer().getData();
                 UserRequest.setRole(role_id.getRole_id());
                 Response response = ((CustomerService) userService).createData(UserRequest);
-                if (!response.getMessage().equals("Email not found")) {
-                    return "redirect:/";
-                } else
+                if (response.getMessage().equals("Email already exist")) {
+                    redirectAttributes.addFlashAttribute("alert", "Email sudah terdaftar");
+                    return "pages/register";
+                }
+                    redirectAttributes.addFlashAttribute("alert", "Registrasi berhasil");
                     return "redirect:/";
             }
         }
