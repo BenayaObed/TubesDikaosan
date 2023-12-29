@@ -34,3 +34,5 @@ List users dan Roles di migrate secara default ketika project dijalankan(`./mvn 
 | ------------- | ------------- |
 | 1 | CUSTOMER |
 | 2 | ADMIN |
+
+tes
