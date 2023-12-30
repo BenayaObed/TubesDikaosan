@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Des 2023 pada 06.51
+-- Waktu pembuatan: 30 Des 2023 pada 08.37
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -101,7 +101,8 @@ INSERT INTO `customer_address` (`id`, `address`, `city`, `created_at`, `phone_nu
 (14, 'Ciganitri', 'Bandung', '2023-12-28 00:44:14.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-28 00:44:14.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
 (15, 'Ciganitri', 'Bandung', '2023-12-28 01:03:15.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-28 01:03:15.000000', '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
 (16, 'Dipatiukur', 'Bandung', '2023-12-28 10:47:38.000000', '081278635432', '5623', 'Jawa Barat', '2023-12-28 10:47:38.000000', '3597663b-a776-4564-9c0b-3e8debd856e8'),
-(17, 'Dipatiukur', 'Bandung', '2023-12-28 10:52:34.000000', '081278635432', '5623', 'Jawa Barat', '2023-12-28 10:52:34.000000', '3597663b-a776-4564-9c0b-3e8debd856e8');
+(17, 'Dipatiukur', 'Bandung', '2023-12-28 10:52:34.000000', '081278635432', '5623', 'Jawa Barat', '2023-12-28 10:52:34.000000', '3597663b-a776-4564-9c0b-3e8debd856e8'),
+(18, 'Ciganitri', 'Bandung', '2023-12-28 14:24:39.000000', '082746252344', '5623', 'Jawa Barat', '2023-12-28 14:24:39.000000', '36773b82-6baf-4b41-9bfe-e7654150d2d2');
 
 -- --------------------------------------------------------
 
@@ -160,7 +161,8 @@ INSERT INTO `orders` (`order_id`, `created_at`, `notes`, `status`, `updated_at`,
 (15, '2023-12-27 21:41:28.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 11:03:07.000000', 13, 4, 'cc094403-599b-4348-9203-e8c3bdc13317'),
 (17, '2023-12-28 10:46:42.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 10:48:27.000000', 16, 6, '3597663b-a776-4564-9c0b-3e8debd856e8'),
 (18, '2023-12-28 10:51:44.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 11:03:12.000000', 17, 7, '3597663b-a776-4564-9c0b-3e8debd856e8'),
-(19, '2023-12-28 11:33:18.000000', NULL, 'draft', '2023-12-28 11:33:18.000000', NULL, NULL, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5');
+(19, '2023-12-28 11:33:18.000000', NULL, 'draft', '2023-12-28 11:33:18.000000', NULL, NULL, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(20, '2023-12-28 14:23:25.000000', 'Segera di kirim ya min!', 'delivered', '2023-12-28 14:27:49.000000', 18, 8, '36773b82-6baf-4b41-9bfe-e7654150d2d2');
 
 -- --------------------------------------------------------
 
@@ -189,7 +191,9 @@ INSERT INTO `orders_item` (`order_item_id`, `color`, `created_at`, `quantity`, `
 (24, 'Abu', '2023-12-27 21:42:07.000000', 1, 'S', 399999, '2023-12-27 21:42:07.000000', 15, 8),
 (27, 'Putih', '2023-12-28 01:03:00.000000', 1, 'S', 199999, '2023-12-28 01:03:00.000000', 14, 6),
 (31, 'Cream', '2023-12-28 10:46:50.000000', 1, 'XL', 399999, '2023-12-28 10:46:50.000000', 17, 8),
-(32, 'Putih', '2023-12-28 10:51:44.000000', 1, 'XL', 399999, '2023-12-28 10:51:44.000000', 18, 11);
+(32, 'Putih', '2023-12-28 10:51:44.000000', 1, 'XL', 399999, '2023-12-28 10:51:44.000000', 18, 11),
+(37, 'Putih', '2023-12-28 14:10:16.000000', 1, 'S', 199999, '2023-12-28 14:10:16.000000', 19, 6),
+(38, 'Coklat', '2023-12-28 14:23:25.000000', 1, 'S', 159999, '2023-12-28 14:23:25.000000', 20, 17);
 
 -- --------------------------------------------------------
 
@@ -217,7 +221,8 @@ INSERT INTO `payments` (`payment_id`, `created_at`, `payment_status`, `payment_t
 (4, '2023-12-27 21:43:42.000000', 'PAID', 399999, '2023-12-27 21:43:42.000000', 2),
 (5, '2023-12-28 01:06:44.000000', 'PAID', 199999, '2023-12-28 01:06:44.000000', 2),
 (6, '2023-12-28 10:47:47.000000', 'PAID', 399999, '2023-12-28 10:47:47.000000', NULL),
-(7, '2023-12-28 10:52:42.000000', 'PAID', 399999, '2023-12-28 10:52:42.000000', 2);
+(7, '2023-12-28 10:52:42.000000', 'PAID', 399999, '2023-12-28 10:52:42.000000', 2),
+(8, '2023-12-28 14:25:20.000000', 'PAID', 159999, '2023-12-28 14:25:20.000000', 2);
 
 -- --------------------------------------------------------
 
@@ -266,18 +271,18 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `created_at`, `description`, `name_product`, `price`, `updated_at`, `visible`, `category_id`) VALUES
-(6, '2023-12-27 19:12:30.000000', 'Hadirkan sentuhan gaya kasual yang nyaman dengan Kaos Katun Wanita kami. Dirancang khusus untuk memberikan kenyamanan sepanjang hari, kaos ini terbuat dari katun berkualitas tinggi yang lembut di kulit dan memberikan pernapasan alami.', 'Kaos Katun Wanita ', 199999, '2023-12-28 11:34:08.000000', 1, 7),
-(7, '2023-12-27 19:16:17.000000', 'Bergaya dengan penuh kepercayaan dengan Jaket Kasual Wanita kami yang menawarkan kombinasi sempurna antara kehangatan dan keanggunan kasual. Dirancang untuk menonjolkan keindahan dan kepraktisan, jaket ini menjadi pilihan ideal untuk penampilan kasual yang tetap trendy.', 'Woman Casual Jacket ', 599999, '2023-12-28 11:42:02.000000', 1, 9),
+(6, '2023-12-27 19:12:30.000000', 'Hadirkan sentuhan gaya kasual yang nyaman dengan Kaos Katun Wanita kami. Dirancang khusus untuk memberikan kenyamanan sepanjang hari, kaos ini terbuat dari katun berkualitas tinggi yang lembut di kulit dan memberikan pernapasan alami.', 'Kaos Katun Wanita ', 199999, '2023-12-28 14:10:16.000000', 1, 7),
+(7, '2023-12-27 19:16:17.000000', 'Bergaya dengan penuh kepercayaan dengan Jaket Kasual Wanita kami yang menawarkan kombinasi sempurna antara kehangatan dan keanggunan kasual. Dirancang untuk menonjolkan keindahan dan kepraktisan, jaket ini menjadi pilihan ideal untuk penampilan kasual yang tetap trendy.', 'Woman Casual Jacket ', 599999, '2023-12-28 14:24:14.000000', 1, 9),
 (8, '2023-12-27 19:20:23.000000', 'Berikan sentuhan kesegaran pada gaya Anda dengan Rok Pendek Wanita kami, sebuah pilihan yang menggabungkan kenyamanan dan kecantikan. Dirancang untuk merayakan kefemininan Anda, rok pendek ini cocok untuk berbagai kesempatan dan memberikan kebebasan gerak untuk gaya hidup aktif Anda.', 'Rok Pendek Wanita', 399999, '2023-12-28 10:50:55.000000', 1, 10),
 (9, '2023-12-27 19:22:39.000000', 'Tampilkan kehangatan dan gaya dengan koleksi Sweater Pria kami, busana yang tidak hanya memberikan kenyamanan luar biasa tetapi juga menambahkan sentuhan modis pada setiap penampilan Anda. Terbuat dari bahan berkualitas tinggi, sweater ini menjadi pilihan yang sempurna untuk menemani kegiatan sehari-hari Anda.', 'Sweater Pria', 249999, '2023-12-27 19:22:39.000000', 1, 9),
-(10, '2023-12-27 20:08:29.000000', 'Hadapi cuaca hangat dengan gaya yang tetap trendi menggunakan Celana Pendek Pria kami. Dirancang untuk kenyamanan sepanjang hari dan penampilan yang tak terbantahkan, celana pendek ini menjadi pilihan ideal untuk kegiatan santai hingga petualangan luar ruangan.', 'Celana Pendek Pria', 149999, '2023-12-28 09:49:17.000000', 1, 3),
+(10, '2023-12-27 20:08:29.000000', 'Hadapi cuaca hangat dengan gaya yang tetap trendi menggunakan Celana Pendek Pria kami. Dirancang untuk kenyamanan sepanjang hari dan penampilan yang tak terbantahkan, celana pendek ini menjadi pilihan ideal untuk kegiatan santai hingga petualangan luar ruangan.', 'Celana Pendek Pria', 149999, '2023-12-28 14:12:23.000000', 1, 10),
 (11, '2023-12-27 20:26:31.000000', 'Tingkatkan gaya kasual Anda dengan Hoodie Pria kami yang tidak hanya menawarkan tampilan trendi, tetapi juga memberikan kenyamanan luar biasa. Dirancang untuk menjaga Anda tetap hangat dan modis, hoodie ini adalah pilihan ideal untuk menambah keberagaman koleksi pakaian kasual Anda.', 'Hoodie ', 399999, '2023-12-28 10:52:42.000000', 1, 9),
 (12, '2023-12-28 12:26:16.000000', 'Tampilkan gaya dan kenyamanan sejati dengan Celana Panjang Wanita \"Elegance Chic\" kami. Didesain untuk memenuhi kebutuhan fashion sehari-hari, celana ini memberikan kombinasi sempurna antara gaya yang modis dan kenyamanan yang tak terkalahkan.', 'Woman Long Pants', 299999, '2023-12-28 12:40:23.000000', 0, 10),
 (13, '2023-12-28 12:33:42.000000', 'Tingkatkan gaya santai Anda dengan Kaos Katun Pria \"Casual Comfort\" kami. Dirancang untuk memberikan kenyamanan luar biasa dan tampilan yang tetap modis, kaos ini menjadi pilihan sempurna untuk gaya kasual sehari-hari.', 'Kaos Katun Pria', 179999, '2023-12-28 12:33:42.000000', 1, 7),
 (14, '2023-12-28 12:37:24.000000', 'Hadirkan sentuhan feminin dan gaya yang anggun dengan Rok Span Wanita \"Elegance Bliss\" kami. Rok ini menggabungkan desain modern dengan kenyamanan yang luar biasa, menjadikannya pilihan ideal untuk berbagai kesempatan, dari acara formal hingga santai.', 'Rok Span Wanita', 399999, '2023-12-28 12:37:24.000000', 1, 10),
 (15, '2023-12-28 12:39:43.000000', 'Hadirkan sentuhan klasik dan keanggunan dengan Kemeja Pria Lengan Panjang \"Timeless White\" kami. Kemeja putih yang tak pernah ketinggalan zaman ini menjadi pilihan sempurna untuk melengkapi gaya kasual maupun semi-formal Anda.', 'Kemeja Putih Pria', 299999, '2023-12-28 12:40:26.000000', 0, 10),
 (16, '2023-12-28 12:41:17.000000', 'Hadirkan sentuhan klasik dan keanggunan dengan Kemeja Wanita Lengan Panjang \"Timeless White\" kami. Kemeja putih yang tak pernah ketinggalan zaman ini menjadi pilihan sempurna untuk melengkapi gaya kasual maupun semi-formal Anda.', 'Kemeja Putih Wanita', 399999, '2023-12-28 12:42:49.000000', 1, 6),
-(17, '2023-12-28 12:47:45.000000', 'Nikmati kehangatan musim panas dengan gaya yang chic dan nyaman menggunakan Celana Pendek Wanita \"Summer Breeze\" kami. Dirancang untuk memberikan kesejukan dan kebebasan gerak, celana pendek ini akan menjadi pilihan favorit Anda untuk menjalani aktivitas sehari-hari dengan gaya.', 'Celana Pendek Wanita', 159999, '2023-12-28 12:47:45.000000', 1, 3);
+(17, '2023-12-28 12:47:45.000000', 'Nikmati kehangatan musim panas dengan gaya yang chic dan nyaman menggunakan Celana Pendek Wanita \"Summer Breeze\" kami. Dirancang untuk memberikan kesejukan dan kebebasan gerak, celana pendek ini akan menjadi pilihan favorit Anda untuk menjalani aktivitas sehari-hari dengan gaya.', 'Celana Pendek Wanita', 159999, '2023-12-28 14:28:33.000000', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -299,7 +304,9 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`review_id`, `comment`, `rate`, `product_id`, `user_id`) VALUES
 (1, 'Barang sangat nyaman digunakan!', 5, 8, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
-(2, 'Barang lama dikirim', 3, 8, '3597663b-a776-4564-9c0b-3e8debd856e8');
+(2, 'Barang lama dikirim', 3, 8, '3597663b-a776-4564-9c0b-3e8debd856e8'),
+(3, 'Nyaman untuk digunakan!', 4.5, 6, '0aac3b19-1d7f-4b7f-8198-853cffdf62e5'),
+(4, 'Celananya nyaman', 4, 17, '36773b82-6baf-4b41-9bfe-e7654150d2d2');
 
 -- --------------------------------------------------------
 
@@ -442,7 +449,7 @@ INSERT INTO `stock` (`stock_id`, `color`, `created_at`, `quantity`, `size`, `upd
 (136, 'Hitam', '2023-12-28 12:47:45.000000', 5, 'M', '2023-12-28 12:47:45.000000', 17),
 (137, 'Hitam', '2023-12-28 12:47:45.000000', 19, 'L', '2023-12-28 12:47:45.000000', 17),
 (138, 'Hitam', '2023-12-28 12:47:45.000000', 10, 'XL', '2023-12-28 12:47:45.000000', 17),
-(139, 'Coklat', '2023-12-28 12:47:45.000000', 15, 'S', '2023-12-28 12:47:45.000000', 17),
+(139, 'Coklat', '2023-12-28 12:47:45.000000', 14, 'S', '2023-12-28 14:25:20.000000', 17),
 (140, 'Coklat', '2023-12-28 12:47:45.000000', 20, 'M', '2023-12-28 12:47:45.000000', 17),
 (141, 'Coklat', '2023-12-28 12:47:45.000000', 19, 'L', '2023-12-28 12:47:45.000000', 17),
 (142, 'Coklat', '2023-12-28 12:47:45.000000', 10, 'XL', '2023-12-28 12:47:45.000000', 17);
@@ -469,8 +476,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `created_at`, `email`, `first_name`, `last_name`, `password`, `updated_at`, `role_id`) VALUES
-('0aac3b19-1d7f-4b7f-8198-853cffdf62e5', '2023-12-26 15:37:52.000000', 'velmanh24@gmail.com', 'Velman', 'Harefa', 'velmann', '2023-12-28 09:51:15.000000', 1),
+('0aac3b19-1d7f-4b7f-8198-853cffdf62e5', '2023-12-26 15:37:52.000000', 'velmanh24@gmail.com', 'Velman', 'Harefa', 'velmann', '2023-12-28 14:06:41.000000', 1),
 ('3597663b-a776-4564-9c0b-3e8debd856e8', '2023-12-28 10:46:19.000000', 'alexwumbo@gmail.com', 'Alex', 'Wumbo', 'alexwumbo', '2023-12-28 10:46:19.000000', 1),
+('36773b82-6baf-4b41-9bfe-e7654150d2d2', '2023-12-28 14:21:58.000000', 'velman@gmail.com', 'Velman', 'Harefa', 'velman', '2023-12-28 14:21:58.000000', 1),
 ('cc094403-599b-4348-9203-e8c3bdc13317', '2023-12-27 21:39:56.000000', 'velmanharefatest@gmail.com', 'Velman', 'Harefa', 'velman', '2023-12-27 21:39:56.000000', 1),
 ('dc9c13e9-f294-48c9-9e0a-69c78d31d99a', '2023-12-26 11:00:49.000000', 'test@admin.com', 'DiKaosan', 'Admin', 'admin', '2023-12-26 11:00:49.000000', 2);
 
@@ -590,7 +598,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT untuk tabel `customer_address`
 --
 ALTER TABLE `customer_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `images`
@@ -602,19 +610,19 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `orders_item`
 --
 ALTER TABLE `orders_item`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT untuk tabel `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `payment_method`
@@ -632,7 +640,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `stock`
